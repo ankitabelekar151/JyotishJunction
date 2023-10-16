@@ -1,0 +1,49 @@
+<body>
+
+    
+    <div>
+    <table class="table" border='1'>
+        <thead>
+            <tr style="text-align: center;">
+                <th align="center">Sr. No.</th>
+                <th align="center">Customer Name</th>
+                <th align="center">Plan Name</th>
+                <th align="center">Plan Amount</th>
+                <th align="center">Plan Purchase Date</th>
+                
+                <th align="center"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            {% for j in plan %}
+                {% if customer.email_id == j.cust_email_id %}
+            
+            <tr>
+                <td>
+                    {{ customer.id }} 
+                </td>
+                <td>
+                    {{ customer.first_name }} {{customer.last_name}}
+                </td>
+                
+               
+                <td>
+                    {{j.plan_name}}
+                        
+                </td>
+                <td>
+                    {{ j.plan_amount }}
+                </td>
+                <td>
+                    {{ j.plan_purchase_date }}
+                </td>
+                
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </body>

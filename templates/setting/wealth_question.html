@@ -1,0 +1,226 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+     <!-- Favicons -->
+     <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon" />
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+ 
+     <!-- Fontawesome CSS -->
+     <link
+       rel="stylesheet"
+       href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}"
+     />
+     <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}" />
+ 
+     <!-- Feathericon CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}" />
+ 
+     <!-- Main CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+ 
+     <!-- end Favicons -->
+
+    <style>
+        label {
+            text-align: justify;
+            /* width: 90%; */
+        }
+        .btn-primary {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffffff;
+            border: 1px solid #1c3264;
+            color: #1c3264;
+        }
+
+        /* .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active {
+            color: #ffffff;
+            background-color: #1c3264;
+            border-color: #1c3264;
+        } */
+
+        .btn-primary .active:not(:disabled):not(.disabled), .btn-primary:active:not(:disabled):not(.disabled) {
+            background-color: #1c3264;
+            border-color: #1c3264;
+            color: #ffffff;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .login-in-fourteen{
+            visibility: hidden;
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar-two">
+        <div class="container">
+          <div class="row align-items-center inner-banner">
+            <div class="col-md-12 col-12 text-center">
+              <h2 class="breadcrumb-title">Wealth Insights</h2>
+              <nav aria-label="breadcrumb" class="page-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item" aria-current="page">
+                    Wealth Insights
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Breadcrumb -->
+    <div class="container mt-5 mb-2">
+        <div class="row">
+            <div class="col-lg-8 m-auto">
+               <div class="card">
+                <div class="card-body">
+                    <div class="form-check mt-2">
+                            <h4 class="text-center fw-5"><b> Disclaimer </b></h4>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Remember, astrology serves as a tool for self-reflection and
+                                guidance, but it's important to actively participate in your own
+                                self-discovery and personal growth. You should approach
+                                astrology as a complement to your own journey of
+                                self-exploration and self-empowerment.
+                            </label>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                    <h6><b> Choose Your Sample Question for Personalized Insights OR You can also add your own question </b></h6></div>
+                    <hr>
+                    <!-- question list -->
+                    <div class="ms-5 mx-5 mb-3" >
+                        <div class="form-check ">
+                            <!-- <input class="form-check-input " type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2" >
+                                Will I experience financial stability and abundance in the near future?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What are the astrological indicators of wealth and prosperity in my birth chart?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Which planets and houses in my horoscope influence my financial status?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any potential blockages or obstacles hindering my financial growth?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What are the suitable periods for investment or starting a new business venture?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology provide insights into my career path that can lead to financial success?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                How can I improve my financial situation and attract wealth using astrological remedies?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any planetary combinations or aspects indicating sudden financial gains or windfalls?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology help me identify the best time for buying or selling property or assets?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What should I focus on to enhance my financial prospects according to my horoscope?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any negative financial cycles indicated in my astrological chart that I should be aware of?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                How can I align my financial goals with my spiritual journey to achieve abundance?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What is the significance of my current planetary transits in relation to my financial situation?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Will my current business or career path lead to long-term financial success and stability?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology provide guidance on effective money management and wealth preservation strategies?
+                            </label>
+                        </div>
+                        
+                    </div>
+
+                    <hr>
+
+                    <!-- button -->
+                    <div class="text-center">
+                        <a href="/ask_a_question_inr/"><button type="button" class="btn btn-primary">Ask a Question</button></a>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+{% endblock %}

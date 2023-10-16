@@ -1,0 +1,586 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Guruji Speaks</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+	<!-- Favicons -->
+	<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+	<style>
+		ul {
+			list-style-type: disc;
+			margin-left: -15px;
+			text-align: justify;
+		}
+		p{
+			text-align: justify;
+		}
+		
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht{
+			visibility: hidden;
+		}
+
+		.btn-primary {
+			background-color: #1c3264;
+			border: 1px solid #1c3264;
+		}
+
+		.btn-primary:hover {
+			background-color: #1c3264;
+			border: 1px solid #1c3264;
+		}
+
+		
+		.btn-primary:active {
+			background-color: #1c3264;
+			border: 1px solid #1c3264;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title">Blogs</h2>
+						<nav aria-label="breadcrumb" class="page-breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item" aria-current="page">Blogs</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+		<!-- Page Content -->
+		<div class="content">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-8 col-md-12">
+						<div class="blog-view">
+							<div class="blog blog-single-post">
+								<div class="blog-image">
+									<a href="javascript:void(0);"><img alt="" src="{% static 'assets/img/Blog 3.png' %}"
+											class="img-fluid"></a>
+								</div>
+								<h3 class="blog-title">
+									Divine Revelation: The Miraculous Secrets of 108 – Unveiling Hinduism’s Sacred Number
+								</h3>
+								<div class="blog-info clearfix">
+									<div class="post-left">
+										<ul>
+											<li>
+												<div class="post-author">
+													<a href="doctor-profile.html"><img
+															src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}"
+															alt="Post Author"> <span>Saurabh Tyagi</span></a>
+												</div>
+											</li>
+											<li><i class="far fa-calendar"></i>23 Aug 2023</li>
+											<li><i class="far fa-comments"></i>12 Comments</li>
+											<!-- <li><i class="fa fa-tags"></i>Health Tips</li> -->
+										</ul>
+									</div>
+								</div>
+								<div class="blog-content">
+									<p>In Hinduism, numbers hold a deep spiritual significance, and one number that stands out prominently is 108. The number 108 has been revered and considered sacred across various aspects of Hindu culture and practices. From ancient texts to modern-day rituals, the presence of 108 is omnipresent, carrying profound religious relevance and fascinating facts. Let us embark on a journey to explore the mystical significance of 108 in Hinduism.
+									</p>
+									<h4>Astronomical and Mathematical Significance:</h4>
+									<p>The number 108 holds significance in various astronomical and mathematical calculations. According to Hindu cosmology, the universe is believed to be composed of 108 elements, including planets, stars, and celestial bodies. Moreover, there are 27 constellations in the lunar zodiac, and each constellation has four padas or parts, resulting in 108 padas in total.</p>
+									<h4>Sacred Beads and Mantras:</h4>
+									<p>The Hindu rosary, also known as the “mala,” consists of 108 beads. Devotees use the mala to recite mantras and prayers during meditation and spiritual practices. Each bead represents a sacred mantra or deity, and completing 108 repetitions is believed to bring spiritual purification and enlightenment. It is said that by chanting a mantra 108 times, one can align their consciousness with the divine.
+									</p>
+									<h4>The Human Body and Chakras:</h4>
+									<p>
+										In Hindu philosophy, it is believed that the human body contains 108 energy points or marma points, which correspond to the chakras, energy centers that govern different aspects of our being. The number 108 symbolizes the spiritual journey from the base of the spine (muladhara) to the crown of the head (sahasrara), representing the path to enlightenment and self-realization.
+									</p>
+									<h4>Sacred Hindu Scriptures:</h4>
+									<p>
+										Several ancient Hindu texts, such as the Upanishads and the Vedas, contain references to the significance of 108. The Upanishads mention that the individual soul is connected to the Supreme Consciousness through 108 nadis or energy channels. Additionally, the Rigveda, one of the oldest scriptures, consists of 108 hymns, emphasizing the profound symbolism of this sacred number.
+										<h4>Temples and Pilgrimages:</h4>
+										<p>
+											In Hindu temple architecture, the number 108 holds great importance. Many ancient temples have 108 steps leading to the main sanctum, representing the spiritual ascent towards the divine. Furthermore, some major Hindu pilgrimage sites are believed to be connected by a sacred path consisting of 108 holy places, fostering spiritual growth and devotion in the pilgrims.
+										</p>
+										<h4>Time and Astrology:</h4>
+										<p>In Vedic astrology, there are 12 zodiac signs, and each sign is divided into nine segments called “navamsas.” Multiplying 12 by 9 gives us 108. This connection between astrology and the number 108 is seen in various astrological calculations and predictions. Moreover, there are 27 lunar mansions or nakshatras, and each nakshatra is further divided into four padas, resulting in a total of 108 padas.</p>
+										<p>The number 108, with its deep-rooted religious significance and intriguing facts, holds a special place in Hinduism. From its association with the cosmos and the human body to its presence in sacred texts, rituals, and temples, 108 serves as a reminder of the interconnectedness of the divine and the earthly realms. Whether in mantra recitation, meditation, or spiritual practices, the power of 108 continues to inspire and guide seekers on their spiritual journeys, inviting them to explore the vast depths of Hindu philosophy and spirituality.</p>
+										<p>As we unravel the mystical secrets behind 108, let us embrace this sacred number with reverence and deepen our understanding of the rich tapestry of Hinduism’s spiritual heritage.</p>
+									
+
+								</div>
+							</div>
+
+							<div class="card blog-share clearfix">
+								<div class="card-header">
+									<h4 class="card-title">Share the post</h4>
+								</div>
+								<div class="card-body">
+									<ul class="social-share">
+										<li><a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d"
+											target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a></li>
+										<li><a href="https://twitter.com/guruji_speaks?s=20" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+										<li><a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+										<!-- <li><a href="#" title="Google Plus"><i class="fab fa-google-plus"></i></a></li>
+										<li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li> -->
+										<li>
+											<a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i
+													class="fab fa-instagram"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- <div class="card author-widget clearfix">
+								<div class="card-header">
+									<h4 class="card-title">About Author</h4>
+									</div>
+								<div class="card-body">
+									<div class="about-author">
+										<div class="about-author-img">
+											<div class="author-img-wrap">
+												<a href="doctor-profile.html"><img class="img-fluid rounded-circle" alt="" src="assets/img/doctors/doctor-thumb-02.jpg"></a>
+											</div>
+										</div>
+										<div class="author-details">
+											<a href="doctor-profile.html" class="blog-author-name">Dr. Darren Elder</a>
+											<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+										</div>
+									</div>
+								</div>
+								</div>
+								<div class="card blog-comments clearfix">
+									<div class="card-header">
+										<h4 class="card-title">Comments (12)</h4>
+									</div>
+									<div class="card-body pb-0">
+									<ul class="comments-list">
+										<li>
+											<div class="comment">
+												<div class="comment-author">
+													<img class="avatar" alt="" src="assets/img/patients/patient4.jpg">
+												</div>
+												<div class="comment-block">
+													<span class="comment-by">
+														<span class="blog-author-name">Michelle Fairfax</span>
+													</span>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+													<p class="blog-date">Dec 6, 2017</p>
+													<a class="comment-btn" href="#">
+														<i class="fas fa-reply"></i> Reply
+													</a>
+												</div>
+											</div>
+											<ul class="comments-list reply">
+												<li>
+													<div class="comment">
+														<div class="comment-author">
+															<img class="avatar" alt="" src="assets/img/patients/patient5.jpg">
+														</div>
+														<div class="comment-block">
+															<span class="comment-by">
+																<span class="blog-author-name">Gina Moore</span>
+															</span>
+															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+															<p class="blog-date">Dec 6, 2017</p>
+													<a class="comment-btn" href="#">
+														<i class="fas fa-reply"></i> Reply
+													</a>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="comment">
+														<div class="comment-author">
+															<img class="avatar" alt="" src="assets/img/patients/patient3.jpg">
+														</div>
+														<div class="comment-block">
+															<span class="comment-by">
+																<span class="blog-author-name">Carl Kelly</span>
+															</span>
+															<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae.</p>
+															<p class="blog-date">December 7, 2017</p>
+													<a class="comment-btn" href="#">
+														<i class="fas fa-reply"></i> Reply
+													</a>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<div class="comment">
+												<div class="comment-author">
+													<img class="avatar" alt="" src="assets/img/patients/patient6.jpg">
+												</div>
+												<div class="comment-block">
+													<span class="comment-by">
+														<span class="blog-author-name">Elsie Gilley</span>
+													</span>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+													<p class="blog-date">December 11, 2017</p>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="comment">
+												<div class="comment-author">
+													<img class="avatar" alt="" src="assets/img/patients/patient7.jpg">
+												</div>
+												<div class="comment-block">
+													<span class="comment-by">
+														<span class="blog-author-name">Joan Gardner</span>
+													</span>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+													<p class="blog-date">December 13, 2017</p>
+													<a class="comment-btn" href="#">
+														<i class="fas fa-reply"></i> Reply
+													</a>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								</div>
+								 -->
+							<div class="card new-comment clearfix">
+								<div class="card-header">
+									<h4 class="card-title">Leave Comment</h4>
+								</div>
+								<div class="card-body">
+									<form>
+										<div class="form-group">
+											<label>Name <span class="text-danger">*</span></label>
+											<input type="text" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>Your Email Address <span class="text-danger">*</span></label>
+											<input type="email" class="form-control">
+										</div>
+										<div class="form-group">
+											<label>Comments</label>
+											<textarea rows="4" class="form-control"></textarea>
+										</div>
+										<div class="submit-section">
+											<button class="btn btn-primary submit-btn" type="submit">Submit</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Blog Sidebar -->
+					<div class="col-lg-4 col-md-12 sidebar-right">
+
+						<!-- Search -->
+						<div class="card search-widget">
+							<div class="card-body">
+								<form class="search-form">
+									<div class="input-group">
+										<input type="text" placeholder="Search..." class="form-control">
+										<button type="submit" class="btn btn-primary"><i
+												class="fa fa-search"></i></button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- /Search -->
+
+						<!-- Latest Posts -->
+						<div class="card post-widget">
+							<div class="card-header">
+								<h4 class="card-title">Latest Posts</h4>
+							</div>
+							<div class="card-body">
+								<ul class="latest-posts">
+									<li>
+										<div class="post-thumb">
+											<a href="/blogs_1/">
+												<img class="img-fluid" src="{% static 'assets/img/GrujiSpeaks-img/1.png' %}" alt="">
+											</a>
+										</div>
+										<div class="post-info">
+											<h4>
+												<a href="/blogs_1/">Transcending Boundaries: Kainchi Dham's Sacred Aura Embraces Tech Titans Zuckerberg and Jobs</a>
+											</h4>
+											<p>23 Aug 2023</p>
+										</div>
+									</li>
+									<li>
+										<div class="post-thumb">
+											<a href="/blogs_2/">
+												<img class="img-fluid" src="{% static 'assets/img/Blog 2.png' %}" alt="">
+											</a>
+										</div>
+										<div class="post-info">
+											<h4>
+												<a href="/blogs_2/">Unleash Your Financial Destiny: Empowering Yourself with Astrological Wisdom for Lasting Wealth</a>
+											</h4>
+											<p>23 Aug 2023</p>
+										</div>
+									</li>
+									<li>
+										<div class="post-thumb">
+											<a href="/blogs_3/">
+												<img class="img-fluid" src="{% static 'assets/img/Blog 3.png' %}" alt="">
+											</a>
+										</div>
+										<div class="post-info">
+											<h4>
+												<a href="/blogs_3/">Divine Revelation: The Miraculous Secrets of 108 – Unveiling Hinduism’s Sacred Number</a>
+											</h4>
+											<p>23 Aug 2023</p>
+										</div>
+									</li>
+									<li>
+										<div class="post-thumb">
+											<a href="/blogs_4/">
+												<img class="img-fluid" src="{% static 'assets/img/Blog 4.png' %}" alt="">
+											</a>
+										</div>
+										<div class="post-info">
+											<h4>
+												<a href="/blogs_4/">Astrology Beyond Boundaries: Embracing LGBTQ Love in Vedic Astrology</a>
+											</h4>
+											<p>23 Aug 2023</p>
+										</div>
+									</li>
+									<li>
+										<div class="post-thumb">
+											<a href="/blogs_5/">
+												<img class="img-fluid" src="{% static 'assets/img/Blog 5.png' %}" alt="">
+											</a>
+										</div>
+										<div class="post-info">
+											<h4>
+												<a href="/blogs_5/">Unveiling the Cosmic Dance: Navigating Spiritual Depths through Planets and Occultism</a>
+											</h4>
+											<p>23 Aug 2023</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- /Latest Posts -->
+
+						<!-- Categories -->
+						<!-- <div class="card category-widget">
+							<div class="card-header">
+								<h4 class="card-title">Blog Categories</h4>
+							</div>
+							<div class="card-body">
+								<ul class="categories">
+									<li><a href="#">Cardiology <span>(62)</span></a></li>
+									<li><a href="#">Health Care <span>(27)</span></a></li>
+									<li><a href="#">Nutritions <span>(41)</span></a></li>
+									<li><a href="#">Health Tips <span>(16)</span></a></li>
+									<li><a href="#">Medical Research <span>(55)</span></a></li>
+									<li><a href="#">Health Treatment <span>(07)</span></a></li>
+								</ul>
+							</div>
+						</div> -->
+						<!-- /Categories -->
+
+						<!-- Tags -->
+						<!-- <div class="card tags-widget">
+							<div class="card-header">
+								<h4 class="card-title">Tags</h4>
+							</div>
+							<div class="card-body">
+								<ul class="tags">
+									<li><a href="#" class="tag">Children</a></li>
+									<li><a href="#" class="tag">Disease</a></li>
+									<li><a href="#" class="tag">Appointment</a></li>
+									<li><a href="#" class="tag">Booking</a></li>
+									<li><a href="#" class="tag">Kids</a></li>
+									<li><a href="#" class="tag">Health</a></li>
+									<li><a href="#" class="tag">Family</a></li>
+									<li><a href="#" class="tag">Tips</a></li>
+									<li><a href="#" class="tag">Shedule</a></li>
+									<li><a href="#" class="tag">Treatment</a></li>
+									<li><a href="#" class="tag">Dr</a></li>
+									<li><a href="#" class="tag">Clinic</a></li>
+									<li><a href="#" class="tag">Online</a></li>
+									<li><a href="#" class="tag">Health Care</a></li>
+									<li><a href="#" class="tag">Consulting</a></li>
+									<li><a href="#" class="tag">Doctors</a></li>
+									<li><a href="#" class="tag">Neurology</a></li>
+									<li><a href="#" class="tag">Dentists</a></li>
+									<li><a href="#" class="tag">Specialist</a></li>
+									<li><a href="#" class="tag">Doccure</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- /Tags -->
+
+					<!-- </div> --> -->
+					<!-- /Blog Sidebar -->
+
+				</div>
+			</div>
+
+		</div>
+		<!-- /Page Content -->
+
+		<!-- Footer -->
+		<!-- <footer class="footer footer-one">
+				<div class="footer-top">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-3 col-md-4">
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<img src="assets/img/logo.png" alt="logo">
+									</div>
+									<div class="footer-about-content">
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-4">
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Patients</h2>
+									<ul>
+										<li><a href="search.html">Search for Doctors</a></li>
+										<li><a href="login.html">Login</a></li>
+										<li><a href="register.html">Register</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-4">
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Doctors</h2>
+									<ul>
+										<li><a href="appointments.html">Appointments</a></li>
+										<li><a href="chat.html">Chat</a></li>
+										<li><a href="login.html">Login</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-5">
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title">Contact Us</h2>
+									<div class="footer-contact-info">
+										<div class="footer-address">
+											<p><i class="feather-map-pin"></i> 3556 Beech Street, USA</p>
+										</div>
+										<div class="footer-address">
+											<p><i class="feather-phone-call"></i> +1 315 369 5943</p>
+										</div>
+										<div class="footer-address mb-0">
+											<p><i class="feather-mail"></i> doccure@example.com</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-7">
+								<div class="footer-widget">
+									<h2 class="footer-title">Join Our Newsletter</h2>
+									<div class="subscribe-form">
+										<form action="#">
+		                                    <input type="email" class="form-control" placeholder="Enter Email">
+		                                    <button type="submit" class="btn">Submit</button>
+	                                    </form>
+	                                </div>
+									<div class="social-icon">
+										<ul>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-facebook"></i> </a>
+											</li>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-instagram"></i></a>
+											</li>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-twitter"></i> </a>
+											</li>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="container">
+						<!-- Copyright -->
+		<!-- <div class="copyright">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="copyright-text">
+										<p class="mb-0"> Copyright © 2023 <a href="https://themeforest.net/user/dreamguys/portfolio" target="_blank">Dreamguys.</a> All Rights Reserved</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+								
+									<!-- Copyright Menu -->
+		<!-- <div class="copyright-menu">
+										<ul class="policy-menu">
+											<li><a href="privacy-policy.html">Privacy Policy</a></li>
+											<li><a href="terms-condition.html">Terms and Conditions</a></li>
+										</ul>
+									</div>
+									<!-- /Copyright Menu -->
+
+		<!-- </div>
+							</div>
+						</div>
+									
+					</div>
+				</div>
+			</footer> -->
+		<!-- /Footer -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Core JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	<!-- Sticky Sidebar JS -->
+	<!-- <script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script> -->
+	<!-- <script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script> -->
+
+	<!-- Custom JS -->
+	<!-- <script src="{% static 'assets/js/script.js' %}"></script> -->
+
+</body>
+
+</html>
+
+{% endblock %}

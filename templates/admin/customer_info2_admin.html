@@ -1,0 +1,163 @@
+{% extends 'base_admin.html' %}{% block content %}
+{% load static %}
+
+<head>  
+		
+    <meta charset="utf-8">
+    <title>Guruji Speaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+
+    <!-- <link rel="stylesheet" href="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css"> -->
+    <link rel="stylesheet" href="{%static '//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css' %}" />
+    
+    <!-- Favicons -->
+    <link href="{%static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+    <!-- dd-mm-yyyy -->
+    <!-- <link rel="stylesheet" href="{%static 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css' %}">
+    <script src="{%static 'https://cdn.jsdelivr.net/npm/flatpickr' %}"></script>
+     -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css' %}">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/feather.css' %}">
+    
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+    
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{%static 'assets/plugins/select2/css/select2.min.css' %}">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{%static 'assets/css/custom.css' %}">
+    <style>
+        .breadcrumb-bar-two {
+                background: #F2F6F6;
+                background-repeat: repeat;
+                background-repeat: no-repeat;
+                padding-top: 10px;
+                min-height: 50px;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            .breadcrumb-bar-two .inner-banner {
+            margin: 0;
+            padding: 30px 0;
+            }
+
+            .breadcrumb-bar-two .inner-banner .breadcrumb-title {
+            font-weight: 600;
+            font-size: 35px;
+            margin-bottom: 6px;
+            }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title"> Customer Information</h2>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-7 col-lg-12 col-xl-12">
+                        <div class="card card-table">
+                            <div class="card-body">
+                                <form id="send-form" method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="table-responsive">
+                                        <table class="table text-hover">
+                                            <thead>
+                                                <tr>
+                                                    <!-- <th align="center">Customer name</th> -->
+                                                    <!-- <th align="center">Comment</th> -->
+                                                    <th>Sr.No</th>
+                                                    <th>Customer Name</th>
+                                                    <th>Email Id</th>
+                                                    {% comment %} <th align="center">Status</th> {% endcomment %}
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in cust %}
+                                                <tr>
+                                                    <td>{{forloop.counter}}</td>
+                                                    <td> {{i.first_name}} {{i.last_name}} </td>
+                                                    <td>{{i.email_id}} </td> 
+                                                    <td> 
+                                                        <div>
+                                                            <a href="/customer-profile/{{i.id}}/" class="btn-view">
+                                                                <i class="fas fa-eye"></i> View
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td> 
+                                                        
+                                                        <div>
+                                                            <a href="#" class="btn-view" onclick="deactivateCustomerPopup({{i.id}});">
+                                                                <i class="fas fa-user-times"></i> Deactivate Customer
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Function to handle the click event
+        function deactivateCustomerPopup(customerId) {
+            // Display the SweetAlert popup
+            Swal.fire({
+                title: 'Deactivate Customer',
+                text: 'Are you sure you want to deactivate this customer?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, deactivate',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user confirms, redirect to the deactivate URL
+                    window.location.href = '/customer_disable/' + customerId + '/';
+                }
+            });
+        }
+    </script>
+</body>
+
+
+{% endblock %}
+

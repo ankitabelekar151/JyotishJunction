@@ -1,0 +1,241 @@
+{% extends 'customer_base.html' %}   {% block content %}
+
+
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	</head>		
+
+	<style>
+		[type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled), button:not(:disabled) {
+			cursor: pointer;
+			background-color: #254eaa;
+			/* width: 220px; */
+			/* height: 60px; */
+			border-radius: 10px;
+		  }
+
+		  .booking-date-list ul li {
+			font-weight: 500;
+			color: #494949;
+			padding-bottom: 10px;
+			justify-content: left;
+			text-align: justify;
+		  }
+
+		  .doctor-content {
+			background-color: #ffffff;
+			margin: 0;
+			padding: 50px 0 60px;
+		}
+
+		.paitent-header {
+			padding-bottom: 20px;
+		}
+
+		  
+	</style>
+
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper w-100">
+			
+			<!-- Page Content -->
+			<div class="doctor-content">
+				<div class="container">
+
+					<!-- Payment -->
+					
+					<!-- <div class="row"> -->
+						<div class="col-lg-6 col-md-12 m-auto">
+							
+							<div class="card">
+								<div class="card-body">
+									<h4 class="booking-title text-center">Payment Details</h4>
+								</div>
+							</div>
+						</div>
+							
+						<div class="col-lg-6 col-md-12 m-auto">
+							<div class="">
+								<div class="">
+									<form class="text-center border border-light" action="/comment_view/" method="POST" id="paymentForm">
+										<div class="text-center">
+											{% csrf_token %}
+											
+											<div class="card booking-card">
+												<div class="card-body booking-card-body">
+													<div class="booking-doctor-details">
+														<div class="booking-doctor-left">
+															
+															<div class="booking-doctor-info">
+																<h4><a href="#"><b>{{request.user.first_name}} {{request.user.last_name}}</b></a></h4>
+															</div>
+														</div>
+														
+														
+													</div>
+												</div>
+											</div>
+
+											{% if plan_count == 0 %}
+											<div class="card booking-card">
+												<div class="card-body booking-card-body booking-list-body">
+													<div class="booking-list">
+														<div class="booking-date-list consultation-date-list">
+															<ul>
+																<li>Purchase Plan : <span>{{plan.plan_name_1}}</span></li>
+																<li>Plan Amount: <span>₹ 99</span></li>
+																<li>CGST: <span>₹ {{gst}} </span></li>
+																<li>SGST: <span>₹ {{gst}} </span></li>
+
+																<li><span class="total-amount"></span>Total <span>₹ {{total_amount}} </span></li>
+															</ul>
+														</div>
+													</div>
+												</div>	
+											</div>
+										</div>
+
+
+
+										{% else %}
+											
+											<div class="card booking-card">
+												<div class="card-body booking-card-body booking-list-body">
+													<div class="booking-list">
+														<div class="booking-date-list consultation-date-list">
+															<ul>
+																<li>Purchase Plan : <span>{{plan.plan_name_1}}</span></li>
+																<li>Plan Amount: <span>₹ {{plan.amount_plan}}</span></li>
+																<li>CGST: <span>₹ {{gst}} </span></li>
+																<li>SGST: <span>₹ {{gst}} </span></li>
+
+																<li><span class="total-amount"></span>Total <span>₹ {{total_amount}} </span></li>
+															</ul>
+														</div>
+													</div>
+												</div>	
+											</div>
+										</div>
+										{% endif %}
+										{% if cust_wallet < total_amount %}
+										<script src="https://checkout.razorpay.com/v1/checkout.js" 
+												data-key="rzp_test_Ey7h721E1o2LY1"
+												data-amount="{{ razorpay_amount }}"
+												data-currency="INR" 
+												data-order_id= "{{ razorpay_order_id }}" 
+												data-buttontext="Proceed to Pay INR {{total_amount}}"
+												data-name="Professional Cipher" 
+												data-description="Django and Data Science"
+												data-image="https://example.com/your_logo.jpg" 
+												data-prefill.name="PC" 
+												data-prefill.email="pbambulkar9924@gmail.com"
+												data-buttoncolor="#0000FF";
+												data-theme.color="#0000FF";></script>
+										{% else %}
+										<a href="/dash_customer1/"><input type = "submit" class="btn btn-primary" value = "Proceed to Pay INR {{total_amount}}" id="payButton"></a>
+										{% endif %}
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Payment -->
+
+
+					
+
+				</div>
+			</div>		
+			<!-- /Page Content -->
+
+		</div>		
+		<!-- /Main Wrapper -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			  const payButton = document.getElementById('payButton');
+			  const paymentForm = document.getElementById('paymentForm');
+			
+			  payButton.addEventListener('click', function (event) {
+				event.preventDefault(); // Prevent the default link behavior
+			
+				Swal.fire({
+				  title: 'Confirm Payment',
+				  text: `Proceed to Pay?`,
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonText: 'Yes, Proceed',
+				  cancelButtonText: 'Cancel',
+				}).then((result) => {
+				  if (result.isConfirmed) {
+					// User clicked "Yes, Proceed"
+					paymentForm.submit(); // Submit the form to trigger the comment_view function
+				  }
+				});
+			  });
+			});
+			</script>
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+		 <!-- Bootstrap Core JS -->
+ 		 <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
+		<!-- Profile Settings JS (dropdown)-->
+		  <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+		  <!-- Select2 JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+		  
+		  <!-- Dropzone JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+		  <!-- Animation JS -->
+    	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+    	 <!-- Owl Carousel JS -->
+    	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    	<!-- Slick JS -->
+    	<script src="{% static 'assets/js/slick.js' %}"></script>
+	
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,563 @@
+{% extends 'customer_base.html' %}{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	</head>	
+	
+	<style>
+		
+
+		.breadcrumb-bar-two {
+			background: #F2F6F6;
+			background-repeat: no-repeat;
+			min-height: 220px !important;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+		}
+
+		.breadcrumb-bar-two .inner-banner {
+			margin: 0;
+			padding: 1px 0 !important;
+		}
+
+		.pricing-card:hover {
+			background: #1c3264;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+
+		.pricing-section {
+			background-color: #ffffff;
+			margin: 0;
+			padding: 50px 0 55px !important;
+		}
+
+		/*.body{
+			min-height: 100vh;
+			display: flex;
+		}*/
+
+		.dropdown {
+			min-width: 15em;
+			position: relative;
+			margin: 2em;
+		}
+
+		.dropdown *{
+			box-sizing: border-box;
+		}
+
+		.select {
+			background: #1c3264;
+			color: #fff;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-radius: 0.5em;
+			padding: 1em;
+			cursor: pointer;
+		}
+
+		.select-clicked{
+			border: 2px #1c3264 solid;
+			box-shadow: 0 0 0.8em #1c3264;
+		}
+
+		.select:hover{
+			background: #3a61bb;
+		}
+
+		.caret{
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 6px solid #fff;
+			transition: 0.3s
+		}
+
+		.caret-rotate{
+			transform: rotate(180deg);
+		}
+
+		.menu{
+			list-style: none;
+			padding: 0.2em 0.5em;
+			background: #1c3264;
+			border: 1px #1c3264 solid;
+			box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+			border-radius: 0.5em;
+			color: #3a61bb;
+			position: absolute;
+			top: 3em;
+			left: 50%;
+			width: 100%;
+			transform: translate(-50%);
+			opacity: 0;
+			display: none;
+			transition: 0.2s;
+			z-index: 1;
+		}
+
+		.menu li{
+			padding: 0.7em 0.5em;
+			margin: 0.3em 0;
+			border-radius: 0.5em;
+			cursor: pointer;
+		}
+
+		menu li:hover{
+			background: #1c3264;
+		}
+
+		.active{
+			background: #1c3264;
+		}
+
+		.menu-open{
+			display: block;
+			opacity: 1;
+		}
+	
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .dropdown select {
+    background-color: #1c3264;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropdown select:hover {
+    background-color: #304e8d;
+  }
+
+  .dropdown select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #304e8d;
+  }
+
+  / Hide the default dropdown arrow /
+  .dropdown select::-ms-expand {
+    display: none;
+  }
+
+  / Custom dropdown arrow /
+  .dropdown:after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    pointer-events: none;
+  }
+  .dropdown select {
+    background-color: #1c3264;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 200px;
+}
+</style>
+
+
+
+
+	
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+					
+			<!-- Header -->
+			
+			<!-- /Header -->
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">Consult Now</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/dash_customer/">Home</a></li>
+									<li class="breadcrumb-item" aria-current="page">Consult Now{{country}}</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>      
+			<!-- /Breadcrumb -->
+
+			<!-- Pricing -->
+			 <section class="pricing-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							
+							<div class="dropdown">
+								<!-- <h1>Your Current Location:</h1>
+								<p>IP Address: {{ ip_address }}</p>
+								<p>Approximate Location: {{ location }}</p> -->
+								<!-- <button id="consent-button" style="display: none;">Give Consent to Share Location</button> -->
+
+								<!-- <select>
+									<option value="option1"><a href="ask-a-question-1.html">INR (₹)</a></option>
+									<option value="option2" ><a href="ask-a-question.html">Dollar ($)</a></option>
+								  </select> -->
+                                  
+								  <!-- <select id="currency-select">
+									<option value="INR">INR (₹)</option>
+									<option value="USD">Dollar ($)</option>
+								</select> -->
+
+
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center p-5">
+						<div class="col-lg-4 col-md-6 d-flex">
+							<div class="card pricing-card w-100">
+								<div class="card-body">
+									<div class="pricing-header">
+										<div class="pricing-header-info">
+											<div class="pricing-icon">
+												<span>
+													<img src="{% static 'assets/img/icons/price-icon1.svg' %}" alt="icon">
+												</span>
+											</div>
+											<div class="pricing-title">
+												<!-- <p>Ask a Question Now</p> -->
+												<h4>Stellar Insights</h4>
+											</div>
+										</div>
+										<div class="pricing-header-text">
+											<p><b>Ask a Question Now</b></p>
+										</div>
+									</div>
+									<div class="pricing-info">
+										<div class="pricing-amount">
+											<h2>$15 <span></span></h2>
+											<h6>What’s included</h6>
+										</div>
+										<div class="pricing-list">
+											<ul>
+												<li>Get Detailed answer for a Single question </li>
+												<li>Enjoy the Benefits of Career Guidance, Relationship Advice  </li>
+												<li>Future endeavors Detailed Explanations   </li>
+												<li>Deep insights into the life </li>
+											</ul>
+										</div>
+										<div class="pricing-btn">
+											<a href="/ask_question_silver/" class="btn btn-primary">Get Started</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 d-flex">
+							<div class="card pricing-card w-100">
+								<div class="card-body">
+									<div class="pricing-header">
+										<div class="pricing-header-info">
+											<div class="pricing-icon">
+												<span>
+													<img src="{% static 'assets/img/icons/price-icon2.svg' %}" alt="icon">
+												</span>
+											</div>
+											<div class="pricing-title">
+												<!-- <p>Book Premium Consultation</p> -->
+												<h4>Celestial Guidance</h4>
+											</div>
+										</div>
+										<div class="pricing-header-text">
+											<p><b>Book Premium Consultation</b></p>
+										</div>
+									</div>
+									<div class="pricing-info">
+										<div class="pricing-amount">
+											<h2>$50 <span></span></h2>
+											<h6>What’s included</h6>
+										</div>
+										<div class="pricing-list">
+											<ul>
+												<li> Provided with 5 in depth Questions wil be Answered </li>
+												<li>30 Days limit extension to ask Questions  </li>
+												<li>Get detailed analysis for the Query </li>
+												<li>Prompt navigation for important Decision </li>
+											</ul>
+										</div>
+										<div class="pricing-btn">
+											<a href="/ask_question_gold/" class="btn btn-primary">Get Started</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 d-flex">
+							<div class="card pricing-card w-100">
+								<div class="card-body">
+									<div class="pricing-header">
+										<div class="pricing-header-info">
+											<div class="pricing-icon">
+												<span>
+													<img src="{% static 'assets/img/icons/price-icon3.svg' %}" alt="icon">
+												</span>
+											</div>
+											<div class="pricing-title">
+												<!-- <p>Schedule Family Consultation</p> -->
+												<h4>Divine Revelations</h4>
+											</div>
+										</div>
+										<div class="pricing-header-text">
+											<p><b>Schedule Family Consultation</b></p>
+										</div>
+									</div>
+									<div class="pricing-info">
+										<div class="pricing-amount">
+											<h2>$95 <span></span></h2>
+											<h6>What’s included</h6>
+										</div>
+										<div class="pricing-list">
+											<ul>
+												<li>Premium consultation of 10 Questions </li>
+												<li>Get consultation for Family (up to 4 members)  </li>
+												<li>Includes a 30 minutes video call </li>
+												<li>Profound Insights and Divine Guidance </li>
+											</ul>
+										</div>
+										<div class="pricing-btn">
+											<a href="/ask_question_platinum/" class="btn btn-primary">Get Started</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Pricing -->			
+
+			
+
+			<!-- Footer -->
+		
+			<!-- /Footer -->
+
+			<!-- Cursor -->
+			<!-- <div class="mouse-cursor cursor-outer"></div>
+			<div class="mouse-cursor cursor-inner"></div> -->
+			<!-- /Cursor -->
+		
+		</div>	
+		<!-- <script>
+			document.getElementById('currency').onclick = function() {
+ 
+ var values = ["Dollar", "INR"];
+
+ var select = document.createElement("select");
+ select.name = "currency";
+ select.id = "currency"
+
+ for (const val of values)
+ {
+	 var option = document.createElement("option");
+	 option.value = val;
+	 option.text = val.charAt(0).toUpperCase() + val.slice(1);
+	 select.appendChild(option);
+ }
+
+ var label = document.createElement("label");
+ label.innerHTML = "Choose your currency: "
+ label.htmlFor = "currency";
+
+ document.getElementById("container").appendChild(label).appendChild(select);
+}
+		</script>	 -->
+		<!-- /Main Wrapper -->
+	
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.4.min.js"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js"></script>
+
+		<!-- Datepicker JS -->
+		<script src="assets/js/moment.min.js"></script>
+		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+		<!-- Owl Carousel JS -->
+		<script src="assets/js/owl.carousel.min.js"></script>
+
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js"></script>
+
+		<!-- Animation JS -->
+		<script src="assets/js/aos.js"></script>
+
+		<!-- BacktoTop JS -->
+		<script src="assets/js/backToTop.js"></script>
+				
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+
+
+
+		<!-- Your existing HTML content here -->
+
+
+	
+	</body>
+</html>
+
+
+<!-- <script>
+  const geolocationUrl = "{% url 'get_geolocation_data' %}";
+
+  function updateCurrencySelection(geoData) {
+    const country = geoData.address.country_code;
+
+    const currencySelect = document.getElementById("currency-select");
+    if (country === "IN") {
+      currencySelect.value = "INR";
+    } else if (country === "US") {
+      currencySelect.value = "USD";
+    }
+  }
+
+  function fetchGeoLocation() {
+    // Prompt for user consent before accessing geolocation
+    if ("geolocation" in navigator) {
+      navigator.permissions.query({ name: 'geolocation' }).then((result) => {
+        if (result.state === 'granted') {
+          // If already granted, fetch the geolocation data
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+
+              fetch(`${geolocationUrl}?latitude=${latitude}&longitude=${longitude}`)
+                .then((response) => response.json())
+                .then((data) => updateCurrencySelection(data))
+                .catch((error) => console.error("Error fetching geolocation data: ", error));
+            },
+            function (error) {
+              console.error("Error getting geolocation: ", error);
+            }
+          );
+        } else if (result.state === 'prompt') {
+          // If user hasn't made a decision yet, show the consent prompt
+          const consentButton = document.getElementById('consent-button');
+          consentButton.style.display = 'block';
+
+          consentButton.addEventListener('click', () => {
+            // On user's consent, fetch the geolocation data
+            navigator.geolocation.getCurrentPosition(
+              function (position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                fetch(`${geolocationUrl}?latitude=${latitude}&longitude=${longitude}`)
+                  .then((response) => response.json())
+                  .then((data) => {
+                    updateCurrencySelection(data);
+                    consentButton.style.display = 'none'; // Hide the consent button after consent
+                  })
+                  .catch((error) => console.error("Error fetching geolocation data: ", error));
+              },
+              function (error) {
+                console.error("Error getting geolocation: ", error);
+              }
+            );
+          });
+        }
+      });
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }
+
+  // Prompt for location permission on page load
+  document.addEventListener("DOMContentLoaded", function () {
+    fetchGeoLocation();
+  });
+</script> -->
+
+
+
+<!-- <script>
+	// JavaScript function to get user's country code using geolocation API
+	function getUserCountryCode() {
+		fetch('https://ipinfo.io/json')
+			.then(response => response.json())
+			.then(data => {
+				const country = data.country;
+				let languageCode = 'en-us';  // Default language code for other countries
+
+				if (country !== 'IN') {
+					languageCode = 'en-us';
+				}
+
+				// Append the language code to the current URL
+				const currentURL = window.location.href;
+				const updatedURL = `${currentURL}${languageCode}/`;
+				window.history.replaceState({}, '', updatedURL);
+			})
+			.catch(error => console.error('Error fetching geolocation data:', error));
+	}
+
+	// Call the function when the page loads
+	window.addEventListener('DOMContentLoaded', getUserCountryCode);
+</script> -->
+
+
+
+{% endblock %}

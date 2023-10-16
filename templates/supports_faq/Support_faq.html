@@ -1,0 +1,52 @@
+<!-- Button to Open Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCurrencyModal">
+    Add Currency
+  </button>
+  
+  <!-- Modal Popup Box -->
+  <div class="modal fade" id="addCurrencyModal" tabindex="-1" role="dialog" aria-labelledby="addCurrencyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCurrencyModalLabel">Add Questions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Form to Add Currency -->
+          <form method="POST" action="{% url 'Add_support_faqs' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="currency_data">Questions</label>
+              <input type="text" class="form-control" id="questions" name="questions" required>
+            </div>
+            <div class="form-group">
+              <label for="country_code">Answers</label>
+              <input type="text" class="form-control" id="answers" name="answers" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Table to Display Currency Data -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Currency Data</th>
+        <th>Country Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for currency in data %}
+      <tr>
+        <td>{{ currency.questions }}</td>
+        <td>{{ currency.answers }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  

@@ -1,0 +1,30 @@
+
+<form id="send-form" method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <table class="table" border="1">
+            <thead>
+                <tr style="text-align: center;">
+                    <th align="center">Customer name</th>
+                    <th align="center">Question</th>
+                    <th align="center">Answer</th>    
+                    
+                </tr>
+            </thead>
+
+
+            <tbody>
+                {% for i in data %}
+                {% if i.user == user or i.qapprove == True %}
+                <tr>
+                    <td>{{ i.user }}</td>
+                    <td>{{ i.comment1 }}</td>
+                    <td>{{ i.comment2 }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+            
+        </table>
+    </div>
+</form>

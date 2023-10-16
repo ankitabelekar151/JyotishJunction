@@ -1,0 +1,415 @@
+{% extends 'customer_base.html' %}   {% block content %}
+{% comment %} 
+<head>
+    <style>
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<div class="center">
+    <form class="text-center border border-light p-5" action="/comment_view/" method="POST">
+        {% csrf_token %}
+        <p class="h3 mb-3"><i class="fas fa-coffee"></i> BUY A PLAN</p>
+        <p class="mb-3">{{ razorpay_amount }}  INR</p>
+        <input type="name" name="recharge" id="name" required class="form-control mb-4" placeholder="Name">
+       
+
+        <script src="https://checkout.razorpay.com/v1/checkout.js" 
+        data-key="rzp_test_Ey7h721E1o2LY1"
+        data-amount="{{ razorpay_amount }}"
+        data-currency="INR" 
+        data-order_id= "{{ razorpay_order_id }}" 
+        data-buttontext="Pay with Razorpay"
+        data-name="Professional Cipher" 
+        data-description="Django and Data Science"
+        data-image="https://example.com/your_logo.jpg" 
+        data-prefill.name="PC" 
+        data-prefill.email="pbambulkar9924@gmail.com"
+        data-theme.color="#F37254";></script>
+    </form>
+ 
+</div>
+</div> {% endcomment %}
+
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	</head>		
+
+	<style>
+		[type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled), button:not(:disabled) {
+			cursor: pointer;
+			background-color: #254eaa;
+			/* width: 220px; */
+			/* height: 60px; */
+			border-radius: 10px;
+		  }
+
+		  .booking-date-list ul li {
+			font-weight: 500;
+			color: #494949;
+			padding-bottom: 10px;
+			justify-content: left;
+			text-align: justify;
+		  }
+
+		  .doctor-content {
+			background-color: #ffffff;
+			margin: 0;
+			padding: 50px 0 60px;
+		}
+
+		.paitent-header {
+			padding-bottom: 20px;
+		}
+
+		  
+	</style>
+
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper w-100">
+			
+			<!-- Page Content -->
+			<div class="doctor-content">
+				<div class="container">
+
+					<!-- Payment -->
+					{% comment %} <div class="row">
+						<div class="col-md-12">
+							<div class="back-link">
+								<a href="consultation.html"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+							</div>
+						</div>
+					</div> {% endcomment %}
+					<div class="row">
+						<div class="col-lg-12 col-md-12 text-center">
+							{% comment %} <div class="paitent-header text-center">
+								<h4 class="paitent-title">Payment</h4>
+							</div> {% endcomment %}
+							<div class="card">
+								<div class="card-body">
+									<h4 class="booking-title">Payments Details</h4>
+								</div>
+							</div>
+						</div>
+							{% comment %} <div class="payments-form">
+
+								<form action="booking-success-one.html">
+									<div class="payment-form-group">
+										<div class="form-group">
+											<label class="custom_radio">
+												<input type="radio" name="payment" checked="">
+												<span class="checkmark"></span> Debit or Credit Card
+											</label>
+										</div>
+										<div class="form-group card-label">
+											<label>Name on Card</label>
+											<input type="text" class="form-control" placeholder="John Smith">
+										</div>
+										<div class="form-group card-label">
+											<label>Card Number</label>
+											<input type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx">
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group card-label">
+													<label>Expiry Month</label>
+													<input type="text" class="form-control" placeholder="MM">
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group card-label">
+													<label>Expiry Year</label>
+													<input type="text" class="form-control" placeholder="YYYY">
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group card-label">
+													<label>CVV</label>
+													<input type="text" class="form-control" placeholder="****">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="payment-form-group">
+										<div class="form-group">
+											<label class="custom_radio">
+												<input type="radio" name="payment">
+												<span class="checkmark"></span> Paypal
+											</label>
+										</div>
+										<div class="form-group">
+											<label class="custom_radio">
+												<input type="radio" name="payment">
+												<span class="checkmark"></span> Cash on Visit
+											</label>
+										</div>
+										<div class="form-group">
+											<label class="custom_radio">
+												<input type="radio" name="payment">
+												<span class="checkmark"></span> Bank Transfer
+											</label>
+										</div>
+										<div class="form-group">
+											<label class="custom_radio">
+												<input type="radio" name="payment">
+												<span class="checkmark"></span> UPI
+											</label>
+										</div>
+									</div>
+									<div class="form-group mb-0">
+										<div class="booking-btn">
+											<button type="submit" class="btn btn-primary prime-btn justify-content-center align-items-center">
+												Next <i class="feather-arrow-right-circle"></i>
+											</button>
+										</div>
+									</div>
+								</form>
+
+							</div>
+						</div> {% endcomment %}
+						<div class="col-lg-8 col-md-12 m-auto">
+							<div class="card ">
+								<div class="card-body">
+									<form class="text-center border border-light" action="/comment_view_gold/" method="POST" id="paymentForm">
+										<div class="text-center">
+											{% csrf_token %}
+											<!-- <div class="booking-header">
+												<h4 class="booking-title">Booking Summary</h4>
+											</div> -->
+											<div class="card booking-card">
+												<div class="card-body booking-card-body">
+													<div class="booking-doctor-details">
+														<div class="booking-doctor-left">
+															{% comment %} <div class="booking-doctor-img">
+																<a href="doctor-profile.html">
+																	<img src="assets/img/doctors/doctor-02.jpg" alt="">
+																</a>
+															</div> {% endcomment %}
+															<div class="booking-doctor-info">
+																<h4><a href="doctor-profile.html"><b>{{request.user.first_name}} {{request.user.last_name}}</b></a></h4>
+																{% comment %} <p>Customer</p> {% endcomment %}
+															</div>
+														</div>
+														
+														{% comment %} <div class="booking-doctor-right">
+															<p>
+																<i class="fas fa-circle-check"></i>
+																<a href="doctor-profile-settings.html">Edit</a>
+															</p>
+														</div> {% endcomment %}
+													</div>
+												</div>
+											</div>
+											<!-- <div class="card booking-card">
+												<div class="card-body booking-card-body booking-list-body">
+													<div class="booking-list">
+														<div class="booking-date-list">
+															<ul>
+																<li>Booking Date: <span> {{current_date}}</span></li>
+																<li>Booking Time: <span>{{current_time}}</span></li>
+															</ul>
+														</div>
+														{% comment %} <div class="booking-doctor-right">
+															<p>
+																<a href="booking.html">Edit</a>
+															</p>
+														</div> {% endcomment %}
+													</div>
+													<div class="booking-list">
+														{% comment %} <div class="booking-date-list">
+															<ul>
+																<li>Consultation Type: <span><i class="feather-video"></i> Video Consulting</span></li>
+															</ul>
+														</div> {% endcomment %}
+														{% comment %} <div class="booking-doctor-right">
+															<p>
+																<a href="consultation.html">Edit</a>
+															</p>
+														</div> {% endcomment %}
+													</div>
+												</div>
+											</div> -->
+
+
+											<div class="card booking-card">
+												<div class="card-body booking-card-body booking-list-body">
+													<div class="booking-list">
+														<div class="booking-date-list consultation-date-list">
+															<ul>
+																<li>Purchase Plan : <span>{{plan.plan_name_1}}</span></li>
+																<li>Plan Amount: <span>₹ {{plan.amount_plan}}</span></li>
+																<li>CGST: <span>₹ {{gst}} </span></li>
+																<li>SGST: <span>₹ {{gst}} </span></li>
+
+																<li><span class="total-amount"></span>Total <span>₹ {{total_amount}} </span></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											{% comment %} <div class="booking-btn proceed-btn ">
+												<a href="booking-success-one.html" class="btn btn-primary prime-btn">
+													Proceed to Pay INR {{total_amount}}
+												</a>
+											</div> {% endcomment %}
+										</div>
+										{% if cust_wallet < total_amount %}
+										<script src="https://checkout.razorpay.com/v1/checkout.js" 
+												data-key="rzp_test_Ey7h721E1o2LY1"
+												data-amount="{{ razorpay_amount }}"
+												data-currency="INR" 
+												data-order_id= "{{ razorpay_order_id }}" 
+												data-buttontext="Proceed to Pay INR {{total_amount}}"
+												data-name="Professional Cipher" 
+												data-description="Django and Data Science"
+												data-image="https://example.com/your_logo.jpg" 
+												data-prefill.name="PC" 
+												data-prefill.email="pbambulkar9924@gmail.com"
+												data-buttoncolor="#0000FF";
+												data-theme.color="#0000FF";></script>
+										{% else %}
+										<a href="/dash_customer1/"><input type = "submit" class="btn btn-primary" value = "Proceed to Pay INR {{total_amount}}" id="payButton"></a>
+										{% endif %}
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Payment -->
+
+
+					
+
+				</div>
+			</div>		
+			<!-- /Page Content -->
+
+		</div>		
+		<!-- /Main Wrapper -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			  const payButton = document.getElementById('payButton');
+			  const paymentForm = document.getElementById('paymentForm');
+			
+			  payButton.addEventListener('click', function (event) {
+				event.preventDefault(); // Prevent the default link behavior
+			
+				Swal.fire({
+				  title: 'Confirm Payment',
+				  text: `Proceed to Pay?`,
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonText: 'Yes, Proceed',
+				  cancelButtonText: 'Cancel',
+				}).then((result) => {
+				  if (result.isConfirmed) {
+					// User clicked "Yes, Proceed"
+					paymentForm.submit(); // Submit the form to trigger the comment_view function
+				  }
+				});
+			  });
+			});
+			</script>
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+		 <!-- Bootstrap Core JS -->
+ 		 <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
+		<!-- Profile Settings JS (dropdown)-->
+		  <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+		  <!-- Select2 JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+		  
+		  <!-- Dropzone JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+		  <!-- Animation JS -->
+    	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+    	 <!-- Owl Carousel JS -->
+    	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    	<!-- Slick JS -->
+    	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+		<!-- <script>
+			document.getElementById("popupLink").addEventListener("click", function(e) {
+				e.preventDefault();
+			
+				Swal.fire({
+					title: 'Success!',
+					text: 'Your payment was successful.',
+					icon: 'success',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				}).then(function () {
+					// You can add code here to navigate to the next page
+					window.location.href = "/dash_customer1/";
+				});
+			});
+			</script><script>
+			document.getElementById("popupLink").addEventListener("click", function(e) {
+				e.preventDefault();
+			
+				Swal.fire({
+					title: 'Success!',
+					text: 'Your payment was successful.',
+					icon: 'success',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				}).then(function () {
+					// You can add code here to navigate to the next page
+					window.location.href = "/dash_customer1/";
+				});
+			});
+			</script> -->
+	
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,232 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Guruji Speaks</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<style>
+		.login-body {
+			margin: 0;
+			/* padding: 150px 0 60px; */
+			background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}") !important;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.login-content-info .account-content .login-title {
+			padding-bottom: 0;
+		}
+
+		/* .text-primary {
+			color: blue !important;
+		} */
+
+
+		.sign-in-btn{
+			background-color: #1c3264 !important;
+			border: 1px solid #1c3264 !important;
+		}
+		
+	</style>
+
+</head>
+
+<body class="login-body" onload="getcookiedata()">
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper home-fourteen">
+
+		<!-- Page Content -->
+		<div class="login-content-info">
+			<div class="container">
+
+				<!-- Login Email -->
+				<div class="row justify-content-center">
+					<div class="col-lg-4 col-md-6 bg-light p-4 rounded">
+						<div class="account-content">
+							<div class="login-shapes">
+								<div class="shape-img-left">
+									<img src="{% static 'assets/img/shape-01.png' %}" alt="">
+								</div>
+								<div class="shape-img-right">
+									<img src="{% static 'assets/img/shape-02.png' %}" alt="">
+								</div>
+							</div>
+							<div class="account-info">
+								<div class="login-back">
+									<a href="/"><i class="fas fa-arrow-left-long"></i> Back</a>
+								</div>
+								<div class="login-title">
+									<h3>Admin Sign in</h3>
+									{% comment %} <p>We'll send a confirmation code to your email.</p> {% endcomment %}
+
+								</div>
+								<form method="post" style="">
+									{%csrf_token%}
+									<!-- <form action="login-email-otp.html"> -->
+									{% comment %} <div class="text-left mb-2">
+										<span>Sign in with <a href="/admin-login-otp/" class="text-primary">Phone
+												Number</a></span>
+									</div> {% endcomment %}
+									<div class="form-group">
+										<label>E-mail address</label>
+										<input type="text" id="user_id" name='user_id' class="form-control"
+											placeholder="E-mail or phone number">
+									</div>
+									<div class="form-group">
+										<div class="form-group-flex">
+											<label>Password</label>
+											{% comment %} <a href="/admin_forgotpass/" class="forgot-link">Forgot
+												password?</a> {% endcomment %}
+										</div>
+										<div class="pass-group">
+											<input type="password" id="password" name="password"
+												class="form-control pass-input" placeholder="*************">
+											<span class="feather-eye toggle-password"></span>
+											{% comment %} <i class="password-toggle-icon"
+												onclick="togglePasswordVisibility()"><i class="fa fa-eye"
+													style="margin-right: 100%;"></i></span> {% endcomment %}
+
+												{% if error_message %}
+												<div class="alert alert-danger">{{ error_message }}</div>
+												{% endif %}
+										</div>
+									</div>
+									<div class="form-group form-check-box">
+										<div class="form-group-flex">
+											<label class="custom_check d-inline-flex"> Remember Me
+												<input type="checkbox" name="login" name="rememberme" id="rememberme" onclick="setcookie()">
+												<span class="checkmark"></span>
+											</label>
+											{% comment %} <label class="custom_check d-inline-flex"><a
+													href="/admin-login-otp/">Login with OTP
+													<input type="checkbox" name="login">
+													<span class="checkmark"></span>
+												</a>
+											</label> {% endcomment %}
+										</div>
+									</div>
+									<div class="form-group">
+										<a href="">
+											<!-- <a href="patient-dashboard.html"> -->
+											<button class="btn btn-block sign-in-btn" href="/dash_admin/" value="Submit">Admin Sign
+												in</button>
+										</a>
+									</div>
+									{% comment %} <div class="login-or">
+										<span class="or-line"></span>
+										<span class="span-or">or</span>
+									</div>
+									<div class="social-login-btn">
+										<a href="javascript:void(0);" class="btn btn-block">
+											<img src="{% static 'assets/img/icons/google-icon.svg' %}" alt=""> Log in
+											with Google
+										</a>
+									</div> {% endcomment %}
+									<!-- <div class="account-signup">
+											<p>Don't have an account ? <a href="/customer-registration/">Sign up</a></p>
+										</div> -->
+
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Login Email -->
+
+			</div>
+		</div>
+		<!-- /Page Content -->
+
+		<!-- Cursor -->
+		<!-- <div class="mouse-cursor cursor-outer"></div>
+			<div class="mouse-cursor cursor-inner"></div> -->
+		<!-- /Cursor -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery-->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+
+	<!-- start script for remember me  -->
+	<script>
+		function setcookie()
+		{
+			var u = document.getElementById("user_id").value;
+			var p = document.getElementById("password").value;
+
+			document.cookie = "myusername="+u+";path=https://gurujispeaks.com/admin-login/";
+			document.cookie = "mypswd="+p+";path=https://gurujispeaks.com/admin-login/";
+			
+		}
+
+		function getcookiedata()
+		{
+			// document.cookie
+			console.log(document.cookie);
+			var user = getcookie('myusername');
+			var pswd = getcookie('mypswd');
+
+			document.getElementById("user_id").value=user;
+			document.getElementById("password").value=pswd;
+		}
+
+		function getcookie(cname)
+		{
+			var name =cname+"=";
+			var decode = decodeURIComponent(document.cookie);
+			var ca = decode.split(';');
+			for(var i=0; i<ca.length; i++)
+			{
+				var c = ca[i];
+				while(c.charAt(0) == ' ')
+				{
+					c = c.substring(1);
+				}
+				if(c.indexOf(name) == 0)
+				{
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+	</script>
+	<!-- end script for remember me  -->
+
+</body>
+
+</html>

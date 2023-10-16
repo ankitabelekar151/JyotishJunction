@@ -1,0 +1,2360 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    	<!-- Datepicker CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+		<!-- Animation CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+		<!-- font-family -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+	</head>		
+	
+	<style>
+		
+			*{
+				font-family: 'Montserrat', sans-serif;
+			}
+		/* background image */
+		.main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve {
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			/* background-position: center; */
+			background-size: cover;
+			padding: 150px 0 10px 0;
+		}	
+
+		/* nav colors */
+		.header.header-fourteen.header-twelve .header-nav .main-menu-wrapper .main-nav li a {
+			color: #eaedf1;
+		}
+
+		.header.header-fourteen.header-twelve .header-nav .main-menu-wrapper .main-nav li.active a {
+			color: #eaedf1;
+			font-weight: 700;
+		}
+		
+		/*nav bar mobile view*/
+		
+		/* login btn */
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn {
+			background: transparent;
+			color: #fff;
+			box-shadow: none;
+			border: none;
+			font-size: 15px;
+			font-weight: 600;
+			padding: 10px 12px;
+			transition: 0.5s;
+		}	
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn:hover {
+   			 background: #1c3264;
+    		color: #ffffff;
+    		transition: 0.5s;
+		}
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn.reg-btn-fourteen {
+    		background: #1c3264;
+   			color: #ffffff;
+			border: 1px solid #1C325F;
+			font-size: 15px;
+			font-weight: 600;
+			transition: 0.5s;
+		}
+
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn.reg-btn-fourteen:hover {
+			background: #ffffff;
+			color: #1c3264;
+			transition: 0.5s;
+		}
+
+		.main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen h1 {
+			background: -webkit-linear-gradient(#0e82fd, #149d8d);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-size: 60px;
+		}
+		
+
+		.banner-content p {
+			font-weight: 500;
+			font-size: 20px;
+			margin-bottom: 25px;
+			color: #fff;
+		}
+		.main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary:nth-child(1) {
+			background: #1c3264;
+			color: #ffffff;
+			border: #1c3264;
+		}
+		.main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary:nth-child(1):hover {
+			background: #fff;
+			color: #1c3264 !important;
+			border: #1c3164;
+		}
+		.main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary {
+			background: #1c3264;
+			color: #ffffff;
+			border: #1c3264;
+		}
+		.main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary:nth-child(2):hover {
+			background: #fff;
+			color: #1c3264 !important;
+			border: #1c3164;
+		}
+
+		.services-section-fourteen {
+			padding: 0 0;
+			background: #F8FAFC;
+		}
+
+		/* sign-up */
+		.banner-content .btn {
+    font-weight: 500;
+    border-radius: 8px;
+    margin: 0;
+    padding: 12px 15px;
+    min-width: 200px;
+    display: inline-block;
+    background-color: #4d78da;
+    border: 1px solid #4d78da;
+    color: #ffffff;
+    font-size: 18px;
+    box-shadow: inset 0 0 0 0 #ffffff;
+    -webkit-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+
+		/* terms & conditions */
+		.terms-check-box label {
+			color: #fff;
+		}
+		.terms-check-box label a {
+			color: #f5f5f5;
+			text-decoration: underline;
+		}
+
+		/* second section background img */
+		.main-wrapper.home-twelve .services-section-fourteen {
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			position: relative;
+		}
+
+		.main-wrapper.home-twelve .section-header-fourteen h2 {
+			color: #fff;
+			font-size: 40px;
+			font-weight: 600;
+			position: relative;
+			margin: 0 0 10px 0;
+		}
+
+		.main-wrapper.home-twelve .section-header-fourteen p {
+			color: #fff;
+			font-size: 18px;
+			font-weight: 400;
+			margin: 0 0 50px 0;
+		}
+
+		.main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover {
+			cursor: pointer;
+			background: #1c3462;
+			box-shadow: 0px 20px 50px rgba(51, 65, 85, 0.05);
+			transform: translateY(-10px);
+		}
+
+		/* 3rd section */
+		.main-wrapper.home-twelve .home-twelve-pricing {
+			position: relative;
+			z-index: 1;
+			padding: 80px 0 80px 0;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		.doctor-category {
+			position: relative;
+			margin-top: 0px;
+			z-index: 9;
+			padding: 60px 0;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			/* background-position: center; */
+			background-size: cover;
+		}
+
+		.doctor-category .pop-box .top-section i {
+			background-color: #ffffff;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			font-size: 30px;
+			color: #20c0f3;
+			border: 3px solid #44a1e5;
+		}
+
+		.doctor-category .pop-box {
+			background-color: #ffffff;
+			padding: 10px 10px 0;
+			border-radius: 30px;
+			box-shadow: 0px 4px 44px rgba(219, 219, 219, 0.25);
+		}
+
+		.doctor-category .pop-box .top-section {
+			background-color: #fff;
+			padding: 10px;
+			min-height: 150px;
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+
+		.doctor-category .pop-box .top-section.two {
+			background-color: #FFF;
+		}
+
+		.doctor-category .pop-box .top-section.two i {
+			color: #20c0f3;
+		}
+
+		.doctor-category .pop-box .top-section.three {
+			background-color: #FFF;
+		}
+
+		.doctor-category .pop-box .top-section.three i {
+			color: #20c0f3;
+		}
+
+		.doctor-category .pop-box .body-section {
+			padding: 5px;
+			min-height: 100px;
+			flex-direction: column;
+		}
+
+		.doctor-category .pop-box .body-section h3 {
+			color: #2467CA;
+			font-weight: 600;
+			font-size: 19px;
+		}
+
+/************************* Unleash Astrology **********************************/
+.main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover .service-icon img {
+    /* filter: invert(1) brightness(100); */
+}
+
+.main-wrapper.home-twelve .services-section-fourteen .our-services-list {
+    height: 500px;
+	border-radius: 30px;
+    padding: 30px;
+    background: #ffffff;
+    text-align: center;
+    transition: all 0.5s;
+}
+.main-wrapper.home-twelve .services-section-fourteen .our-services-list .service-icon {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1c3264;
+    margin: auto;
+    box-shadow: 0px 25px 50px rgba(14, 130, 253, 0.1);
+    border-radius: 30px;
+    -webkit-transition: 0.4s;
+    -ms-transition: 0.4s;
+    transition: 0.4s;
+}
+.main-wrapper.home-twelve .services-section-fourteen .our-services-list:hover .service-icon img {
+    filter: none;
+}
+/************************* Unleash Astrology **********************************/
+
+/*********************** Our Pricing Plan **************************************/
+
+.main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve:hover, .main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve.active {
+    cursor: pointer;
+    background: white;
+}
+    
+    .text-center {
+    text-align: center!important;
+    font-weight: bolder;
+}
+    .main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve:hover .price-content .card-title h3, .main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve.active .price-content .card-title h3 {
+    color: #000;
+}
+
+	/* pricing box */
+	.main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve {
+    height: 300px;
+	 /* width: 400px;  */
+    background: #ffffff;
+    border-radius: 30px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.7s;
+}
+	/* pricing box */
+
+
+	/* button */
+	.main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve .price-content .price-btn a {
+    min-width: 198px;
+    background: #1c3264;
+    color: #ffffff;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #1c3264;
+}
+
+	/* button */
+						
+	/* hover */
+		.main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve .price-content .price-btn a:hover {
+    background: #ffffff;
+    color: #1c3264;
+}
+
+.main-wrapper.home-twelve .home-twelve-pricing .price-card-twelve .price-content .price-btn a {
+    min-width: 198px;
+    background: #1c3264;
+    color: #ffffff;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #1c3264;
+}
+	/* hover */
+
+
+
+		/*********************** Our Pricing Plan **************************************/
+
+
+		/*********************** Customize section **************************************/
+		.specialities-section-one {
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			margin: 0;
+			padding: 80px 0;
+		}
+		
+			/* side bar scrolling box */
+		.specialities-section-one .specialities-item {
+			background: #1c3264;
+			border: 1px solid #1c3264;
+			border-radius: 8px;
+			height: 196px;
+			margin: 15px 0 0 10px;
+			padding: 30px;
+			cursor: pointer;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+
+		/* text */
+		.specialities-section-one .specialities-item p {
+			font-weight: 600;
+			font-size: 16px;
+			color: #fff;
+			margin-bottom: 0;
+		}
+		/* button */
+		.btn-primary {
+			background-color: #1c3264;
+			border: 1px solid #1c3264;
+			font-size: 15px;
+			font-weight: 600;
+			padding: 10px 15px;
+		}
+		/* button hover */
+		.main-wrapper.home-twelve a:hover {
+			/*background-color: #fff;*/
+			color: #1c3264;
+			border: #fff;
+		}
+		.specialities-section-one .specialities-item:hover {
+			background-color: #1c3164;
+			border: #1c3164;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+		.specialities-section-one .specialities-item:hover .specialities-img span img {
+			/* filter: invert(1); */
+			-webkit-transform: rotateY(360deg);
+			-ms-transform: rotateY(360deg);
+			transform: rotateY(360deg);
+			-webkit-transition: 0.4s;
+			-ms-transition: 0.4s;
+			transition: 0.4s;
+		}
+		.specialities-section-one .specialities-item:hover .specialities-img span {
+			background: none;
+			border: none;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+		
+
+		/*********************** Customize section **************************************/
+
+		/*********************** Our_astrologer_section *******************************/
+
+			/* background_image */
+			.main-wrapper.home-twelve .blog-section-fourteen.our-doctor-twelve {
+			position: relative;
+			z-index: 1;
+			padding: 80px 0 80px 0;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			}
+			/* background_image */
+
+			.main-wrapper.home-twelve .blog-section-fourteen.our-doctor-twelve .blog-inner-fourt-all .blog-inner-fourt-main .blog-inner-right-fourt .blog-inner-top-content span {
+    		font-size: 14px;
+    		color: #1C3462;
+   			font-weight: 600;
+			}
+			/* button */
+			.main-wrapper.home-twelve .blog-section-fourteen.our-doctor-twelve .blog-inner-fourt-all .blog-inner-fourt-main .blog-inner-right-fourt .btn-primary {
+				color: #ffffff;
+				border: 1px solid #1C3462;
+				background-color: #1C3462;
+				}
+
+				.main-wrapper.home-twelve .blog-section-fourteen.our-doctor-twelve .blog-inner-fourt-all .blog-inner-fourt-main .blog-inner-right-fourt .btn-primary:hover {
+				color: #1C3462;
+				background: #ffffff;
+				}
+			/* button */
+
+			/* see_all_astrologers */
+			.main-wrapper.home-twelve .blog-section-fourteen .blog-btn-sec .btn-view:hover {
+    			box-shadow: inset 220px 0 0 0 #ffffff;
+    			color: #1C3462;
+			}
+
+			.main-wrapper.home-twelve .blog-section-fourteen .blog-btn-sec .btn-view {
+    		border: 1px solid #1C3462;
+			}
+			.blog-section-fourteen .blog-btn-sec .btn-view {
+				font-size: 15px;
+				color: #ffffff;
+				background: #1C3462;
+				transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+				box-shadow: inset 0 0 0 0 #1C3462;
+				font-weight: 600;
+				padding: 15px 20px;
+			}
+			/* see_all_astrologers */
+
+		/*********************** Our_astrologer_section *******************************/
+
+
+		/*********************** Testimonials *******************************/
+				/* background_image */
+		.main-wrapper.home-twelve .clients-section-fourteen {
+			position: relative;
+			z-index: 1;
+			padding: 80px 0 80px 0;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+				/* background_image */
+
+				/* scroller */
+			.main-wrapper.home-twelve .clients-section-fourteen .feedback-card .feedback-card-body .feedback-inner-main .feedback-inner-img {
+				align-items: center;
+				justify-content: start;
+				margin: 0 0 50px 0;
+				border: 2px solid #f5f5f5;
+				border-radius: 40px;
+				padding: 20px;
+				gap: 20px;
+				max-width: 660px;
+				display: flex;
+			}
+			.main-wrapper.home-twelve .clients-section-fourteen .feedback-card .feedback-card-body .feedback-inner-main .feedback-inner-img h4 {
+    		color: #fff;
+   			font-size: 20px;
+    		font-weight: 600;
+    		margin: 0 0 5px 0;
+			}
+
+			.main-wrapper.home-twelve .clients-section-fourteen .feedback-card .feedback-card-body .feedback-inner-main p {
+    		color: #fff;
+    		font-size: 20px;
+   			 margin: 0 0 0 0;
+			}
+			/* scroller */
+
+		/* heading */
+		.main-wrapper.home-twelve .clients-section-fourteen .feedback-card .feedback-card-body .feedback-inner-main .feedback-inner-img h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+	}
+	/* heading */
+
+		/*********************** Testimonials *******************************/
+
+
+		/************************ Blog_section ******************************/
+		.main-wrapper.home-twelve .blog-section-fourteen {
+			position: relative;
+			z-index: 1;
+			padding: 80px 0 80px 0;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+        .blog-section-fourteen .blog-inner-fourt-all .blog-inner-fourt-main .blog-inner-right-fourt p {
+            color: #6B7280;
+            font-size: 14px;
+            margin: 0 0 0 0;
+        }
+		/************************ Blog_section ******************************/
+
+
+		/************************ Why_Guruji_Speaks *************************/
+			/* backgroung_image */
+			.main-wrapper.home-twelve .choose-us-fourteen {
+				position: relative;
+			z-index: 1;
+			padding: 80px 0 80px 0;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}	
+
+		.main-wrapper.home-twelve .choose-us-fourteen {
+			position: relative;
+			z-index: 1;
+			padding: 20px 5px;
+			background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+			/* backgroung_image */
+
+			/* content */
+			.main-wrapper.home-twelve .accordion-button::before {
+				flex-shrink: 0;
+				width: 42px;
+				height: 42px;
+				content: "";
+				background-image: none;
+				margin-right: 30px;
+				background-repeat: no-repeat;
+				transition: transform 0.2s ease-in-out;
+			}
+			.main-wrapper.home-twelve .accordion-button:not(.collapsed)::after {
+				/* transform: rotateX(180deg); */
+				/* background-color: #0E82FD; */
+				/* color: #ffffff; */
+				visibility: hidden;
+			}
+			.main-wrapper.home-twelve .accordion-body h6 {
+                font-weight: 300;
+                font-size: 20px;
+                color: #1c3264;
+                font-family: Montserrat;
+                text-align: left;
+                color: #fff;
+            }
+			.main-wrapper.home-twelve .accordion-item:first-of-type .accordion-button {
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+				color: #fff;
+			}
+			
+			/* .main-wrapper.home-twelve .accordion-item:first-of-type .accordion-button {
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			color: #000;
+		} */
+			/* content */
+
+		/************************ Why_Guruji_Speaks *************************/
+
+		/*********************** footer  ***************************************/
+		.footer-one .footer-top .footer-widget .footer-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 25px;
+}
+.footer .footer-top .footer-widget .footer-about-content p:last-child {
+    margin-bottom: 0;
+    color: #ffff;
+}
+.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p {
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 14px;
+}
+.footer-one .social-icon ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+.footer-one .social-icon ul li a {
+    color: #fff;
+    font-size: 20px;
+    -webkit-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.footer .footer-bottom .copyright .copyright-text p {
+    font-size: 15px;
+    color: #ffffff;
+}
+.footer.footer-one .footer-bottom .copyright .copyright-text p {
+    color: #fff;
+}
+
+.footer .footer-bottom .copyright .copyright-text p a {
+    color: #fff;
+    font-weight: 500;
+    -webkit-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+.footer-one {
+    background: #000;
+}
+.footer-one .footer-top .footer-widget.footer-menu ul li a {
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background: url(../img/footer-arrow.png) no-repeat -10px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    padding-left: 0;
+    font-size: 14px;
+}
+.footer-one .footer-bottom .copyright .policy-menu li a {
+    color: #fff;
+}
+.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p i {
+    font-size: 16px;
+    color: #fff;
+    margin-right: 10px;
+}
+.subscribe-form .btn {
+    font-weight: normal;
+    margin: 0;
+    padding: 11px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 0 6px 6px 0;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    color: #ffffff;
+    background: #1c3264;
+    border: 2px solid #1c3164;
+    box-shadow: inset 0 0 0 0 #ffffff;
+}
+.subscribe-form .btn:hover {
+    color: #1c3264;
+    border-color: #1c3264;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 50px #ffffff;
+    -webkit-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s;
+}
+.subscribe-form .form-control {
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 46px;
+    color: #1c3264;
+    background: #ffffff;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px 6px 6px 6px;
+    margin: 0;
+    padding: 6px 112px 6px 15px;
+}
+.header-logo {
+    height: auto;
+    width: 100%;
+}
+	/*********************** footer  ***************************************/
+.main-wrapper.home-twelve .accordion-body {
+       align-items: center;
+    justify-content: start;
+    margin: 0 0 50px 0;
+    border: 2px solid #f5f5f5;
+    border-radius: 40px;
+    padding: 20px;
+    gap: 20px;
+    max-width: 660px;
+   background:none;
+}
+
+        
+/* @media only screen and (max-width: 600px) {
+  body {
+    background-color: rgb(9, 149, 196);
+  }
+} */
+
+@media (max-width: 991.98px) {
+	.main-wrapper.home-twelve.section-header-fourteen {
+		text-align: center !important;
+		/* margin-left: -30% !important; */
+		padding-left: 0 !important;
+		margin-left: 0 ;
+	}
+}
+
+
+@media only screen and (min-device-width: 560px) and (max-device-width: 1136px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* iPhone 5 only */
+	.main-wrapper.home-twelve.section-header-fourteen {
+		text-align: center !important;
+		margin-left: -30% !important;
+	}
+}
+
+	</style>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper home-twelve">
+					
+			<!-- Header -->
+			<header class="header header-fixed header-fourteen header-twelve">
+				<div class="container">
+					<nav class="navbar navbar-expand-lg header-nav">
+						<div class="navbar-header">
+							<a id="mobile_btn" href="javascript:void(0);">
+								<span class="bar-icon">
+									<span></span>
+									<span></span>
+									<span></span>
+								</span>
+							</a>
+							<a href="#" class="navbar-brand logo">
+								<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 70px;">
+							</a>
+						</div>
+						<div class="main-menu-wrapper">
+							<div class="menu-header">
+								<a href="#" class="menu-logo">
+									<img src="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" class="img-fluid" alt="Logo">
+								</a>
+								<a id="menu_close" class="menu-close" href="javascript:void(0);">
+									<i class="fas fa-times"></i>
+								</a>
+							</div>
+							<ul class="main-nav">
+								<li class="has-submenu megamenu active">
+									<a href="javascript:void(0);">Home <i class="#"></i></a>
+									<!-- <ul class="submenu mega-submenu">
+										<li>
+											<div class="megamenu-wrapper">
+												<div class="row">
+													<div class="col-lg-2">
+														<div class="single-demo ">
+															<div class="demo-img">
+																<a href="index.html" class="inner-demo-img"><img
+																		src="assets/img/home-11.jpg" class="img-fluid "
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index.html" class="inner-demo-img">General Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-2.html" class="inner-demo-img"><img
+																		src="assets/img/home-10.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-2.html" class="inner-demo-img">General Home 2</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-3.html" class="inner-demo-img"><img
+																		src="assets/img/home-09.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-3.html" class="inner-demo-img">General Home 3</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-4.html" class="inner-demo-img"><img
+																		src="assets/img/home-08.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-4.html" class="inner-demo-img">General Home 4</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-5.html" class="inner-demo-img"><img
+																		src="assets/img/home-07.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-5.html" class="inner-demo-img">Cardiology
+																	Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-6.html" class="inner-demo-img"><img
+																		src="assets/img/home-06.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-6.html" class="inner-demo-img">Eye Care Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo active">
+															<div class="demo-img">
+																<a href="index-7.html" class="inner-demo-img"><img
+																		src="assets/img/home-05.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-7.html" class="inner-demo-img">Veterinary
+																	Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-8.html" class="inner-demo-img"><img
+																		src="assets/img/home-04.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-8.html" class="inner-demo-img">Paediatric
+																	Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-9.html" class="inner-demo-img"><img
+																		src="assets/img/home-03.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-9.html" class="inner-demo-img">Fertility Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-10.html" class="inner-demo-img"><img
+																		src="assets/img/home-02.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-10.html" class="inner-demo-img">ENT Hospital
+																	Home</a>
+															</div>
+														</div>
+													</div>
+													<div class="col-lg-2">
+														<div class="single-demo">
+															<div class="demo-img">
+																<a href="index-11.html" class="inner-demo-img"><img
+																		src="assets/img/home-01.jpg" class="img-fluid"
+																		alt="img"></a>
+															</div>
+															<div class="demo-info">
+																<a href="index-11.html" class="inner-demo-img">Cosmetics Home</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul> -->
+								</li>
+								<li class="has-submenu">
+									<a href="#">Talk to Astrologer <i class="#"></i></a>
+									<!-- <a href="javascript:void(0);">Astrologer <i class="fas fa-chevron-down"></i></a> -->
+									<!-- <ul class="submenu">
+										<li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+										<li><a href="appointments.html">Appointments</a></li>
+										<li><a href="schedule-timings.html">Schedule Timing</a></li>
+										<li><a href="my-patients.html">Patients List</a></li>
+										<li><a href="patient-profile.html">Patients Profile</a></li>
+										<li><a href="chat-doctor.html">Chat</a></li>
+										<li><a href="invoices.html">Invoices</a></li>
+										<li><a href="doctor-profile-settings.html">Profile Settings</a></li>
+										<li><a href="reviews.html">Reviews</a></li>
+										<li><a href="doctor-register.html">Doctor Register</a></li>
+										<li class="has-submenu">
+											<a href="doctor-blog.html">Blog</a>
+											<ul class="submenu">
+												<li><a href="doctor-blog.html">Blog</a></li>
+												<li><a href="blog-details.html">Blog view</a></li>
+												<li><a href="doctor-add-blog.html">Add Blog</a></li>
+											</ul>
+										</li>
+									</ul> -->
+								</li>
+								<li class="has-submenu">
+									<a href="ask-a-question.html">Ask a Question <i class="#"></i></a>
+									<!-- <a href="javascript:void(0);">Ask a Question <i class="#"></i></a> -->
+									<!-- <ul class="submenu">
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Doctors</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="map-grid.html">Map Grid</a></li>
+												<li><a href="map-list.html">Map List</a></li>
+											</ul>
+										</li>
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Search Doctor</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="search.html">Search Doctor 1</a></li>
+												<li><a href="search-2.html">Search Doctor 2</a></li>
+											</ul>
+										</li>
+										<li><a href="doctor-profile.html">Doctor Profile</a></li>
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Booking</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="booking.html">Booking 1</a></li>
+												<li><a href="booking-2.html">Booking 2</a></li>
+											</ul>
+										</li>
+										<li><a href="checkout.html">Checkout</a></li>
+										<li><a href="booking-success.html">Booking Success</a></li>
+										<li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+										<li><a href="favourites.html">Favourites</a></li>
+										<li><a href="chat.html">Chat</a></li>
+										<li><a href="profile-settings.html">Profile Settings</a></li>
+										<li><a href="change-password.html">Change Password</a></li>
+									</ul> -->
+								</li>
+								<!-- <li class="has-submenu">
+									<a href="">Pages <i class="#"></i></a> -->
+									<!-- <ul class="submenu">
+										<li><a href="pharmacy-index.html">Pharmacy</a></li>
+										<li><a href="pharmacy-details.html">Pharmacy Details</a></li>
+										<li><a href="pharmacy-search.html">Pharmacy Search</a></li>
+										<li><a href="product-all.html">Product</a></li>
+										<li><a href="product-description.html">Product Description</a></li>
+										<li><a href="cart.html">Cart</a></li>
+										<li><a href="product-checkout.html">Product Checkout</a></li>
+										<li><a href="payment-success.html">Payment Success</a></li>
+										<li><a href="pharmacy-register.html">Pharmacy Register</a></li>
+									</ul> -->
+								</li>
+								<li class="has-submenu">
+									<a href="blog-grid.html">Blog <i class="#"></i></a>
+									<!-- <ul class="submenu">
+										<li><a href="about-us.html">About Us</a></li>
+										<li><a href="contact-us.html">Contact Us</a></li>
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Call</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="voice-call.html">Voice Call</a></li>
+												<li><a href="video-call.html">Video Call</a></li>
+											</ul>
+										</li>
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Invoices</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="invoices.html">Invoices</a></li>
+												<li><a href="invoice-view.html">Invoice View</a></li>
+											</ul>
+										</li>
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Authentication</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="login-email.html">Login Email</a></li>
+												<li><a href="login-phone.html">Login Phone</a></li>
+												<li><a href="doctor-signup.html">Doctor Signup</a></li>
+												<li><a href="patient-signup.html">Patient Signup</a></li>
+												<li><a href="forgot-password.html">Forgot Password 1</a></li>
+												<li><a href="forgot-password2.html">Forgot Password 2</a></li>
+												<li><a href="login-email-otp.html">Email OTP</a></li>
+												<li><a href="login-phone-otp.html">Phone OTP</a></li>
+											</ul>
+										</li>
+										<li class="has-submenu">
+											<a href="javascript:void(0);">Error Pages</a>
+											<ul class="submenu inner-submenu">
+												<li><a href="error-404.html">404 Error</a></li>
+												<li><a href="error-500.html">500 Error</a></li>
+											</ul>
+										</li>
+										<li><a href="blank-page.html">Starter Page</a></li>
+										<li><a href="pricing.html">Pricing Plan</a></li>
+										<li><a href="faq.html">FAQ</a></li>
+										<li><a href="maintenance.html">Maintenance</a></li>
+										<li><a href="coming-soon.html">Coming Soon</a></li>
+										<li><a href="terms-condition.html">Terms & Condition</a></li>
+										<li><a href="privacy-policy.html">Privacy Policy</a></li>
+										<li><a href="components.html">Components</a></li>
+									</ul> -->
+								</li>
+								<!-- <li class="has-submenu">
+									<a href="#">Admin <i class="#"></i></a> -->
+									<!-- <ul class="submenu">
+										<li><a href="blog-list.html">Blog List</a></li>
+										<li><a href="blog-grid.html">Blog Grid</a></li>
+										<li><a href="blog-details.html">Blog Details</a></li>
+									</ul> -->
+								</li>
+								<!-- <li class="has-submenu">
+									<a href="#">Admin <i class="fas fa-chevron-down"></i></a>
+									<ul class="submenu">
+										<li><a href="admin/index.html" target="_blank">Admin</a></li>
+										<li><a href="pharmacy/index.html" target="_blank">Pharmacy Admin</a></li>
+									</ul>
+								</li> -->
+							</ul>
+						</div>
+						<ul class="nav header-navbar-rht">
+							<!-- <li class="searchbar searchbar-fourteen me-2">
+								<a href="javascript:void(0);"><i class="feather-search"></i></a>
+								<div class="togglesearch" style="display: none;">
+									<form action="doctor-search-list.html">
+										<div class="input-group">
+											<input type="text" class="form-control">
+											<button type="submit" class="btn btn-primary">Search</button>
+										</div>
+									</form>
+								</div>
+							</li> -->
+							<li class="login-link"><a href="#">Login / Signup</a></li>
+							<!-- <li class="login-in-fourteen">
+								<a href="#" class="btn reg-btn"><i class="feather-user me-2"></i>Log In</a>
+							</li> -->
+							<li class="login-in-fourteen">
+								<a href="login-email.html" class="btn btn-primary reg-btn reg-btn-fourteen"><i class="feather-user me-2"></i>Log In</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<!-- /Header -->		
+
+			<!-- Home Banner -->
+			<section class="banner-section-fourteen banner-section-twelve">
+				<div class="banner-section-twelve-bg">
+					<img src="#" alt="">
+					<img src="{% static 'assets/img/bg/home-12-banner-bg-2.png' %}" alt="">
+				</div>
+				<div class="container">
+					<div class="row">
+						
+						<div class="col-lg-6">
+							<div class="banner-img banner-img-twelve aos" data-aos="fade-up">
+								<img src="#" class="img-fluid" alt="">
+								<img src="{% static 'assets/img/GrujiSpeaks-img/Dog.png' %}" class="img-fluid w-75" alt="" style="margin-top: -22%";>
+								<!-- <div class="banner-banner-img-twelve-bg">
+									<img src="assets/img/bg/dot-1.png" alt="">
+									<img src="assets/img/bg/dot-2.png" alt="">
+									<img src="assets/img/bg/ring-1.png" alt="">
+									<img src="assets/img/bg/ring-2.png" alt="">
+								</div> -->
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="banner-content banner-content-fourteen aos mt-5" data-aos="fade-up">
+								<h1 class="ms-5">Guruji Speaks<span></span></h1>
+								<p class="ms-5">Embrace Celestial Whispers</p>
+								<!-- <div class="banner-btns-fourteen ms-5">
+									<a href="#" class="btn btn-primary me-2">Ask a question</a>
+									<a href="#" class="btn btn-primary ">View Astrologer</a>
+								</div> -->
+								<div class="ms-5 mt-4 w-75 p-3 rounded" style="background-color: #1c3264; color: #fff;">
+									<div class="form-group">
+										<label class="mb-3">Sign Up for Free & consult your favourite Guru</label>
+										<input type="text" class="form-control" placeholder="Email Address or phone number" required>
+									</div>	
+									<div class="text-center">
+										<a href="customer-signup.html" class="btn btn-primary reg-btn reg-btn-fourteen"><i class="feather-user me-2"></i>Sign Up</a>
+									</div>	
+									<div class="form-group form-check-box terms-check-box">
+										<div class="form-group-flex">
+											<label class="custom_check mt-4">
+												I have read and agree to Guruji Speaks’s <a href="javascript:void(0);">Terms of Service</a> and <a href="javascript:void(0);">Privacy Policy.</a> 
+												<input type="checkbox" name="Terms" required>
+												<span class="checkmark"></span>
+											</label>
+										</div>
+									</div>	
+								</div>
+							</div>
+							<!-- <div class="search-box-fourteen aos" data-aos="fade-up">
+								<form action="search.html" class="form-block d-flex">
+									<div class="search-input">
+										<div class="form-group">
+											<label>Date</label>
+											<input type="text" class="form-control datetimepicker" placeholder="Thu, Mar 24, 2022">
+										</div>
+									</div>
+									<div class="search-input">											
+										<div class="form-group mb-0">
+											<label class="location-icon">Location</label>
+											<input type="text" class="form-control" placeholder="San Diego Branch">
+										</div>
+									</div>
+									<div class="search-btn">
+										<button class="btn btn-primary" type="submit">Book Now</button>
+									</div>
+								</form>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Home Banner -->
+
+			<!-- services Section -->
+			<section class="services-section-fourteen">
+				<!-- <div class="floating-bg">
+					<img src="assets/img/bg/big-paw.png" alt="" >
+					<img src="assets/img/bg/small-paw.png" alt="" >
+				</div> -->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 aos" data-aos="fade-up">
+							<div class="section-header-fourteen service-inner-fourteen">
+								<!-- <div class="service-inner-fourteen">
+									<div class="service-inner-fourteen-two">
+										<h3>OUR SERVICES</h3>
+									</div>
+								</div> -->
+								<h2>Astrology Unleashed</h2>
+								<p>Where Accuracy and Thoroughness Matter</p>
+							</div>
+							
+						</div>
+						
+					</div>
+					<div class="row row-gap justify-content-center">
+						<div class="col-lg-3 col-md-4 col-sm-12">
+							<div class="our-services-list">
+								<div class="service-icon">
+									<img src="{% static 'assets/img/a1.png' %}" alt="">
+								</div>
+								<h4>Instant predictions?</h4>
+								<p>Not our style. We believe in the real power of astrology. Our platform knows that deep insights require time. Our seasoned astrologers analyze your horoscope meticulously to deliver accurate predictions and effective solutions.</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-12">
+							<div class="our-services-list">
+								<div class="service-icon">
+									<img src="{% static 'assets/img/a2.png' %}" alt=""> 
+								</div>
+								<h4>No more generic readings!</h4>
+								<p>Within 24 hours, our personalized predictions will uncover your unique life path. Love, career, finances—we’ve got you covered. With our reliable guidance, you’ll make informed decisions and unlock a future full of success.</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-12">
+							<div class="our-services-list">
+								<div class="service-icon">
+									<img src="{% static 'assets/img/a3.png' %}" alt="">
+								</div>
+								<h4>Say no to rushed readings</h4>
+								<p>Choose us where astrology is treated with the respect it deserves. Join our community, embark on an enlightening journey, and discover the hidden treasures of your life. Your destiny awaits!</p>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-4 col-sm-12">
+							<div class="our-services-list">
+								<div class="service-icon">
+									<img src="{% static 'assets/img/a4.png' %}" alt=""> 
+								</div>
+								<h4>Navigating the Tides of Time</h4>
+								<p>Experience the astrology’s transformative power. Get ready for a future filled with purpose and fulfillment. True insight takes time, but the rewardsarelifelong.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /services Section -->
+
+			<!-- Pricing -->
+			<section class="home-twelve-pricing">
+				<div class="container mt-5">
+					<div class="row">
+						<div class="col-lg-12 aos" data-aos="fade-up">
+							<div class="section-header-fourteen service-inner-fourteen">
+								<!-- <div class="service-inner-fourteen">
+									<div class="service-inner-fourteen-two">
+										<h3>OUR PACKAGES</h3>
+									</div>
+								</div> -->
+								<h2>Features</h2>
+								<p>Our Pricing Plan</p>
+							</div>
+						</div>
+						
+					</div>
+					<div class="row row-gap justify-content-center">
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="price-card-twelve">
+								<div class="price-bg">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-4.png' %}" alt="">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-5.png' %}" alt="">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-3.png' %}" alt="">
+								</div>
+								<div class="price-content">
+									<div class="card-title">
+										<h3>Stellar Insights</h3>
+									</div>
+									<div class="price">
+										<p class="text-center" style="color:#000;"><b>Get detailed answers to a single Question to gain deep insights into your life, relationships, etc. Enabling you to uncover hidden potentials & make informed choices.</b>
+										</p>									
+									</div>
+									<!-- <div class="pack-details">
+										<ul>
+											<li>
+												<i class="feather-check-circle"></i>Single Question 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>For a single user 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>Life Insights
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>future prospects
+											</li>
+										</ul>
+									</div> -->
+									<div class="price-btn">
+										<a href="pricing.html" class="btn">Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="price-card-twelve active">
+								<div class="price-bg">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-4.png' %}" alt="">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-5.png' %}" alt="">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-3.png' %}" alt="">
+								</div>
+								<div class="price-content">
+									<div class="card-title">
+										<h3>Celestial Guidance</h3>
+										<!-- <span>Best Offer</span> -->
+									</div>
+									<div class="price">
+										<p class="text-center" style="color: #000000;">Provides an in-depth consultation with 5 Questions with personalized guidance to help you navigate important decisions & challenges in your life
+
+										</p>									
+									</div>
+									<!-- <div class="pack-details">
+										<ul>
+											<li>
+												<i class="feather-check-circle"></i>5 Questions 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>For single user 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>In-depth Consultation 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>Detailed Analysis 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>Personalized Guidance 
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>30 Day Services
+											</li>
+										</ul>
+									</div> -->
+									<div class="price-btn">
+										<a href="pricing.html" class="btn">Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="price-card-twelve">
+								<div class="price-bg">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-4.png' %}" alt="">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-5.png' %}" alt="">
+									<img src="{% static 'assets/img/bg/home-12-pricing-bg-3.png' %}" alt="">
+								</div>
+								<div class="price-content">
+									<div class="card-title">
+										<h3>Divine Revelations</h3>
+									</div>
+									<div class="price">
+										<p class="text-center" style="color: #000;"><b>Offers an extensive astrology consultation with 10 Questions for a family(Maximum 4 Persons) with an option to be scheduled 30 minutes video call.</b>
+										</p>									
+									</div>
+									<!-- <div class="pack-details w-50">
+										<ul>
+											<li>
+												<i class="feather-check-circle"></i>10 Questions  
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>Max 4 Users
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>30 minui video call (skype / G-meet / Zoom)
+											</li>
+											<li>
+												<i class="feather-check-circle"></i>Profound Insights
+											</li>
+										</ul>
+									</div> -->
+									<div class="price-btn">
+										<a href="pricing.html" class="btn">Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Pricing -->
+
+
+			<!-- Customize section -->
+			<section class="specialities-section-one">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 aos" data-aos="fade-up">
+							<div class="section-header-fourteen service-inner-fourteen ms-5 ps-5">
+								<h2 class="ms-5 ps-5">Customize Your Experience</h2>
+								<p class="ms-5 ps-5">Choose Your Sample Question for Personalized Insights</p>
+							</div>
+						</div>
+						<div class="col-md-2 aos" data-aos="fade-up">
+							<div class="owl-nav slide-nav-1 text-end nav-control"></div>
+						</div>
+					</div>
+					<div class="owl-carousel specialities-slider-one owl-theme aos" data-aos="fade-up">
+						<div class="item">
+						    <a href="self-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<!-- <span><img src="assets/img/specialities/specialities-01.svg" alt=""></span> -->
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/brainstorm-skill.png" alt="brainstorm-skill"/></span>
+								</div>
+								<p>Self</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="wealth-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/gold-pot.png" alt="gold-pot"/></span>
+								</div>
+								<p>Wealth</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="health-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/heart-with-pulse.png" alt="heart-with-pulse"/></span>
+								</div>
+								<p>Health</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="family-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/crowd.png" alt="crowd"/></span>
+								</div>
+								<p>Family</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="marriage-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/wedding-rings--v1.png" alt="wedding-rings--v1"/></span>
+								</div>
+								<p>Marriage</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+							<a href="love-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/we-hear-it.png" alt="we-hear-it"/></span>
+								</div>
+								<p>Love</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="education-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/teaching.png" alt="teaching"/></span>
+								</div>
+								<p>Education</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="career-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/coaching.png" alt="coaching"/></span>
+								</div>
+								<p>Career</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="business-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/business.png" alt="business"/></span>
+								</div>
+								<p>Business</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="hardtimes-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/headache.png" alt="headache"/></span>
+								</div>
+								<p>Hard Times</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="pujas-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/pray.png" alt="pray"/></span>
+								</div>
+								<p>Puja</p>
+							</div>
+							</a>
+						</div>
+						<div class="item">
+						    <a href="spirituality-questions.html">
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48" src="https://img.icons8.com/doodle/48/chrome-reader-mode.png" alt="chrome-reader-mode"></span>
+								</div>
+								<p>Spirituality</p>
+							</div>
+							</a>
+						</div>
+					</div>
+					<!--<div class="owl-nav slide-nav-15 text-end nav-control"></div>-->
+					<!--<div class="blog-btn-sec text-center aos aos-init aos-animate" data-aos="fade-up">-->
+					<!--	<a href="#" class="btn btn-primary btn-view">Many More</a>-->
+					<!--</div>-->
+					<!-- <div class="specialities-btn aos" data-aos="fade-up">
+						<a href="search.html" class="btn">
+						<a href="#" class="btn">
+							Many More
+						</a>
+					</div> -->
+				</div>
+			</section>
+			<!-- Customize section -->
+
+			<!-- Our Astrologer -->
+			<!-- <div class="blog-section-fourteen our-doctor-twelve">
+				<div class="floating-bg">
+					<img src="assets/img/bg/small-paw.png" alt="" >
+					<img src="assets/img/bg/big-paw.png" alt="" >
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="section-header-fourteen service-inner-fourteen">
+								<div class="service-inner-fourteen">
+									<div class="service-inner-fourteen-two">
+										<h3>OUR TEAM</h3>
+									</div>
+								</div>
+								<h2>Our Astrologers</h2>
+								<p>Our Qualified Professionals</p>
+							</div>
+						</div>					
+					</div>
+					<div class="owl-carousel blog-slider-twelve owl-theme aos" data-aos="fade-up">
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="assets/img/doctors/veterinary-doctor-01.jpg" alt="image" class="img-fluid ">
+											<div class="blog-inner-top-content content-pricing">
+												<span>$ 200</span>
+											</div>
+											<div class="blog-inner-top-content">
+												<span>Taro Reading</span>
+											</div>
+										</div>
+									</a>
+									<h4 class="blog-inner-right-fourt-care">
+									<a href="#" >Marie Wells</a>
+									</h4>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="fa fa-location-dot"></i> <strong>0.9</strong> min - New York, USA
+										</li>
+										
+									</ul>
+									<div class="blog-list-ratings">
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star"></i>
+										<span>(20)</span>
+									</div>
+									<a href="#" class="btn btn-primary">Consult</a>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="assets/img/doctors/veterinary-doctor-02.jpg" alt="image" class="img-fluid ">
+											<div class="blog-inner-top-content content-pricing">
+												<span>$ 150</span>
+											</div>
+											<div class="blog-inner-top-content">
+												<span>Palm Reading</span>
+											</div>
+										</div>
+									</a>
+									<h4 class="blog-inner-right-fourt-care">
+									<a href="#" >Justin Parker</a>
+									</h4>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="fa fa-location-dot"></i> <strong>2</strong> hrs - Chicago, USA
+										</li>
+										
+									</ul>
+									<div class="blog-list-ratings">
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star"></i>
+										<span>(22)</span>
+									</div>
+									<a href="#" class="btn btn-primary">Consult</a>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="assets/img/doctors/veterinary-doctor-03.jpg" alt="image" class="img-fluid ">
+											<div class="blog-inner-top-content content-pricing">
+												<span>$ 110</span>
+											</div>
+											<div class="blog-inner-top-content">
+												<span>Horoscope</span>
+											</div>
+										</div>
+									</a>
+									<h4 class="blog-inner-right-fourt-care">
+									<a href="#" >Pamela Curtis</a>
+									</h4>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="fa fa-location-dot"></i> <strong>0.8</strong> min - Sandiago, USA
+										</li>
+										
+									</ul>
+									<div class="blog-list-ratings">
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star"></i>
+										<span>(30)</span>
+									</div>
+									<a href="#" class="btn btn-primary">Consult</a>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="assets/img/doctors/veterinary-doctor-04.jpg" alt="image" class="img-fluid ">
+											<div class="blog-inner-top-content content-pricing">
+												<span>$ 50</span>
+											</div>
+											<div class="blog-inner-top-content">
+												<span>Numerology</span>
+											</div>
+										</div>
+									</a>
+									<h4 class="blog-inner-right-fourt-care">
+									<a href="#" >Ronald Jacobs</a>
+									</h4>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="fa fa-location-dot"></i> <strong>10</strong> min - Texas, USA
+										</li>
+										
+									</ul>
+									<div class="blog-list-ratings">
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star"></i>
+										<span>(45)</span>
+									</div>
+									<a href="#" class="btn btn-primary">Consult</a>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="assets/img/doctors/veterinary-doctor-01.jpg" alt="image" class="img-fluid ">
+											<div class="blog-inner-top-content content-pricing">
+												<span>$ 200</span>
+											</div>
+											<div class="blog-inner-top-content">
+												<span>Vastu</span>
+											</div>
+										</div>
+									</a>
+									<h4 class="blog-inner-right-fourt-care">
+									<a href="#" >Marie Wells</a>
+									</h4>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="fa fa-location-dot"></i> <strong>0.9</strong> min - New York, USA
+										</li>
+										
+									</ul>
+									<div class="blog-list-ratings">
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star rated"></i>
+										<i class="fa-solid fa-star"></i>
+										<span>(20)</span>
+									</div>
+									<a href="#" class="btn btn-primary">Consult</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="owl-nav slide-nav-16 text-end nav-control"></div>
+					
+					<div class="blog-btn-sec text-center aos aos-init aos-animate" data-aos="fade-up">
+						<a href="#" class="btn btn-primary btn-view">See All Doctors</a>
+					</div>
+				</div>
+			</div> -->
+			<!-- /Our Astrologers -->
+
+
+
+			<!-- Feedback -->
+			<section class="clients-section-fourteen">
+				<!-- <div class="floating-bg">
+					<img src="assets/img/bg/two-paw.png" alt="" >
+				</div> -->
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5">
+							<div class="client-inner-main">
+								<img src="{% static 'assets/img/GrujiSpeaks-img/hmm-removebg-preview.png' %}" alt="image" class="img-fluid">
+							</div>
+						</div>
+						<div class="col-lg-7 col-md-12">
+							<div class="section-header-fourteen service-inner-fourteen">
+								<div class="service-inner-fourteen">
+									<!-- <div class="service-inner-fourteen-two">
+										<h3>CLIENT REVIEWS</h3>
+									</div> -->
+								</div>
+								<h2>Testimonials from Satisfied Seekers</h2>
+								<p>What our customers say about us</p>
+							</div>
+							<div class="owl-carousel feedback-slider-fourteen owl-theme aos" data-aos="fade-up">
+								<div class="card feedback-card">
+									<div class="card-body feedback-card-body">
+										<div class="feedback-inner-main">
+											<div class="feedback-inner-img">
+												<img src="{% static 'assets/img/t4.png' %}" alt="image" class="img-fluid">
+												<div class="feedback-user-details">
+													<h4>Sandeep</h4>
+													<h6>Resortpreneur, Duliajan</h6>
+													<h6>Assam (India)</h6>
+													<div class="rating rating-fourteen">
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star"></i>
+													</div>
+												</div>
+											</div>
+											
+											<p>“I am delighted to share my extraordinary experience with Guruji Speaks.  Sought guidance and clarity in both my personal and professional endeavours, and I must say that Divine Revelations consultation services exceeded my expectations.”
+											</p>
+											
+										</div>
+									</div>
+								</div>
+								<div class="card feedback-card">
+									<div class="card-body feedback-card-body">
+										<div class="feedback-inner-main">
+											<div class="feedback-inner-img">
+												<img src="{% static 'assets/img/t3.png' %}" alt="image" class="img-fluid">
+												<div class="feedback-user-details">
+													<h4>Anu, Homemaker & Rahul</h4>
+													<h6>Assistant Vice President-Operations, </h6>
+													<h6>New Delhi (India)</h6>
+													<div class="rating rating-fourteen">
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star filled"></i>
+														<i class="fas fa-star"></i>
+													</div>
+												</div>
+											</div>
+											
+											<p>“We are a grateful family who recently sought consultation from Guruji Speaks, and we couldn't be happier with the insights and guidance we received. One of our primary concerns was understanding the astrological factors that contribute to a harmonious and loving family environment.”
+											</p>
+											
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Feedback -->
+
+			
+			<!-- blog section -->
+			<div class="blog-section-fourteen">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="section-header-fourteen service-inner-fourteen">
+								<div class="service-inner-fourteen">
+									<!-- <div class="service-inner-fourteen-two">
+										<h3>BLOG</h3>
+									</div> -->
+								</div>
+								<h2>Our Blogs</h2>
+								<p>Our Recent Articles</p>
+							</div>
+						</div>						
+					</div>
+					<div class="owl-carousel blog-slider-fourteen owl-theme aos" data-aos="fade-up">
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="{% static 'assets/img/Blog 1.png' %}" alt="image" class="img-fluid ">
+											<!--<div class="blog-inner-top-content">-->
+											<!--	<img src="assets/img/doctors/doctor-04.jpg" alt="" class="me-2">-->
+											<!--	 <span>Dr. Pamila Certis</span> -->
+											<!--</div>-->
+										</div>
+									</a>
+									<a href="#" class="blog-inner-right-fourt-care">Transcending Boundaries: Kainchi Dham's Sacred Aura Embraces Tech Titans Zuckerberg and Jobs</a>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="feather-calendar"></i> 13 Aug, 2023
+										</li>
+										<li>
+											<i class="feather-message-square"></i> 68
+										</li>
+										<li>
+											<i class="feather-eye"></i> 1.5k
+										</li>
+									</ul>
+									<ul class="articles-list nav blog-articles-list-two">
+										<li>Astrology</li>
+										<li>Social</li>
+										<li>Spiritual </li>
+									</ul>
+									<p>Kainchi Dham, nestled in the serene Kumaon Hills of Uttarakhand, has emerged as a magnet for seekers of spiritual wisdom.  </p>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="{% static 'assets/img/Blog 2.png' %}" alt="image" class="img-fluid ">
+											<!--<div class="blog-inner-top-content">-->
+											<!--	<img src="assets/img/doctors/doctor-07.jpg" alt="" class="me-2">-->
+											<!--	 <span>Dr. James Matthew</span> -->
+											<!--</div>-->
+										</div>
+									</a>
+									<a href="#" class="blog-inner-right-fourt-care">Unleash Your Financial Destiny: Empowering Yourself with Astrological Wisdom for Lasting Wealth</a>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="feather-calendar"></i> 13 Apr, 2023
+										</li>
+										<li>
+											<i class="feather-message-square"></i> 87
+										</li>
+										<li>
+											<i class="feather-eye"></i> 2.5k
+										</li>
+									</ul>
+									<ul class="articles-list nav blog-articles-list-two">
+										<li>Ancient </li>
+										<li>Yoga </li>
+									</ul>
+									<p>Embark on a captivating journey as we unravel the enigmatic house of wealth, blending ancient historical facts with astrological wisdom.  </p>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="{% static 'assets/img/Blog 3.png' %}" alt="image" class="img-fluid ">
+											<!--<div class="blog-inner-top-content">-->
+											<!--	<img src="assets/img/doctors/doctor-06.jpg" alt="" class="me-2">-->
+											<!--	 <span>Dr. James Certis</span> -->
+											<!--</div>-->
+										</div>
+									</a>
+									<a href="#" class="blog-inner-right-fourt-care">Divine Revelation: The Miraculous Secrets of 108 – Unveiling Hinduism’s Sacred Number</a>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="feather-calendar"></i> 26 May, 2023
+										</li>
+										<li>
+											<i class="feather-message-square"></i> 78
+										</li>
+										<li>
+											<i class="feather-eye"></i> 1.6k
+										</li>
+									</ul>
+									<ul class="articles-list nav blog-articles-list-two">
+										<li>Astronomical </li>
+										<li>Chakras</li>
+									</ul>
+									<p>In Hinduism, numbers hold a deep spiritual significance, and one number that stands out prominently is 108.  </p>
+								</div>
+							</div>
+						</div>
+						<div class="card blog-inner-fourt-all">
+							<div class="card-body blog-inner-fourt-main">
+								<div class="blog-inner-right-fourt">
+									<a href="#">
+										<div class="blog-inner-right-img">
+											<img src="{% static 'assets/img/Blog 5.png' %}" alt="image" class="img-fluid ">
+											<!--<div class="blog-inner-top-content">-->
+											<!--	<img src="assets/img/doctors/doctor-04.jpg" alt="" class="me-2">-->
+											<!--	 <span>Dr. Pamila Certis</span> -->
+											<!--</div>-->
+										</div>
+									</a>
+									<a href="#" class="blog-inner-right-fourt-care">Astrology Beyond Boundaries: Embracing LGBTQ Love in Vedic Astrology</a>
+									<ul class="articles-list nav blog-articles-list">
+										<li>
+											<i class="feather-calendar"></i> 13 Aug, 2023
+										</li>
+										<li>
+											<i class="feather-message-square"></i> 68
+										</li>
+										<li>
+											<i class="feather-eye"></i> 1.5k
+										</li>
+									</ul>
+									<ul class="articles-list nav blog-articles-list-two">
+										<li>Historical  </li>
+										<li>Vedic </li>
+										<li>LGBTQ</li>
+									</ul>
+									<p>Vedic astrology, deeply rooted in Hinduism, has a profound historical perspective when it comes to understanding relationships.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="owl-nav slide-nav-15 text-end nav-control"></div>
+					<div class="blog-btn-sec text-center aos aos-init aos-animate" data-aos="fade-up">
+						<a href="blog-grid.html" class="btn btn-primary btn-view">Read More Articles</a>
+					</div>
+				</div>
+			</div>
+			<!-- /blog section -->
+
+			<!-- Choose us -->
+			<!-- <section class="choose-us-fourteen">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-header-fourteen text-center">
+								<div class="service-inner-fourteen justify-content-center">
+									<div class="service-inner-fourteen-two">
+										<h3>Why Us</h3>
+									</div>
+								</div>
+								<h2>Why Guruji Speaks</h2>
+								<p>Unveil the secrets of your stars.</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					
+						<div class="col-lg-6 text-center">
+							<div class="choose-us-right-main">
+								<img src="assets/img/GrujiSpeaks-img/logo-2.png" alt="image" class="img-fluid w-50">
+								
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							<div class="why-us-content">
+								<div class="us-faq aos" data-aos="fade-up" data-aos-delay="200">
+									<div class="accordion" id="accordionExample">
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingOne">
+											<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+												Lorem ipsum dolor sit amet
+											</button>
+											</h2>
+											<div id="collapseOne" class="accordion-collapse collapse shade show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+											<div class="accordion-body">
+												<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
+											</div>
+											</div>
+										</div>
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingTwo">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+												Lorem ipsum dolor sit amet
+											</button>
+											</h2>
+											<div id="collapseTwo" class="accordion-collapse collapse shade" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+											<div class="accordion-body">
+												<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
+											</div>
+											</div>
+										</div>
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingThree">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+												Lorem ipsum dolor sit amet
+											</button>
+											</h2>
+											<div id="collapseThree" class="accordion-collapse collapse shade" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+											<div class="accordion-body">
+												<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
+											</div>
+											</div>
+										</div>
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingFour">
+												<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+													Lorem ipsum dolor sit amet
+												</button>
+											</h2>
+											<div id="collapseFour" class="accordion-collapse collapse shade" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+												<div class="accordion-body">
+													<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
+												</div>
+											</div>
+										</div>
+										<div class="accordion-item">
+											<h2 class="accordion-header" id="headingFive">
+												<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+													Lorem ipsum dolor sit amet
+												</button>
+											</h2>
+											<div id="collapseFive" class="accordion-collapse collapse shade" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+												<div class="accordion-body">
+													<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+				   </div>
+			</section> -->
+			<!-- /Choose us -->
+
+
+				<!-- Why Guruji Speaks -->
+				<section class="choose-us-fourteen">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="section-header-fourteen text-center">
+									<div class="service-inner-fourteen justify-content-center">
+										<!-- <div class="service-inner-fourteen-two">
+											<h3>Why Us</h3>
+										</div> -->
+									</div>
+									<h2>Why Guruji Speaks</h2>
+									<p>Unveil the secrets of your stars</p>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+						
+							<div class="col-lg-6 text-center">
+								<div class="choose-us-right-main">
+									<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" alt="image" class="img-fluid w-50">
+									
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+								<div class="why-us-content">
+									<div class="us-faq aos" data-aos="fade-up" data-aos-delay="200">
+										<div class="accordion" id="accordionExample">
+											<div class="accordion-item">
+												<!--<h2 class="accordion-header" id="headingOne">-->
+												<!--<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
+												<!--	Lorem ipsum dolor sit amet-->
+												<!--</button>-->
+												<!--</h2>-->
+												<div id="collapseOne" class="accordion-collapse collapse shade show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+												<div class="accordion-body">
+													<h6>Once upon a time, in a world where skepticism questioned the scientific grounding of Vedic astrology, Guruji Speaks emerged as a beacon of truth and interconnectedness. As believers in the profound teachings of this ancient science, Guruji Speaks understood the allure that captivated minds globally. With a blend of traditional wisdom and technological advancements, this online astrology consultation platform aimed to make Vedic astrology accessible to the modern seeker.
+<br> <br>
+In a digital era where instant gratification reigns supreme, Guruji Speaks chose a different path. Recognizing that the power of astrology lies in deep insights, the platform embraced the notion that time is required to unlock its true potential. Seasoned astrologers at Guruji Speaks approached each horoscope with meticulous care and attention, analyzing the celestial symphony to deliver accurate predictions and effective solutions.
+</h6>
+												</div>
+												</div>
+											</div>
+											<!--<div class="accordion-item">-->
+											<!--	<h2 class="accordion-header" id="headingTwo">-->
+											<!--	<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
+											<!--		Lorem ipsum dolor sit amet-->
+											<!--	</button>-->
+											<!--	</h2>-->
+											<!--	<div id="collapseTwo" class="accordion-collapse collapse shade" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">-->
+											<!--	<div class="accordion-body">-->
+											<!--		<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>-->
+											<!--	</div>-->
+											<!--	</div>-->
+											<!--</div>-->
+											<!--<div class="accordion-item">-->
+											<!--	<h2 class="accordion-header" id="headingFour">-->
+											<!--		<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">-->
+											<!--			Lorem ipsum dolor sit amet-->
+											<!--		</button>-->
+											<!--	</h2>-->
+											<!--	<div id="collapseFour" class="accordion-collapse collapse shade" aria-labelledby="headingFour" data-bs-parent="#accordionExample">-->
+											<!--		<div class="accordion-body">-->
+											<!--			<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>-->
+											<!--		</div>-->
+											<!--	</div>-->
+											<!--</div>-->
+											<!--<div class="accordion-item">-->
+											<!--	<h2 class="accordion-header" id="headingFive">-->
+											<!--		<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">-->
+											<!--			Lorem ipsum dolor sit amet-->
+											<!--		</button>-->
+											<!--	</h2>-->
+											<!--	<div id="collapseFive" class="accordion-collapse collapse shade" aria-labelledby="headingFive" data-bs-parent="#accordionExample">-->
+											<!--		<div class="accordion-body">-->
+											<!--			<h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>-->
+											<!--		</div>-->
+											<!--	</div>-->
+											<!--</div>-->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- /Why Guruji Speaks -->
+
+			<!-- Footer -->
+		<footer class="footer footer-one">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-4">
+							<div class="footer-widget footer-about">
+								<div class="footer-logo">
+									<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}"style="
+										margin-top: -20px;
+										max-width: 30%;
+										height: auto;
+									" alt="logo">
+								</div>
+								<div class="footer-about-content">
+									<p>At Guruji Speak, we believe that astrology is a powerful tool that can be used to gain insights into our lives and to make better decisions.</p>
+								</div>
+								<br>
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a  target="_blank"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}" class="" alt="Logo"> </a>
+										</li>
+										<li>
+											<a  target="_blank"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}" class="" alt="Logo"> </a>
+										</li>
+										<li>
+											<a  target="_blank"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}" class="" alt="Logo"> </a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">Useful Links</h2>
+								<ul>
+									<li><a href="/faqs/">FAQ</a></li>
+									<li><a href="/intellactual_property/">Intellectual Property</a></li>
+									<li><a href="/disclaimer/">Disclaimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">For Astrologer</h2>
+								<ul>
+									<li><a href="#">Appointments</a></li>
+									<li><a href="/astrologer-registration/">Register</a></li>
+									<li><a href="/astrologer-login/">Login</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-5">
+							<div class="footer-widget footer-contact">
+								<h2 class="footer-title">Contact Us</h2>
+								<div class="footer-contact-info">
+									<!--<div class="footer-address">-->
+									<!--	<p><i class="feather-map-pin"></i> 3556 Beech Street, USA</p>-->
+									<!--</div>-->
+									<div class="footer-address">
+										<p><i class="feather-phone-call"></i>+91 999 999 3840</p>
+									</div>
+									<div class="footer-address mb-0">
+										<p><i class="feather-mail"></i> info@gurujispeaks.com</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-7">
+							<div class="footer-widget">
+								<h2 class="footer-title">Join Our Newsletter</h2>
+								<div class="subscribe-form">
+									<form action="#">
+										<input type="email" class="form-control" placeholder="Enter Email">
+										<button type="submit" class="btn">Submit</button>
+									</form>
+								</div>
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> </a>
+										</li>
+										<li>
+											<a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i class="fab fa-instagram"></i></a>
+										</li>
+										<li>
+											<a href="https://twitter.com/guruji_speaks?s=20" target="_blank"><i class="fab fa-twitter"></i> </a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="container">
+					<!-- Copyright -->
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6 col-lg-6">
+								<div class="copyright-text">
+									<p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">GurujiSpeaks.</a> All Rights Reserved.Powered by Zappkode.</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6">
+							
+								<!-- Copyright Menu -->
+								<div class="copyright-menu">
+									<ul class="policy-menu">
+										<li><a href="/privacy_policy/">Privacy Policy</a></li>
+										<li><a href="/terms_of_service/">Terms Of Service</a></li>
+                                        <li><a href="/Refund_Cancellation_Policy/">Refund and Cancellation Policy</a></li>
+									</ul>
+								</div>
+								<!-- /Copyright Menu -->
+								
+							</div>
+						</div>
+					</div>
+					<!-- /Copyright -->					
+				</div>
+			</div>
+		</footer>
+	
+		<!-- /Footer -->
+
+
+
+
+			<!-- /Footer -->
+
+		
+		
+		</div>		
+		<!-- /Main Wrapper -->
+
+		<!-- ScrollToTop -->
+		<div class="progress-wrap active-progress">
+			<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;"></path>
+			</svg>
+		</div>
+		<!-- /ScrollToTop -->
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Datepicker JS -->
+		<script src="{% static 'assets/js/moment.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+		<!-- Owl Carousel JS -->
+		<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+		<!-- Slick JS -->
+		<script src="{% static 'assets/js/slick.js' %}"></script>
+
+		<!-- Animation JS -->
+		<script src="{% static 'assets/js/aos.js' %}"></script>
+
+		<!-- Counter JS -->
+		<!-- <script src="assets/js/counter.js"></script> -->
+
+		<!-- BacktoTop JS -->
+		<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+	
+	</body>
+</html>

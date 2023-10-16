@@ -1,0 +1,162 @@
+{% extends 'astrologer_base.html' %}{% block content %}
+{% load custom_filters %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Guruji Speaks</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css'}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/select2/css/select2.min.css' %}">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css' %}">
+		
+		<link rel="stylesheet" href="{% static 'assets/plugins/dropzone/dropzone.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+</head>
+
+<style>
+	.breadcrumb-bar-two {
+				background: #F2F6F6;
+				background-repeat: no-repeat;
+				padding-top: 0px !important;
+				min-height: 0px !important;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+
+      .breadcrumb-bar-two .inner-banner {
+          margin: 0;
+          padding: 30px 0;
+      }
+
+	  .card-shadow
+	  {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	  }
+	 
+</style>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper w-100">
+
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title">My Customers</h2>
+						<nav aria-label="breadcrumb" class="page-breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index-7.html">Home</a></li>
+								<li class="breadcrumb-item" aria-current="page">My Customers</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+		<!-- Page Content -->
+		<div class="content">
+			<div class="container">
+				<div class="dash-widget-info">
+					<h6>Total Customers : {{unique_customer_count}}</h6>
+					
+					<p class="text-muted">{{ count }}</p>
+					{% comment %} <p class="text-muted">Till Today</p> {% endcomment %}
+				  </div>	
+
+				<div class="row">
+		
+					<div class="col-md-7 col-lg-8 col-xl-12">
+
+						<div class="row row-grid">
+                            {% for customer in customers %}
+							<div class="col-md-6 col-lg-4 col-xl-3">
+								<div class="card widget-profile pat-widget-profile card-shadow" >
+									<div class="card-body">
+										<div class="pro-widget-content">
+											<div class="profile-info-widget">
+												<!-- <a href="patient-profile.html" class="booking-doc-img">
+													<img src="{% static 'assets/img/patients/patient.jpg' %}" alt="User Image">
+												</a> -->
+												
+												<div class="profile-det-info">
+													<h3><a href="#"><b>{{ customer.first_name }} {{ customer.last_name }}</b></a></h3>
+
+                                                    <h3><a href="#">Birth Place : {{ customer.birth_place }}</a></h3>
+
+                                                    <h3>Birth Time : {{ customer.birth_time }}</h3>											
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            {% endfor %}
+                           
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Content -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	 <!-- jQuery -->
+		<script src="assets/js/jquery-3.6.4.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+        <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js"></script>
+		
+		<!-- Dropzone JS -->
+		<script src="assets/plugins/dropzone/dropzone.min.js"></script>
+		
+		<!-- Bootstrap Tagsinput JS -->
+		<script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+		
+		<!-- Profile Settings JS -->
+		<script src="assets/js/profile-settings.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+
+</body>
+</html>
+{% endblock %}

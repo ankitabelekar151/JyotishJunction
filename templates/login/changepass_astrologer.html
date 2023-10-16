@@ -1,0 +1,345 @@
+{% extends 'astrologer_base.html' %}{% block content %}
+{% load static %}
+
+
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/select2/css/select2.min.css' %}">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css' %}">
+		
+		<link rel="stylesheet" href="{% static 'assets/plugins/dropzone/dropzone.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+		<style>
+			.btn-primary
+			{
+				background-color: #1c3264;
+				border: 1px solid #1c3264;
+			}
+
+			.btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active {
+				color: #1c3264 !important;
+				background-color: #e9e7e7 !important;
+				border-color: #e9e7e7 !important;
+			}
+
+			.breadcrumb-bar-two {
+				background: #F2F6F6;
+				background-repeat: no-repeat;
+				padding-top: 0px !important;
+				min-height: 0px !important;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+
+			.breadcrumb-bar-two .inner-banner {
+				margin: 0;
+				padding: 30px 0;
+			}
+
+			.toggle-passwords{
+				font-size: 16px;
+				position: absolute;
+				top: 60%;
+				right: 3px;
+				transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				color: #797979;
+				cursor: pointer;
+				width: 32px;
+				height: 32px;
+				border-radius: 50%;
+			}
+		</style>
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper  w-100">
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two m-auto">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">Change Password</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item" aria-current="page">Change Password</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			{% comment %} <div class="content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+						
+							<!-- Profile Sidebar -->
+							<div class="profile-sidebar">
+								<div class="widget-profile pro-widget-content">
+									<div class="profile-info-widget">
+										<a href="#" class="booking-doc-img">
+											<img src="{% static 'assets/img/patients/patient.jpg' %}" alt="User Image">
+										</a>
+										<div class="profile-det-info">
+											<h3>Richard Wilson</h3>
+											<div class="patient-details">
+												<h5><i class="fas fa-birthday-cake"></i> 24 Jul 1983, 38 years</h5>
+												<h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> Newyork, USA</h5>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="dashboard-widget">
+									<nav class="dashboard-menu">
+										<ul>
+											<li>
+												<a href="patient-dashboard.html">
+													<i class="fas fa-columns"></i>
+													<span>Dashboard</span>
+												</a>
+											</li>
+											<!-- <li>
+												<a href="favourites.html">
+													<i class="fas fa-bookmark"></i>
+													<span>Favourites</span>
+												</a>
+											</li>
+											<li>
+												<a href="dependent.html">
+													<i class="fas fa-users"></i>
+													<span>Dependent</span>
+												</a>
+											</li> -->
+											<!-- <li>
+												<a href="chat.html">
+													<i class="fas fa-comments"></i>
+													<span>Notifications</span>
+													<small class="unread-msg">23</small>
+												</a>
+											</li>
+											<li>
+												<a href="patient-accounts.html">
+													<i class="fas fa-file-invoice-dollar"></i>
+													<span>Recharge</span>
+												</a>
+											</li>
+											<li>
+												<a href="orders-list.html">
+													<i class="fas fa-list-alt"></i>
+													<span>Orders</span>
+                                                    <small class="unread-msg">7</small>
+												</a>
+											</li> -->
+											<!-- <li>
+												<a href="medical-records.html">
+													<i class="fas fa-clipboard"></i>
+													<span>Add Medical Records</span>
+												</a>
+											</li>
+											<li>
+												<a href="medical-details.html">
+													<i class="fas fa-file-medical-alt"></i>
+													<span>Medical Details</span>
+												</a>
+											</li> -->
+											<!-- <li>
+												<a href="profile-settings.html">
+													<i class="fas fa-user-cog"></i>
+													<span>Profile Settings</span>
+												</a>
+											</li>
+											<li class="active">
+												<a href="change-password.html">
+													<i class="fas fa-lock"></i>
+													<span>Change Password</span>
+												</a>
+											</li>
+											<li>
+												<a href="index-7.html">
+													<i class="fas fa-sign-out-alt"></i>
+													<span>Logout</span>
+												</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+
+							</div>  -->
+							<!-- /Profile Sidebar -->
+							
+						</div> {% endcomment %}
+						
+						<div class="col-md-7 col-lg-8 col-xl-5 m-auto mt-5">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12 col-lg-12 text-center">
+										
+											<!-- Change Password Form -->
+											
+											<form action="" method="post">
+												{% csrf_token %}
+												<div class="form-group">
+													<label>Old Password</label>
+													<div class="pass-group">
+														<input type="password" class="form-control pass-input" id="old_password" name="old_password" required>
+														<span class="feather-eye toggle-password"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>New Password</label>
+													<div class="pass-group">
+														<input type="password" class="form-control pass-input-sub" id="new_pass1" name="new_pass1" required>
+														<span class="feather-eye toggle-password-sub"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Confirm Password</label>
+													<div class="pass-group">
+														<input type="password" class="form-control pass-inputs" id="new_pass2" name="new_pass2" required>
+														<span class="feather-eye toggle-passwords"></span>
+													</div>
+												</div>
+												{% if message %}
+													<p>{{ message }}</p>
+												{% endif %}
+												{% if error_message %}
+													<p>{{ error_message }}</p>
+												{% endif %}
+												<div class="submit-section">
+													<button type="submit" class="btn btn-primary submit-btn" {% if disable_save_button %}disabled{% endif %}>Save Changes</button>
+												</div>
+											</form>
+											<!-- /Change Password Form -->
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+			
+
+		   
+		</div>
+		<!-- /Main Wrapper -->
+		
+	  
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.4.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+        <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+		
+		<!-- Select2 JS -->
+		<script src="assets/plugins/select2/js/select2.min.js"></script>
+		
+		<!-- Dropzone JS -->
+		<script src="assets/plugins/dropzone/dropzone.min.js"></script>
+		
+		<!-- Bootstrap Tagsinput JS -->
+		<script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+		
+		<!-- Profile Settings JS -->
+		<script src="assets/js/profile-settings.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const oldPasswordInput = document.getElementById("old_password");
+				const newPasswordInput = document.getElementById("new_pass1");
+				const confirmNewPasswordInput = document.getElementById("new_pass2");
+				const saveChangesButton = document.querySelector(".submit-btn");
+		
+				// Function to check if the old password matches the new password or confirm password
+				function checkOldPassword() {
+					if (
+						oldPasswordInput.value === newPasswordInput.value ||
+						oldPasswordInput.value === confirmNewPasswordInput.value
+					) {
+						saveChangesButton.setAttribute("disabled", "disabled");
+					} else {
+						saveChangesButton.removeAttribute("disabled");
+					}
+				}
+		
+				// Add event listeners to the relevant input fields
+				oldPasswordInput.addEventListener("input", checkOldPassword);
+				newPasswordInput.addEventListener("input", checkOldPassword);
+				confirmNewPasswordInput.addEventListener("input", checkOldPassword);
+			});
+		</script>
+
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('saveButton').addEventListener('click', function() {
+				Swal.fire({
+				icon: 'success',
+				title: 'Success!',
+				text: 'Profile Updated Successfully',
+				showConfirmButton: false,
+				timer: 1500
+				}).then(function () {
+				location.reload();
+				});
+			});
+			});
+			</script>
+
+
+
+
+
+	</body>
+</html>
+{% endblock %}
+
+
+
+<!-- Specific Page CSS goes HERE  -->
+
+

@@ -1,0 +1,279 @@
+{% extends 'base_admin.html' %}{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Guruji Speaks</title>
+		
+		 <!-- Favicons -->
+         <link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+
+         <!-- Bootstrap CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+       
+         <!-- Fontawesome CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/fontawesome.min.css' %}">
+         <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/all.min.css' %}">
+       
+         <!-- Feathericon CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/css/feather.css' %}">
+       
+         <!-- Feathericon CSS -->
+         <link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css' %}">
+       
+         <link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+       
+         <!-- Datepicker CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/css/bootstrap-datetimepicker.min.css' %}">
+       
+         <!-- Owl Carousel CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/css/owl.carousel.min.css' %}">
+       
+         <!-- Animation CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/css/aos.css' %}">
+       
+         <!-- Main CSS -->
+         <link rel="stylesheet" href="{% static 'assets2/css/custom.css' %}">
+        
+    </head>
+    <body>
+	
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row">
+							<div class="col-sm-7 col-auto">
+								<h3 class="page-title">Banner </h3>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+                    <a   href="/add_banner/" class="btn btn-sm bg-danger-light">
+                        <button>
+                        <i class="fe fe-trash"></i> Add Banner</button>
+                    </a>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="datatable table table-hover table-center mb-0">
+											<thead>
+												<tr>
+													<th>Banner Image 1</th>
+													<th>Banner Image 2</th>
+													<th>Banner Image 3</th>
+													<th>Banner Title</th>
+													<th class="text-end">Actions</th>
+												</tr>
+											</thead>
+											<tbody>
+                                                {% for i in data  %}
+												<tr>													
+													<td>
+														<h2 class="table-avatar">
+															<a href="" class="avatar avatar-sm me-2">
+																<img class="avatar-img" src={{i.image1.url}} name='image1' value='{{i.image1.url}}' alt="Speciality">
+															</a>
+															
+														</h2>    
+													</td>
+                                                    <td>
+                                                        <h2 class="table-avatar">
+															<a href="" class="avatar avatar-sm me-2">
+																<img class="avatar-img" src={{i.image2.url}} name='image2' value='{{i.image2.url}}' alt="Speciality">
+															</a>
+															
+														</h2>
+                                                    </td>
+                                                    <td>
+                                                        <h2 class="table-avatar">
+															<a href="" class="avatar avatar-sm me-2">
+																<img class="avatar-img" src={{i.image3.url}} name='image3' value='{{i.image3.url}}' alt="Speciality">
+															</a>
+										
+														</h2>
+                                                    </td>
+
+                                                    <td>{{i.title}}</td>
+												
+													<td class="text-end">
+                                                        
+														{% comment %} <div class="actions">
+															<a class="btn btn-sm bg-success-light" data-bs-toggle="modal" href="#edit_specialities_details">
+																<i class="fe fe-pencil"></i> Edit
+															</a>
+															<a  data-bs-toggle="modal" href="/delete/{{i.id}}/" class="btn btn-sm bg-danger-light">
+																<i class="fe fe-trash"></i> Delete
+															</a>
+														</div> {% endcomment %}
+                                                        <div class="actions">
+															{% comment %} <a  href="/edit_banner/{{i.id}}/">
+																<i class="fe fe-pencil"></i> Edit
+															</a> {% endcomment %}
+															<a   href="/del_banner/{{i.id}}/" class="btn btn-sm bg-danger-light">
+																<i class="fe fe-trash"></i> Delete
+															</a>
+														</div>
+                                                        
+													</td>
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
+				</div>			
+			</div>
+			<!-- /Page Wrapper -->
+			
+			
+			<!-- Add Modal -->
+			<div class="modal fade" id="Add_Specialities_details" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Add Specialities</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="row form-row">
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>Specialities</label>
+											<input type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>Image</label>
+											<input type="file"  class="form-control">
+										</div>
+									</div>
+									
+								</div>
+								<button type="submit" class="btn btn-primary w-100">Save Changes</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /ADD Modal -->
+			
+			<!-- Edit Details Modal -->
+			<div class="modal fade" id="edit_specialities_details" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Edit Specialities</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="row form-row">
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>Specialities</label>
+											<input type="text" class="form-control" value="Cardiology">
+										</div>
+									</div>
+									<div class="col-12 col-sm-6">
+										<div class="form-group">
+											<label>Image</label>
+											<input type="file"  class="form-control">
+										</div>
+									</div>
+									
+								</div>
+								<button type="submit" class="btn btn-primary w-100">Save Changes</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Edit Details Modal -->
+			
+			<!-- Delete Modal -->
+			<div class="modal fade" id="delete_modal" aria-hidden="true" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document" >
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="form-content p-2">
+								<h4 class="modal-title">Delete</h4>
+								<p class="mb-4">Are you sure want to delete?</p>
+								<button type="button" class="btn btn-primary">Save </button>
+								<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Delete Modal -->
+        </div>
+		<!-- /Main Wrapper -->
+		
+		 <!-- jQuery -->
+         <script src="{% static 'assets2/js/jquery-3.6.4.min.js' %}"></script>
+
+         <!-- Bootstrap Core JS -->
+         <script src="{% static 'assets2/js/bootstrap.bundle.min.js' %}"></script>
+     
+         <!-- Slimscroll JS -->
+         <script src="{% static 'assets2/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+     
+         <script src="{% static 'assets2/plugins/raphael/raphael.min.js' %}"></script>
+         <script src="{% static 'assets2/plugins/morris/morris.min.js' %}"></script>
+         <script src="{% static 'assets2/js/chart.morris.js' %}"></script>
+     
+         <!-- Custom JS -->
+         <script src="{% static 'assets2/js/script.js' %}"></script>
+     
+         <!-- jQuery -->
+         <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+     
+         <!-- Bootstrap Bundle JS -->
+         <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+     
+         <!-- Feather Icon JS -->
+         <script src="{% static 'assets/js/feather.min.js' %}"></script>
+     
+         <!-- Datepicker JS -->
+         <script src="{% static 'assets/js/moment.min.js' %}"></script>
+         <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+     
+         <!-- Owl Carousel JS -->
+         <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+     
+         <!-- Slick JS -->
+         <script src="{% static 'assets/js/slick.js' %}"></script>
+     
+         <!-- Animation JS -->
+         <script src="{% static 'assets/js/aos.js' %}"></script>
+     
+         <!-- Counter JS -->
+         <script src="{% static 'assets/js/counter.js' %}"></script>
+     
+         <!-- BacktoTop JS -->
+         <script src="{% static 'assets/js/backToTop.js' %}"></script>
+     
+         <!-- Custom JS -->
+         <script src="{% static 'assets/js/script.js' %}"></script>
+         <script src="{% static 'assets2/js/script.js' %}"></script>
+		
+    </body>
+</html>
+{% endblock %}

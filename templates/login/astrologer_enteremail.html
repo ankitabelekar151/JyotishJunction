@@ -1,0 +1,173 @@
+
+
+{% comment %} {% block stylesheets %}{% endblock stylesheets %} {% block content %}
+{%block body_block%} {% endcomment %}
+
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+   <head>
+
+       <meta charset="utf-8">
+       <title>Guruji Speaks</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+       
+       <!-- Favicons -->
+       <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+       
+       <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+       
+       <!-- Fontawesome CSS -->
+       <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+       <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+       <!-- Feathericon CSS -->
+       <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+       
+       <!-- Main CSS -->
+       <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+   
+   </head>
+
+       <style>
+           *{
+               font-family: 'Montserrat', sans-serif;
+           }
+       /* background image */
+       .account-page .content.top-space {
+           /* padding-top: 140px; */
+           background-image: url('assets/img/GrujiSpeaks-img/background_new.png');
+           background-repeat: no-repeat;
+           /* background-position: center; */
+           background-size: cover;
+           padding: 30px 0 130px 0;
+       }	
+
+       .main-wrapper{
+                margin: 0;
+				padding: 50px 0 60px;
+				background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+       }
+
+       /* reset button */
+       .btn-primary {
+           background-color: #1c3264;
+           border: 1px solid #1c3264;
+       }
+       .btn-primary:hover, .btn-primary:active, .btn-primary.active {
+           color: #1c3264;
+           background-color: #d2d2d2;
+           border-color: #d2d2d2;
+       }
+       </style>
+
+<style>
+    .alert-danger {
+        height: 20px; /* Allow the height to adjust based on content */
+    }
+
+    .alert-danger p {
+        margin-top: -10px; /* Adjust the margin-top value to move the text higher */
+    }
+	
+</style>
+
+   <body class="account-page">
+
+       <!-- Main Wrapper -->
+       <div class="main-wrapper">			
+           <!-- Page Content -->
+           <div class="content top-space">
+               <div class="container-fluid">
+                   
+                   <div class="row">
+                       <div class="col-md-8 offset-md-2">
+                           
+                           <!-- Account Content -->
+                           <div class="account-content">
+                               <div class="row align-items-center justify-content-center">
+                                   <div class="col-md-7 col-lg-6 login-left">
+                                       <img src="{% static 'assets/img/forgot_password.jpeg' %}" class="img-fluid" alt="Login Banner">	
+                                   </div>
+                                   <div class="col-md-12 col-lg-6 login-right">
+                                       <div class="login-header">
+                                           <h3>Forgot Password?</h3>
+                                           <p class="small text-muted">Enter Your Mobile Number to get a password reset OTP</p>
+                                       </div>
+                                       
+                                       <!-- Forgot Password Form -->
+                                       <form action="/astrologer_forgotpass/" method="post">
+                                        {% csrf_token %}
+                                           <div class="form-group form-focus">
+                                               <input type="text" name="user_id" class="form-control floating" required> 
+                                                {% if error_message %}
+                                                <div class="text-danger">{{ error_message }}</div>
+                                                {% endif %}
+                                               <label class="focus-label">Mobile Number</label>
+                                           </div>
+                                           <!-- <div class="text-end">
+                                               <a class="forgot-link" href="login.html">Remember your password?</a>
+                                           </div> -->
+                                           <button class="btn btn-primary w-100 btn-lg login-btn"  value="Reset Password" type="submit">Reset Password</button>
+                                       </form>
+                                       <!-- /Forgot Password Form -->
+                                       
+                                   </div>
+                               </div>
+                           </div>
+                           <!-- /Account Content -->
+                           
+                       </div>
+                   </div>
+
+               </div>
+
+           </div>		
+           <!-- /Page Content -->
+       </div>
+       <!-- /Main Wrapper -->
+     
+       <!-- jQuery -->
+       <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+       
+       <!-- Bootstrap Core JS -->
+       <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+       
+       <!-- Custom JS -->
+       <script src="{% static 'assets/js/script.js' %}"></script>
+       
+   </body>
+</html>
+
+
+
+
+
+
+  
+      {% comment %} <script>
+        const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (()=>{
+          loginForm.style.marginLeft = "-50%";
+          loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (()=>{
+          loginForm.style.marginLeft = "0%";
+          loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (()=>{
+          signupBtn.click();
+          return false;
+        });
+     </script> {% endcomment %}
+  
+{% comment %} {%endblock%}
+{%endblock content%} {% endcomment %}

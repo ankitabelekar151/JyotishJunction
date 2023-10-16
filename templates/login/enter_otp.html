@@ -1,0 +1,227 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Enter OTP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button[type="submit"] {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter OTP</h1>
+    <form method="post" action="/verify_otp_view/">
+        {% csrf_token %}
+        {{ error_message }}
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" name="otp" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    	<!-- Mobile CSS-->
+		<link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/intlTelInput.css' %}">
+    	<link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/demo.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+		<style>
+
+			.login-body{
+				background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+
+			.login-content-info {
+				margin: 0;
+				padding: 70px 0 60px;
+			}
+
+			.login-content-info .account-content .login-back {
+				padding-bottom: 30px;
+			}
+
+			.login-verify-img {
+				padding-bottom: 30px;
+			}
+
+			.login-content-info .account-content .login-title {
+				padding-bottom: 0;
+			}
+
+			.login-content-info .account-content .login-verify-img {
+				padding-bottom: 10px;
+			}
+
+			.otp-box input {
+				width: 54px;
+				height: 54px;
+				background: #f9f9f9;
+				border: 2px solid #ACACAC;
+				border-radius: 8px;
+				text-align: center;
+				margin-right: 10px;
+				font-weight: 600;
+				font-size: 20px;
+				color: #000000;
+				outline: none;
+			}
+		</style>
+
+	</head>		
+	<body class="login-body">
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+
+			<!-- Page Content -->
+			<div class="login-content-info">
+				<div class="container">
+
+					<!-- Login Phone Otp -->
+					<div class="row justify-content-center">
+						<div class="col-lg-5 col-md-6 bg-light p-4 rounded">
+							<div class="account-content">
+								<div class="login-shapes">
+									<div class="shape-img-left">
+										<img src="assets/img/shape-01.png" alt="">
+									</div>
+									<div class="shape-img-right">
+										<img src="assets/img/shape-02.png" alt="">
+									</div>
+								</div>
+								<div class="account-info">
+									<div class="login-back">
+										<a href="/forgotpass/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+									</div>
+									<div class="login-verify-img">
+										<img src="assets/img/icons/mobile-icon.svg" alt="">
+									</div>
+									<div class="login-title">
+										<h3>Phone OTP Verification</h3>
+										
+									</div>
+									<form method="post" class="digit-group login-form-control" data-group-name="digits" data-autosubmit="false" autocomplete="off" action="/verify_otp_view/">
+                                        {% csrf_token %}
+										<div class="otp-box">
+											<div class="form-group">
+                                                <input type="hidden" name="user_id" value="{{ user_id }}">
+												<input type="text" id="digit-1" name="digit-1" data-next="digit-2" maxlength="1">
+												<input type="text" id="digit-2" name="digit-2" data-next="digit-3" data-previous="digit-1" maxlength="1">
+												<input type="text" id="digit-3" name="digit-3" data-next="digit-4" data-previous="digit-2" maxlength="1">
+												<input type="text" id="digit-4" name="digit-4" data-next="digit-5" data-previous="digit-3" maxlength="1">
+												<input type="text" id="digit-5" name="digit-5" data-next="digit-6" data-previous="digit-4" maxlength="1">
+												<input type="text" id="digit-6" name="digit-6" data-next="digit-7" data-previous="digit-5" maxlength="1">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="otp-info">
+												<div class="otp-code">
+                                                    <p>OTP code sent successfully to your mobile number.</p>
+													{% comment %} <p>Didn't receive OTP code?</p>
+													<a href="javascript:void(0);">Resend Code</a> {% endcomment %}
+												</div>
+												{% comment %} <div class="otp-sec">
+													<p><i class="feather-clock"></i></p>
+												</div> {% endcomment %}
+											</div>
+										</div>
+										<div class="reset-btn">
+											<button class="btn btn-block" type="submit">Submit</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Login Phone Otp -->
+
+				</div>
+			</div>		
+			<!-- /Page Content -->
+		</div>		
+		<!-- /Main Wrapper -->
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Mobile Input -->
+		<script src="{% static 'assets/plugins/intltelinput/js/intlTelInput.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+	
+	</body>
+</html>

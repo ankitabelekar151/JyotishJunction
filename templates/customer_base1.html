@@ -1,0 +1,521 @@
+{% comment %} old  {% endcomment %}
+
+
+
+
+
+<!DOCTYPE html>
+{% load static %} 	
+<html lang="en">
+	<head>
+
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+		<style>
+			/* header nav */
+			.header-one .main-menu-wrapper .main-nav li a {
+				font-size: 15px;
+				font-weight: 500;
+				color: #ffffff !important;
+				display: block;
+			}
+			
+			.header .header-nav .header-navbar-rht .noti-nav .nav-link {
+				font-size: 18px;
+				color: #ffffff !important;
+			}
+
+			.header .header-nav .header-navbar-rht .has-arrow .dropdown-toggle:after {
+				border-top: 0;
+				border-left: 0;
+				border-bottom: 2px solid #ffffff !important;
+				border-right: 2px solid #ffffff !important;
+				content: "";
+				height: 8px;
+				display: inline-block;
+				pointer-events: none;
+				width: 8px;
+				vertical-align: 2px;
+				margin-left: 10px;
+				transform-origin: 66% 66%;
+				-webkit-transform-origin: 66% 66%;
+				-ms-transform-origin: 66% 66%;
+				transform: rotate(45deg);
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				-webkit-transition: all 0.15s ease-in-out;
+				-ms-transition: all 0.15s ease-in-out;
+				transition: all 0.15s ease-in-out;
+			}
+
+			/* footer */
+			.footer-one {
+				background: #1c3264 !important;
+			}
+
+			.footer-one .footer-top {
+                margin: 0;
+                padding: 30px 0 !important;
+            }
+
+			.footer-one .footer-top .footer-widget .footer-about-content p {
+				margin-bottom: 0;
+				font-size: 14px;
+				color: #ffffff !important;
+			}
+
+			.footer-one .footer-top .footer-widget .footer-title {
+				font-size: 18px;
+				font-weight: 600;
+				color: #ffffff !important;
+				margin-bottom: 25px;
+			}
+
+			.footer-one .footer-top .footer-widget.footer-menu ul li a {
+				color: #ffffff !important;
+				position: relative;
+				overflow: hidden;
+				background: url(../img/footer-arrow.png) no-repeat -10px;
+				-webkit-transition: all 0.5s ease-in-out;
+				-ms-transition: all 0.5s ease-in-out;
+				transition: all 0.5s ease-in-out;
+				padding-left: 0;
+				font-size: 14px;
+			}
+
+			.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p {
+				margin-bottom: 0;
+				color: #ffffff !important;
+				font-size: 14px;
+			}
+
+
+			.footer.footer-one .footer-bottom .copyright .copyright-text p {
+                color: #fff !important;
+            }
+            .footer .footer-bottom .copyright .copyright-text p a {
+                color: #eae1e1 !important;
+                font-weight: 500;
+                -webkit-transition: all 0.4s ease 0s;
+                -ms-transition: all 0.4s ease 0s;
+                transition: all 0.4s ease 0s;
+            }
+            .footer-one .footer-bottom .copyright .policy-menu li a {
+                color: #fff !important;
+            }
+            .footer-one .social-icon ul li a {
+                color: #fff !important;
+                font-size: 20px;
+                -webkit-transition: all 0.4s ease 0s;
+                -ms-transition: all 0.4s ease 0s;
+                transition: all 0.4s ease 0s;
+            }
+			.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p i {
+				font-size: 16px;
+				color: #fff !important;
+				margin-right: 10px;
+			}
+		</style>
+	
+	</head>
+
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+			<!-- Header -->
+			 <header class="header  header-one" style="background: #1c3264;">
+				<div class="container">
+					<nav class="navbar navbar-expand-lg header-nav">
+						<div class="navbar-header">
+							<a id="mobile_btn" href="javascript:void(0);">
+								<span class="bar-icon">
+									<span></span>
+									<span></span>
+									<span></span>
+								</span>
+							</a>
+							<a href="index.html" class="navbar-brand logo">
+								<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 75px;">
+							</a>
+						</div>
+						<div class="main-menu-wrapper">
+							<div class="menu-header">
+								<a href="index.html" class="menu-logo">
+									<img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+								</a>
+								<a id="menu_close" class="menu-close" href="javascript:void(0);">
+									<i class="fas fa-times"></i>
+								</a>
+							</div>
+							<ul class="main-nav">
+								<li class="has-submenu megamenu">
+									<a href="/dash_customer/">Home</a>
+									
+								</li>
+								<!-- <li class="has-submenu active">
+									<a href="javascript:void(0);">Talk To Astrologer</a>
+								</li> -->
+								<li class="has-submenu">
+									<a href="/view_plan/">Ask a Question</a>
+									
+								</li>
+								<li class="has-submenu">
+									<a href="/blogs/">Blog</a>
+									
+								</li>
+								
+							</ul>
+						</div>
+						<ul class="nav header-navbar-rht">
+
+							 <!-- Notifications  -->
+							<li class="nav-item dropdown noti-nav me-3 pe-0">
+								<a href="#" class="dropdown-toggle nav-link p-0" data-bs-toggle="dropdown">
+									<i class="fa-solid fa-bell"></i> <span class="badge">5</span>
+								</a>
+								<div class="dropdown-menu notifications dropdown-menu-end ">
+									<div class="topnav-dropdown-header">
+										<span class="notification-title">Notifications</span>
+									</div>
+									<div class="noti-content">
+										<ul class="notification-list">
+											<li class="notification-message">
+												<a href="#">
+													<div class="media d-flex">
+														<span class="avatar">
+															<img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-01.jpg' %}">
+														</span>
+														<div class="media-body">
+															<h6>Travis Tremble <span class="notification-time">18.30 PM</span></h6>
+															<p class="noti-details">Sent a amount of $210 for his Appointment  <span class="noti-title">Dr.Ruby perin </span></p>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li class="notification-message">
+												<a href="#">
+													<div class="media d-flex">
+														<span class="avatar">
+															<img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-02.jpg' %}">
+														</span>
+														<div class="media-body">
+															<h6>Travis Tremble <span class="notification-time">12 Min Ago</span></h6>
+															<p class="noti-details"> has booked her appointment to  <span class="noti-title">Dr. Hendry Watt</span></p>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li class="notification-message">
+												<a href="#">
+													<div class="media d-flex">
+														<div class="avatar">
+															<img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-03.jpg' %}">
+														</div>
+														<div class="media-body">
+															<h6>Travis Tremble <span class="notification-time">6 Min Ago</span></h6>
+															<p class="noti-details"> Sent a amount  $210 for his Appointment   <span class="noti-title">Dr.Maria Dyen</span></p>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li class="notification-message">
+												<a href="#">
+													<div class="media d-flex">
+														<div class="avatar avatar-sm">
+															<img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-04.jpg' %}">
+														</div>
+														<div class="media-body">
+															<h6>Travis Tremble <span class="notification-time">8.30 AM</span></h6>
+															<p class="noti-details"> Send a message to his doctor</p>
+														</div>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							 <!-- /Notifications -->
+
+							<!-- User Menu  -->
+							<li class="nav-item dropdown has-arrow logged-item">
+								<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+									<span class="user-img">
+										<img class="rounded-circle" src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" width="31" alt="Darren Elder">
+									</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end">
+									<div class="user-header">
+										<div class="avatar avatar-sm">
+											<!-- <img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image" class="avatar-img rounded-circle"> -->
+										</div>
+										<div class="user-text">
+											<h6>{{request.user.first_name}} {{request.user.last_name}}</h6>
+											<p class="text-muted mb-0">Customer</p>
+										</div>
+									</div>
+									<a class="dropdown-item" href="/customer-profile/">Profile Settings</a>
+									<a class="dropdown-item" href="/changepass/">Change Password</a>
+									<a class="dropdown-item" href="/logout/">Logout</a>
+								</div>
+							</li>
+							 <!-- /User Menu -->
+							
+						</ul>
+					</nav>
+				</div>
+			</header> 
+			<!-- /Header -->
+			
+			<aside class="sidebar-wrapper d-flex align-items-stretch" data-simplebar="true">
+				<div class="profile-sidebar sidebar-header">
+					<div class="widget-profile pro-widget-content">
+						<div class="profile-info-widget">
+							<a href="#" class="booking-doc-img">
+								<img src="{% static 'assets/img/patients/patient.jpg' %}" alt="User Image">
+							</a>
+							<div class="profile-det-info">
+								<h3>{{request.user.first_name}}{{request.user.last_name}}</h3>
+								<div class="patient-details">
+									<h5><i class="fas fa-birthday-cake"></i>{{request.user.dob}}</h5>
+									<h5 class="mb-0"><i class="fas fa-map-marker-alt"></i> {{request.user.state}},{{request.user.country}}</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="dashboard-widget">
+						<nav class="dashboard-menu">
+							<ul>
+								<li class="active">
+									<a href="/dash_customer/">
+										<i class="fas fa-columns"></i>
+										<span>Dashboard</span>
+									</a>
+								</li>
+								
+
+								</li> 
+								<!-- <li>
+									
+									<a href="/view_plan/">
+										<i class="fas fa-comments"></i>
+										<span>Ask a Questions</span>
+										<small class="unread-msg"></small>
+									</a>
+								</li> -->
+								<!-- <li>
+									<a href="#">
+										<i class="fas fa-file-invoice-dollar"></i>
+										<span>Recharge</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<i class="fas fa-list-alt"></i>
+										<span>My Orders</span>
+										<small class="unread-msg">7</small>
+									</a>
+								</li> -->
+								
+								<li>
+									
+									<a href="/customer_bill/">
+										<i class="fas fa-user-cog"></i>
+										<span>My Payments</span>
+									</a>
+								</li>
+								<!-- <li>
+									 
+									<a href="/changepass/">
+										<i class="fas fa-lock"></i>
+										<span>Change Password</span>
+									</a>
+								</li> -->
+								<li>
+									<a href="/logout/">
+										<i class="fas fa-sign-out-alt"></i>
+										<span>Logout</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+
+				</div>
+				{% block content %}
+				{% endblock %}
+			</aside>
+           
+   
+			<!-- Footer -->
+				<footer class="footer footer-one">
+					<div class="footer-top">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-3 col-md-4">
+									<div class="footer-widget footer-about">
+										<div class="footer-logo">
+											<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}"style="
+												margin-top: -20px;
+												max-width: 30%;
+												height: auto;
+											" alt="logo">
+										</div>
+										<div class="footer-about-content">
+											<p>At Guruji Speak, we believe that astrology is a powerful tool that can be used to gain insights into our lives and to make better decisions.</p>
+										</div>
+										<br>
+										<div class="social-icon">
+											<ul>
+												<li>
+													<a  target="_blank"><i class=""></i>
+														<img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}" class="image-fluid w-50" alt="Logo"> </a>
+												</li>
+												<li>
+													<a  target="_blank"><i class=""></i>
+														<img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}" class="image-fluid w-50" alt="Logo"> </a>
+												</li>
+												<li>
+													<a  target="_blank"><i class=""></i>
+														<img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}" class="image-fluid w-50" alt="Logo"> </a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-2 col-md-4">
+									<div class="footer-widget footer-menu">
+										<h2 class="footer-title">Useful Links</h2>
+										<ul>
+											<li><a href="/faqs/">FAQ</a></li>
+											<li><a href="/intellactual_property/">Intellectual Property</a></li>
+											<li><a href="/disclaimer/">Disclaimer</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-2 col-md-4">
+									<div class="footer-widget footer-menu">
+										<h2 class="footer-title">For Astrologer</h2>
+										<ul>
+											<li><a href="#">Appointments</a></li>
+											<li><a href="/astrologer-registration/">Register</a></li>
+											<li><a href="/astrologer-login/">Login</a></li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-2 col-md-5">
+									<div class="footer-widget footer-contact">
+										<h2 class="footer-title">Contact Us</h2>
+										<div class="footer-contact-info">
+											
+											
+											<div class="footer-address">
+												<p><i class="feather-phone-call"></i>+91 999 999 3840</p>
+											</div>
+											<div class="footer-address mb-0">
+												<p><i class="feather-mail"></i> info@gurujispeaks.com</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-7">
+									<div class="footer-widget">
+										<h2 class="footer-title">Join Our Newsletter</h2>
+										<div class="subscribe-form">
+											<form action="#">
+												<input type="email" class="form-control" placeholder="Enter Email">
+												<button type="submit" class="btn">Submit</button>
+											</form>
+										</div>
+										<div class="social-icon">
+											<ul>
+												<li>
+													<a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> </a>
+												</li>
+												<li>
+													<a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i class="fab fa-instagram"></i></a>
+												</li>
+												<li>
+													<a href="https://twitter.com/guruji_speaks?s=20" target="_blank"><i class="fab fa-twitter"></i> </a>
+												</li>
+												<li>
+													<a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="footer-bottom">
+						<div class="container">
+							<!-- Copyright -->
+							<div class="copyright">
+								<div class="row">
+									<div class="col-md-6 col-lg-6">
+										<div class="copyright-text">
+											<p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">GurujiSpeaks.</a> All Rights Reserved.Powered by Zappkode.</p>
+										</div>
+									</div>
+									<div class="col-md-6 col-lg-6">
+									
+										<!-- Copyright Menu -->
+										<div class="copyright-menu">
+											<ul class="policy-menu">
+												<li><a href="/privacy_policy/">Privacy Policy</a></li>
+												<li><a href="/terms_of_service/">Terms Of Service</a></li>
+												<li><a href="/Refund_Cancellation_Policy/">Refund and Cancellation Policy</a></li>
+											</ul>
+										</div>
+										<!-- /Copyright Menu -->
+										
+									</div>
+								</div>
+							</div>
+							<!-- /Copyright -->					
+						</div>
+					</div>
+				</footer>
+			<!-- /Footer -->
+		   
+		</div> 
+		<!-- /Main Wrapper -->
+
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+        <script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+		
+		<!-- Circle Progress JS -->
+		<script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+		
+	</body>
+</html>

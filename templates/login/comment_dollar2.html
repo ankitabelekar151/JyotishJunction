@@ -1,0 +1,1067 @@
+{% extends "customer_base.html" %} {% block content %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Guruji Speaks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}" />
+
+  <!-- Feathericon CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}" />
+
+  <!-- Apex Css -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/apex/apexcharts.css' %}" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+
+  <!-- delete pop up -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  .btn-primary {
+    background-color: #1c3264;
+    border: 1px solid #1c3264;
+  }
+
+  .btn-primary:hover {
+    background-color: #fff;
+    border: 1px solid #ffffff;
+    color: #000;
+  }
+
+  .btn-primary .active:not(:disabled):not(.disabled),
+  .btn-primary:active:not(:disabled):not(.disabled) {
+    background-color: #1c3264;
+    border-color: #1c3264;
+    color: #ffffff;
+  }
+
+  [type="button"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  button:not(:disabled) {
+    cursor: pointer;
+    background-color: #1c3264;
+    color: #fff;
+    border: 1px solid #1c3264;
+  }
+
+  .breadcrumb-bar-two {
+    background: #F2F6F6;
+    background-repeat: no-repeat;
+    padding-top: 10px !important;
+    min-height: 100px !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .breadcrumb-bar-two .inner-banner {
+    margin: 0;
+    padding: 40px 0 !important;
+  }
+
+  .text-wrap {
+    white-space: normal !important;
+    width: 7rem;
+  }
+
+  .card {
+    border: 1px solid #000;
+    margin-bottom: 1.875rem;
+  }
+
+  .update-profile{
+      cursor: pointer;
+      background-color: #1c3264;
+      color: #fff;
+      border: 1px solid #1c3264;
+      padding: 6.7px;
+      border-radius: 6px;
+    }
+
+  @media (max-width: 991.98px) {
+    .card-responsive {
+      width: 100px;
+      padding: 5px;
+      margin: auto;
+    }
+
+    .text-wrap {
+      margin-left: -30px;
+    }
+
+    input[type=radio] {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+
+<body>
+  <!-- Main Wrapper -->
+  <div class="main-wrapper w-100">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar-two">
+      <div class="container">
+        <div class="row align-items-center inner-banner">
+          <div class="col-md-12 col-12 text-center">
+            <h2 class="breadcrumb-title">Customer Dashboard</h2>
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="/dash_customer/">Home</a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page">
+                  Customer Dashboard
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Breadcrumb -->
+
+    <!-- Page Content -->
+    <div class="content">
+      <div class="container">
+        <!-- <div class="row text-end mb-3">
+          <div class="col-md-7 col-lg-8 col-xl-12">
+            <a href="/customer-profile/">
+              <button  class="btn" >Update Your Profile</button>
+            </a>
+          </div>
+        </div> -->
+        <div class="row">
+          <div class="col-md-7 col-lg-8 col-xl-12">
+            <div class="card">
+              <div class="card-body pt-0">
+                <!-- Tab Menu -->
+                <nav class="user-tabs mb-4">
+                  <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#pat_appointments" data-bs-toggle="tab">Select Sample
+                        Question</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#pat_prescriptions" data-bs-toggle="tab">Add my Own Question</a>
+                    </li>
+                  </ul>
+                </nav>
+                
+                <!-- /Tab Menu -->
+
+                <!-- Tab Content -->
+                <div class="tab-content pt-0">
+                  <!-- sample que Tab -->
+                  <div id="pat_appointments" class="tab-pane fade show active">
+                    <form id="radioForm" onsubmit="submitForm(event)" method="post">
+                      {% csrf_token %}
+                      <fieldset>
+
+                        <div class="col-md-7 col-lg-8 col-xl-12">
+                          <div class="row column-grid text-center">
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48"
+                                      src="https://img.icons8.com/doodle/48/brainstorm-skill.png"
+                                      alt="brainstorm-skill" /></span><br>
+                                  <label for="radio1" class="text-wrap">
+
+                                    <input type="radio" id="radio1" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Self" />
+                                    Self
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/gold-pot.png"
+                                      alt="gold-pot" /></span><br>
+                                  <label for="radio2" class="text-wrap">
+                                    <input type="radio" id="radio2" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Wealth" />
+                                    Wealth
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48"
+                                      src="https://img.icons8.com/doodle/48/heart-with-pulse.png"
+                                      alt="heart-with-pulse" /></span><br>
+                                  <label for="radio3" class="text-wrap">
+                                    <input type="radio" id="radio3" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Health" />
+                                    Health
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/crowd.png"
+                                      alt="crowd" /></span><br>
+                                  <label for="radio4" class="text-wrap">
+                                    <input type="radio" id="radio4" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Family" />
+                                    Family
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48"
+                                      src="https://img.icons8.com/doodle/48/wedding-rings--v1.png"
+                                      alt="wedding-rings--v1" /></span><br>
+                                  <label for="radio5" class="text-wrap">
+                                    <input type="radio" id="radio5" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Marriage" />
+                                    Marriage
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48"
+                                      src="https://img.icons8.com/doodle/48/we-hear-it.png"
+                                      alt="we-hear-it" /></span><br>
+                                  <label for="radio6" class="text-wrap">
+                                    <input type="radio" id="radio6" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Love" />
+                                    Love
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/teaching.png"
+                                      alt="teaching" /></span><br>
+                                  <label for="radio7" class="text-wrap">
+                                    <input type="radio" id="radio7" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Education" />
+                                    Education
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/coaching.png"
+                                      alt="coaching" /></span><br>
+                                  <label for="radio8" class="text-wrap">
+                                    <input type="radio" id="radio8" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Career" />
+                                    Career
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/business.png"
+                                      alt="business" /></span><br>
+                                  <label for="radio9" class="text-wrap">
+                                    <input type="radio" id="radio9" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Business" />
+                                    Business
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/pray.png"
+                                      alt="pray" /></span><br>
+                                  <label for="radio10" class="text-wrap">
+                                    <input type="radio" id="radio10" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Puja" />
+                                    Puja
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48"
+                                      src="https://img.icons8.com/doodle/48/chrome-reader-mode.png"
+                                      alt="chrome-reader-mode"></span><br>
+                                  <label for="radio11" class="text-wrap">
+                                    <input type="radio" id="radio11" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Spirituality" />
+                                    Spirituality
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-xl-2 card-responsive">
+                              <div class="card widget-profile pat-widget-profile">
+                                <div class="card-body">
+                                  <span><img width="48" height="48" src="https://img.icons8.com/doodle/48/headache.png"
+                                      alt="headache" /></span><br>
+                                  <label for="radio12" class="text-wrap">
+                                    <input type="radio" id="radio12" name="radioGroup" onclick="showQuestions(this)"
+                                      value="Hard_Time" />
+                                    Hard Time
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </fieldset>
+                      <br />
+                      <div id="questionsContainer"></div>
+                      <br />
+                      {% if all_values_present %}
+                      <!-- <button type="submit" class="btn text-center" >
+                        Add Questions
+                      </button> -->
+
+                      {% if user_comments < 5 %}
+                        <button type="submit" class="btn" id="addQuestionsButton">
+                        Add Questions
+                        </button>
+                        
+                        <a href="/update_gold/" class="update-profile">
+                          Update Your Profile
+                        </a>    
+
+                        
+                      {% endif %}
+                      {% endif %}
+                      <!-- <div class="text-center"> -->
+                      <!-- <button type="submit" class="btn">
+                        Add Questions
+                      </button> -->
+                      <!-- {% if all_values_present %}
+                      
+                      <button type="submit" class="btn">
+                        Add Questions
+                      </button>
+                    {% else %}
+                        <h3>Before Adding A Question You Need To Update Your Profile</h3>
+                        <a href="/customer-profile/">
+                          <button  class="btn" >Update Your Profile</button>
+                        </a>
+                    {% endif %} -->
+
+                      <!-- </div> -->
+
+                      <!-- {% if all_values_present %}
+                          {% if user_comments < 5 %}
+                          <button type="submit" class="btn text-center">
+                            Add Questions
+                          </button>
+                          {% endif %}
+                          {% endif %} -->
+
+                      <div class="mt-4">
+                        <h5>In This Package You Can Add 5 Questions</h5>
+
+                        {% if question_left == 1 %}
+                        <h5>You have 1 question left</h5>
+                        {% else %}
+                        <h5>You have {{ question_left }} Questions left</h5>
+                        {% endif %}
+                      </div>
+
+                    </form>
+
+
+                    {% if all_values_present %}
+                    
+                      
+                      
+                    {% else %}
+                        <h3>Before Adding A Question You Need To Update Your Profile</h3>
+                        <a href="/update_gold/">
+                          <button  class="btn" >Update Your Profile</button>
+                        </a>
+                    {% endif %}
+                    
+
+                    <div class="col-md-7 col-lg-8 col-xl-12">
+                      <table class="table text-center table-bordered">
+                        <thead>
+                          <tr>
+                            <!-- <th align="center">Customer name</th> -->
+                            <th>Sr. No.</th>
+                            <th>Question</th>
+                            <th>Action</th>
+
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for i in comment_data %}
+                          <tr>
+                            <td>{{forloop.counter}}</td>
+                            {% if i.order_id == "" %}
+                            <td>
+                              <div class="card">
+                                <div class="card-body">
+                                  {{ i.comment1 }}
+                                </div>
+                              </div>
+                            </td>
+                            {% if i.astro_email_id == "" %}
+                            <!-- <td>
+                                  <a href="/delete-question-gold/{{i.id}}/"><button class="btn btn-primary">Delete</button></a>
+                                </td> -->
+
+                            <td>
+                              <!-- <a href="/delete-question-gold/{{i.id}}/" onclick="return confirmDelete();">
+                                <button class="btn btn-primary">Delete</button>
+                              </a> -->
+
+                              <a href="/delete-question-gold/{{i.id}}/" onclick="confirmDelete('{{i.id}}'); return false;">
+                                <button class="btn btn-primary">Delete</button>
+                            </a>
+                            </td>
+
+                            {% endif %}
+                            {% endif %}
+
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+
+                  <!-- /sample que Tab -->
+
+                  <!-- own que Tab -->
+                  <div id="pat_prescriptions" class="tab-pane fade">
+                    <form action="" method="post">
+                      {% csrf_token %}
+                      <!-- Assuming the plan name is rendered as a dropdown/select field -->
+                      <div class="form-group">
+                        <label for="plan_name">Plan Name</label>
+                        <select class="form-control" name="plan_name_1" id="plan_name">
+                          <option value="Divine Revelations">
+                            Celestial Guidance
+                          </option>
+                          <!-- Add other plan options if applicable -->
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="comment">Ask Your Questions</label>
+                        <input type="hidden" name="valu" value="Life" >
+                        <textarea class="form-control" name="comment1" rows="4" cols="50"></textarea>
+                      </div>
+
+
+                      <!-- {% if all_values_present %}
+                          {% if user_comments < 5 %}
+                          <button type="submit" class="btn text-center">
+                            Add Questions
+                          </button>
+                          {% endif %}
+                          {% endif %} -->
+
+                          {% if all_values_present %}
+                      <!-- <button type="submit" class="btn text-center" >
+                        Add Questions
+                      </button> -->
+
+                      {% if user_comments < 5 %}
+                        <button type="submit" class="btn" id="addQuestionsButton">
+                        Add Questions
+                        </button>
+                        
+                        <a href="/update_gold/" class="update-profile">
+                          Update Your Profile
+                        </a>    
+
+                        
+                      {% endif %}
+                      {% endif %}
+
+
+                      <div class="mt-4">
+                        <h5>In Package You Can Add 5 Questions </h5>
+
+                        <h5>You have {{question_left}} Questions left</h5>
+                      </div>
+                    </form>
+                    {% if all_values_present %}
+                      
+                      
+                    {% else %}
+                        <h3>Before Adding A Question You Need To Update Your Profile</h3>
+                        <a href="/update_gold/">
+                          <button  class="btn" >Update Your Profile</button>
+                        </a>
+                    {% endif %}
+
+                    <table class="table text-center">
+                      <thead>
+                        <tr>
+                          <!-- <th align="center">Customer name</th> -->
+                          <th>Sr. No.</th>
+                          <th>Question</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for i in comment_data %}
+                        <tr>
+                          {% if i.order_id == "" %}
+                          <td>{{forloop.counter}}</td>
+                          <td>
+                            <div class="card">
+                              <div class="card-body">
+                                {{ i.comment1 }}
+                              </div>
+                            </div>
+
+                          </td>
+                          {% if i.astro_email_id == "" %}
+                          <td>
+                            <!-- <a href="/delete-question-gold/{{i.id}}/"><button
+                                class="btn btn-primary">Delete</button></a> -->
+
+                                <a href="/delete-question-gold/{{i.id}}/" onclick="confirmDelete('{{i.id}}'); return false;">
+                                  <button class="btn btn-primary">Delete</button>
+                              </a>
+                          </td>
+                          {% else %}
+                          <td><button class="btn btn-success">Assigned Successfully</button></td>
+                          {% endif %}
+
+                          {% endif %}
+
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /own que Tab -->
+
+                   
+                     
+                  <div class="text-center">
+                    {% if user_comments >= 1 %}
+                    <button type="button" class="btn"  onclick="showMessage()">
+                      Submit For Answers
+                    </button>
+                    {% endif %}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Page Content -->
+
+
+  </div>
+  <!-- /Main Wrapper -->
+
+
+
+  <script>
+    function confirmDelete(questionId) {
+        Swal.fire({
+            title: 'Delete Confirmation',
+            text: 'Are you sure you want to delete this question?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it',
+            cancelButtonText: 'No, cancel'
+        }).then(function (result) {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: 'Deleting...',
+                    text: 'Please wait while the question is being deleted.',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    showConfirmButton: false,
+                    icon: 'info'
+                });
+  
+                // Prevent the default link navigation
+                event.preventDefault();
+  
+                // Simulate a delay to show the loading message
+                setTimeout(function () {
+                    // Redirect to the delete URL with the specific question ID
+                    window.location.href = '/delete-question-gold/' + questionId + '/';
+                }, 0); // Adjust the delay as needed
+            }
+        });
+    }
+  </script>
+
+
+
+  <!-- delete pop up -->
+
+  <!-- <script>
+    function confirmDelete() {
+      return confirm("Are you sure you want to delete this question?");
+    }
+  </script> -->
+
+<!-- original -->
+
+ <!--  <script>
+    function showMessage() {
+      // Get the grand_debit value from your backend or set it directly
+      var grand_debit = {{grand_debit}}; // Replace {{grand_debit}} with the actual value
+    var que_count = {{user_comments}};     // Replace {{que_count}} with the actual value
+
+    if (que_count == 0) {
+      alert("You need to add a question before submitting.");
+      // Redirect to question_add URL
+
+    } else if (grand_debit < 5) {
+      alert("Insufficient money! You cannot submit your question.");
+      // Redirect to customer-wallet URL
+      window.location.href = '/customer-wallet/';
+    } else if (que_count >= 1) {
+      alert("Your question has been Sent to Astrologer successfully.");
+      // Redirect to comment_view URL
+      window.location.href = '/comment_view_gold/';
+    }
+      }
+  </script>
+ -->
+
+
+
+
+<script>
+  function showMessage() {
+    // Get the grand_debit value from your backend or set it directly
+    var grand_debit = {{grand_debit}}; // Replace {{grand_debit}} with the actual value
+    var que_count = {{user_comments}};     // Replace {{que_count}} with the actual value
+
+    if (que_count == 0) {
+        Swal.fire({
+            title: 'Warning!',
+            text: 'You need to add a question before submitting.',
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        }).then(function () {
+            // Redirect to question_add URL
+            window.location.href = '/question_add/'; // Replace with your desired URL
+        });
+    } else if (grand_debit < 2361) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Minimum wallet balance of Rs.2361/- is required to submit your questions',
+            icon: 'error',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Recharge Now'
+        }).then(function () {
+            // Redirect to customer-wallet URL
+            window.location.href = '/customer-wallet/'; // Replace with your desired URL
+        });
+    } else if (que_count >= 1) {
+        Swal.fire({
+            title: 'Success!',
+            text: 'Your question has been Added successfully.',
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        }).then(function () {
+            // Redirect to comment_view URL
+            window.location.href = '/comment_view_gold/'; // Replace with your desired URL
+        });
+    }
+}
+</script>
+
+
+
+
+
+  <!-- /Graph Two-->
+
+  <!-- jQuery -->
+  <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Bootstrap Core JS -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Feather Icon JS -->
+  <script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+  <!-- Apex JS -->
+  <script src="{% static 'assets/plugins/apex/apexcharts.min.js' %}"></script>
+
+  <!-- Custom JS -->
+  <script src="{% static 'assets/js/script.js' %}"></script>
+
+  <!-- Profile Settings JS (dropdown)-->
+  <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+  <!-- Select2 JS (dropdown)-->
+  <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+
+  <!-- Dropzone JS (dropdown)-->
+  <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+  <!-- BacktoTop JS -->
+  <script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+  <!-- Slick JS -->
+  <script src="{% static 'assets/js/slick.js' %}"></script>
+
+  <script>
+    var user_comments = 0;
+    function showQuestions(option) {
+      var questionsContainer = document.getElementById("questionsContainer");
+      var questions = {
+        Self: [
+          " What does my birth chart reveal about my personality traits, strengths, and areas of growth? ",
+          " Can astrology provide insights into my life purpose and the unique gifts I bring to the world? ",
+          " Are there any planetary placements or aspects that influence my self-confidence and self-expression? ",
+          " How can astrology guide me in understanding and accepting my shadow aspects or hidden potentials? ",
+          " Are there any specific astrological indicators of my spiritual journey and inner growth? ",
+          " Can astrology help me understand and navigate through periods of self-doubt or personal transformation? ",
+          " What are the astrological factors influencing my self-care practices and overall well-being? ",
+          " Are there any suitable periods for self-reflection, introspection, or solo retreats according to my chart? ",
+          " Can astrology provide insights into the best approaches for cultivating self-love and self-acceptance? ",
+          " How can I align my astrological influences with personal development, goal setting, and manifestation? ",
+          " What are the potential areas of personal growth and evolution that I can focus on? ",
+          " Can astrology guide me in developing healthy boundaries, assertiveness, and self-empowerment? ",
+          " Are there any specific astrological remedies or rituals to enhance self-awareness and self-discovery? ",
+          " How can astrology help me understand and balance different aspects of my identity and roles in life? ",
+          " Can astrology provide insights into the ultimate purpose of my self-discovery and the path to self-realization? ",
+        ],
+        Wealth: [
+          " Will I experience financial stability and abundance in the near future? ",
+          " What are the astrological indicators of wealth and prosperity in my birth chart? ",
+          " Which planets and houses in my horoscope influence my financial status? ",
+          " Are there any potential blockages or obstacles hindering my financial growth? ",
+          " What are the suitable periods for investment or starting a new business venture? ",
+          " Can astrology provide insights into my career path that can lead to financial success? ",
+          " How can I improve my financial situation and attract wealth using astrological remedies? ",
+          " Are there any planetary combinations or aspects indicating sudden financial gains or windfalls? ",
+          " Can astrology help me identify the best time for buying or selling property or assets? ",
+          " What should I focus on to enhance my financial prospects according to my horoscope? ",
+          " Are there any negative financial cycles indicated in my astrological chart that I should be aware of? ",
+          " How can I align my financial goals with my spiritual journey to achieve abundance? ",
+          " What is the significance of my current planetary transits in relation to my financial situation? ",
+          " Will my current business or career path lead to long-term financial success and stability? ",
+          " Can astrology provide guidance on effective money management and wealth preservation strategies? ",
+        ],
+        Health: [
+          " Are there any health concerns or ailments indicated in my astrological chart? ",
+          " What are the astrological factors influencing my overall well-being and vitality? ",
+          " Can astrology help identify potential health risks or vulnerabilities in my birth chart? ",
+          " Are there any specific planetary placements or aspects that relate to my current health condition? ",
+          " How can I maintain a healthy lifestyle and prevent health issues according to my horoscope? ",
+          " Are there any astrological remedies or practices that can support my physical and mental well-being? ",
+          " Can astrology provide insights into the best dietary and fitness choices for my unique constitution? ",
+          " Are there any planetary transits or periods that may impact my health positively or negatively? ",
+          " How can I balance my energy and find harmony between my mind, body, and spirit? ",
+          " Can astrology help me understand the underlying causes of my chronic health condition? ",
+          " What are the karmic influences in my chart that may affect my health and how can I overcome them? ",
+          " Will I experience a period of improved health and vitality in the near future? ",
+          " Can astrology guide me in choosing the most suitable alternative or holistic healing methods? ",
+          " Are there any specific gemstones, colors, or healing modalities that can enhance my well-being? ",
+          " How can I align my astrological influences with a holistic approach to achieve optimal health? ",
+        ],
+        Family: [
+          " What does my birth chart reveal about my relationship with my family members? ",
+          " Can astrology provide insights into the dynamics and compatibility within my family? ",
+          " Are there any astrological indications of challenges or conflicts within my family? ",
+          " How can astrology help me understand and improve my relationship with my parents? ",
+          " Are there any specific planetary placements or aspects that influence my family life? ",
+          " Can astrology guide me in resolving family disputes or improving communication? ",
+          " What are the astrological factors that contribute to a harmonious and loving family environment? ",
+          " Are there any karmic influences or past-life connections within my family dynamics? ",
+          " How can I create a balanced and supportive atmosphere within my family based on my chart? ",
+          " Can astrology provide insights into the upbringing and nurturing of my children? ",
+          " What are the potential areas of growth and evolution within my family relationships? ",
+          " Are there any astrological remedies or rituals to enhance harmony and unity within my family? ",
+          " Can astrology help me understand the ancestral influences and lineage patterns within my family? ",
+          " How can astrology guide me in making important decisions that impact my family's well-being? ",
+          " Can astrology provide insights into the future prospects and expansion of my family? ",
+        ],
+        Marriage: [
+          " What does my birth chart reveal about my prospects for marriage and a committed partnership? ",
+          " Are there any astrological indications of a suitable life partner or soulmate in my chart? ",
+          " Can astrology help me understand the timing and potential circumstances of my marriage? ",
+          " What are the astrological factors influencing the success and compatibility of my marriage? ",
+          " Are there any challenges or obstacles indicated in my chart that may affect my marital life? ",
+          " Can astrology provide insights into the qualities I should seek in a life partner? ",
+          " How can astrology guide me in choosing the most favorable time for getting married? ",
+          " What are the potential areas of growth and evolution within my marital relationship? ",
+          " Are there any astrological remedies or rituals to strengthen the bond and harmony in marriage? ",
+          " Can astrology help me navigate issues related to compatibility, communication, and intimacy in marriage? ",
+          " What are the karmic influences in my chart that may impact my marital life? ",
+          " Can astrology provide insights into the longevity and stability of my marriage? ",
+          " How can I enhance the chances of a happy and fulfilling married life based on my chart? ",
+          " Are there any specific astrological indicators of a love or arranged marriage in my chart? ",
+          " Can astrology guide me in resolving conflicts and maintaining a harmonious relationship with my spouse? ",
+        ],
+        Love: [
+          " What does my birth chart reveal about my romantic prospects and potential for finding love? ",
+          " Are there any astrological indications of a significant romantic relationship entering my life? ",
+          " Can astrology help me understand the compatibility between myself and a potential partner? ",
+          " What are the astrological factors influencing my current relationship dynamics and compatibility? ",
+          " Are there any challenges or obstacles indicated in my chart that may affect my love life? ",
+          " Can astrology provide insights into the timing of a significant romantic connection or marriage? ",
+          " How can I enhance my chances of attracting a loving and fulfilling relationship based on my chart? ",
+          " Are there any past-life connections or karmic influences affecting my romantic relationships? ",
+          " What are the astrological indicators of a healthy and harmonious long-term partnership? ",
+          " Can astrology help me navigate relationship issues and provide guidance for effective communication? ",
+          " What are the potential areas of growth and evolution in my current or future romantic relationships? ",
+          " How can I heal from past heartbreaks and open myself up to love again according to astrology? ",
+          " Are there any specific astrological remedies or rituals to attract love and cultivate romance? ",
+          " Can astrology shed light on the potential for a long-lasting and committed partnership? ",
+          " How can I align my astrological influences with my personal growth to create a fulfilling love life? ",
+
+        ],
+        Education: [
+          " What does my birth chart reveal about my educational prospects and potential for academic success? ",
+          " Are there any astrological indicators of my preferred field of study or areas of intellectual strength? ",
+          " Can astrology provide insights into the best educational institutions or courses for me? ",
+          " Are there any planetary placements or aspects that influence my learning abilities and concentration? ",
+          " How can astrology guide me in choosing the right career path based on my educational background? ",
+          " Are there any potential challenges or obstacles indicated in my chart that may affect my education? ",
+          " Can astrology help me understand my learning style and how to optimize it for better academic performance? ",
+          " What are the suitable periods for pursuing higher education or specialized training according to my chart? ",
+          " What are the suitable periods for pursuing higher education or specialized training according to my chart? ",
+          " Can astrology provide insights into the timing of important exams, interviews, or study-related events? ",
+          " How can I align my astrological influences with effective study habits and time management skills? ",
+          " Are there any past-life influences or karmic lessons related to my educational journey? ",
+          " Can astrology guide me in selecting the right mentors or teachers who will support my educational growth? ",
+          " What are the potential areas of growth and expansion within my educational pursuits? ",
+          " Can astrology help me understand the connection between my educational goals and my life purpose?, ",
+        ],
+        Career: [
+          " What does my birth chart reveal about my career potential and suitable professional paths? ",
+          " Can astrology provide insights into the most favorable career choices based on my astrological influences? ",
+          " Are there any planetary placements or aspects that indicate success and recognition in my career? ",
+          " How can astrology guide me in identifying my unique skills and talents for career development? ",
+          " Are there any potential challenges or obstacles indicated in my chart that may impact my career? ",
+          " Can astrology help me understand the best timing for career advancements, promotions, or job changes? ",
+          " What are the astrological factors influencing my job satisfaction and overall career fulfillment? ",
+          " Are there any suitable periods for starting a new business or entrepreneurial ventures according to my chart? ",
+          " Can astrology provide insights into the ideal work environment or professional partnerships for me? ",
+          " How can astrology guide me in overcoming career-related setbacks or periods of uncertainty? ",
+          " Are there any specific astrological remedies or rituals to enhance career growth and success? ",
+          " Can astrology shed light on the potential for financial prosperity and stability in my career? ",
+          " What are the karmic influences or past-life connections that may impact my career choices? ",
+          " How can I align my astrological influences with my true life purpose and meaningful work? ",
+          " Can astrology help me find balance and fulfillment in my career while maintaining personal well-being? ",
+        ],
+        Business: [
+          " What does my birth chart reveal about my potential for success in business ventures? ",
+          " Can astrology provide insights into the most suitable areas or industries for my entrepreneurial endeavors? ",
+          " Are there any planetary placements or aspects that indicate financial prosperity and growth in business? ",
+          " How can astrology guide me in choosing the right business partners or collaborators? ",
+          " Are there any potential challenges or obstacles indicated in my chart that may affect my business ventures? ",
+          " Can astrology help me understand the best timing for starting a new business or launching a product/service? ",
+          " What are the astrological factors influencing the success and profitability of my business? ",
+          " Are there any specific astrological remedies or rituals to enhance business growth and success? ",
+          " Can astrology provide insights into the potential market trends or opportunities for my business? ",
+          " How can I align my astrological influences with effective business strategies and decision-making? ",
+          " What are the karmic influences or past-life connections that may impact my business ventures? ",
+          " Can astrology guide me in overcoming business-related setbacks or periods of uncertainty? ",
+          " Are there any suitable periods for expanding my business or entering new markets according to my chart? ",
+          " How can astrology help me create a balanced approach to business success and personal well-being? ",
+          " Can astrology provide insights into the long-term sustainability and growth potential of my business? ",
+        ],
+        Puja: [
+            " Which specific puja or ritual is recommended for attracting positive energy and blessings into my life? ",
+            " Can astrology guide me in choosing the most auspicious dates and timings for performing a puja? ",
+            " What are the astrological factors or planetary influences that determine the effectiveness of a puja? ",
+            " Are there any specific pujas or rituals to address specific challenges or obstacles in my life? ",
+            " Can astrology provide insights into the appropriate mantras, chants, or offerings for a particular puja? ",
+            " How can I personalize a puja to honor a specific deity or seek guidance in a particular aspect of my life? ",
+            " Are there any specific pujas or rituals to enhance spiritual growth, inner peace, and mindfulness? ",
+            " Can astrology guide me in understanding the significance and benefits of different types of pujas? ",
+            " What are the astrological factors influencing the outcomes and blessings received from a puja? ",
+            " Can astrology help me select the right priest or purohit for performing a puja according to my chart? ",
+            " How can I align my astrological influences with the intentions and prayers during a puja? ",
+            " Are there any specific pujas or rituals to promote health, wealth, success, or harmony in relationships? ",
+            " Can astrology provide insights into the duration and frequency of performing a particular puja? ",
+            " What are the potential obstacles or precautions to consider while performing a puja based on my chart? ",
+            " Can astrology help me understand the significance and symbolism behind the rituals and offerings in a puja? ",
+
+        ],
+        Spirituality: [
+        " What does my birth chart reveal about my spiritual inclinations and potential for inner growth? ",
+            " Can astrology provide insights into the spiritual practices or paths that align with my unique journey? ",
+            " Are there any planetary placements or aspects that indicate a strong connection to higher realms or intuition? ",
+            " How can astrology guide me in deepening my spiritual practice and expanding my consciousness? ",
+            " Are there any specific astrological indicators of past-life spiritual experiences or soul purpose? ",
+            " Can astrology help me understand the challenges or obstacles I may encounter on my spiritual path? ",
+            " What are the astrological factors influencing my connection with divine energy and spiritual guidance? ",
+            " Are there any suitable periods for retreats, meditation, or intensive spiritual practices according to my chart? ",
+            " Can astrology provide insights into the integration of spirituality into my daily life and relationships? ",
+            " How can I align my astrological influences with self-reflection, mindfulness, and inner peace? ",
+            " What are the potential areas of spiritual growth and transformation that I can focus on? ",
+            " Can astrology guide me in finding the right spiritual mentors, teachers, or communities for support and guidance? ",
+            " Are there any specific astrological remedies or rituals to enhance my spiritual journey and connection? ",
+            " How can astrology help me cultivate gratitude, compassion, and a sense of interconnectedness on my spiritual path? ",
+            " Can astrology provide insights into the ultimate purpose of my spiritual journey and the evolution of my soul? ",
+        ],
+        Hard_Time: [
+          " What does my birth chart reveal about the challenges or difficult periods I am currently facing? ",
+          " Can astrology provide insights into the underlying lessons or purpose behind these hard times?  ",
+          " Are there any planetary placements or aspects that indicate the potential for resilience and growth during tough phases? ",
+          " How can astrology guide me in understanding the best approach to navigate through difficult situations?",
+          " Are there any specific astrological remedies or rituals to help overcome obstacles and find inner strength?   ",
+          " Can astrology shed light on the timing and duration of these hard times, and when can I expect relief? ",
+          " What are the astrological factors influencing my personal resilience and ability to overcome adversity? ",
+          " Can astrology provide insights into the lessons I need to learn and the growth opportunities available during challenging periods?",
+          " How can I align my astrological influences with effective coping strategies and self-care practices?",
+          " Are there any past-life influences or karmic lessons that may be contributing to these hard times?",
+          " Can astrology help me understand the potential blessings or silver linings that may emerge from these difficult experiences?  ",
+          " What are the potential areas of personal growth and transformation that I can focus on during tough phases?",
+          " Can astrology guide me in seeking support from the right people  or seeking professional help during hard times?     ",
+          " How can I maintain a positive mindset and cultivate resilience in the face of adversity according to astrology?    ",
+          " Can astrology help me find meaning and purpose amidst difficult times and guide me towards a brighter future? "
+        ],
+      };
+
+      // Clear previous questions
+      questionsContainer.innerHTML = "";
+
+      if (option.value in questions) {
+        var optionQuestions = questions[option.value];
+
+        for (var i = 0; i < optionQuestions.length; i++) {
+          var question = document.createElement("p");
+          var radioBtn = document.createElement("input");
+          radioBtn.type = "radio";
+          radioBtn.name = "selectedQuestion";
+          radioBtn.value = optionQuestions[i];
+          question.textContent = optionQuestions[i];
+          question.insertBefore(radioBtn, question.firstChild);
+          questionsContainer.appendChild(question);
+        }
+      }
+      user_comments = 0;
+    }
+
+    // function submitForm(event) {
+    //   event.preventDefault();
+    //   var selectedQuestion = document.querySelector(
+    //     'input[name="selectedQuestion"]:checked'
+    //   );
+    //   if (selectedQuestion) {
+    //     var hiddenInput = document.createElement("input");
+    //     hiddenInput.type = "hidden";
+    //     hiddenInput.name = "selectedQuestion";
+    //     hiddenInput.value = selectedQuestion.value;
+    //     var form = document.getElementById("radioForm");
+    //     form.appendChild(hiddenInput);
+    //     form.submit();
+    //     alert("Your question has been added successfully.");
+    //   } else {
+    //     alert("Please select a question.");
+    //   }
+    // }
+    function submitForm(event) {
+      event.preventDefault();
+      var selectedQuestion = document.querySelector('input[name="selectedQuestion"]:checked');
+
+      if (selectedQuestion) {
+        var hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = "selectedQuestion";
+        hiddenInput.value = selectedQuestion.value;
+        var form = document.getElementById("radioForm");
+        form.appendChild(hiddenInput);
+        form.submit();
+
+        questionCount++; // Increment the counter when a question is added
+
+        if (questionCount === 5) {
+          alert("Your question has been added successfully.");
+        } else {
+          alert("Limit exceeded. You can only add one question at a time.");
+        }
+      } else {
+        alert("Please select a question.");
+      }
+    }
+  </script>
+
+</body>
+
+</html>
+
+{% endblock %}

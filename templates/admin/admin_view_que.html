@@ -1,0 +1,465 @@
+{% extends "base_admin.html" %}{% block content %}
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head> 
+
+    <meta charset="utf-8">
+    <title>Guruji Speaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet"
+        href="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/feather.css' %}">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/plugins/select2/css/select2.min.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/custom.css' %}">
+
+    <style>
+        @media (max-width: 991.98px) {
+            .mobile-res{
+                display: inline-block !important;
+            }
+        }
+
+        textarea.form-control {
+            min-height: calc(2.5em + 80rem + 1px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Page Content -->
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <h3 style="text-align:center;">Questions Assigned to Astrologer</h3>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-7 col-lg-8 col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div class="col-md-7 col-lg-8 col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="d-flex mobile-res">
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                Customer Name</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ user.name}} </p>
+
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                Plan Name</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ user.plan_name }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex mobile-res">
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                Date of Birth </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ value1.dob }}</p>
+
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                Gender </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ value1.gender }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex mobile-res">
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                Birth Time </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ value1.birth_time }}
+                                                            </p>
+
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                Birth Place</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ value1.birth_place }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex mobile-res">
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                City</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ value1.city }}</p>
+
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">
+                                                                State </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ value1.state }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label>Questions</label>    
+                                        {% if user.plan_name == "Divine Revelations" %}
+                                        {% for i in que %}
+                                        {% if user_pro == i.select_cust %}
+                                        <input type="text" class="form-control" value="{{i.comment1}}" >
+                                        {% if i.comment2 %}
+                                        <label>Answer</label>
+                                        <textarea class="form-control h-auto" name="comment2_{{ i.id }}"
+                                            required>{{i.comment2 }}</textarea>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% else %}
+                                        {% for i in que %}
+                                        <input type="text" class="form-control" value="{{i.comment1}}" >
+                                        {% if i.comment2 %}
+                                        <label>Answer</label>
+                                        <textarea class="form-control h-auto" name="comment2_{{ i.id }}"
+                                            required>{{i.comment2 }}</textarea>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
+
+
+                                        {% if user.plan_name == "Divine Revelations" %}
+                                        {% if data4.0 %}
+                                        <div class="col-md-7 col-lg-8 col-xl-5">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">Customer Name</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.fname}} </p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Plan Name</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.pname }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">Date of Birth </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.dob }}</p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Gender </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.gender }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">Birth Time </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.birth_time }}
+                                                            </p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Birth Place</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.birth_place}}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p
+                                                                class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">City</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.city }}</p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> State </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.state }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Country</p>
+                                                        <p class="col-sm-3 fw-bolder mx-3"> {{ data4.0.country }}</p>
+                                                    </div>
+                                                    <!-- <p class="fw-bolder">Customer Name  </p>
+                                                    <p class="fw-bolder">Plan Name </p>
+                                                    <p class="fw-bolder">Date of Birth </p>
+                                                    <p class="fw-bolder">Gender </p>
+                                                    <p class="fw-bolder">Birth Time </p>
+                                                    <p class="fw-bolder">Birth Place </p>
+                                                    <p class="fw-bolder">City </p>
+                                                    <p class="fw-bolder">State </p>
+                                                    <p class="fw-bolder">Country </p> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        <label>Questions</label>
+                                        {% endif %}
+                                        {% for i in que %}
+                                        {% if data4.0.fname == i.select_cust %}
+                                        <input type="text" class="form-control" value="{{i.comment1}}" >
+                                        {% if i.comment2 %}
+                                        <label>Answer</label>
+                                        <textarea class="form-control h-auto" name="comment2_{{ i.id }}"
+                                            required>{{i.comment2 }}</textarea>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% if user.plan_name == "Divine Revelations" %}
+                                        {% if data4.1 %}
+                                        <div class="col-md-7 col-lg-8 col-xl-5">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">Customer Name</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.fname}} </p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Plan Name</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.pname }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">Date of Birth </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.dob }}</p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Gender </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3">{{ data4.1.gender }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">Birth Time </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.birth_time }}</p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Birth Place</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.birth_place }}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="d-flex">
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder">City</p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.city }}</p>
+
+                                                            <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> State </p>
+                                                            <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.state }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-sm-2 text-muted text-sm-end mb-0 mb-sm-3 fw-bolder"> Country</p>
+                                                        <p class="col-sm-3 fw-bolder mx-3"> {{ data4.1.country }}</p>
+                                                    </div>
+                                                    <!-- <p class="fw-bolder">Customer Name  </p>
+                                                    <p class="fw-bolder">Plan Name </p>
+                                                    <p class="fw-bolder">Date of Birth </p>
+                                                    <p class="fw-bolder">Gender </p>
+                                                    <p class="fw-bolder">Birth Time </p>
+                                                    <p class="fw-bolder">Birth Place </p>
+                                                    <p class="fw-bolder">City </p>
+                                                    <p class="fw-bolder">State </p>
+                                                    <p class="fw-bolder">Country </p> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        <label>Questions</label>
+                                        {% endif %}
+                                        {% for i in que %}
+                                        {% if data4.1.fname == i.select_cust %}
+                                        <input type="text" class="form-control" value="{{i.comment1}}" >
+                                        {% if i.comment2 %}
+                                        <label>Answer</label>
+                                        <textarea class="form-control h-auto" name="comment2_{{ i.id }}"
+                                            required>{{i.comment2 }}</textarea>
+                                        {% endif %}  
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% if user.plan_name == "Divine Revelations" %}
+                                        {% if data4.2 %}  
+                                        <div class="col-md-7 col-lg-8 col-xl-5">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <p class="fw-bolder">Customer Name:- {{ data4.2.fname}} </p>
+                                                    <p class="fw-bolder">Plan Name:- {{ data4.2.pname }}</p>
+                                                    <p class="fw-bolder">Date of Birth:- {{ data4.2.dob }}</p>
+                                                    <p class="fw-bolder">Gender:- {{ data4.2.gender }}</p>
+                                                    <p class="fw-bolder">Birth Time:- {{ data4.2.birth_time }}</p>
+                                                    <p class="fw-bolder">Birth Place:- {{ data4.2.birth_place }}</p>
+                                                    <p class="fw-bolder">City:- {{ data4.2.city }}</p>
+                                                    <p class="fw-bolder">State:- {{ data4.2.state }}</p>
+                                                    <p class="fw-bolder">Country:- {{ data4.2.country }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        <label>Questions</label> 
+                                        {% endif %}
+                                        {% for i in que %}
+                                        {% if data4.2.fname == i.select_cust %}
+                                        <input type="text" class="form-control" value="{{i.comment1}}" >
+                                        {% if i.comment2 %}
+                                        <label>Answer</label>
+                                        <textarea class="form-control h-auto" name="comment2_{{ i.id }}"
+                                            required>{{i.comment2 }}</textarea>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endfor %} 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label mt-5>Assigned To Astrologer</label>
+                    <div class="row">
+                        <div class="col-md-7 col-lg-8 col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% if data_que.comment2 %}
+                                    {% for p in astro_name %}
+                                    <input type="text" class="form-control" value="{{p.name}}      {{p.expertise}}" readonly>
+                                    {% endfor %}
+                                    {% else %}
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="astro_email_id">
+                                        {% for j in astro_name %}
+                                        <option>{{j.name}}</option>
+                                        {% endfor %}
+                                        {%for i in astro %}
+                                        <option value="{{i.name}}"> {{ i.name }} </option>
+                                        {% endfor %}
+                                    </select>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if data_que.comment2 %}
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit"
+                            style="background: #1c3264; border: 1px solid #1c3264">Submit</button>
+
+                        {% if data_que.qapprove %}
+                        <button class="btn btn-primary"
+                            style="background: green; border: 1px solid green;" style="color: white;">Approved</button>
+                        {% else %}
+                        <button class="btn btn-primary" type="submit"
+                            style="background: #1c3264; border: 1px solid #1c3264"><a
+                                href="/approved-question-admin/{{user.id}}/">Approve </a></button>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit"
+                            style="background: #1c3264; border: 1px solid #1c3264">Submit</button>
+                    </div>
+                    {% endif %}
+
+
+
+                </form>
+            </div>
+
+        </div>
+        <!-- /Page Content -->
+
+    </div>
+
+    <script>
+        var answerField = document.getElementById('answerField');
+        var answerInput = answerField.getElementsByTagName('textarea')[0];
+
+        if (answerInput.value.trim() === '') {
+            answerField.style.display = 'none';
+        }
+    </script>
+
+
+    <script>
+        function submitForm(commentId, sendButton) {
+            var form = document.getElementById('send-form');
+            var selectElement = form.querySelector('select[name="astro_email_id_' + commentId + '"]');
+            var selectedAstrologerId = selectElement.value;
+            form.action = "/admin_view_que/" + commentId + "/";
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', 'astro_email_id');
+            hiddenField.setAttribute('value', selectedAstrologerId);
+            form.appendChild(hiddenField);
+
+            // Get the selected name before submitting the form
+            var selectedName = selectElement.options[selectElement.selectedIndex].text.trim();
+
+            // Update the display of selected name before form submission
+            var selectedNameElement = sendButton.parentNode.nextElementSibling.querySelector('#selected-name');
+            selectedNameElement.textContent = selectedName;
+
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Perform an asynchronous form submission
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form)
+            }).then(function (response) {
+                // Handle the form submission response if needed
+            }).catch(function (error) {
+                // Handle any error during form submission if needed
+            });
+        }
+
+    </script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'assets2/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Select2 JS -->
+    <script src="{% static 'assets2/plugins/select2/js/select2.min.js' %}"></script>
+
+    <!-- Datetimepicker JS -->
+    <script src="{% static 'assets2/js/moment.min.js' %}"></script>
+    <script src="{% static 'assets2/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{% static 'assets2/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'assets2/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets2/js/script.js' %}"></script>
+
+    <!-- for country -->
+    <script src="//cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
+    <script src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <script
+        src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

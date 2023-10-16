@@ -1,0 +1,268 @@
+{% extends 'customer_base.html' %} {% block content %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guruji Speaks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+    <!-- Fontawesome CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}" />
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}" />
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+
+    <style>
+        label{
+            text-align: justify;
+            /* width: 90%; */
+        }
+
+        .btn-primary {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffffff;
+            border: 1px solid #1c3264;
+            color: #1c3264;
+        }
+
+        .btn-primary:active {
+            background-color: #ffffff;
+            border: 1px solid #1c3264;
+            color: #1c3264;
+        }
+
+        .login-in-fourteen{
+            visibility: hidden;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="breadcrumb-bar-two">
+        <div class="container">
+          <div class="row align-items-center inner-banner">
+            <div class="col-md-12 col-12 text-center">
+              <h2 class="breadcrumb-title">Puja Insights</h2>
+              <nav aria-label="breadcrumb" class="page-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item" aria-current="page">
+                    Puja Insights
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="container mt-5 mb-2">
+        <div class="row">
+            <div class="col-lg-8 m-auto">
+               <div class="card">
+                <div class="card-body">
+                    <div class="form-check mt-2">
+                            <h4 class="text-center">Disclaimer</h4>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Remember, while astrology can provide guidance in choosing and performing 
+                                pujas, it's important to approach them with reverence, devotion, and an open 
+                                heart. You should also consult with knowledgeable priests or experts to ensure 
+                                the proper conduct of the puja.
+                            </label>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <h6><b> Choose Your Questions for Puja's Insights OR You can also add your own question</b></h6>
+                    </div>
+                    <hr>
+                    <!-- question list -->
+                    <div class="ms-5 mx-5 mb-3" >
+                        <div class="form-check ">
+                            <!-- <input class="form-check-input " type="checkbox" name="flexRadioDefault" id="flexRadioDefault2"> -->
+                            <label class="form-check-label" for="flexRadioDefault2" >
+                                Which specific puja or ritual is recommended for attracting positive 
+                                energy and blessings into my life?                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology guide me in choosing the most auspicious dates and 
+                                timings for performing a puja?                                                             
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                               What are the astrological factors or planetary influences that 
+                               determine the effectiveness of a puja?                              
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any specific pujas or rituals to address specific challenges or 
+                                obstacles in my life?                                 
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology provide insights into the appropriate mantras, chants, or 
+                                offerings for a particular puja?                                                             
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                How can I personalize a puja to honor a specific deity or seek 
+                                guidance in a particular aspect of my life? 
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any specific pujas or rituals to enhance spiritual growth, 
+                                inner peace, and mindfulness?                                                                 
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                               Can astrology guide me in understanding the significance and benefits 
+                               of different types of pujas?                              
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What are the astrological factors influencing the outcomes and 
+                                blessings received from a puja?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology help me select the right priest or purohit for 
+                                performing a puja according to my chart?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                How can I align my astrological influences with the intentions 
+                                and prayers during a puja?                          
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any specific pujas or rituals to promote health, wealth, 
+                                success, or harmony in relationships?                                                                                              
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology provide insights into the duration and frequency of performing a particular puja?
+                         
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What are the potential obstacles or precautions to consider while
+                                performing a puja based on my chart?als to promote health, wealth, 
+                                success, or harmony in relationships?                                                          
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology help me understand the significance and 
+                                symbolism behind the rituals and offerings in a puja?                                                             
+                            </label>
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    
+    
+                    <!-- button -->
+                    <div class="text-center mt-2">
+                    <a href="/view_plan/"><button type="button" class="btn btn-primary">Ask a Question</button></a>                    </div>
+                </div>
+               </div>
+               
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	<!-- Bootstrap Core JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	 <!-- Profile Settings JS (dropdown)-->
+	 <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+	 <!-- Select2 JS (dropdown)-->
+	 <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+	 
+	 <!-- Dropzone JS (dropdown)-->
+	 <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Datepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+	<!-- Owl Carousel JS -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<!-- Animation JS -->
+	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+	<!-- Counter JS -->
+	<script src="assets/js/counter.js"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+    </body>
+</html>
+
+{% endblock %}

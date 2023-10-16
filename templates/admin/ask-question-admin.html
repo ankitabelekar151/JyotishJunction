@@ -1,0 +1,125 @@
+{% extends "base_admin.html" %}{% block content %}
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>  
+		
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+		<link rel="stylesheet" href="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets2/css/feather.css' %}">
+		
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="{% static 'assets2/css/bootstrap-datetimepicker.min.css' %}">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{% static 'assets2/plugins/select2/css/select2.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets2/css/custom.css' %}">
+	
+	</head>
+    <body>
+        
+        <div class="page-wrapper">
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container">
+					<div class="row">
+					
+						<div class="col-md-7 col-lg-8 col-xl-5">
+							<div class="card">
+								<div class="card-body">
+									<p class="fw-bolder">Customer Name</p>
+                                    <p class="fw-bolder">Plan Name</p>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Question</label>
+                                            <input type="text" class="form-control" value="wesdrtfgyuhjkv" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Answer</label>
+                                            <textarea class="form-control h-auto" readonly></textarea>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <select class="form-select" aria-label="Default select example">
+                                            <option selected>Select Astrologer Name</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                          </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary" type="submit" style="background: #1c3264; border: 1px solid #1c3264">Submit</button>
+                        </div>
+
+                    </form>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+		   
+		</div>
+
+
+
+        <!-- Bootstrap Core JS -->
+		<script src="{% static 'assets2/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Select2 JS -->
+		<script src="{% static 'assets2/plugins/select2/js/select2.min.js' %}"></script>
+		
+		<!-- Datetimepicker JS -->
+		<script src="{% static 'assets2/js/moment.min.js' %}"></script>
+		<script src="{% static 'assets2/js/bootstrap-datetimepicker.min.js' %}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{% static 'assets2/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+        <script src="{% static 'assets2/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'assets2/js/script.js' %}"></script>
+
+		<!-- for country -->
+		<script src="//cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
+		<script src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+		<script src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+    </body>
+</html>
+{% endblock %}

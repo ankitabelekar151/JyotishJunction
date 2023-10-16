@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,">
+	<title>Guruji Speaks</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" type="image/x-icon">
+
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1K79WZ1L2Q"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-1K79WZ1L2Q');
+		</script>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Datepicker CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+	<!-- Owl Carousel CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+	<!-- Animation CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<!-- font-family -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+	<style>
+		.header.header-fourteen.header-twelve .header-nav .main-menu-wrapper .main-nav li a {
+			color: #fff !important;
+		}
+	
+	
+	
+		header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn.reg-btn-fourteen {
+			background: #1c3264 !important;
+			color: #ffffff;
+			transition: 0.5s;
+			border: 1px solid #1c3264 !important;
+			font-size: 15px;
+			font-weight: 600;
+		}
+	
+		/********************** Header    *********************************/
+	
+	
+	
+		/*********************** footer  ***************************************/
+	
+		.footer-one {
+			background: #000 !important;
+			margin: 0;
+			padding: 30px 0 !important;
+		}
+	
+		.footer-one .footer-top {
+			margin: 0;
+			padding: 10px 0;
+		}
+	
+		.footer-one .footer-top .footer-widget .footer-title {
+			font-size: 18px;
+			font-weight: 600;
+			color: #FFF !important;
+			margin-bottom: 25px;
+		}
+	
+		.footer .footer-top .footer-widget .footer-about-content p:last-child {
+			margin-bottom: 0;
+			color: #ffff !important;
+		}
+	
+		.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p {
+			margin-bottom: 0;
+			color: #fff !important;
+			font-size: 14px;
+		}
+	
+		.footer-one .social-icon ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			color: #fff !important;
+		}
+	
+		.footer-one .social-icon ul li a {
+			color: #fff !important;
+			font-size: 20px;
+			-webkit-transition: all 0.4s ease 0s;
+			-ms-transition: all 0.4s ease 0s;
+			transition: all 0.4s ease 0s;
+		}
+	
+		.footer .footer-bottom .copyright .copyright-text p {
+			font-size: 15px;
+			color: #ffffff !important;
+		}
+	
+		.footer.footer-one .footer-bottom .copyright .copyright-text p {
+			color: #fff !important;
+		}
+	
+		.footer .footer-bottom .copyright .copyright-text p a {
+			color: #fff !important;
+			font-weight: 500;
+			-webkit-transition: all 0.4s ease 0s;
+			-ms-transition: all 0.4s ease 0s;
+			transition: all 0.4s ease 0s;
+		}
+	
+		.footer-one .footer-top .footer-widget.footer-menu ul li a {
+			color: #fff !important;
+			position: relative;
+			overflow: hidden;
+			background: url(../img/footer-arrow.png) no-repeat -10px;
+			-webkit-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+			padding-left: 0;
+			font-size: 14px;
+		}
+	
+		.footer-one .footer-bottom .copyright .policy-menu li a {
+			color: #fff !important;
+		}
+	
+		.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p i {
+			font-size: 16px;
+			color: #fff !important;
+			margin-right: 10px;
+		}
+	
+		/*********************** footer  ***************************************/
+		.subscribe-form .btn {
+			font-weight: normal;
+			margin: 0;
+			padding: 11px 16px;
+			font-size: 15px;
+			font-weight: 600;
+			border-radius: 0 1px 1px 0 !important;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			color: #ffffff !important;
+			background: #1c3264 !important;
+			border: 2px solid #fff !important;
+			box-shadow: inset 0 0 0 0 #ffffff !important;
+		}
+	
+		.subscribe-form .btn:hover {
+			color: #1c3264;
+			border-color: #1c3264 !important;
+			background: #ffffff !important;
+			box-shadow: inset 0 0 0 50px #ffffff !important;
+			-webkit-transition: 0.5s;
+			-ms-transition: 0.5s;
+			transition: 0.5s;
+		}
+	
+		.subscribe-form .form-control {
+			font-weight: 500;
+			font-size: 14px;
+			min-height: 46px;
+			color: #1c3264 !important;
+			background: #ffffff !important;
+			border: 1px solid #E5E7EB !important;
+			border-radius: 6px 6px 6px 6px;
+			margin: 0;
+			padding: 6px 112px 6px 15px;
+		}
+	
+		.header-logo {
+			height: auto;
+			width: 100%;
+		}
+	
+		
+		@media (max-width: 991.98px) {
+			.header.header-fourteen.header-twelve .header-nav .main-menu-wrapper {
+				background-color: #000 !important;
+			}
+			.header.header-fourteen.header-twelve .header-nav .header-navbar-rht li {
+				display: block;
+			}
+			.header.header-fourteen.header-twelve .header-nav .main-menu-wrapper .main-nav li .submenu {
+				/* background-color: transparent; */
+			}
+		}
+	
+		
+	</style>
+	
+</head>
+
+
+<body>
+
+	<div class="main-wrapper home-twelve">
+		<!-- Header -->
+		<header class="header header-fixed header-fourteen header-twelve" style="background: #000;">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a href="#" class="navbar-brand logo">
+							<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo"
+								style="width: 80px; height: 70px;">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a href="#" class="menu-logo">
+								<img src="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" class="img-fluid"
+									alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="">
+								<a href="/">Home <i class="#"></i></a>
+							</li>
+
+							<li class="">
+								<a href="/ask_a_question_inr/">Ask a Question <i class="#"></i></a>
+
+							</li>
+
+							<li class="">
+								<a href="/blogs/">Blog <i class="#"></i></a>
+							</li>
+
+							<li class="">
+								<a href="/whatsapp_qr/">Chat Support <i class="#"></i></a>
+							</li>
+							<!-- <li class="login-link"><a href="/customer-login/">Login</a></li> -->
+						</ul>
+					</div>
+					<ul class="nav header-navbar-rht">
+
+						<!-- <li class="login-link"><a href="#">Login / Signup</a></li> -->
+
+						<li class="login-in-fourteen">
+							<a href="/customer-login-otp/" class="btn btn-primary reg-btn reg-btn-fourteen"><i
+									class="feather-user me-2"></i>Sign In</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		{% block content %}
+		{% endblock %}
+		<!-- /Header -->
+
+		<!-- Footer -->
+		<footer class="footer footer-one">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-4">
+							<div class="footer-widget footer-about">
+								<div class="footer-logo">
+									<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" style="
+										margin-top: -20px;
+										max-width: 30%;
+										height: auto;
+									" alt="logo">
+								</div>
+								<div class="footer-about-content">
+									<p>At Guruji Speaks, we believe that astrology is a powerful tool that can be used to
+										gain insights into our lives and to make better decisions.</p>
+								</div>
+								<br>
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a target="_blank"  style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+										<li>
+											<a target="_blank"  style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+										<li>
+											<a target="_blank"  style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">Useful Links</h2>
+								<ul>
+									<li><a href="/faqs/">FAQ</a></li>
+									<li><a href="/intellactual_property/">Intellectual Property</a></li>
+									<li><a href="/disclaimer/">Disclaimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">For Astrologer</h2>
+								<ul>
+									<!-- <li><a href="#">Appointments</a></li> -->
+									<li><a href="/astrologer-registration/">Register</a></li>
+									<li><a href="/astrologer-login-otp/">Login</a></li>
+									<li><a href="/customer_support/">Customer Support</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-5">
+							<div class="footer-widget footer-contact">
+								<h2 class="footer-title">Contact Us</h2>
+								<div class="footer-contact-info">
+									<!--<div class="footer-address">-->
+									<!--	<p><i class="feather-map-pin"></i> 3556 Beech Street, USA</p>-->
+									<!--</div>-->
+									<div class="footer-address">
+
+										<p><i class="feather-user"></i>Chat Support</p>
+									</div>
+									<div class="footer-address mb-0">
+										<p>
+										 
+										  <a href="mailto:care@gurujispeaks.com" style="color: white;"> <i class="feather-mail"></i>care@gurujispeaks.com</a>
+										</p>
+										
+										<!-- <p><i class="feather-mail"></i>care@gurujispeaks.com</p> -->
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-7">
+							<div class="footer-widget ms-2">
+								<h2 class="footer-title">Follow Us</h2>
+								<!-- <div class="subscribe-form">
+									<form action="#">
+										<input type="email" class="form-control" placeholder="Enter Email">
+										<button type="submit" class="btn">Submit</button>
+									</form>
+								</div> -->
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d"
+												target="_blank"><i class="fab fa-facebook"></i></a>
+										</li>
+										<li>
+											<a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i
+													class="fab fa-instagram"></i></a>
+										</li>
+										<li>
+											<a href="https://twitter.com/guruji_speaks?s=20" target="_blank"><i
+													class="fab fa-twitter"></i></a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank"><i
+													class="fab fa-linkedin-in"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="container">
+					<!-- Copyright -->
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6 col-lg-6">
+								<div class="copyright-text">
+									<p class="mb-0"> Copyright © 2023 <a href="/" target="_blank">GurujiSpeaks.</a> All
+										Rights Reserved. Powered by Zappkode.</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6">
+
+								<!-- Copyright Menu -->
+								<div class="copyright-menu">
+									<ul class="policy-menu">
+										<li><a href="/privacy_policy/">Privacy Policy</a></li>
+										<li><a href="/terms_of_service/">Terms Of Service</a></li>
+										<li><a href="/Refund_Cancellation_Policy/">Refund and Cancellation Policy</a></li>
+									</ul>
+								</div>
+								<!-- /Copyright Menu -->
+
+							</div>
+						</div>
+					</div>
+					<!-- /Copyright -->
+				</div>
+			</div>
+			<style>
+				.whats-app {
+					position: fixed;
+					width: 45px;
+					height: 45px;
+					bottom: 72px;
+					right: 19px;
+					background-color: #dddddd;
+					border-radius: 67%;
+					text-align: center;
+					font-size: 12px;
+					z-index: 100;
+					padding: 6px;
+				}
+		
+				.my-float {
+					margin-top: 16px;
+				}
+			</style>
+			<div>
+				<a href="/whatsapp_qr/">
+					<img width="48" class="whats-app" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="whatsapp--v1" />
+					<!-- <img width="48" height="48" class="whats-app" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/> -->
+				</a>
+			</div>
+		</footer>
+		<!-- /Footer -->
+	</div>
+
+
+	
+
+	<!-- ScrollToTop -->
+	<div class="progress-wrap active-progress">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+				style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+			</path>
+		</svg>
+	</div>
+	<!-- /ScrollToTop -->
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Datepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+	<!-- Owl Carousel JS -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<!-- Animation JS -->
+	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+	<!-- Counter JS -->
+	<script src="{% static 'assets/js/counter.js' %}"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,391 @@
+{% extends "astrologer_base.html" %}{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Guruji Speaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"> 
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fancybox/jquery.fancybox.min.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <style>
+        /* Custom form styles */
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        textarea {
+            background-color: #f5f5f5;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background-color: #1c3264;
+            border-color: #1c3264;
+            color: #ffffff;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0a1a3b;
+            border-color: #0a1a3b;
+        }
+
+        /* Popup styles */
+        #commentPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #commentPopup textarea {
+            min-height: 150px;
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 20px;
+            color: #00569d;
+            cursor: pointer;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+       
+
+        .breadcrumb-bar-two {
+            background: #F2F6F6;
+            background-repeat: no-repeat;
+            padding-top: 10px;
+            min-height: 100px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .breadcrumb-bar-two .inner-banner {
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        .breadcrumb-bar-two .inner-banner .breadcrumb-title {
+            font-weight: 600;
+            font-size: 25px;
+            margin-bottom: 6px;
+        }
+
+        .content {
+            min-height: 200px;
+            padding: 40px 0 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper w-100">
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h6 class="breadcrumb-title">Questions Assigned to Astrologer</h6>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/dash_astro/">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Questions Assigned to Astrologer</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="fw-bolder">Customer Name:-   {{ plan.name}} </p>
+                                        <p class="fw-bolder">Plan Name:-   {{ plan.plan_name }}</p>
+                                        <p class="fw-bolder">Date of Birth:-   {{ user_data.dob }}</p>
+                                        <p class="fw-bolder">Gender:-   {{ user_data.gender }}</p>
+                                        <p class="fw-bolder">Birth Time:-   {{ user_data.birth_time }}</p>
+                                        <p class="fw-bolder">Birth Place:-   {{ user_data.birth_place }}</p>
+                                        <p class="fw-bolder">City:-   {{ user_data.city }}</p>
+                                        <p class="fw-bolder">State:-   {{ user_data.state }}</p>
+                                        <p class="fw-bolder">Country:-   {{ user_data.country }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if plan.plan_name == "Divine Revelations" %}
+                        <div class="row">
+                            <form class="ttt" action="" method="POST">
+                                {% csrf_token %}
+                                {% for i in data %}
+                                {% if user_pro == i.select_cust %}
+                                    <div class="form-group">
+                                        <label for="">{{ forloop.counter }} Customer Question</label>
+                                        <input type="text" readonly value="{{ i.comment1 }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Astrologer Reply</label>
+                                        <textarea name="comment2_{{ i.id }}" required>{{ i.comment2 }}</textarea>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                        {% else %}
+                        <div class="row">
+                            <form class="ttt" action="" method="POST">
+                                {% csrf_token %}
+                                {% for i in data %}
+                                    <div class="form-group">
+                                        <label for="">{{ forloop.counter }} Customer Question</label>
+                                        <input type="text" readonly value="{{ i.comment1 }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Astrologer Reply</label>
+                                        <textarea name="comment2_{{ i.id }}" required>{{ i.comment2 }}</textarea>
+                                    </div>
+                                {% endfor %}
+                                <button type="submit" class="submit-btn">Submit Answers</button>
+                            </form>
+                        </div>
+                        {% endif %}
+
+
+                        {% if plan.plan_name == "Divine Revelations" %}
+                        {% if data4.0 %}
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="fw-bolder">Customer Name:-   {{ data4.0.fname}} </p>
+                                        <p class="fw-bolder">Plan Name:-   {{ data4.0.pname }}</p>
+                                        <p class="fw-bolder">Date of Birth:-   {{ data4.0.dob }}</p>
+                                        <p class="fw-bolder">Gender:-   {{ data4.0.gender }}</p>
+                                        <p class="fw-bolder">Birth Time:-   {{ data4.0.birth_time }}</p>
+                                        <p class="fw-bolder">Birth Place:-   {{ data4.0.birth_place }}</p>
+                                        <p class="fw-bolder">City:-   {{ data4.0.city }}</p>
+                                        <p class="fw-bolder">State:-   {{ data4.0.state }}</p>
+                                        <p class="fw-bolder">Country:-   {{ data4.0.country }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        <div class="row">
+                                {% for i in data %}
+                                {% if data4.0.fname == i.select_cust %}
+                                    <div class="form-group">
+                                        <label for="">{{ forloop.counter }} Customer Question</label>
+                                        <input type="text" readonly value="{{ i.comment1 }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Astrologer Reply</label>
+                                        <textarea name="comment2_{{ i.id }}" required>{{ i.comment2 }}</textarea>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if plan.plan_name == "Divine Revelations" %}
+                        {% if data4.1 %}
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="fw-bolder">Customer Name:-   {{ data4.1.fname}} </p>
+                                        <p class="fw-bolder">Plan Name:-   {{ data4.1.pname }}</p>
+                                        <p class="fw-bolder">Date of Birth:-   {{ data4.1.dob }}</p>
+                                        <p class="fw-bolder">Gender:-   {{ data4.1.gender }}</p>
+                                        <p class="fw-bolder">Birth Time:-   {{ data4.1.birth_time }}</p>
+                                        <p class="fw-bolder">Birth Place:-   {{ data4.1.birth_place }}</p>
+                                        <p class="fw-bolder">City:-   {{ data4.1.city }}</p>
+                                        <p class="fw-bolder">State:-   {{ data4.1.state }}</p>
+                                        <p class="fw-bolder">Country:-   {{ data4.1.country }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="row">
+                                {% for i in data %}
+                                {% if data4.1.fname == i.select_cust %}
+                                    <div class="form-group">
+                                        <label for="">{{ forloop.counter }} Customer Question</label>
+                                        <input type="text" readonly value="{{ i.comment1 }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Astrologer Reply</label>
+                                        <textarea name="comment2_{{ i.id }}" required>{{ i.comment2 }}</textarea>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                        
+                        {% endif %}
+                        {% if plan.plan_name == "Divine Revelations" %}
+                        {% if data4.2 %}
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="fw-bolder">Customer Name:-   {{ data4.2.fname}} </p>
+                                        <p class="fw-bolder">Plan Name:-   {{ data4.2.pname }}</p>
+                                        <p class="fw-bolder">Date of Birth:-   {{ data4.2.dob }}</p>
+                                        <p class="fw-bolder">Gender:-   {{ data4.2.gender }}</p>
+                                        <p class="fw-bolder">Birth Time:-   {{ data4.2.birth_time }}</p>
+                                        <p class="fw-bolder">Birth Place:-   {{ data4.2.birth_place }}</p>
+                                        <p class="fw-bolder">City:-   {{ data4.2.city }}</p>
+                                        <p class="fw-bolder">State:-   {{ data4.2.state }}</p>
+                                        <p class="fw-bolder">Country:-   {{ data4.2.country }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="row">
+                                {% for i in data %}
+                                {% if data4.2.fname == i.select_cust %}
+                                    <div class="form-group">
+                                        <label for="">{{ forloop.counter }} Customer Question</label>
+                                        <input type="text" readonly value="{{ i.comment1 }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Astrologer Reply</label>
+                                        <textarea name="comment2_{{ i.id }}" required>{{ i.comment2 }}</textarea>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                                <button type="submit" class="submit-btn">Submit Answers</button>
+                            </form>
+                        </div>
+
+                        {% endif %}
+                    </div>
+                </div>
+               
+                
+                <!-- /Form -->
+
+                <!-- Popup -->
+                <div id="commentPopup">
+                    <span class="close-btn" onclick="this.parentNode.style.display = 'none'; return false;">✕</span>
+                    <form id="commentForm" method="POST" class="mt-4">
+                        <div class="form-group">
+                            <textarea id="comment" rows="4" placeholder="Type answer here...."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn mt-1">Submit</button>
+                    </form>
+                </div>
+                <!-- /Popup -->
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="assets/js/jquery-3.6.4.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fancybox JS -->
+    <script src="assets/plugins/fancybox/jquery.fancybox.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+
+    <!-- Add the following JavaScript code after your HTML code -->
+    <script>
+        // Get the comment button element
+        var commentButton = document.getElementById('commentButton');
+
+        // Add click event listener to the comment button
+        commentButton.addEventListener('click', function() {
+            // Display the popup
+            document.getElementById('commentPopup').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+{% comment %} <h1>Astrologer</h1>
+<html>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for i in data %}
+            <label for="">Customer Question</label>
+            <input type="text" readonly value="{{ i.comment1 }}">
+            <br> 
+            <label for="">Astrologer Reply</label>
+            <textarea name="comment2_{{ i.id }}" required>{{ i.comment2 }}</textarea>
+            <br> <br><br><br><br>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> {% endcomment %}
+{% endblock content %}

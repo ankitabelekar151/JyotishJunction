@@ -1,0 +1,321 @@
+{% extends 'customer_base.html' %}  {% block content %}
+{% load static %}
+
+
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+		<style>
+			.btn-primary {
+				background-color: #1c3264;
+				border: 1px solid #1c3264;
+			}
+
+			.breadcrumb-bar-two {
+				background: #F2F6F6;
+				background-repeat: no-repeat;
+				padding-top: 10px;
+				min-height: 100px;
+				position: relative;
+				overflow: hidden;
+				z-index: 1;
+			}
+
+			.breadcrumb-bar-two .inner-banner {
+				margin: 0;
+				padding: 40px 0;
+			}
+
+			.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+				font-weight: 600;
+				font-size: 35px;
+				margin-bottom: 6px;
+			}
+
+			.toggle-passwords{
+				font-size: 16px;
+				position: absolute;
+				top: 60%;
+				right: 3px;
+				transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				color: #797979;
+				cursor: pointer;
+				width: 32px;
+				height: 32px;
+				border-radius: 50%;
+			}
+		</style>
+
+			<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				const newPasswordInput = document.getElementById('new_pass1');
+				const confirmPasswordInput = document.getElementById('new_pass2');
+				const oldPasswordInput = document.getElementById('password');
+				const submitButton = document.querySelector('button[type="submit"]');
+	
+				newPasswordInput.addEventListener('input', checkPasswords);
+				confirmPasswordInput.addEventListener('input', checkPasswords);
+	
+				function checkPasswords() {
+					if (newPasswordInput.value === oldPasswordInput.value) {
+						submitButton.disabled = true;
+						alert("New Password cannot be the same as Old Password.");
+					} else {
+						submitButton.disabled = false;
+					}
+				}
+			});
+		</script>
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper w-100">
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two m-auto">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">Change Password</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/after_login_cus/">Home</a></li>
+									<li class="breadcrumb-item" aria-current="page">Change Password</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			
+						
+						<div class="col-md-7 col-lg-8 col-xl-5 m-auto mt-2">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12 col-lg-12">
+										
+											<!-- Change Password Form -->
+											
+											<form action="" method="post"  >
+													{%csrf_token%}
+												<div class="form-group">
+													<label>Old Password</label>
+													<div class="pass-group">
+														<input type="password" id = 'password' name='password' values="{{password}}" class="form-control pass-input" placeholder="*************" required/>
+														<span class="feather-eye toggle-password"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>New Password</label>
+													<div class="pass-group">
+														<input type="password" id = 'new_pass1' name='new_pass1' class="form-control pass-input-sub" placeholder="*************" required/>
+														<span class="feather-eye toggle-password-sub"></span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label>Confirm Password</label>
+													<div class="pass-group">
+														<input type="password" id = 'new_pass2' name='new_pass2' class="form-control pass-inputs" placeholder="*************" required/>
+														<span class="feather-eye toggle-passwords"></span>
+													</div>
+												</div>
+												{% if message %}
+														<p>{{ message }}</p>
+													{% endif %}
+													
+													
+													{% if error_message %}
+														<p>{{ error_message }}</p>
+													{% endif %}
+												
+													 {% if request.user.is_authenticated and request.user.is_admin %}
+												<div class="submit-section">
+													
+												  
+													<button type="submit" class="btn btn-primary submit-btn" href="/admin-login/"  >Save Changes</button>
+												</div>
+												
+												
+												{% endif %}
+												{% if request.user.is_authenticated and request.user.is_astro %}
+												<div class="submit-section">
+													
+													<button type="submit" class="btn btn-primary submit-btn" href="/astrologer-login/"  >Save Changes</button>
+												</div>
+												
+												
+												{% endif %} 
+												{% if request.user.is_authenticated and request.user.is_customer %}
+												<div class="submit-section text-center">
+													{% comment %} <button type="submit" class="btn btn-primary submit-btn" href="/astrologer-login/"  >Save Changes</button>
+												</div> {% endcomment %}
+												  
+													<button type="submit" class="btn btn-primary submit-btn" href="/customer-login/"  >Save Changes</button>
+												</div>
+												
+												
+												{% endif %}
+											</form>
+											<!-- /Change Password Form -->
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+			
+
+		   
+		</div>
+		<!-- /Main Wrapper -->
+		
+	  
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+        <script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+        <!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
+
+        <!-- Profile Settings JS (dropdown)-->
+		  <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+		  <!-- Select2 JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+		  
+		  <!-- Dropzone JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+		    <!-- Animation JS -->
+    	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+    	 <!-- Owl Carousel JS -->
+    	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    	<!-- Slick JS -->
+    	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+		
+		<!-- Custom JS -->
+		{% comment %} <script src="{% static 'assets/js/script.js' %}"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+			document.getElementById('saveButton').addEventListener('click', function() {
+				Swal.fire({
+				icon: 'success',
+				title: 'Success!',
+				text: 'Profile Updated Successfully',
+				showConfirmButton: false,
+				timer: 1500
+				}).then(function () {
+				location.reload();
+				});
+			});
+			});
+			</script> {% endcomment %}
+
+
+
+
+
+	</body>
+</html>
+
+
+
+
+<!-- Specific Page CSS goes HERE  -->
+
+
+{% comment %} <div class="container" style="margin-top: 10%; padding: 20px;">
+    <h1 style="text-align: center;">Change Password</h1>
+    <div class="row">
+      <div class="form-group" style="width: 50%; margin: auto;">
+          <form action="" method="post" enctype="multipart/form-data" >
+              {%csrf_token%} 
+              <div class="col">
+                  <hr>
+                  {{form.as_p}}
+              </div>
+              <!-- <button class="btn btn-secondary" style="color:white;"><a href="/changepass/">Back</a></button> -->
+              <!-- <input type ="submit" value="Submit" style="background-color: #00569d; color: #fff;"> -->
+              <div class="d-flex justify-content-center">
+                <input type="submit" class="btn" value="Submit" style="background-color: #00569d; color: #fff;">
+              </div>
+          </form>
+
+      </div> 
+    </div>
+ 
+</div> {% endcomment %}
+{% comment %} <script>
+    function submitForm() {
+      // Submit the form using AJAX
+      $.ajax({
+        url: $('#profile-form').attr('action'),
+        type: 'POST',
+        data: $('#profile-form').serialize(),
+        success: function(response) {
+          // Show a success message using SweetAlert
+          swal({
+            title: "Success!",
+            text: "Password updated successfully",
+            icon: "success",
+            button: "OK",
+          });
+        }
+      });
+    }
+</script>  {% endcomment %}
+
+{% endblock %}

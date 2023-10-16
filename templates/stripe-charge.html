@@ -1,0 +1,35 @@
+<!-- charge.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charge Page</title>
+</head>
+<body>
+    <h1>Processing Payment</h1>
+    <!-- You can add loading indicators or messages here -->
+    <script src="{{ stripe_js_url }}"></script>
+</body>
+</html>
+// Include Stripe.js library
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+// Assuming you have the 'stripe_js_url' available in your template
+const stripeJsUrl = "{{ stripe_js_url }}";
+
+// Initialize Stripe.js
+const stripe = Stripe("your_stripe_publishable_key");
+
+// Handle the 3D Secure authentication
+stripe.handleCardAction(stripeJsUrl)
+  .then(function(result) {
+    if (result.error) {
+      // Handle error
+    } else {
+      // Payment successful, continue to success page
+      window.location.href = "{% url 'success_view' %}";
+    }
+  });
+</script>

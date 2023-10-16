@@ -1,0 +1,542 @@
+{% load static %}
+
+<!DOCTYPE html>  
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    	<!-- Mobile CSS-->
+		<link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/intlTelInput.css' %}">
+    	<link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/demo.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+
+
+		<!-- for country code -->
+		<!-- Include International Telephone Input CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+
+
+		<style>
+
+			/* / reduced space / */
+
+			.login-content-info {
+				margin: 0;
+				padding: 30px 0 60px;
+				background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+
+			.login-content-info .account-content .login-title {
+				padding-bottom: 15px;
+			}
+
+			.login-content-info .account-content .account-info .btn {
+				width: 100%;
+				color: #ffffff;
+				background: #1c3264;
+				border: 1px solid #1c3264;
+				box-shadow: inset 0 0 0 0 #ffffff;
+				-webkit-transition: 0.7s;
+				-ms-transition: 0.7s;
+				transition: 0.7s;
+				font-weight: 600;
+				padding: 10px 15px;
+			}
+
+			.iti{
+				width: 100% !important;
+			}
+		</style>
+
+	</head>		
+	<body class="login-body">
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+			
+			<!-- Page Content -->
+			<div class="login-content-info">
+				<div class="container">
+
+					<!-- Patient Signup -->
+					<div class="row justify-content-center">
+						<div class="col-lg-4 col-md-6 bg-light p-4 rounded">
+							<div class="account-content">
+								<div class="login-shapes">
+									<div class="shape-img-left">
+										<img src="{% static 'assets/img/shape-01.png' %}" alt="">
+									</div>
+									<div class="shape-img-right">
+										<img src="{% static 'assets/img/shape-02.png' %}" alt="">
+									</div>
+								</div>
+								<div class="account-info">
+									<div class="login-back">
+										<a href="/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+									</div>
+									<div class="login-title">
+										<h3> Customer Signup</h3>
+										<p class="mb-0">Welcome! Please enter your details.</p>
+									</div>   
+									
+										<!-- <form action="" method = 'post' id="form" onsubmit="return validateForm()">
+                                        {% csrf_token %}
+										
+										<div class="form-group">
+											<label>Phone Number<span style="color: red;">*</span></label>
+											<input class="form-control form-control-lg group_formcontrol form-control-phone" type="tel" id="phone" name="whatsapp_no" maxlength="10" data-country="in" oninput="validatePhoneNumber(this)" required>
+										
+											<span id="whatsapp_info" style="color: green; display: none;"></span>
+											<span id="whatsapp_error" style="color: red; display: none;">Please enter a 10-digit number.</span>
+										</div>
+										<div class="form-group">
+											<label>First Name<span style="color: red;">*</span></label>
+											<input type="text" class="form-control" name="first_name" id = "first_name" oninput="convertToTitleCase('first_name')" placeholder="Enter first name" required/>
+										</div>
+										<div class="form-group">
+											<label>Last Name<span style="color: red;">*</span></label>
+											<input type="text" class="form-control" name="last_name" id='last_name' oninput="convertToTitleCase('last_name')"  placeholder="Enter last name" required/>
+										</div>
+										<div class="form-group">
+											<label>E-mail<span style="color: red;">*</span></label>
+											<input type="email" class="form-control" name="email_id"  placeholder="example@email.com"  pattern = "[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid Email Id" maxlength="50" required>
+										</div>
+
+
+										
+										<div class="form-group">
+											<div class="form-group-flex">
+												<label>Password<span style="color: red;">*</span></label>
+											</div>
+											<div class="pass-group">
+												<input type="password" id = 'password' name='password' class="form-control pass-input" placeholder="*************">
+												<span class="feather-eye toggle-password"></span>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="form-group-flex">
+												<label>Confirm Password<span style="color: red;">*</span></label>
+												
+											</div>
+											<div class="pass-group">
+												<input type="password" id="confirm_password" name='confirm_password' class="form-control pass-input-sub" placeholder="*************">
+												<span class="feather-eye toggle-password-sub"></span>
+											</div>
+										</div>
+										<div class="form-group form-check-box terms-check-box">
+											<div class="form-group-flex">
+												<label class="custom_check">
+													I have read and agree to Guruji Speaks <a href="/terms_of_service/">Terms of Service</a> and <a href="/privacy_policy/">Privacy Policy.</a> 
+													<input type="checkbox" name="Terms">
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<button class="btn btn-block" type="submit">Sign Up</button>
+										</div>
+										
+										<div class="account-signup">
+											<p>Already a Member? <a href="/customer-login-otp/">Sign in</a></p>
+										</div>
+									</form> -->
+
+
+									<form action="" method="post" id="form" >
+										{% csrf_token %}
+										<div class="form-group">
+											<label>Phone Number<span style="color: red;">*</span></label>
+											<input class="form-control form-control-lg group_formcontrol form-control-phone" type="tel" id="phone" name="whatsapp_no" maxlength="10" data-country="in" oninput="validatePhoneNumber(this)" required>
+											<span id="whatsapp_info" style="color: green; display: none;"></span>
+											<span id="whatsapp_error" style="color: red; display: none;">Please enter a 10-digit number.</span>
+										</div>
+										<div class="form-group">
+											<label>First Name<span style="color: red;">*</span></label>
+											<input type="text" class="form-control" name="first_name" id="first_name" oninput="convertToTitleCase('first_name')" placeholder="Enter first name" required/>
+										</div>
+										<div class="form-group">
+											<label>Last Name<span style="color: red;">*</span></label>
+											<input type="text" class="form-control" name="last_name" id="last_name" oninput="convertToTitleCase('last_name')"  placeholder="Enter last name" required/>
+										</div>
+										<div class="form-group">
+											<label>E-mail<span style="color: red;">*</span></label>
+											<input type="email" class="form-control" name="email_id" id="email_id" placeholder="example@email.com" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid Email Id" maxlength="50" required>
+										</div>
+										<div class="form-group">
+											<div class="form-group-flex">
+												<label>Password<span style="color: red;">*</span></label>
+											</div>
+											<div class="pass-group">
+												<input type="password" id="password" name="password" class="form-control pass-input" placeholder="*************" required>
+												<span class="feather-eye toggle-password" onclick="togglePassword()"></span>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="form-group-flex">
+												<label>Confirm Password<span style="color: red;">*</span></label>
+											</div>
+											<div class="pass-group">
+												<input type="password" id="confirm_password" name="confirm_password" class="form-control pass-input-sub" placeholder="*************" required>
+												<span class="feather-eye toggle-password-sub" onclick="toggleConfirmPassword()"></span>
+											</div>
+										</div>
+										<div class="form-group form-check-box terms-check-box">
+											<div class="form-group-flex">
+												<label class="custom_check">
+													I have read and agree to Guruji Speaks <a href="/terms_of_service/">Terms of Service</a> and <a href="/privacy_policy/">Privacy Policy.</a> 
+													<input type="checkbox" name="Terms">
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+										<div class="form-group">
+											<button class="btn btn-block" type="submit">Sign Up</button>
+										</div>
+										<div class="account-signup">
+											<p>Already a Member? <a href="/ask_ques_otp/">Sign in</a></p>
+										</div>
+									</form>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Patient Signup -->
+
+				</div>
+			</div>		
+			<!-- /Page Content -->
+
+			
+
+		</div>		
+		<!-- /Main Wrapper -->
+
+		<script>
+			function validatePhoneNumber(input) {
+				var phoneNumber = input.value;
+				var whatsappInfo = document.getElementById("whatsapp_info");
+				var whatsappError = document.getElementById("whatsapp_error");
+			
+				// Remove any non-digit characters from the input
+				phoneNumber = phoneNumber.replace(/\D/g, '');
+			
+				if (phoneNumber.length === 10 && /^\d+$/.test(phoneNumber)) {
+					// Valid 10-digit number
+					whatsappInfo.style.display = "block";
+					whatsappError.style.display = "none";
+				} else {
+					// Not a valid 10-digit number
+					whatsappInfo.style.display = "none";
+					whatsappError.style.display = "block";
+				}
+			
+				// Update the input value to the cleaned version
+				input.value = phoneNumber;
+			}
+			</script>
+			
+
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Mobile Input -->
+		<script src="{% static 'assets/plugins/intltelinput/js/intlTelInput.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+	
+	</body>
+</html>
+
+
+<!-- withou sucessfull pop -->
+<!-- <script>
+	console.log("JavaScript code is running");
+
+	document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    var email_ids_list = {{ email_ids_list|safe }};
+    var phone_numbers_list = {{ phone_numbers_list|safe }};
+
+    var password = document.getElementById('password').value;
+    var confirm_password = document.getElementById('confirm_password').value;
+    var termsCheckbox = document.querySelector('input[name="Terms"]');
+
+    // Password validation
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+        // Display a pop-up message
+        alert('Password must include at least one uppercase letter, one lowercase letter, one digit, one special symbol, and be at least 8 characters long.');
+        return;
+    }
+
+    // Confirm password validation
+    if (password !== confirm_password) {
+        // Display a pop-up message
+        alert('Password and confirm password do not match!');
+        return;
+    }
+
+    // Terms and conditions checkbox validation
+    if (!termsCheckbox.checked) {
+        // Display a pop-up message
+        alert('Please agree to the terms of service and privacy policy.');
+        return;
+    }
+
+    // Check if the email exists in the list
+    var email = document.getElementById('email_id').value;
+    var emailExists = email_ids_list.includes(email);
+
+    // Check if the phone number exists in the list
+    var phoneNumber = document.getElementById('phone').value;
+    var phoneNumberExists = phone_numbers_list.includes(phoneNumber);
+
+    if (!emailExists && !phoneNumberExists) {
+		
+        // If email and phone are unique, submit the form
+        this.submit(); // Manually submit the form
+    } else {
+        var errorMessage = "";
+        if (emailExists) {
+            errorMessage += 'Email is already registered. Please use a different email.\n';
+        }
+        if (phoneNumberExists) {
+            errorMessage += 'Phone number is already registered. Please use a different phone number.';
+        }
+
+        Swal.fire({
+            title: 'Error!',
+            text: errorMessage,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        });
+    }
+});
+
+</script> -->
+
+
+
+
+
+<script>
+	document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    var email_ids_list = {{ email_ids_list|safe }};
+    var phone_numbers_list = {{ phone_numbers_list|safe }};
+
+    var password = document.getElementById('password').value;
+    var confirm_password = document.getElementById('confirm_password').value;
+    var termsCheckbox = document.querySelector('input[name="Terms"]');
+
+    // Password validation
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+        // Display a pop-up message
+        alert('Password must include at least one uppercase letter, one lowercase letter, one digit, one special symbol, and be at least 8 characters long.');
+        return;
+    }
+
+    // Confirm password validation
+    if (password !== confirm_password) {
+        // Display a pop-up message
+        alert('Password and confirm password do not match!');
+        return;
+    }
+
+    // Terms and conditions checkbox validation
+    if (!termsCheckbox.checked) {
+        // Display a pop-up message
+        alert('Please agree to the terms of service and privacy policy.');
+        return;
+    }
+
+    // Check if the email exists in the list
+    var email = document.getElementById('email_id').value;
+    var emailExists = email_ids_list.includes(email);
+
+    // Check if the phone number exists in the list
+    var phoneNumber = document.getElementById('phone').value;
+    var phoneNumberExists = phone_numbers_list.includes(phoneNumber);
+
+    if (!emailExists && !phoneNumberExists) {
+        // If email and phone are unique, submit the form
+        this.submit(); // Manually submit the form
+
+        // Display the success popup
+        Swal.fire({
+            title: 'Success!',
+            text: 'Successfully Registered',
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        }).then(function() {
+            window.location.replace('/ask_ques_otp/');
+        });
+    } else {
+        var errorMessage = "";
+        if (emailExists) {
+            errorMessage += 'Email is already registered. Please use a different email.\n';
+        }
+        if (phoneNumberExists) {
+            errorMessage += 'Phone number is already registered. Please use a different phone number.';
+        }
+
+        Swal.fire({
+            title: 'Error!',
+            text: errorMessage,
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        });
+    }
+});
+
+</script>
+
+
+	 <!-- <script>
+		document.querySelector('form').addEventListener('submit', function(event) {
+			event.preventDefault(); // Prevent default form submission behavior
+			var email_ids_list = {{ email_ids_list|safe }};
+			var phone_numbers_list = {{ phone_numbers_list|safe }};
+			
+			var password = document.getElementById('password').value;
+			var confirm_password = document.getElementById('confirm_password').value;
+			var termsCheckbox = document.querySelector('input[name="Terms"]');
+	
+			// Password validation
+			var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+			if (!passwordRegex.test(password)) {
+				// Display a pop-up message
+				alert('Password must include at least one uppercase letter, one lowercase letter, one digit, one special symbol, and be at least 8 characters long.');
+				return;
+			}
+	
+			// Confirm password validation
+			if (password !== confirm_password) {
+				// Display a pop-up message
+				alert('Password and confirm password do not match!');
+				return;
+			}
+	
+			// Terms and conditions checkbox validation
+			if (!termsCheckbox.checked) {
+				// Display a pop-up message
+				alert('Please agree to the terms of service and privacy policy.');
+				return;
+			}
+	
+			// Check if the email exists in the list
+			var email = document.getElementById('email_id').value;
+			var emailExists = email_ids_list.includes(email);
+	
+			// Check if the phone number exists in the list
+			var phoneNumber = document.getElementById('phone').value;
+			var phoneNumberExists = phone_numbers_list.includes(phoneNumber);
+	
+			if (!emailExists && !phoneNumberExists) {
+				// Display the success popup
+				Swal.fire({
+					title: 'Success!',
+					text: 'Successfully Registered',
+					icon: 'success',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				}).then(function () {
+					window.location.replace('/customer-login-otp/');
+				});
+			} else {
+				var errorMessage = "";
+				if (emailExists) {
+					errorMessage += 'Email is already registered. Please use a different email.\n';
+				}
+				if (phoneNumberExists) {
+					errorMessage += 'Phone number is already registered. Please use a different phone number.';
+				}
+				
+				Swal.fire({
+					title: 'Error!',
+					text: errorMessage,
+					icon: 'error',
+					confirmButtonColor: '#3085d6',
+					confirmButtonText: 'OK'
+				});
+			}
+		});
+	</script>
+	 -->
+
+<!-- for country code all -->
+<!-- Include jQuery (required for intl-tel-input) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include International Telephone Input JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<!-- Your existing script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var phoneInput = document.getElementById("phone");
+        var iti = window.intlTelInput(phoneInput, {
+            initialCountry: "in", // Set India as the initial country
+            separateDialCode: true, // Display the dial code separately
+        });
+
+        phoneInput.addEventListener("input", function() {
+            validatePhoneNumber(this);
+        });
+    });
+
+    function validatePhoneNumber(input) {
+        var whatsappInfo = document.getElementById("whatsapp_info");
+        var whatsappError = document.getElementById("whatsapp_error");
+        var phoneNumber = input.value;
+
+        if (phoneNumber.length === 10 && /^\d+$/.test(phoneNumber)) {
+            whatsappInfo.style.display = "block";
+            whatsappError.style.display = "none";
+        } else {
+            whatsappInfo.style.display = "none";
+            whatsappError.style.display = "block";
+        }
+    }
+</script>

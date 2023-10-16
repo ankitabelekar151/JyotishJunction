@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .icon {
+            font-size: 64px;
+            color: #1abc9c;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .back-link {
+            display: inline-block;
+            color: #428bca;
+            text-decoration: none;
+            border-bottom: 1px solid #428bca;
+        }
+    </style>
+</head>
+<body>
+    {% comment %} <div class="container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="message">
+            <p>Payment Successful</p>
+            <p>Thank you for your payment. Your transaction was successful!</p>
+            <a href="{{ url_type }}" class="back-link">Go back to your dynamic page</a>
+        </div>
+    </div> {% endcomment %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... your head content ... -->
+<body>
+    <div class="container">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="message">
+            
+            <p>Thank you for using Stripe,You are redirecting Stripe Payment Mode!</p>
+        </div>
+    </div>
+
+    <!-- Add JavaScript to automatically redirect after a delay -->
+    <script>
+        // Get the URL from the Django context
+        const urlType = "{{ url_type }}";
+        
+        // Redirect after a short delay (e.g., 3 seconds)
+        const delayInSeconds = 3000; // Adjust this value as needed
+        setTimeout(function() {
+            window.location.href = urlType;
+        }, delayInSeconds);
+    </script>
+</body>
+</html>
+
+

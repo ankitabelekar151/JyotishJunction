@@ -1,0 +1,62 @@
+<html>
+    <h1>hi</h1>
+</html>
+
+
+<!-- <form id="send-form" method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <table class="table" border="1">
+            <thead>
+                <tr style="text-align: center;">
+                    <th align="center">Customer name</th>
+                    <th align="center">Comment1</th>
+                    <th align="center">Comment2</th>
+                    <th align="center">Astrologer Name</th>
+                    <th align="center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in form3%}
+                <tr>
+                    <td>
+                        {{ i.user }}
+                    </td>
+
+                    <td>
+                        {{ i.comment1 }}
+                    </td>
+                    <td>
+                        {{ i.comment2 }}
+                    </td>
+                    <td>
+                        <select name="astro_email_id">   
+                            <option disabled selected value>Select </option>
+                            {% for astrologer in data1 %}
+                            <option value="{{ astrologer.aus_email_id }}">{{ astrologer.aus_first_name }} {{ astrologer.aus_last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <a href="/adcustomer_to_admin/{{i.id}}/" onclick="submitForm('{{ i.id }}')">Send</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</form>
+
+<script>
+    function submitForm(id) {
+        var form = document.getElementById('send-form');
+        var hiddenField = document.createElement('input');
+        hiddenField.setAttribute('type', 'hidden');
+        hiddenField.setAttribute('name', 'row_id');
+        hiddenField.setAttribute('value', id);
+        form.appendChild(hiddenField);
+        form.submit();
+    }
+</script> -->
+
+

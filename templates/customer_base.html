@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Guruji Speaks</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicons -->
+	<link href="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" rel="icon">   
+
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1K79WZ1L2Q"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'G-1K79WZ1L2Q');
+	</script>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Select2 CSS (dropdown) -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/select2/css/select2.min.css' %}">
+
+	<!-- Bootstrap CSS (dropdown) -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css' %}">
+
+	<link rel="stylesheet" href="{% static 'assets/plugins/dropzone/dropzone.min.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+	<style>
+		/* header nav */
+
+		element.style {
+			background: #1c3264 !important;
+		}
+
+
+		.header-one .main-menu-wrapper .main-nav li a {
+			font-size: 15px;
+			font-weight: 500;
+			color: #ffffff !important;
+			display: block;
+		}
+
+		.header .header-nav .header-navbar-rht .noti-nav .nav-link {
+			font-size: 18px;
+			color: #ffffff !important;
+		}
+
+		.header .header-nav .header-navbar-rht .has-arrow .dropdown-toggle:after {
+			border-top: 0;
+			border-left: 0;
+			border-bottom: 2px solid #ffffff !important;
+			border-right: 2px solid #ffffff !important;
+			content: "";
+			height: 8px;
+			display: inline-block;
+			pointer-events: none;
+			width: 8px;
+			vertical-align: 2px;
+			margin-left: 10px;
+			transform-origin: 66% 66%;
+			-webkit-transform-origin: 66% 66%;
+			-ms-transform-origin: 66% 66%;
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			-webkit-transition: all 0.15s ease-in-out;
+			-ms-transition: all 0.15s ease-in-out;
+			transition: all 0.15s ease-in-out;
+			
+		}
+
+		.dropdown-toggle::after{
+			color: white !important;
+		}
+
+
+		/* footer */
+		.footer-one {
+			background: #1c3264 !important;
+		}
+
+		.footer-one .footer-top {
+			margin: 0;
+			padding: 10px 0;
+		}
+
+		.footer-one .footer-top .footer-widget .footer-title {
+			font-size: 18px;
+			font-weight: 600;
+			color: #FFF !important;
+			margin-bottom: 25px;
+		}
+
+		.footer .footer-top .footer-widget .footer-about-content p:last-child {
+			margin-bottom: 0;
+			color: #ffff !important;
+		}
+
+		.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p {
+			margin-bottom: 0;
+			color: #fff !important;
+			font-size: 14px;
+		}
+
+		.footer-one .social-icon ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			color: #fff !important;
+		}
+
+		.footer-one .social-icon ul li a {
+			color: #fff !important;
+			font-size: 20px;
+			-webkit-transition: all 0.4s ease 0s;
+			-ms-transition: all 0.4s ease 0s;
+			transition: all 0.4s ease 0s;
+		}
+
+		.footer .footer-bottom .copyright .copyright-text p {
+			font-size: 15px;
+			color: #ffffff !important;
+		}
+
+		.footer.footer-one .footer-bottom .copyright .copyright-text p {
+			color: #fff !important;
+		}
+
+		.footer .footer-bottom .copyright .copyright-text p a {
+			color: #fff !important;
+			font-weight: 500;
+			-webkit-transition: all 0.4s ease 0s;
+			-ms-transition: all 0.4s ease 0s;
+			transition: all 0.4s ease 0s;
+		}
+
+		.footer-one .footer-top .footer-widget.footer-menu ul li a {
+			color: #fff !important;
+			position: relative;
+			overflow: hidden;
+			background: url(../img/footer-arrow.png) no-repeat -10px;
+			-webkit-transition: all 0.5s ease-in-out;
+			-ms-transition: all 0.5s ease-in-out;
+			transition: all 0.5s ease-in-out;
+			padding-left: 0;
+			font-size: 14px;
+		}
+
+		.footer-one .footer-bottom .copyright .policy-menu li a {
+			color: #fff !important;
+		}
+
+		.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p i {
+			font-size: 16px;
+			color: #fff !important;
+			margin-right: 10px;
+		}
+
+		.subscribe-form .btn {
+			font-weight: normal;
+			margin: 0;
+			padding: 11px 16px;
+			font-size: 15px;
+			font-weight: 600;
+			border-radius: 0 1px 1px 0 !important;
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			color: #ffffff !important;
+			background: #1c3264 !important;
+			border: 2px solid #fff !important;
+			box-shadow: inset 0 0 0 0 #ffffff !important;
+		}
+
+		.subscribe-form .btn:hover {
+			color: #000;
+			border-color: #000 !important;
+			background: #ffffff !important;
+			box-shadow: inset 0 0 0 50px #ffffff !important;
+			-webkit-transition: 0.5s;
+			-ms-transition: 0.5s;
+			transition: 0.5s;
+		}
+
+		.subscribe-form .form-control {
+			font-weight: 500;
+			font-size: 14px;
+			min-height: 46px;
+			color: #1c3264 !important;
+			background: #ffffff !important;
+			border: 1px solid #E5E7EB !important;
+			border-radius: 6px 6px 6px 6px;
+			margin: 0;
+			padding: 6px 112px 6px 15px;
+		}
+
+		/* sidebar */
+		.profile-sidebar {
+			background-color: #ffffff;
+			border: 1px solid #f0f0f0;
+			margin-bottom: 30px;
+			overflow: hidden;
+			border-radius: 4px;
+			width: 20% !important;
+		}
+
+		.header .user-menu.nav li a {
+			color: #000 !important;
+			font-size: 14px;
+			line-height: 58px;
+			height: 35px !important;
+			padding: 0 17px !important;
+		}
+
+		/* .header .user-menu.nav li a:hover */
+
+		.header .user-menu.nav li a:hover,
+		.header .user-menu.nav li a:focus 
+		{
+			background: none !important;
+			background-color: none !important;
+			color: #0E82FD !important;
+			letter-spacing: 0.5px !important;
+    		/* padding-left: 20px !important; */
+		}
+
+		.user-menu1{
+			display: flex;
+			margin-bottom: 13px;
+		}
+
+		@media (max-width: 991.98px) {
+			.profile-section {
+				/* position: fixed !important; */
+				margin-left: 80% !important;
+				margin-top: -28% !important;
+			}
+
+			.header .user-menu.nav li a {
+				color: #000 !important;
+				font-size: 14px;
+				line-height: 58px;
+				height: 35px !important;
+				padding: 0 15px !important;
+				/* margin-top: -20px; */
+			}
+
+			.user-menu1{
+				display: block;
+				margin-top: 10px;
+			}
+
+			/* mobile sidebar */
+			.header-one .header-nav .main-menu-wrapper {
+				background-color: #000 !important;
+			}
+
+			.user-dropdown{
+				margin-top: -13px;
+			}
+
+			.header .header-nav .main-menu-wrapper {
+				order: 3;
+				width: 260px;
+				overflow-x: hidden;
+				overflow-y: auto;
+				z-index: 1060;
+				transform: translateX(-260px);
+				-webkit-transform: translateX(-260px);
+				-ms-transform: translateX(-260px);
+				-webkit-transition: all 0.4s;
+				-ms-transition: all 0.4s;
+				transition: all 0.4s;
+				background-color: #15558d;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+			}
+		}
+
+
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+		<!-- Header -->
+		<header class="header  header-one" style="background: #1c3264; height: 90px;">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="navbar-header">
+						<a id="mobile_btn">
+							<span class="bar-icon">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</a>
+						<a class="navbar-brand logo">
+							<!-- <a href="/after_login_cus/" class="navbar-brand logo"></a> -->
+							<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo"
+								style="width: 81px; height: 82px;">
+						</a>
+					</div>
+					<div class="main-menu-wrapper">
+						<div class="menu-header">
+							<a class="menu-logo">
+								<!-- <a href="/after_login_cus/" class="menu-logo"></a> -->
+								<img src="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" class="img-fluid" alt="Logo">
+							</a>
+							<a id="menu_close" class="menu-close" href="javascript:void(0);">
+								<i class="fas fa-times"></i>
+							</a>
+						</div>
+						<ul class="main-nav">
+							<li class="">
+								<a href="/after_login_cus/">Home</a>
+
+							</li>
+
+							<li class="">
+								<a href="/view_plan/">Ask a Question</a>
+
+							</li> 
+							<li class="">
+								<a href="/customer_blogs/">Blog</a>
+
+							</li>
+							<li class="">
+								<a href="/customer_wallet/">Wallet</a>
+
+							</li>
+							
+			
+							<li class="">
+								<a href="/whatsapp_qr/">Customer Support</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="nav user-menu profile-section">
+
+						<!-- User Menu  -->
+						<li class="nav-item dropdown has-arrow logged-item user-menu1">
+							<div class="user-text mt-3">
+								<h6 class="ms-2" style="color: #fff; font-weight: bold;">Hello, {{ request.user.first_name }} {{request.user.last_name}}</h6>
+								<!-- <p class="text-muted mb-0">Customer</p> -->
+							</div>
+							<a href="#" class="dropdown-toggle nav-link text-white user-dropdown" data-bs-toggle="dropdown">
+								<!-- <span class="user-img">
+									<img class="rounded-circle"
+										src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" width="31"
+										alt="Darren Elder">
+									<i class="fa-regular fa-circle-user avatar-img rounded-circle text-white"
+										style="font-size: 1.7em;"></i>
+								</span> -->
+							</a>
+							<div class="dropdown-menu dropdown-menu-end">
+								<!-- <div class="user-header"> -->
+									<!-- <div class="avatar avatar-sm">
+										<img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}"
+											alt="User Image" class="avatar-img rounded-circle">
+									</div> -->
+									<!-- <div class="user-text">
+										<h6 class="ms-2">{{ request.user.first_name }} {{request.user.last_name}}</h6>
+										<p class="text-muted mb-0">Customer</p>
+									</div> -->
+								<!-- </div> -->
+								<a class="dropdown-item" href="/dash_customer/">Dashboard</a>
+								<!-- <a class="dropdown-item" href="/customer-payments/">My Payments</a> -->
+								<a class="dropdown-item" href="/customer-profile/">Profile Settings</a>
+								<a class="dropdown-item" href="/customer-payments/">My Payments</a>
+								<a class="dropdown-item" href="/customer_wallet/">Wallet</a>
+								<a class="dropdown-item" href="/order_histroy/">Order History</a>
+								<a class="dropdown-item" href="/changepass/">Change Password</a>
+								<!-- <a class="dropdown-item" href="/logout/">Logout</a> -->
+								<a class="dropdown-item" href="javascript:void(0);" onclick="showLogoutConfirmation()">Logout</a>
+
+							</div>
+						</li>
+						<!-- /User Menu -->
+
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<!-- /Header -->
+
+		{% block content %}
+		{% endblock %}
+		<!-- Footer -->
+		<footer class="footer footer-one">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-md-4">
+							<div class="footer-widget footer-about">
+								<div class="footer-logo">
+									<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" style="
+												margin-top: -20px;
+												max-width: 30%;
+												height: auto;
+											" alt="logo">
+								</div>
+								<div class="footer-about-content">
+									<p>At Guruji Speaks, we believe that astrology is a powerful tool that can be used to
+										gain insights into our lives and to make better decisions.</p>
+								</div>
+								<br>
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a target="_blank" style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+										<li>
+											<a target="_blank" style="cursor: auto;"><i class="" ></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+										<li>
+											<a target="_blank" style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">Useful Links</h2>
+								<ul>
+									<li><a href="/cust_faq/">FAQ</a></li>
+									<li><a href="/cust_intel_property/">Intellectual Property</a></li>
+									<li><a href="/cust_disclaimer/">Disclaimer</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">For Astrologer</h2>
+								<ul>
+									<!-- <li><a href="#">Appointments</a></li> -->
+									
+									<li><a href="/astrologer-registration/">Register</a></li>
+									<li><a href="/astrologer-login/">Login</a></li>
+									<li><a href="/customer_support/">Customer Support</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-5">
+							<div class="footer-widget footer-contact">
+								<h2 class="footer-title">Contact Us</h2>
+								<div class="footer-contact-info">
+									<!--<div class="footer-address">-->
+									<!--	<p><i class="feather-map-pin"></i> 3556 Beech Street, USA</p>-->
+									<!--</div>-->
+									<div class="footer-address">
+										<a href="/whatsapp_qr/">
+											<p><i class="feather-user"></i>Chat Support</p>
+										</a>
+									</div>
+									<div class="footer-address">
+
+										<!-- <p><i class="feather-mail"></i>care@gurujispeaks.com</p> -->
+										<p>
+										 
+										  <a href="mailto:care@gurujispeaks.com" style="color: white;"> <i class="feather-mail"></i>care@gurujispeaks.com</a>
+										</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-7">
+							<div class="footer-widget ms-2">
+								<h2 class="footer-title">Follow Us</h2>
+								<!-- <div class="subscribe-form">
+									<form action="#">
+										<input type="email" class="form-control" placeholder="Enter Email">
+										<button type="submit" class="btn">Submit</button>
+									</form>
+								</div> -->
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d"
+												target="_blank"><i class="fab fa-facebook"></i> </a>
+										</li>
+										<li>
+											<a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i
+													class="fab fa-instagram"></i></a>
+										</li>
+										<li>
+											<a href="https://twitter.com/guruji_speaks?s=20" target="_blank"><i
+													class="fab fa-twitter"></i> </a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank"><i
+													class="fab fa-linkedin-in"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="container">
+					<!-- Copyright -->
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6 col-lg-6">
+								<div class="copyright-text">
+									<p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">GurujiSpeaks.</a> All
+										Rights Reserved. Powered by Zappkode.</p>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6">
+
+								<!-- Copyright Menu -->
+								<div class="copyright-menu">
+									<ul class="policy-menu">
+										<li><a href="/cust_privacy_policy/">Privacy Policy</a></li>
+										<li><a href="/cust_tos/">Terms Of Service</a></li>
+										<li><a href="/cust_refund/">Refund and Cancellation Policy</a>
+										</li>
+									</ul>
+								</div>
+								<!-- /Copyright Menu -->
+
+							</div>
+						</div>
+					</div>
+					<!-- /Copyright -->
+				</div>
+			</div>
+		</footer>
+		<!-- /Footer -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+		<!-- chatboat -->
+		<!-- <div>
+			<style>
+				.chat-boat {
+					position: fixed;
+					width: 45px;
+					height: 45px;
+					bottom: 125px;
+					right: 19px;
+					background-color: white;
+					border-radius: 67%;
+					text-align: center;
+					font-size: 12px;
+					z-index: 100;
+					padding: 6px;
+				}
+	
+				#commentPopup {
+					display: none;
+					position: fixed;
+					top: 54%;
+					left: 83%;
+					transform: translate(-50%, -50%);
+					background-color: #fff;
+					padding: 20px;
+					border: 1px solid #ccc;
+					box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+					z-index: 9999;
+					width: 30%;
+					border-radius: 7px;
+				}
+	
+				/* Style the popup form */
+				#commentForm {
+					display: flex;
+					flex-direction: column;
+				}
+			</style>
+			<div>
+				<button id="commentButton">
+					<img width="48" height="48" class="chat-boat"
+						src="https://img.icons8.com/ios/50/speech-bubble-with-dots--v1.png" alt="speech-bubble-with-dots--v1" />
+				</button>
+	
+				<div id="commentPopup">
+					<span id="close" onclick="this.parentNode.style.display = 'none'; return false;" style="float: right; font-size: 20px; color:#00569d; cursor: pointer;" class="mb-5">✕</span>
+					<form id="commentForm" method="POST" class="mt-4">
+						<label for="exampleFormControlTextarea1" class="form-label">Type your Question</label>
+						<textarea class="form-control" id="exampleFormControlTextarea1 comment" rows="4" placeholder="Start Typing...."></textarea>
+					</form>
+					<button type="submit" class="btn btn-primary mt-1">Submit</button>
+				</div>
+	
+				// Add the following JavaScript code after your HTML code 
+				<script>
+					// Get the comment button element
+					var commentButton = document.getElementById('commentButton');
+			
+					// Add click event listener to the comment button
+					commentButton.addEventListener('click', function() {
+						// Display the popup
+						document.getElementById('commentPopup').style.display = 'block';
+					});
+				</script>
+			</div>
+		</div> -->
+		<!-- /chatboat -->
+
+	<!-- whatsapp QR -->
+	<style>
+		.whats-app {
+			position: fixed;
+			width: 45px;
+			height: 45px;
+			bottom: 72px;
+			right: 19px;
+			background-color: #dddddd;
+			border-radius: 67%;
+			text-align: center;
+			font-size: 12px;
+			z-index: 100;
+			padding: 6px;
+		}
+
+		.my-float {
+			margin-top: 16px;
+		}
+	</style>
+	<div>
+		<a href="/whatsapp_qr/">
+			<img width="48" class="whats-app" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png"
+				alt="whatsapp--v1" />
+				<!-- <img width="48" height="48" class="whats-app" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/> -->
+		</a>
+	</div>
+	<!-- end whatsapp QR -->
+
+
+	<!-- ScrollToTop -->
+	<div class="progress-wrap active-progress">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+				style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+			</path>
+		</svg>
+	</div>
+	<!-- /ScrollToTop -->
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Bootstrap Core JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	<!-- Sticky Sidebar JS -->
+	<script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+	<script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+	<!-- Select2 JS (dropdown)-->
+	<script src="assets/plugins/select2/js/select2.min.js"></script>
+
+	<!-- Dropzone JS (dropdown)-->
+	<script src="assets/plugins/dropzone/dropzone.min.js"></script>
+
+	<!-- Bootstrap Tagsinput JS -->
+	<script src="assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js"></script>
+
+	<!-- Profile Settings JS (dropdown)-->
+	<script src="assets/js/profile-settings.js"></script>
+
+	<!-- Circle Progress JS -->
+	<script src="{% static 'assets/js/circle-progress.min.js' %}"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+	
+	<!-- Custom JS -->
+	<script src="assets/js/script.js"></script>
+
+	<!-- logout pop up -->
+	<!-- <script>
+		function showLogoutConfirmation() {
+			var confirmLogout = confirm("Are you sure you want to logout?");
+			if (confirmLogout) {
+				// If the user clicks OK, perform the logout using AJAX
+				logoutUser();
+			} else {
+				// If the user clicks Cancel, do nothing
+				return false;
+			}
+		}
+	
+		function logoutUser() {
+			// AJAX call to perform logout
+			fetch('/logout/', {
+				method: 'POST',
+				headers: {
+					'X-CSRFToken': '{{ csrf_token }}',
+					'Content-Type': 'application/json'
+				}
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'success') {
+					// If the logout is successful, redirect to the homepage
+					window.location.href = '/';
+				} else {
+					// If there was an error with logout, show an error message or handle as needed
+					alert('Error logging out. Please try again.');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				alert('An error occurred. Please try again later.');
+			});
+		}
+	</script> -->
+	<script>
+		function showLogoutConfirmation() {
+			Swal.fire({    
+				title: 'Logout Confirmation',
+				text: 'Are you sure you want to logout?',
+				icon: 'question',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, logout',
+				cancelButtonText: 'Cancel'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					// If the user clicks OK, perform the logout using AJAX
+					logoutUser();
+				} else {
+					// If the user clicks Cancel, do nothing
+					return false;
+				}
+			});
+		}
+		function logoutUser() {
+			// AJAX call to perform logout
+			fetch('/logout/', {
+				method: 'POST',
+				headers: {
+					'X-CSRFToken': '{{ csrf_token }}',
+					'Content-Type': 'application/json'
+				}
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'success') {
+					// If the logout is successful, redirect to the homepage
+					window.location.href = '/';
+				} else {
+					// If there was an error with logout, show an error message or handle as needed
+					alert('Error logging out. Please try again.');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				alert('An error occurred. Please try again later.');
+			});
+		}
+	</script>
+</body>
+
+</html>

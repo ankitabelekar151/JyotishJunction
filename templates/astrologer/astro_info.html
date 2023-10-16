@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Astrologer Profiles</title>
+</head>
+<body>
+    <h1>Astrologer Profiles</h1>
+    
+    <form method="GET" action="{% url 'astro_info' %}">
+        <!-- Search -->
+        <input type="text" name="search" placeholder="Search by name">
+        <input type="submit" value="Search">
+        
+        <!-- Country Filter -->
+        <label for="country">Country:</label>
+        <select name="country">
+            <option value="">All</option>
+            <!-- Add options for all countries -->
+            {% for country in countries %}
+                <option value="{{ country }}"
+                    {% if country == request.GET.country %}
+                        selected
+                    {% endif %}
+                >{{ country }}</option>
+            {% endfor %}
+        </select>
+        
+        <!-- Add other filters as needed -->
+        
+        <input type="submit" value="Apply Filters">
+    </form>
+    
+    <hr>
+    
+    {% for astrologer in astrologers %}
+        <h3>{{ astrologer.aus_first_name }} {{ astrologer.aus_last_name }}</h3>
+        <p>Expertise: {{ astrologer.expertise }}</p>
+        <p>Country: {{ astrologer.aus_country }}</p>
+        <p>Gender: {{ astrologer.gender }}</p>
+        <p>Experience: {{ astrologer.experience }}</p>
+        <!-- Display other relevant information -->
+        <hr>
+    {% endfor %}
+</body>
+</html>

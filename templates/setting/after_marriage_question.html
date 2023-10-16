@@ -1,0 +1,270 @@
+
+{% extends 'customer_base.html' %} {% block content %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guruji Speaks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+     <!-- Favicons -->
+     <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon" />
+
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+ 
+     <!-- Fontawesome CSS -->
+     <link
+       rel="stylesheet"
+       href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}"
+     />
+     <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}" />
+ 
+     <!-- Feathericon CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}" />
+ 
+     <!-- Main CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+
+    <style>
+        label{
+            text-align: justify;
+            /* width: 90%; */
+        }
+
+        .btn-primary {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+        .btn-primary:hover {
+            background-color: #ffffff;
+            border: 1px solid #1c3264;
+            color: #1c3264;
+        }
+
+        .login-in-fourteen{
+            visibility: hidden;
+        }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="breadcrumb-bar-two">
+        <div class="container">
+          <div class="row align-items-center inner-banner">
+            <div class="col-md-12 col-12 text-center">
+              <h2 class="breadcrumb-title">Marriage Insights</h2>
+              <nav aria-label="breadcrumb" class="page-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item" aria-current="page">
+                    Marriage Insights
+                  </li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class=" mt-5 mb-2">
+        <div class="">
+            <div class="col-lg-8 m-auto">
+               <div class="card">
+                <div class="card-body">
+                    <div class="form-check mt-2">
+                            <h4 class="text-center">Disclaimer</h4>
+                            <label class="form-check-label" for="flexRadioDefault2">Remember, while astrology can provide guidance, individual effort, 
+                                understanding, and open communication are essential for building a 
+                                successful and fulfilling marriage. You should approach astrology as 
+                                a tool for self-reflection and awareness while actively participating in 
+                                nurturing your relationships.
+                            </label>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                    <h6><b> Choose Your Questions for Marriage Insights OR You can also add your own question</b> </h6></div>
+                    <hr>
+                    <!-- question list -->
+                    <div class="ms-5 mx-5 mb-3" >
+                        <div class="form-check ">
+                            <!-- <input class="form-check-input " type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2" >
+                                What does my birth chart reveal about my prospects for marriage and 
+                                a committed partnership?
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any astrological indications of a suitable life partner or 
+                                soulmate in my chart?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                               Can astrology help me understand the timing and potential 
+                               circumstances of my marriage?
+                               
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What are the astrological factors influencing the success and 
+                                compatibility of my marriage?
+                                
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any challenges or obstacles indicated in my chart that may 
+                                affect my marital life?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology provide insights into the qualities I should seek in a life 
+                                partner?
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                How can astrology guide me in choosing the most favorable time for 
+                                getting married?
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                               What are the potential areas of growth and evolution within my 
+                               marital relationship?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any astrological remedies or rituals to strengthen the bond 
+                                and harmony in marriage?
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology help me navigate issues related to compatibility, 
+                                communication, and intimacy in marriage?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                What are the karmic influences in my chart that may impact my 
+                                marital life?
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology provide insights into the longevity and stability of 
+                                my marriage?
+                                
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                How can I enhance the chances of a happy and fulfilling married 
+                                life based on my chart?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Are there any specific astrological indicators of a love or 
+                                arranged marriage in my chart?
+                            </label>
+                        </div>
+                        <div class="form-check mt-3">
+                            <!-- <input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" > -->
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Can astrology guide me in resolving conflicts and maintaining a 
+                                harmonious relationship with my spouse?
+                            </label>
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    
+    
+                    <!-- button -->
+                    <div class="text-center">
+                        <a href="/view_plan/"><button type="button" class="btn btn-primary">Ask a Question</button></a>
+                    </div>
+
+                </div>
+               
+               
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	<!-- Bootstrap Core JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	 <!-- Profile Settings JS (dropdown)-->
+	 <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+	 <!-- Select2 JS (dropdown)-->
+	 <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+	 
+	 <!-- Dropzone JS (dropdown)-->
+	 <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Datepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+	<!-- Owl Carousel JS -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<!-- Animation JS -->
+	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+	<!-- Counter JS -->
+	<script src="assets/js/counter.js"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+    </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base_admin.html' %}{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Doccure - Dashboard</title>
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+        <style>
+			.content {
+				min-height: 200px;
+				padding: 0;
+			}
+		</style>
+    </head>
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card-header bg-light p-5">
+								<h2 class="card-title text-center"> Astrologer's Commision detail</h2>
+							</div>
+							<!-- Recent Orders -->
+							<div class="card card-table mt-5">
+								<div class="card-body">
+									<div class="table-responsive">
+										<form id="send-form" method="POST" action="">
+											{% csrf_token %}
+											<div>
+												<table class="table" border="1">
+													<thead>
+														<tr style="text-align: center;">
+															<!-- <th align="center">Customer name</th> -->
+															<!-- <th align="center">Comment</th> -->
+															<th align="center">Sr.No</th>
+															<th align="center">Customer Name</th>
+															<th align="center">Plan Name</th>
+															<th align="center">Plan Amount</th>
+															<th align="center">Astrologer Comision</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														{% for i in same_combine %}
+														<tr>
+															<td>{{ i.id }}</td>
+															<td>{{ i.0 }}</td>
+															<td>{{ i.1 }}</td>
+															<td>{{ i.2 }}</td>
+														</tr>
+														{% endfor %}
+													  </tbody>
+												</table>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- /Recent Orders -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Wrapper -->
+        </div>
+		<!-- /Main Wrapper -->
+		<!-- jQuery -->
+        <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+		<!-- Slimscroll JS -->
+        <script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/raphael/raphael.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+		<script src="{% static 'assets/js/chart.morris.js' %}"></script>
+		<!-- Custom JS -->
+		<script  src="{% static 'assets/js/script.js' %}"></script>
+    </body>
+</html>
+
+{% endblock %}

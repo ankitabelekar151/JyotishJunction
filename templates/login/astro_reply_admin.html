@@ -1,0 +1,95 @@
+
+{% load custom_filters %}
+
+<style>
+
+        table.table {
+        width: 100%;
+    }
+    
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    button {
+        padding: 5px 10px;
+        background-color: #1c3264;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #1c3264;
+    }
+</style>
+
+</style>
+
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <table class="table" border="1">
+            <thead>
+                <tr style="text-align: center;">
+                    <th align="center">Customer name</th>
+                    <th align="center">Question</th>
+                    <th align="center">Answer</th>    
+                    <th align="center">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for i in data3 %}
+                {% with matching_user=data1|get_matching_user:i.email_id %} 
+                    <tr>
+                        {% if matching_user %}
+                        <td>{{ i.first_name }} {{ i.last_name }}</td>
+                        {% endif %}
+                        <td>  
+                            {% for j in data1 %}
+                                {% if i.email_id == j.user %}
+                                    &nbsp;&nbsp; {{ forloop.counter }} &nbsp;&nbsp; {{ j.comment1 }}<br><br>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        
+                        <td>
+                            {% for j in data1 %}
+                                {% if i.email_id == j.user %}
+                                    &nbsp;&nbsp; {{ forloop.counter }} &nbsp;&nbsp; {{ j.comment2 }}<br><br>
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td class="actions">
+                            {% if matching_user %}
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <input type="hidden" name="email_id" value="{{ i.email_id }}">
+                                <button type="submit">Approve</button>
+                            </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endwith %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</form>

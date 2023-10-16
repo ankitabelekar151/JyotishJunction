@@ -1,0 +1,739 @@
+<!doctype html>
+ {% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1," src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}">
+    <title >Guruji Speaks {% block title %} {% endblock title %}</title>
+    
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.png' %}" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+            
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>		
+<style>
+   
+    *{
+        font-family: 'Montserrat', sans-serif;
+    }
+    /* background image */
+    .main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve {
+        background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+        background-repeat: no-repeat;
+        /* background-position: center; */
+        background-size: cover;
+        padding: 150px 0 10px 0;
+        
+    }	
+
+    /* nav colors */
+    .header.header-fourteen.header-twelve .header-nav .main-menu-wrapper .main-nav li a {
+        color: #eaedf1;
+    }
+
+    .header.header-fourteen.header-twelve .header-nav .main-menu-wrapper .main-nav li.active a {
+        color: #eaedf1;
+        font-weight: 700;
+    }
+
+    /* login btn */
+    .header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn {
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+        border: none;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 10px 12px;
+        transition: 0.5s;
+    }	
+    .header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn:hover {
+            background: #1c3264;
+        color: #ffffff;
+        transition: 0.5s;
+    }
+    .header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn.reg-btn-fourteen {
+        background: #1c3264;
+        color: #ffffff;
+        border: 1px solid #1C325F;
+        font-size: 15px;
+        font-weight: 600;
+        transition: 0.5s;
+    }
+
+    .header.header-fourteen.header-twelve .header-nav .header-navbar-rht li.login-in-fourteen .reg-btn.reg-btn-fourteen:hover {
+        background: #ffffff;
+        color: #1c3264;
+        transition: 0.5s;
+    }
+
+    .main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen h1 {
+        background: -webkit-linear-gradient(#0e82fd, #149d8d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 60px;
+    }
+
+
+    .banner-content p {
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 25px;
+        color: #fff;
+    }
+    .main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary:nth-child(1) {
+        background: #1c3264;
+        color: #ffffff;
+        border: #1c3264;
+    }
+    .main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary:nth-child(1):hover {
+        background: #fff;
+        color: #1c3264 !important;
+        border: #1c3164;
+    }
+    .main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary {
+        background: #1c3264;
+        color: #ffffff;
+        border: #1c3264;
+    }
+    .main-wrapper.home-twelve .banner-section-fourteen.banner-section-twelve .banner-content-fourteen .banner-btns-fourteen .btn-primary:nth-child(2):hover {
+        background: #fff;
+        color: #1c3264 !important;
+        border: #1c3164;
+    }
+
+
+    .services-section-fourteen {
+        padding: 0 0;
+        background: #F8FAFC;
+    } 
+
+    		/*********************** footer  ***************************************/
+		.footer-one .footer-top .footer-widget .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+        .footer .footer-top .footer-widget .footer-about-content p:last-child {
+            margin-bottom: 0;
+            color: #ffff;
+        }
+        .footer-one .footer-top .footer-widget .footer-contact-info .footer-address p {
+            margin-bottom: 0;
+            color: #fff;
+            font-size: 14px;
+        }
+        .footer-one .social-icon ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .footer-one .social-icon ul li a {
+            color: #fff;
+            font-size: 20px;
+            -webkit-transition: all 0.4s ease 0s;
+            -ms-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+        }
+        .footer .footer-bottom .copyright .copyright-text p {
+            font-size: 15px;
+            color: #ffffff;
+        }
+        .footer.footer-one .footer-bottom .copyright .copyright-text p {
+            color: #fff;
+        }
+        
+        .footer .footer-bottom .copyright .copyright-text p a {
+            color: #fff;
+            font-weight: 500;
+            -webkit-transition: all 0.4s ease 0s;
+            -ms-transition: all 0.4s ease 0s;
+            transition: all 0.4s ease 0s;
+        }
+        .footer-one {
+            background: #000;
+        }
+        .footer-one .footer-top .footer-widget.footer-menu ul li a {
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            background: url(../img/footer-arrow.png) no-repeat -10px;
+            -webkit-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+            padding-left: 0;
+            font-size: 14px;
+        }
+        .footer-one .footer-bottom .copyright .policy-menu li a {
+            color: #fff;
+        }
+        .footer-one .footer-top .footer-widget .footer-contact-info .footer-address p i {
+            font-size: 16px;
+            color: #fff;
+            margin-right: 10px;
+        }
+        .subscribe-form .btn {
+            font-weight: normal;
+            margin: 0;
+            padding: 11px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 0 6px 6px 0;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            color: #ffffff;
+            background: #1c3264;
+            border: 2px solid #1c3164;
+            box-shadow: inset 0 0 0 0 #ffffff;
+        }
+        .subscribe-form .btn:hover {
+            color: #1c3264;
+            border-color: #1c3264;
+            background: #ffffff;
+            box-shadow: inset 0 0 0 50px #ffffff;
+            -webkit-transition: 0.5s;
+            -ms-transition: 0.5s;
+            transition: 0.5s;
+        }
+        .subscribe-form .form-control {
+            font-weight: 500;
+            font-size: 14px;
+            min-height: 46px;
+            color: #1c3264;
+            background: #ffffff;
+            border: 1px solid #E5E7EB;
+            border-radius: 6px 6px 6px 6px;
+            margin: 0;
+            padding: 6px 112px 6px 15px;
+        }
+        .header-logo {
+            height: auto;
+            width: 100%;
+        }
+            /*********************** footer  ***************************************/
+        
+</style>
+<!-- Main Wrapper -->
+<div class="main-wrapper home-twelve">
+					
+<!-- Header -->
+
+    <!-- Header -->
+    <header class="header header-fixed header-fourteen header-twelve" style="background-color:#000">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="#" class="navbar-brand logo">
+                        <img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 70px;">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="#" class="menu-logo">
+                            <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="has-submenu megamenu active">
+                            <a href="javascript:void(0);">Home <i class="#"></i></a>
+                            <!-- <ul class="submenu mega-submenu">
+                                <li>
+                                    <div class="megamenu-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <div class="single-demo ">
+                                                    <div class="demo-img">
+                                                        <a href="index.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-11.jpg" class="img-fluid "
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index.html" class="inner-demo-img">General Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-2.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-10.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-2.html" class="inner-demo-img">General Home 2</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-3.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-09.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-3.html" class="inner-demo-img">General Home 3</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-4.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-08.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-4.html" class="inner-demo-img">General Home 4</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-5.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-07.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-5.html" class="inner-demo-img">Cardiology
+                                                            Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-6.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-06.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-6.html" class="inner-demo-img">Eye Care Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo active">
+                                                    <div class="demo-img">
+                                                        <a href="index-7.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-05.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-7.html" class="inner-demo-img">Veterinary
+                                                            Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-8.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-04.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-8.html" class="inner-demo-img">Paediatric
+                                                            Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-9.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-03.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-9.html" class="inner-demo-img">Fertility Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-10.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-02.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-10.html" class="inner-demo-img">ENT Hospital
+                                                            Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="single-demo">
+                                                    <div class="demo-img">
+                                                        <a href="index-11.html" class="inner-demo-img"><img
+                                                                src="assets/img/home-01.jpg" class="img-fluid"
+                                                                alt="img"></a>
+                                                    </div>
+                                                    <div class="demo-info">
+                                                        <a href="index-11.html" class="inner-demo-img">Cosmetics Home</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul> -->
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Astrologer <i class="#"></i></a>
+                            <!-- <a href="javascript:void(0);">Astrologer <i class="fas fa-chevron-down"></i></a> -->
+                            <!-- <ul class="submenu">
+                                <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+                                <li><a href="appointments.html">Appointments</a></li>
+                                <li><a href="schedule-timings.html">Schedule Timing</a></li>
+                                <li><a href="my-patients.html">Patients List</a></li>
+                                <li><a href="patient-profile.html">Patients Profile</a></li>
+                                <li><a href="chat-doctor.html">Chat</a></li>
+                                <li><a href="invoices.html">Invoices</a></li>
+                                <li><a href="doctor-profile-settings.html">Profile Settings</a></li>
+                                <li><a href="reviews.html">Reviews</a></li>
+                                <li><a href="doctor-register.html">Doctor Register</a></li>
+                                <li class="has-submenu">
+                                    <a href="doctor-blog.html">Blog</a>
+                                    <ul class="submenu">
+                                        <li><a href="doctor-blog.html">Blog</a></li>
+                                        <li><a href="blog-details.html">Blog view</a></li>
+                                        <li><a href="doctor-add-blog.html">Add Blog</a></li>
+                                    </ul>
+                                </li>
+                            </ul> -->
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Customers <i class="#"></i></a>
+                            <!-- <ul class="submenu">
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Doctors</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="map-grid.html">Map Grid</a></li>
+                                        <li><a href="map-list.html">Map List</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Search Doctor</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="search.html">Search Doctor 1</a></li>
+                                        <li><a href="search-2.html">Search Doctor 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="doctor-profile.html">Doctor Profile</a></li>
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Booking</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="booking.html">Booking 1</a></li>
+                                        <li><a href="booking-2.html">Booking 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="booking-success.html">Booking Success</a></li>
+                                <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
+                                <li><a href="favourites.html">Favourites</a></li>
+                                <li><a href="chat.html">Chat</a></li>
+                                <li><a href="profile-settings.html">Profile Settings</a></li>
+                                <li><a href="change-password.html">Change Password</a></li>
+                            </ul> -->
+                        </li>
+                        <li class="has-submenu">
+                            <a href="">Pages <i class="#"></i></a>
+                            <!-- <ul class="submenu">
+                                <li><a href="pharmacy-index.html">Pharmacy</a></li>
+                                <li><a href="pharmacy-details.html">Pharmacy Details</a></li>
+                                <li><a href="pharmacy-search.html">Pharmacy Search</a></li>
+                                <li><a href="product-all.html">Product</a></li>
+                                <li><a href="product-description.html">Product Description</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="product-checkout.html">Product Checkout</a></li>
+                                <li><a href="payment-success.html">Payment Success</a></li>
+                                <li><a href="pharmacy-register.html">Pharmacy Register</a></li>
+                            </ul> -->
+                        </li>
+                        <li class="has-submenu">
+                            <a href="javascript:void(0);">Blog <i class="#"></i></a>
+                            <!-- <ul class="submenu">
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="contact-us.html">Contact Us</a></li>
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Call</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="voice-call.html">Voice Call</a></li>
+                                        <li><a href="video-call.html">Video Call</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Invoices</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="invoices.html">Invoices</a></li>
+                                        <li><a href="invoice-view.html">Invoice View</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Authentication</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="login-email.html">Login Email</a></li>
+                                        <li><a href="login-phone.html">Login Phone</a></li>
+                                        <li><a href="doctor-signup.html">Doctor Signup</a></li>
+                                        <li><a href="patient-signup.html">Patient Signup</a></li>
+                                        <li><a href="forgot-password.html">Forgot Password 1</a></li>
+                                        <li><a href="forgot-password2.html">Forgot Password 2</a></li>
+                                        <li><a href="login-email-otp.html">Email OTP</a></li>
+                                        <li><a href="login-phone-otp.html">Phone OTP</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="javascript:void(0);">Error Pages</a>
+                                    <ul class="submenu inner-submenu">
+                                        <li><a href="error-404.html">404 Error</a></li>
+                                        <li><a href="error-500.html">500 Error</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="blank-page.html">Starter Page</a></li>
+                                <li><a href="pricing.html">Pricing Plan</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="maintenance.html">Maintenance</a></li>
+                                <li><a href="coming-soon.html">Coming Soon</a></li>
+                                <li><a href="terms-condition.html">Terms & Condition</a></li>
+                                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                <li><a href="components.html">Components</a></li>
+                            </ul> -->
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">Admin <i class="#"></i></a>
+                            <!-- <ul class="submenu">
+                                <li><a href="blog-list.html">Blog List</a></li>
+                                <li><a href="blog-grid.html">Blog Grid</a></li>
+                                <li><a href="blog-details.html">Blog Details</a></li>
+                            </ul> -->
+                        </li>
+                        <!-- <li class="has-submenu">
+                            <a href="#">Admin <i class="fas fa-chevron-down"></i></a>
+                            <ul class="submenu">
+                                <li><a href="admin/index.html" target="_blank">Admin</a></li>
+                                <li><a href="pharmacy/index.html" target="_blank">Pharmacy Admin</a></li>
+                            </ul>
+                        </li> -->
+                    </ul>
+                </div>
+                <ul class="nav header-navbar-rht">
+                    <li class="searchbar searchbar-fourteen me-2">
+                        <a href="javascript:void(0);"><i class="feather-search"></i></a>
+                        <div class="togglesearch" style="display: none;">
+                            <form action="doctor-search-list.html">
+                                <div class="input-group">
+                                    <input type="text" class="form-control">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="login-link"><a href="#">Login / Signup</a></li>
+                    <li class="login-in-fourteen">
+                        <a href="#" class="btn reg-btn"><i class="feather-user me-2"></i>Log In</a>
+                    </li>
+                    <li class="login-in-fourteen">
+                        <a href="#" class="btn btn-primary reg-btn reg-btn-fourteen"><i class="feather-user me-2"></i>Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- /Header -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+		<footer class="footer footer-one">
+				<div class="footer-top">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-3 col-md-4">
+								<div class="footer-widget footer-about">
+									<div class="footer-logo">
+										<img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}"style="
+											margin-top: -20px;
+											max-width: 30%;
+											height: auto;
+										" alt="logo">
+									</div>
+									<div class="footer-about-content">
+										<p>At Guruji Speak, we believe that astrology is a powerful tool that can be used to gain insights into our lives and to make better decisions.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-4">
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Customers</h2>
+									<ul>
+										<li><a href="#">Search for Astrologer</a></li>
+										<li><a href="#">Login</a></li>
+										<li><a href="#">Register</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-4">
+								<div class="footer-widget footer-menu">
+									<h2 class="footer-title">For Astrologer</h2>
+									<ul>
+										<li><a href="#">Appointments</a></li>
+										<li><a href="#">Register</a></li>
+										<li><a href="#">Login</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-2 col-md-5">
+								<div class="footer-widget footer-contact">
+									<h2 class="footer-title">Contact Us</h2>
+									<div class="footer-contact-info">
+										<!-- <div class="footer-address">
+											<p><i class="feather-map-pin"></i> 3556 Beech Street, USA</p>
+										</div> -->
+										<div class="footer-address">
+											<p><i class="feather-phone-call"></i>+91 999 999 3840</p>
+										</div>
+										<div class="footer-address mb-0">
+											<p><i class="feather-mail"></i> info@gurujispeaks.com</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-7">
+								<div class="footer-widget">
+									<h2 class="footer-title">Join Our Newsletter</h2>
+									<div class="subscribe-form">
+										<form action="#">
+											<input type="email" class="form-control" placeholder="Enter Email">
+											<button type="submit" class="btn">Submit</button>
+										</form>
+									</div>
+									<div class="social-icon">
+										<ul>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-facebook"></i> </a>
+											</li>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-instagram"></i></a>
+											</li>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-twitter"></i> </a>
+											</li>
+											<li>
+												<a href="javascript:;" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-bottom">
+					<div class="container">
+						<!-- Copyright -->
+						<div class="copyright">
+							<div class="row">
+								<div class="col-md-6 col-lg-6">
+									<div class="copyright-text">
+										<p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">GurujiSpeaks.</a> All Rights Reserved.Powered by Zappkode.</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6">
+								
+									<!-- Copyright Menu -->
+									<div class="copyright-menu">
+										<ul class="policy-menu">
+											<li><a href="#">Privacy Policy</a></li>
+											<li><a href="#">Terms and Conditions</a></li>
+										</ul>
+									</div>
+									<!-- /Copyright Menu -->
+									
+								</div>
+							</div>
+						</div>
+						<!-- /Copyright -->					
+					</div>
+				</div>
+			</footer>
+	<!-- /Footer -->
+
+
+
+    <!-- jQuery -->
+		<script src="assets/js/jquery-3.6.4.min.js"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js"></script>
+
+		<!-- Datepicker JS -->
+		<script src="assets/js/moment.min.js"></script>
+		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+		<!-- Owl Carousel JS -->
+		<script src="assets/js/owl.carousel.min.js"></script>
+
+		<!-- Slick JS -->
+		<script src="assets/js/slick.js"></script>
+
+		<!-- Animation JS -->
+		<script src="assets/js/aos.js"></script>
+
+		<!-- Counter JS -->
+		<!-- <script src="assets/js/counter.js"></script> -->
+
+		<!-- BacktoTop JS -->
+		<script src="assets/js/backToTop.js"></script>
+
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+	

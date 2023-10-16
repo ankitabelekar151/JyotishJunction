@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Doccure</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{%static 'assets/img/favicon.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{%static 'assets/css/feather.css' %}">
+
+    	<!-- Mobile CSS-->
+		<link rel="stylesheet" href="{%static 'assets/plugins/intltelinput/css/intlTelInput.css' %}">
+    	<link rel="stylesheet" href="{%static 'assets/plugins/intltelinput/css/demo.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{%static 'assets/css/custom.css' %}">
+
+		<style>
+			.login-content-info {
+				margin: 0;
+				padding: 30px 0 60px;
+				background-image: url('{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}');
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+
+			.login-content-info .account-content .login-title {
+				padding-bottom: 25px;
+			}
+
+			.form-check {
+				display: inline-block;
+				min-height: 1.5rem;
+				padding-left: 1.5em;
+				margin-bottom: .125rem;
+			}
+		</style>
+	</head>		
+	<body class="login-body">
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper home-fourteen">
+					
+
+			<!-- Page Content -->
+			<div class="login-content-info">
+				<div class="container">
+
+					<!-- Doctor Signup -->
+					<div class="row justify-content-center">
+						<div class="col-lg-4 col-md-6 bg-light p-4 rounded">
+							<div class="account-content">
+								<div class="login-shapes">
+									<div class="shape-img-left">
+										<img src="assets/img/shape-01.png" alt="">
+									</div>
+									<div class="shape-img-right">
+										<img src="assets/img/shape-02.png" alt="">
+									</div>
+								</div>
+								<div class="widget-set">
+									<div class="account-info">
+										<div class="widget-content multistep-form">
+											<fieldset id="first">
+												<div class="login-back">
+													<a href="/customer-login/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+												</div>
+												<div class="login-title">
+													<h3>Login With OTP</h3>
+													<p class="mb-0">To Secure your Account create complete the following verify request.</p>
+												</div>
+												<div class="widget-setcount">
+													<ul id="progressbar">
+														<li class="progress-active">
+															<div class="step-box">
+																{% comment %} <div class="step-icon">
+																	<span>
+																		<img src="{%static 'assets/img/icons/signup-unlock.svg' %}" alt="icon">
+																	</span>
+																</div> {% endcomment %}
+																{% comment %} <div class="step-content">
+																	<h4>Verify Account</h4>
+																</div> {% endcomment %}
+															</div>
+														</li>
+													</ul>
+												</div>
+												
+                                                <form action = "{% url 'customer-login-otp' %}" class="signup-verfication-form">
+													<div class="form-group">
+														<div class="form-group-flex">
+															<label>Enter Phone Number</label>
+															<a href="/otp-verification/" class="forgot-link">Get Code</a>
+														</div>
+                                                        <div class="pass-group mb-1">
+															<input class="form-control form-control-lg group_formcontrol form-control-phone" id="user_id" name="user_id" type="text" placeholder="Enter number">
+														</div>
+														<div class="pass-group">
+															<input class="form-control form-control-lg group_formcontrol form-control-phone" id="otp" name="otp" type="text">
+														</div>
+														<p class="signup-code">Enter the 6 digit code sent to 98****4578</p>
+													</div>
+													<div class="form-group mb-0">
+														<button class="btn btn-primary btn-block"  type="submit">Submit</button>
+													</div>
+												</form>
+											</fieldset>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Doctor Signup -->
+
+				</div>
+			</div>		
+			<!-- /Page Content -->	
+
+			<!-- Cursor -->
+			<!-- <div class="mouse-cursor cursor-outer"></div>
+			<div class="mouse-cursor cursor-inner"></div> -->
+			<!-- /Cursor -->
+
+		</div>		
+		<!-- /Main Wrapper -->
+	
+		<!-- jQuery -->
+		<script src="assets/js/jquery-3.6.4.min.js"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="assets/js/bootstrap.bundle.min.js"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="assets/js/feather.min.js"></script>
+
+		<!-- Mobile Input -->
+		<script src="assets/plugins/intltelinput/js/intlTelInput.js"></script>
+
+		<!-- Custom JS -->
+		<script src="assets/js/script.js"></script>
+	
+	</body>
+</html>

@@ -1,0 +1,757 @@
+<!doctype html>
+ {% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title >Guruji Speaks {% block title %} {% endblock title %}</title>
+    
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" type="image/x-icon">
+
+
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '861207275649825');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=861207275649825&ev=PageView&noscript=1"
+        /></noscript>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+            
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>		
+<style>
+    /* header nav */
+			.header-one .main-menu-wrapper .main-nav li a {
+				font-size: 15px;
+				font-weight: 500;
+				color: #ffffff !important;
+				display: block;
+			}
+			
+			.header .header-nav .header-navbar-rht .noti-nav .nav-link {
+				font-size: 18px;
+				color: #ffffff !important;
+			}
+
+			.header .header-nav .header-navbar-rht .has-arrow .dropdown-toggle:after {
+				border-top: 0;
+				border-left: 0;
+				border-bottom: 2px solid #ffffff !important;
+				border-right: 2px solid #ffffff !important;
+				content: "";
+				height: 8px;
+				display: inline-block;
+				pointer-events: none;
+				width: 8px;
+				vertical-align: 2px;
+				margin-left: 10px;
+				transform-origin: 66% 66%;
+				-webkit-transform-origin: 66% 66%;
+				-ms-transform-origin: 66% 66%;
+				transform: rotate(45deg);
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				-webkit-transition: all 0.15s ease-in-out;
+				-ms-transition: all 0.15s ease-in-out;
+				transition: all 0.15s ease-in-out;
+			}
+
+            .fa-circle-user:hover{
+                color: #000 !important;
+                background-color: none !important;
+                cursor: auto;
+            }
+
+            .header .user-menu.nav li a:hover,
+            .header .user-menu.nav li a:focus 
+            {
+                background: none !important;
+                background-color: none !important;
+                color: #0E82FD !important;
+                letter-spacing: 0.5px !important;
+                /* padding-left: 20px !important; */
+            }
+
+			/* footer */
+			.footer-one {
+				background: #1c3264 !important;
+			}
+
+            .footer-one .footer-top {
+                margin: 0;
+                padding: 30px 0 !important;
+            }
+
+			.footer-one .footer-top .footer-widget .footer-about-content p {
+				margin-bottom: 0;
+				font-size: 14px;
+				color: #ffffff !important;
+			}
+
+			.footer-one .footer-top .footer-widget .footer-title {
+				font-size: 18px;
+				font-weight: 600;
+				color: #ffffff !important;
+				margin-bottom: 25px;
+			}
+
+			.footer-one .footer-top .footer-widget.footer-menu ul li a {
+				color: #ffffff !important;
+				position: relative;
+				overflow: hidden;
+				background: url(../img/footer-arrow.png) no-repeat -10px;
+				-webkit-transition: all 0.5s ease-in-out;
+				-ms-transition: all 0.5s ease-in-out;
+				transition: all 0.5s ease-in-out;
+				padding-left: 0;
+				font-size: 14px;
+			}
+
+			.footer-one .footer-top .footer-widget .footer-contact-info .footer-address p {
+				margin-bottom: 0;
+				color: #ffffff !important;
+				font-size: 14px;
+			}    
+
+
+
+
+            .footer.footer-one .footer-bottom .copyright .copyright-text p {
+                color: #fff !important;
+            }
+            .footer .footer-bottom .copyright .copyright-text p a {
+                color: #eae1e1 !important;
+                font-weight: 500;
+                -webkit-transition: all 0.4s ease 0s;
+                -ms-transition: all 0.4s ease 0s;
+                transition: all 0.4s ease 0s;
+            }
+            .footer-one .footer-bottom .copyright .policy-menu li a {
+                color: #fff !important;
+            }
+            .footer-one .social-icon ul li a {
+                color: #fff !important;
+                font-size: 20px;
+                -webkit-transition: all 0.4s ease 0s;
+                -ms-transition: all 0.4s ease 0s;
+                transition: all 0.4s ease 0s;
+            }
+            .footer-one .footer-top .footer-widget .footer-contact-info .footer-address p i {
+				font-size: 16px;
+				color: #fff !important;
+				margin-right: 10px;
+			}
+
+            
+
+            .user-menu1{
+                display: flex;
+                /* margin-bottom: 13px; */
+            }
+
+            .header .user-menu.nav li a {
+                color: #000 !important;
+                font-size: 14px;
+                line-height: 20px !important;
+                height: 35px !important;
+                padding: 0 17px !important;
+            }
+
+            .header .user-menu.nav li a:hover, .header .user-menu.nav li a:focus {
+                background-color: none !important;
+            }
+           
+
+            @media (max-width: 991.98px)
+            {
+                .header-one .header-nav .main-menu-wrapper {
+                    background-color: #000 !important;
+                }
+
+            
+                .user-menu1{
+                    display: block;
+                    margin-top: 10px;
+                    width: auto !important;
+                }
+
+                .header .user-menu.nav li a:hover, .header .user-menu.nav li a:focus {
+                    background-color: none !important;
+                }
+
+                 .user-dropdown{
+                    margin-top: -5px;
+                }
+
+                .header .user-menu.nav li a {
+                    color: #000 !important;
+                    font-size: 14px;
+                    line-height: 0;
+                    height: 60px;
+                    padding: 0 15px;
+                }
+                
+                .profile-section {
+                    /* position: fixed !important; */
+                    margin-left: 80% !important;
+                    margin-top: -22% !important;
+                   
+                }
+
+                .header .header-nav .main-menu-wrapper {
+                    order: 3;
+                    width: 260px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    z-index: 1060;
+                    transform: translateX(-260px);
+                    -webkit-transform: translateX(-260px);
+                    -ms-transform: translateX(-260px);
+                    -webkit-transition: all 0.4s;
+                    -ms-transition: all 0.4s;
+                    transition: all 0.4s;
+                    background-color: #15558d;
+                    position: fixed;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        
+</style>
+<!-- Main Wrapper -->
+<div class="main-wrapper home-twelve">
+
+     <!-- Header -->
+     <header class="header header-one" style="background: #1c3264; height: 90px;">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg header-nav">
+                <div class="navbar-header">
+                    <a id="mobile_btn" href="javascript:void(0);">
+                        <span class="bar-icon">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </a>
+                    <a href="#" class="navbar-brand logo">
+                        <img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 70px;">
+                    </a>
+                </div>
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="#" class="menu-logo">
+                            <img src="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 70px;">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <ul class="main-nav">
+                        <li class="">
+                            <a href="/dash_astro/">Home</a>
+                        </li>
+                        <!-- <li class="has-submenu active">
+                            <a href="javascript:void(0);">Talk To Astrologer</a>
+                            
+                        </li> -->
+                        <!-- <li class="has-submenu">
+                            <a href="javascript:void(0);">Ask a Question</a>
+                            
+                        </li> -->
+                        <li class="">
+                            <a href="/astro_blog/">Blog</a>
+                            
+                        </li>
+
+                        <li class="">
+                            <a href="/whatsapp_qr/">Chat Support</a>
+                            
+                        </li>
+                        
+                    </ul>
+                </div>
+                <ul class="nav user-menu profile-section">
+                    <!-- <ul class="nav header-navbar-rht profile-section"> -->
+
+                    <!-- Notifications  -->
+                    <!-- <li class="nav-item dropdown noti-nav me-3 pe-0">
+                        <a href="#" class="dropdown-toggle nav-link p-0" data-bs-toggle="dropdown">
+                            <i class="fa-solid fa-bell"></i> <span class="badge">5</span>
+                        </a>
+                        <div class="dropdown-menu notifications dropdown-menu-end ">
+                            <div class="topnav-dropdown-header">
+                                <span class="notification-title">Notifications</span>
+                            </div>
+                            <div class="noti-content">
+                                <ul class="notification-list">
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                                <span class="avatar">
+                                                    <img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-01.jpg' %}">
+                                                </span>
+                                                <div class="media-body">
+                                                    <h6>Travis Tremble <span class="notification-time">18.30 PM</span></h6>
+                                                    <p class="noti-details">Sent a amount of $210 for his Appointment  <span class="noti-title">Dr.Ruby perin </span></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                                <span class="avatar">
+                                                    <img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-02.jpg' %}">
+                                                </span>
+                                                <div class="media-body">
+                                                    <h6>Travis Tremble <span class="notification-time">12 Min Ago</span></h6>
+                                                    <p class="noti-details"> has booked her appointment to  <span class="noti-title">Dr. Hendry Watt</span></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                                <div class="avatar">
+                                                    <img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-03.jpg' %}">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6>Travis Tremble <span class="notification-time">6 Min Ago</span></h6>
+                                                    <p class="noti-details"> Sent a amount  $210 for his Appointment   <span class="noti-title">Dr.Maria Dyen</span></p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="notification-message">
+                                        <a href="#">
+                                            <div class="media d-flex">
+                                                <div class="avatar avatar-sm">
+                                                    <img class="avatar-img" alt="" src="{% static 'assets/img/clients/client-04.jpg' %}">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h6>Travis Tremble <span class="notification-time">8.30 AM</span></h6>
+                                                    <p class="noti-details"> Send a message to his doctor</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li> -->
+                     <!-- /Notifications -->
+
+                    <!-- User Menu  -->
+                    <li class="nav-item dropdown has-arrow logged-item user-menu1">
+                        <span class="user-img">
+                            {% if user.image %}
+                                <img src="{{ user.image.url }}"  class="avatar-img rounded-circle" width="31">
+                            {% else %}
+                                <!-- <img src="{% static 'media/user_images/' %}" alt="User Image" class="avatar-img rounded-circle" width="31"> -->
+                                <!-- <i class="fa-regular fa-circle-user avatar-img rounded-circle" style="font-size: 1.7em;"></i> -->
+                                <div class="user-text">
+                                    <h5 style="color: #fff;">Hello, {{user.name}}</h5>
+                                </div>
+                            {% endif %}
+                            <!-- <img class="rounded-circle" src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" width="31" alt="Darren Elder"> -->
+                        </span>
+                        <a href="" class="dropdown-toggle nav-link user-dropdown" data-bs-toggle="dropdown" style="color: #fff !important;">
+                             <!--<span class="user-img">
+                                <img class="rounded-circle" src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" width="31" alt="Darren Elder">
+                            </span> -->
+                            
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="user-header">
+                                <div class="avatar avatar-sm">
+                                    <a href="/astro_profile/" class="booking-doc-img">
+                                        {% if user.image %}
+                                            <img src="{{ user.image.url }}" alt="User Image">
+                                        {% else %}
+                                            <!-- <img src="{% static 'media/user_images/' %}" alt="Image1"> -->
+                                            <i class="fa-regular fa-circle-user avatar-img rounded-circle " style="font-size: 1.7em;"></i>
+                                        {% endif %}
+                
+                                    {% comment %} <img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image" class="avatar-img rounded-circle"> {% endcomment %}
+                                </div>
+                                <!-- <div class="user-text">
+                                    <h6>{{user.name}}</h6>
+                                    <p class="text-muted mb-0">Doctor</p>
+                                </div> -->
+                            </div>
+                            <a class="dropdown-item" href="/dash_astro/"> <span>Dashboard</span></a>
+                            <a class="dropdown-item" href="/astro_my_customers/"> My Customers </a>
+                            <a class="dropdown-item" href="/astrologer_payment/"> My Payment</a>
+                            <a class="dropdown-item" href="/astro_profile/">Profile Settings</a>
+                            <a class="dropdown-item" href="/astrologer_changepass/">Change Password</a>
+                            <a class="dropdown-item" href="/logout_astro/">Logout</a>
+                        </div>
+                    </li>
+                     <!-- /User Menu -->
+                    
+                </ul>
+            </nav>
+        </div>
+    </header> 
+    <!-- /Header -->
+
+			
+    <!-- <aside class="sidebar-wrapper d-flex align-items-stretch" data-simplebar="true">
+              
+              <div class="profile-sidebar sidebar-header">
+                 <div class="widget-profile pro-widget-content">
+                  <div class="profile-info-widget">
+                    <a href="#" class="booking-doc-img">
+                      <img src="{% static 'assets/img/doctors/doctor-thumb-02.jpg' %}" alt="User Image">
+                    </a>
+                    <div class="profile-det-info">
+                      <h3>{{data2.name}} </h3>
+                      
+                      <div class="patient-details">
+                        <h5 class="mb-0">{{data2.email_id}}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="dashboard-widget">
+                  <nav class="dashboard-menu">
+                    <ul>
+                      <li class="">
+                        <a href="/dash_astro/">
+                          <i class="fas fa-columns"></i>
+                          <span>Dashboard</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/astro_reply/">
+                          <i class="fas fa-calendar-check"></i>
+                          <span>My Booking</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/astro_my_customers/"> 
+                          <i class="fas fa-user-injured"></i>
+                          <span>My customers</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fas fa-hourglass-start"></i>
+                          <span>Schedule Timings</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="available-timings.html">
+                          <i class="fas fa-clock"></i>
+                          <span>Available Timings</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="invoices.html">
+                          <i class="fas fa-file-invoice"></i>
+                          <span>Invoices</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/astrologer_payment/">
+                          <i class="fas fa-file-invoice-dollar"></i>
+                          <span>My Payment</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fas fa-star"></i>
+                          <span>Reviews</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i class="fas fa-comments"></i>
+                          <span>Message</span>
+                          <small class="unread-msg">23</small>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/astro_profile/">
+                          <i class="fas fa-user-cog"></i>
+                          <span>Profile Settings</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="social-media.html">
+                          <i class="fas fa-share-alt"></i>
+                          <span>Social Media</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/astrologer_changepass/">
+                          <i class="fas fa-lock"></i>
+                          <span>Change Password</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/logout_astro/">
+                          <i class="fas fa-sign-out-alt"></i>
+                          <span>Logout</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+               /Profile Sidebar 
+    </aside> -->
+
+    {% block content %}
+    {% endblock %}
+   <!-- Footer -->
+   <footer class="footer footer-one">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    <div class="footer-widget footer-about">
+                        <div class="footer-logo">
+                            <img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}"style="
+                                margin-top: -20px;
+                                max-width: 30%;
+                                height: auto;
+                            " alt="logo">
+                        </div>
+                        <div class="footer-about-content">
+                            <p>At Guruji Speaks, we believe that astrology is a powerful tool that can be used to gain insights into our lives and to make better decisions.</p>
+                        </div>
+                        <br>
+                        <div class="social-icon">
+                            <ul>
+                                <li>
+                                    <a  target="_blank"  style="cursor: auto;"><i class=""></i>
+                                        <img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}" class="image-fluid w-50" alt="Logo"> </a>
+                                </li>
+                                <li>
+                                    <a  target="_blank"  style="cursor: auto;"><i class=""></i>
+                                        <img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}" class="image-fluid w-50" alt="Logo"> </a>
+                                </li>
+                                <li>
+                                    <a  target="_blank"  style="cursor: auto;"><i class=""></i>
+                                        <img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}" class="image-fluid w-50" alt="Logo"> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-widget footer-menu">
+                        <h2 class="footer-title">Useful Links</h2>
+                        <ul>
+                            <li><a href="/faqs/">FAQ</a></li>
+                            <li><a href="/intellactual_property/">Intellectual Property</a></li>
+                            <li><a href="/disclaimer/">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <div class="footer-widget footer-menu">
+                        <h2 class="footer-title">For Astrologer</h2>
+                        <ul>
+                            <!-- <li><a href="#">Appointments</a></li> -->
+                            <li><a href="/astrologer-registration/">Register</a></li>
+                            <li><a href="/astrologer-login/">Login</a></li>
+                            <li><a href="/customer_support/">Customer Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-5">
+                    <div class="footer-widget footer-contact">
+                        <h2 class="footer-title">Contact Us</h2>
+                        <div class="footer-contact-info">
+                           
+                            <div class="footer-address">
+                                <a href="/whatsapp_qr/">
+                                <p><i class="feather-user"></i>Chat Support</p>
+                                </a>
+                            </div>
+                            <div class="footer-address mb-0">
+                                <p>
+                                         
+                                          <a href="mailto:care@gurujispeaks.com" style="color: white;"> <i class="feather-mail"></i>care@gurujispeaks.com</a>
+                                        </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-7">
+                    <div class="footer-widget ms-2">
+                        <h2 class="footer-title">Follow Us</h2>
+                        <!-- <div class="subscribe-form">
+                            <form action="#">
+                                <input type="email" class="form-control" placeholder="Enter Email">
+                                <button type="submit" class="btn">Submit</button>
+                            </form>
+                        </div> -->
+                        <div class="social-icon">
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com/guruji_speaks?s=20" target="_blank"><i class="fab fa-twitter"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <!-- Copyright -->
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="copyright-text">
+                            <p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">GurujiSpeaks.</a> All Rights Reserved. Powered by Zappkode.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                    
+                        <!-- Copyright Menu -->
+                        <div class="copyright-menu">
+                            <ul class="policy-menu">
+                                <li><a href="/privacy_policy/">Privacy Policy</a></li>
+                                <li><a href="/terms_of_service/">Terms Of Service</a></li>
+                                <li><a href="/Refund_Cancellation_Policy/">Refund and Cancellation Policy</a></li>
+                            </ul>
+                        </div>
+                        <!-- /Copyright Menu -->
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- /Copyright -->					
+        </div>
+    </div>
+
+    <!-- whatsapp QR -->
+    <style>
+        .whats-app {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            bottom: 72px;
+            right: 19px;
+            background-color: #dddddd;
+            border-radius: 67%;
+            text-align: center;
+            font-size: 12px;
+            z-index: 100;
+            padding: 6px;
+        }
+
+        .my-float {
+            margin-top: 16px;
+        }
+    </style>
+    <div>
+        <a href="/whatsapp_qr/">
+            <img width="48" class="whats-app" height="48" src="https://img.icons8.com/color/48/whatsapp--v1.png"
+				alt="whatsapp--v1" />
+            <!-- <img width="48" height="48" class="whats-app" src="https://img.icons8.com/color/48/gmail-new.png" alt="gmail-new"/> -->
+        </a>
+    </div>
+    <!-- end whatsapp QR -->
+</footer>
+<!-- /Footer -->
+
+
+</div>
+
+<!-- ScrollToTop -->
+<div class="progress-wrap active-progress">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+            style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+        </path>
+    </svg>
+</div>
+<!-- /ScrollToTop -->
+
+
+    <!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Datepicker JS -->
+		<script src="{% static 'assets/js/moment.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+		<!-- Owl Carousel JS -->
+		<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+		<!-- Slick JS -->
+		<script src="{% static 'assets/js/slick.js' %}"></script>
+
+		<!-- Animation JS -->
+		<script src="{% static 'assets/js/aos.js' %}"></script>
+
+		<!-- Counter JS -->
+		<!-- <script src="assets/js/counter.js"></script> -->
+
+		<!-- BacktoTop JS -->
+		<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+	

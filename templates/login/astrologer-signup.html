@@ -1,0 +1,735 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{%static 'assets/css/feather.css' %}">
+
+    	<!-- Mobile CSS-->
+		<link rel="stylesheet" href="{%static 'assets/plugins/intltelinput/css/intlTelInput.css' %}">
+    	<link rel="stylesheet" href="{%static 'assets/plugins/intltelinput/css/demo.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{%static 'assets/css/custom.css' %}">
+
+		<!-- for country code -->
+		<!-- Include International Telephone Input CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css">
+
+
+		<style>
+			.login-content-info {
+				margin: 0;
+				padding: 30px 0 60px;
+				background-image: url("{%static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+
+			.login-content-info .account-content .login-title {
+				padding-bottom: 25px;
+			}
+
+			.form-check {
+				display: inline-block;
+				min-height: 1.5rem;
+				padding-left: 1.5em;
+				margin-bottom: .125rem;
+			}
+
+			.login-content-info .account-content .account-info .btn {
+				width: 100%;
+				color: #ffffff;
+				background: #1c3264;
+				border: 1px solid #1c3264;
+				box-shadow: inset 0 0 0 0 #ffffff;
+				-webkit-transition: 0.7s;
+				-ms-transition: 0.7s;
+				transition: 0.7s;
+				font-weight: 600;
+				padding: 10px 15px;
+			}
+
+			.iti{
+				width: 100% !important;
+			}
+		</style>
+	</head>		
+	<body class="login-body">
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper home-fourteen">
+					
+			<!-- Page Content -->
+			<div class="login-content-info">
+				<div class="container">
+
+					<!-- Doctor Signup -->
+					<div class="row justify-content-center">
+						<div class="col-lg-4 col-md-6 bg-light p-4 rounded">
+							<div class="account-content">
+								<div class="login-shapes">
+									<div class="shape-img-left">
+										<img src="{%static 'assets/img/shape-01.png' %}" alt="">
+									</div>
+									<div class="shape-img-right">
+										<img src="{%static 'assets/img/shape-02.png' %}" alt="">
+									</div>
+								</div>
+								<div class="widget-set">
+									<div class="account-info">
+										<div class="widget-content multistep-form">
+											<fieldset id="first">
+												<div class="login-back">
+													<a href="/astrologer-login/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+												</div>
+												<div class="login-title">
+													<h3>Astrologer Signup</h3>
+													<p class="mb-0">Welcome! Please.</p>
+												</div>
+												
+												<form action="" method = 'post' id="form" onsubmit="return validateForm()">
+                                                    {% csrf_token %}
+													<div class="form-group">
+														<label>Full Name <span style="color: red;">*</span></label>
+														{% comment %} <input type="text" class="form-control" name = 'name' placeholder="Enter Your Full Name" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')"> {% endcomment %}
+														<input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Full Name" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')" required>
+
+													</div>
+													<div class="form-group">
+														<label>Email<span style="color: red;">*</span></label>
+														<input type="email" class="form-control" name = 'email_id' id="email_id" placeholder="example@gmail.com" pattern = "[^@\s]+@[^@\s]+\.[^@\s]+" title="Invalid Email Id" maxlength="50" required>
+														<span id="email_error" style="color: red; display: none;"></span>
+														<span id="email_info" style="color: green; display: none;"></span>
+
+													</div>
+													{% comment %} <div class="form-group">
+														<label>Select Country</label>
+														<input type="text" class="form-control" name = 'country' placeholder="Select Country" required>
+													</div> {% endcomment %}
+													<div class="form-group">
+															<label>Country<span style="color: red;">*</span></label>
+															<select class="form-select countrypicker "name="country" value="" id="country" required aria-label="Default select example">
+																<option disabled selected value>Select Country</option>
+															  </select>
+													</div>
+													<!-- <div class="form-group">
+														<label>Phone Number<span style="color: red;">*</span></label>
+
+														<input class="form-control form-control-lg group_formcontrol form-control-phone" type="number" id="phone" name="whatsapp_no" maxlength="10" data-country="in" oninput="validatePhoneNumber(this)" required>
+
+														<span id="whatsapp_info" style="color: green; display: none;">Your WhatsApp number should be 10 digits long.</span>
+														<span id="whatsapp_error" style="color: red; display: none;">Please enter a 10-digit number.</span>
+													</div> -->
+
+
+													<div class="form-group">
+														<label>Phone Number<span style="color: red;">*</span></label>
+														<input class="form-control form-control-lg group_formcontrol form-control-phone" type="number" id="phone" name="whatsapp_no" maxlength="10" data-country="in" oninput="validatePhoneNumber(this)" required>
+														
+														<span id="whatsapp_info" style="color: green; display: none;"></span>
+														<span id="whatsapp_error" style="color: red; display: none;">Please enter a 10-digit number.</span>
+													</div>
+													<div class="form-group">
+														<label>Experties<span style="color: red;">*</span></label> 
+														<br>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" name = 'expertise' value="Astrology" id="flexCheckChecked">
+															<label class="form-check-label checkbox-inline" >
+																Astrology
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" name = 'expertise' value="Psychic" id="flexCheckChecked">
+															<label class="form-check-label checkbox-inline" >
+																Psychic
+															</label>
+															<!-- <input class="form-check-input" type="checkbox" value="Psychic" id="flexCheckChecked" name="expertise">
+															<label class="form-check-label checkbox-inline" for="flexCheckChecked">
+															  Psychic
+															</label> -->
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Healer" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Healer
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Numerology" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Numerology
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Tarot Reading" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Tarot Reading
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Face Reading" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Face Reading
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Palmistry" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Palmistry
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Vastu" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Vastu
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Feng Shui" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Feng Shui
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Puja / Havan" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Puja / Havan
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Panchang / Mahurat" id="flexCheckChecked" name='expertise'>
+															<label class="form-check-label checkbox-inline" >
+																Panchang / Mahurat
+															</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label>Languages known<span style="color: red;">*</span></label> 
+														<br>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="English" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline">
+																English
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Hindi" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Hindi
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="French" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																French
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Spanish" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Spanish
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Russian" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Russian
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Chinese" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Chinese
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Malayalam" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Malayalam
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Telugu" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" for="flexCheckChecked">
+																Telugu
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Tamil" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Tamil
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Kannada" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Kannada
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Bangla" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Bangla
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Marathi" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Marathi
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Gujarati" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Gujarati
+															</label>
+														</div>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="Nepali" id="flexCheckChecked" name='languages_known'>
+															<label class="form-check-label checkbox-inline" >
+																Nepali
+															</label>
+														</div>
+													</div>
+													<div class="form-group">
+														<label>Password<span style="color: red;">*</span></label>
+														<div class="pass-group">
+															<input type="password" id='password' name='password' class="form-control pass-input" placeholder="*************" required>
+															<span class="feather-eye toggle-password"></span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label>Confirm Password<span style="color: red;">*</span></label>
+														<div class="pass-group">
+															<input type="password" id='confirm_password' name='confirm_password'class="form-control pass-input-sub" placeholder="*************" required>
+															<span class="feather-eye toggle-password-sub"></span>
+														</div>
+													</div>
+
+                                                    <div class="widget-btn">
+                                                        <a class=" btn-block" href="/astrologer-login/"><button class="btn btn-primary">Sign Up</button></a>
+                                                    </div>
+													<div class="account-signup">
+														<p>Already a Member? <a href="/astrologer-login/">Sign in</a></p>
+													</div>
+												</form>
+												
+											</fieldset>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Doctor Signup -->
+
+				</div>
+			</div>		
+			<!-- /Page Content -->	
+
+			<!-- Cursor -->
+			<!-- <div class="mouse-cursor cursor-outer"></div>
+			<div class="mouse-cursor cursor-inner"></div> -->
+			<!-- /Cursor -->
+
+		</div>		
+		<!-- /Main Wrapper -->
+
+
+
+			<script>
+			function validatePhoneNumber(input) {
+				var phoneNumber = input.value;
+				var whatsappInfo = document.getElementById("whatsapp_info");
+				var whatsappError = document.getElementById("whatsapp_error");
+			
+				if (phoneNumber.length === 10 && /^\d+$/.test(phoneNumber)) {
+					// Valid 10-digit number
+					whatsappInfo.style.display = "block";
+					whatsappError.style.display = "none";
+				} else {
+					// Not a valid 10-digit number
+					whatsappInfo.style.display = "none";
+					whatsappError.style.display = "block";
+				}
+			}
+			</script>
+
+
+
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const countrySelect = document.getElementById('country');
+				const indiaOption = countrySelect.querySelector('option[value="IN"]');
+				if (indiaOption) {
+					indiaOption.selected = true;
+				}
+			});
+		</script>
+
+		{% comment %} <script>
+			function validateForm() {
+				// Get the value entered in the "Name" field
+				const nameInput = document.getElementById('name').value.trim();
+			
+				// Check if the name contains at least two spaces
+				const spaceCount = (nameInput.match(/ /g) || []).length;
+				if (spaceCount < 2) {
+					alert("Please enter your full name ");
+					return false; // Prevent form submission
+				}
+			
+				// Other form validation logic (if any) can be added here
+			
+				return false; // Allow form submission
+			}
+			
+		</script> {% endcomment %}
+	
+		<!-- jQuery -->
+		<script src="{%static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{%static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{%static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Mobile Input -->
+		<script src="{%static 'assets/plugins/intltelinput/js/intlTelInput.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{%static 'assets/js/script.js' %}"></script>
+
+		<!-- for country -->
+		<script src="//cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
+		<script src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+		<script src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+
+
+		
+<!-- for country code all -->
+<!-- Include jQuery (required for intl-tel-input) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Include International Telephone Input JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<!-- Your existing script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var phoneInput = document.getElementById("phone");
+        var iti = window.intlTelInput(phoneInput, {
+            initialCountry: "in", // Set India as the initial country
+            separateDialCode: true, // Display the dial code separately
+        });
+
+        phoneInput.addEventListener("input", function() {
+            validatePhoneNumber(this);
+        });
+    });
+
+    function validatePhoneNumber(input) {
+        var whatsappInfo = document.getElementById("whatsapp_info");
+        var whatsappError = document.getElementById("whatsapp_error");
+        var phoneNumber = input.value;
+
+        if (phoneNumber.length === 10 && /^\d+$/.test(phoneNumber)) {
+            whatsappInfo.style.display = "block";
+            whatsappError.style.display = "none";
+        } else {
+            whatsappInfo.style.display = "none";
+            whatsappError.style.display = "block";
+        }
+    }
+</script>
+
+		
+		
+	 
+	</body>
+</html>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css">
+
+{% comment %} <script>
+  document.querySelector("form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+    var termsCheckbox = document.querySelector('input[name="Terms"]');
+
+    // Check if all required fields are filled
+    var requiredFields = document.querySelectorAll("[required]");
+    var isFormValid = true;
+    requiredFields.forEach(function (field) {
+      if (!field.value.trim()) {
+        isFormValid = false;
+        field.classList.add("is-invalid");
+      } else {
+        field.classList.remove("is-invalid");
+      }
+    });
+
+    if (!isFormValid) {
+      // Display a pop-up message for required fields
+      Swal.fire({
+        title: "Incomplete Form",
+        text: "Please fill in all required fields.",
+        icon: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK"
+      });
+      return false;
+    }
+
+    // Password validation
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      // Display a pop-up message for invalid password
+      Swal.fire({
+        title: "Invalid Password",
+        text: "Password must include at least one uppercase letter, one lowercase letter, one digit, one special symbol, and be at least 8 characters long.",
+        icon: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK"
+      });
+      return false;
+    }
+
+    // Confirm password validation
+    if (password !== confirm_password) {
+      // Display a pop-up message for password mismatch
+      Swal.fire({
+        title: "Password Mismatch",
+        text: "Password and confirm password do not match!",
+        icon: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK"
+      });
+      // return false; // Remove this line to proceed with form submission even on password mismatch
+    }
+
+    // If all validations are successful, submit the form
+    document.querySelector("form").submit();
+
+    // Show the success message after form submission
+    Swal.fire({
+      title: "Success!",
+      text: "Your Application Is Sent For Approval",
+      icon: "success",
+      showCancelButton: false,
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "OK"
+    }).then(function () {
+      // Redirect the user after successful form submission
+      window.location.replace("/astro-login-otp/");
+
+
+
+    });
+  });
+</script> {% endcomment %}
+
+
+
+<script>
+	function validateForm() {
+	  // Check if the name input has at least two words separated by spaces
+	  var nameInput = document.querySelector('input[name="name"]');
+	  var nameValue = nameInput.value.trim();
+	  var nameWords = nameValue.split(" ");
+	  
+	  if (nameWords.length < 2) {
+		// Display a pop-up message for invalid name
+		Swal.fire({
+		  title: "Invalid Name",
+		  text: "Please Enter your  First Name And Last Name.",
+		  icon: "error",
+		  confirmButtonColor: "#3085d6",
+		  confirmButtonText: "OK"
+		});
+		return false; // Prevent form submission
+	  }
+  
+	  var password = document.getElementById("password").value;
+	  var confirm_password = document.getElementById("confirm_password").value;
+	  var termsCheckbox = document.querySelector('input[name="Terms"]');
+  
+	  // Check if all required fields are filled
+	  var requiredFields = document.querySelectorAll("[required]");
+	  var isFormValid = true;
+	  requiredFields.forEach(function (field) {
+		if (!field.value.trim()) {
+		  isFormValid = false;
+		  field.classList.add("is-invalid");
+		} else {
+		  field.classList.remove("is-invalid");
+		}
+	  });
+  
+	  if (!isFormValid) {
+		// Display a pop-up message for required fields
+		Swal.fire({
+		  title: "Incomplete Form",
+		  text: "Please fill in all required fields.",
+		  icon: "error",
+		  confirmButtonColor: "#3085d6",
+		  confirmButtonText: "OK"
+		});
+		return false;
+	  }
+  
+	  // Password validation
+	  var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/;
+	  if (!passwordRegex.test(password)) {
+		// Display a pop-up message for invalid password
+		Swal.fire({
+		  title: "Invalid Password",
+		  text: "Password must include at least one uppercase letter, one lowercase letter, one digit, one special symbol, and be at least 8 characters long.",
+		  icon: "error",
+		  confirmButtonColor: "#3085d6",
+		  confirmButtonText: "OK"
+		});
+		return false;
+	  }
+  
+	  // Confirm password validation
+	  if (password !== confirm_password) {
+		// Display a pop-up message for password mismatch
+		Swal.fire({
+		  title: "Password Mismatch",
+		  text: "Password and confirm password do not match!",
+		  icon: "error",
+		  confirmButtonColor: "#3085d6",
+		  confirmButtonText: "OK"
+		});
+		// return false; // Remove this line to proceed with form submission even on password mismatch
+	  }
+  
+	  // If all validations are successful, submit the form
+	  document.querySelector("form").submit();
+  
+	  // Show the success message after form submission
+	  Swal.fire({
+		title: "Success!",
+		text: "Your Application Is Sent For Approval",
+		icon: "success",
+		showCancelButton: false,
+		confirmButtonColor: "#3085d6",
+		confirmButtonText: "OK"
+	  }).then(function () {
+		// Redirect the user after successful form submission
+		window.location.replace("/astro-login-otp/");
+	  });
+	}
+  </script>
+  
+
+
+  
+<script>
+    function validatePhoneNumber(input) {
+        var phoneNumber = input.value.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+        var whatsappInfo = document.getElementById("whatsapp_info");
+        var whatsappError = document.getElementById("whatsapp_error");
+
+        if (phoneNumber.length > 10) {
+            phoneNumber = phoneNumber.slice(0, 10); // Limit the length to 10 digits
+        }
+
+        if (phoneNumber.length === 10) {
+            whatsappInfo.style.display = "inline";
+            whatsappError.style.display = "none";
+        } else {
+            whatsappInfo.style.display = "none";
+            whatsappError.style.display = "inline";
+        }
+
+        // Update the input value with the cleaned and limited number
+        input.value = phoneNumber;
+    }
+</script>
+
+
+<!-- <script>
+	function limitInputLength(input, maxLength) {
+	  if (input.value.length > maxLength) {
+		input.value = input.value.slice(0, maxLength);
+	  }
+	   
+	   document.getElementById('whatsapp_info').innerHTML = 'Your WhatsApp number should be 10 digits long.';
+	}
+	</script> -->
+
+
+<!-- whatsapp validation -->
+<!-- <script>
+	function checkInputLength(input) {
+	  var inputValue = input.value.trim();
+	  var infoSpan = document.getElementById('whatsapp_info');
+	  var errorSpan = document.getElementById('whatsapp_error');
+  
+	  if (inputValue.length === 10 && !isNaN(inputValue)) {
+		infoSpan.style.display = 'inline';
+		errorSpan.style.display = 'none';
+		infoSpan.innerHTML = 'Your WhatsApp number should be 10 digits only.';
+		infoSpan.style.color = 'green';
+	  } else if (inputValue.length < 10 || isNaN(inputValue)) {
+		infoSpan.style.display = 'none';
+		errorSpan.style.display = 'inline';
+		errorSpan.innerHTML = 'Please enter a valid 10-digit number.';
+	  } else {
+		// Trim the input to 10 digits if it exceeds 10 digits
+		input.value = inputValue.slice(0, 10);
+		infoSpan.style.display = 'none';
+		errorSpan.style.display = 'none';
+	  }
+	}
+</script> -->
+
+<!-- email validations -->
+<script>
+	const emailInput = document.getElementById('email_id');
+	const emailErrorSpan = document.getElementById('email_error');
+	const emailInfoSpan = document.getElementById('email_info');
+	const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+	emailInput.addEventListener('input', function () {
+	  const email = emailInput.value.trim();
+	  if (!emailPattern.test(email)) {
+		emailErrorSpan.innerHTML = 'Invalid Email Id';
+		emailErrorSpan.style.display = 'inline';
+		emailInfoSpan.style.display = 'none';
+	  } else {
+		emailInfoSpan.innerHTML = 'Valid Email Id';
+		emailErrorSpan.style.display = 'none';
+		emailInfoSpan.style.display = 'inline';
+	  }
+	});
+  </script>

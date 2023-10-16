@@ -1,0 +1,273 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Guruji Speaks</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Mobile CSS-->
+    <link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/intlTelInput.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/intltelinput/css/demo.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <style>
+        .login-content-info {
+            margin: 0;
+            padding: 70px 0 60px;
+        }
+        .login-content-info .account-content .login-title {
+            padding-bottom: 10px;
+        }
+
+        .main-wrapper{
+            margin: 0;
+            padding: 30px 0 190px;
+            background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .login-content-info .account-content .account-info .btn {
+            width: 100%;
+            color: #ffffff;
+            background: #1c3264;
+            border: 1px solid #1c3264;
+            box-shadow: inset 0 0 0 0 #ffffff;
+            -webkit-transition: 0.7s;
+            -ms-transition: 0.7s;
+            transition: 0.7s;
+            font-weight: 600;
+            padding: 10px 15px;
+        }
+
+    </style>
+
+</head>
+<body class="login-body">
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+    <!-- Page Content -->
+    <div class="login-content-info">
+        <div class="container">
+
+            <!-- Login Email Otp -->
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 bg-light p-4 rounded">
+                    <div class="account-content">
+                        <div class="login-shapes">
+                            <div class="shape-img-left">
+                                <img src="{% static 'assets/img/shape-01.png' %}" alt="">
+                            </div>
+                            <div class="shape-img-right">
+                                <img src="{% static 'assets/img/shape-02.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="account-info">
+                            <div class="login-back">
+                                <a href="/astro-login-otp/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+                            </div>
+                            <div class="login-title">
+                                <h3>OTP Verification</h3>
+                                {% if error_message %}
+                                    <p>{{ error_message }}</p>
+                                {% endif %}
+                            </div>
+                            <!-- ... -->
+                                <!-- <form method="post" data-group-name="digits" data-autosubmit="false" autocomplete="off" action="#">
+                                    {% csrf_token %}
+                                    <div class="form-group-flex">
+                                        <input type="text" id="otp" name="otp" class="form-control" placeholder="Enter OTP here.." required maxlength="6">
+                                        <p class="signup-code">Enter the 6-digit code</p>
+                                        <a href="" id="resendOTP" class="forgot-link btn-block mt-3" style="display: none;">Resend OTP</a>
+                                    </div>
+                               
+                                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                    <p id="timer"></p>
+                                    <div class="form-group">
+                                    </div>
+                                
+                                    <div>
+                                        <button class="btn btn-block" type="submit">Submit</button>
+                                    </div>
+                                </form> -->
+                                <form method="post" data-group-name="digits" data-autosubmit="false" autocomplete="off" >
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="text" id="otp" name="otp" class="form-control" 
+                                                placeholder="Enter OTP here.." required maxlength="6">
+                                        
+                                        <div class="form-group-flex">
+                                            <p class="signup-code">Enter the 6-digit code</p>
+                                            <a href="" id="resendOTP" class="forgot-link btn-block mt-3" style="display: none;">Resend OTP</a>
+                                        </div>
+                                    </div>
+                                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                     <!-- Placeholder for timer -->
+                                     <p id="timer"></p>
+                                            
+                                     <!-- Resend OTP button -->
+                                    
+                                     <!-- <a href="/resend-otp/"> -->
+                                     <!-- <button class="btn btn-primary btn-block" id="resendOTP" style="display: none;"  >Resend OTP</button> -->
+                                     
+                                    <div class="form-group">
+                                        <!-- ... -->
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-block btn-block1" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                                <!-- ... -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Login Email Otp -->
+
+        </div>
+    </div>
+    <!-- /Page Content -->
+</div>
+
+<!-- 
+<script>
+    var timer;
+    var timeLeft = 30;
+
+    function startTimer() {
+        console.log("startTimer() called");
+        timer = setInterval(function () {
+            document.getElementById("timer").innerHTML = "Time left: " + timeLeft + " seconds";
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "";
+                document.getElementById("resendOTP").style.display = "block";
+            }
+        }, 1000);
+    }
+
+    function resendOTP() {
+        console.log("resendOTP() called");
+        clearInterval(timer);
+        timeLeft = 30;
+        startTimer();
+        // Perform an AJAX request to trigger OTP resend on the server
+        $.get("?resend_otp=true", function (data) {
+            // Handle the response if needed
+            console.log("Resend OTP response:", data);
+        });
+    }
+
+    document.getElementById("resendOTP").addEventListener("click", resendOTP);
+    startTimer();
+</script> -->
+
+
+
+
+
+<script>
+    var timer;
+    var timeLeft = 30;
+
+    function startTimer() {
+        console.log("startTimer() called");
+        timer = setInterval(function () {
+            document.getElementById("timer").innerHTML = "Time left: " + timeLeft + " seconds";
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "";
+                document.getElementById("resendOTP").style.display = "block";
+            }
+        }, 1000);
+    }
+
+    function resendOTP() {
+        console.log("resendOTP() called");
+        clearInterval(timer);
+        timeLeft = 30;
+        startTimer();
+        // Perform an AJAX request to trigger OTP resend on the server
+        $.get("{% url 'otp-verification-astro' %}?resend_otp=true", function (data) {
+            // Handle the response if needed
+            console.log("Resend OTP response:", data);
+        });
+    }
+
+    document.getElementById("resendOTP").addEventListener("click", resendOTP);
+    startTimer();
+</script>
+<!-- /Main Wrapper -->
+
+<!-- jQuery -->
+<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+<!-- Bootstrap Bundle JS -->
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Feather Icon JS -->
+<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+<!-- Mobile Input -->
+<script src="{% static 'assets/plugins/intltelinput/js/intlTelInput.js' %}"></script>
+
+<!-- Custom JS -->
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OTP Verification</title>
+</head>
+<body>
+    <h2>OTP Verification</h2>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <form method="post" action="{% url 'otp_verification' %}">
+        {% csrf_token %}
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" name="otp" required>
+        <button type="submit">Verify OTP</button>
+    </form>
+</body>
+</html> {% endcomment %}

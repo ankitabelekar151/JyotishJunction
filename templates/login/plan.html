@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Form</title>
+</head>
+<body>
+  <button onclick="showForm()">Create plan</button>
+
+  <div id="formContainer" style="display: none;">
+    <form id="myForm" action="" method="POST">
+      {% csrf_token %}   
+      <label for="plan_name_1">PLAN Name:</label>
+      <select id="name" name="plan_name_1" required>
+        <option value="silver">Silver</option>
+        <option value="gold">Gold</option>
+        <option value="diamond">Diamond</option>
+      </select><br><br>
+      
+      
+      <label for="admin_plan_1_d">PLAN description </label>
+      <input type="text" id="email" name="admin_plan_1_d" required><br><br>
+
+      <label for="amount_plan">PLAN amount </label>
+      <input type="text" id="amount_plan" name="amount_plan" required><br><br>
+      
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div>
+    <table class="table">
+        <thead>
+            <tr style="text-align: center;">
+                <th align="center">Plan name</th>
+                <th align="center">Plan description</th>
+                <th align="center">Plan amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>
+                    {{ i.plan_name_1 }}
+                </td>
+                <td>
+                    {{ i.admin_plan_1_d }}
+                </td>
+                <td>
+                    {{ i.amount_plan }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+  <script>
+    function showForm() {
+      document.getElementById("formContainer").style.display = "block";
+    }
+  </script>
+
+
+</body>
+</html>

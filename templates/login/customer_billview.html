@@ -1,0 +1,306 @@
+{% load static %} 
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+		<link rel="stylesheet" href="pdf.css" />
+	
+
+
+        <style>
+            /* logo guruji speaks */
+            .invoice-item .invoice-logo img {
+                width: auto;
+                max-height: 130px;
+            }
+
+            .invoice-item .invoice-details {
+                /* text-align: center; */
+                color: #757575;
+                font-weight: 500;
+            }
+
+            .invoice-item .customer-text {
+                font-size: 15px;
+                color: #272b41;
+                font-weight: 700;
+                margin-bottom: 8px;
+                display: block;
+            }
+
+            .invoice-content {
+                background-color: #fbfbfb;
+                border: 1px solid #f0f0f0;
+                margin-bottom: 30px;
+                border-radius: 4px;
+                padding: 30px;
+            }
+
+            table, th, td, tbody, thead{
+                border: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+            }
+
+			.content {
+				min-height: 200px;
+				padding: 5px 0 0;
+			}
+
+			.btn-primary{
+				background: #1c3264;
+				border: 1px solid #1c3264;
+			}
+            
+        </style>
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+
+			{% comment %} <!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">Invoice View</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index-7.html">Home</a></li>
+									<li class="breadcrumb-item" aria-current="page">Invoice View</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb --> {% endcomment %}
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container">
+
+					<div class="row">
+						<div class="">
+							<div class="invoice-content">
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-2">
+											<div class="invoice-logo">
+												<img src="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" class="img-fluid"  alt="logo">
+											</div>
+										</div>
+										<div class="col-md-9">
+											<p class="text-center">
+												<strong >Invoice Voucher</strong>  <br>
+												<span>(Original for receipt)</span><br>
+                                                <span>NKB Divine Vedic Sciences</span><br>
+                                                <span>Supplier GSTIN: 09CFHPT2815N1ZT</span><br>
+                                                <span>Website: www.gurujispeaks.com</span><br>
+                                                <span>Email: care@gurujispeaks.com</span><br>
+                                                <span>Address: E 939, Gaur Cascades, Rajnagar Extension, Ghaziabad, UP 201017</span><br>
+											</p>
+										</div>
+									</div>
+								</div>
+                                <hr>
+								
+								<!-- Invoice Item -->
+								<div class="invoice-item">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="invoice-info">
+												<strong class="customer-text">Customer Address:</strong>
+												<p class="invoice-details invoice-details-two">
+													{{request.user.first_name}} {{request.user.last_name}}<br>
+													{{request.user.city}} <br>
+													{{request.user.state}} {{request.user.country}}<br>
+                                                    <b>Place of Supply:</b> Delhi,India <br>
+												</p>
+													
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="invoice-info invoice-info2">
+												<strong class="customer-text">Transaction ID : {{data.plan_order_id}}</strong>
+                                                <!-- <strong class="customer-text">Payment ID : {{data.payment_id}}</strong> -->
+                                                <strong class="customer-text">Receipt GSTIN : 09CFHPT2815N1ZT</strong>
+                                                
+                                                <strong class="customer-text">Invoice Voucher No : {{data.invoice_number}}</strong>
+                                                <strong class="customer-text">Invoice Voucher Date : {{data.purchase_date}}</strong>
+												<!-- <p class="invoice-details">
+													Walter Roberson <br>
+													299 Star Trek Drive, Panama City, <br>
+													Florida, 32405, USA <br>
+												</p> -->
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /Invoice Item -->
+                                
+								
+								<!-- Invoice Item -->
+								<div class="invoice-item invoice-table-wrap">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive">
+												<table class="invoice-table table ">
+													<thead>
+														<tr>
+															<th class="text-center" rowspan="2">Description</th>
+															
+															<th class="text-center" rowspan="2">Discount</th>
+															<!-- <th class="text-center" rowspan="2">Taxable value</th> -->
+                                                            <th class="text-center" colspan="2">SGST</th>
+                                                            <th class="text-center" colspan="2">CGST</th>
+                                                            <!-- <th class="text-center" colspan="2">NGST</th> -->
+															<th class="text-center" rowspan="2">Total</th>
+														</tr>
+                                                        <tr>
+                                                            <!-- <td colspan=""></td> -->
+                                                            <th>Rate</th>
+                                                            <th>Taxable Amount</th>
+                                                            <th>Rate</th>
+                                                            <th>Taxable Amount</th>
+                                                            <!-- <th>Rate</th>
+                                                            <th>Amount</th> -->
+                                                        </tr>
+													</thead>
+													<tbody>
+													  
+														<tr>
+
+															<td>General Consultation</td>
+															
+															
+															<td class="text-center">0%</td>
+															<!-- <td class="text-center">₹100</td> -->
+                                                            <td class="text-center">₹{{data.plan_amount}}</td>
+															<td class="text-center">₹{{ data.sgst}}</td>
+															<td class="text-center">₹{{data.plan_amount}}</td>
+                                                            <td class="text-center">₹{{ data.cgst}}</td>
+															<!-- <td class="text-center">₹0</td> -->
+															<!-- <td class="text-center">₹100</td> -->
+															<td class="text-center">₹{{ data.total_amount}}</td>
+														</tr>
+													  
+                                                        <tr>
+															<td></td>
+															<td></td>
+															<td></td>
+															<td></td>
+                                                            <td></td>
+															<td></td>
+															<td></td>
+                                                           
+														</tr>
+													  
+													</tbody>
+												</table>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+								<!-- /Invoice Item -->
+
+                                <div class="other-info">
+                                    {% comment %} <p>To view your transaction history. Please visit :</p> {% endcomment %}
+                                </div>
+								
+								<!-- Invoice Information -->
+								<!-- <div class="other-info">
+									<h4>Other Details</h4>
+									<p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p>
+								</div> -->
+								<!-- /Invoice Information -->
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+			<!-- /Page Content -->
+		   
+		</div>
+		<!-- /Main Wrapper -->
+
+		<div id="temp_div"> 
+			<div class="row ">
+			<center >
+				<button class="btn btn-primary mb-3" onclick="savePage()">Download Bill</button>
+				{% comment %} <button class="btn btn-primary" onclick="window.print()">Print</button> {% endcomment %}
+			</center>
+			</div>  
+		</div>
+	  
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+		<script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+
+		<script type="text/javascript">
+			function savePage() {
+				console.log("hi")
+			  // Get the current HTML of the page
+			  var html = document.documentElement;
+		  
+			   
+			  // Set the options for the PDF conversion
+			  var options = {
+				margin: [10, 10],
+				filename: 'Bill.pdf',
+				image: { type: 'jpeg', quality: 0.98 },
+				html2canvas: { 
+					scale: 2,
+					onclone: function (document) {
+					// Remove border from body in the cloned document
+					var clonedBody = document.querySelector('body');
+					clonedBody.style.border = 'none !important';
+		  
+					 // Hide buttons in the cloned document
+					var clonedButtons = document.querySelectorAll('button');
+					clonedButtons.forEach(function(clonedButton) {
+					  clonedButton.style.display = 'none';
+					});
+				  }
+				},
+				jsPDF: { unit: 'mm', format: 'a3', orientation: 'portrait' }
+			  };
+		  
+			  // Convert the HTML to PDF using html2pdf.js
+			  html2pdf().set(options).from(html).save();
+			}
+		  </script>
+		
+		
+	</body>
+</html>

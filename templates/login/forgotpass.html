@@ -1,0 +1,40 @@
+
+{% comment %} {%block body_block%}
+<div class="container" align = 'center' style="margin-left: 200px; margin-top:100px;">
+<h1 style="font-size:20px;">Login ID and Password successfully sent on your registered Email</h1><hr>
+<p>for login <a href="{% url 'login' %}" >click here</a>  </p>
+</div> {% endcomment %}
+
+
+{%block body_block%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Guruji Speaks</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    .stip
+    {
+      background: royalblue;
+      color: royalblue;
+    }
+  </style>
+</head>
+<body>
+ <center>
+<div class="container text-center">
+  <h2>Login Id And Password Successfully sent on your Registered Email</h2>
+  <hr class="stip">
+ 
+  {% comment %} <input type="submit"style="width: 50%; font-size: 20px;" class="btn btn-info" value="Go Back to Login"> {% endcomment %}
+  <p><a href="{% url 'customer-login' %}" class="btn btn-primary" value="Go Back to Login">Go Back to Login</a> </p>
+</center>
+</div>
+{%endblock%}
+
+</body>
+</html>

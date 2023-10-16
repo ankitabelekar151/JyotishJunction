@@ -1,0 +1,564 @@
+
+{% extends "customer_base.html" %}{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>   
+
+  <meta charset="utf-8">
+  <title>Guruji Speaks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+  <!-- Feathericon CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+  <!-- Apex Css -->
+  <link rel="stylesheet" href="{% static 'assets/plugins/apex/apexcharts.css' %}">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+</head>
+
+<style>
+       /* sidebar */
+      .profile-sidebar {
+				background-color: #ffffff;
+				border: 1px solid #f0f0f0;
+				margin-bottom: 30px;
+				overflow: hidden;
+				border-radius: 4px;
+				width: 25% !important;
+			}
+
+			/* main header section */
+			.breadcrumb-bar-two {
+				padding-top: 0 !important;
+				min-height: 20px !important;
+				position: relative;
+				z-index: 1;
+				background: no-repeat rgb(242, 246, 246);
+				background-repeat: no-repeat;
+				overflow: hidden;
+			}
+
+      .content {
+        min-height: 200px;
+        padding: 20px 0 60px !important;
+      }
+
+      .breadcrumb-bar-two .inner-banner .breadcrumb-title {
+          font-weight: 600;
+          font-size: 25px;
+          margin-bottom: 6px;
+      }
+</style>
+
+<body>
+
+  {% comment %} <!-- Main Wrapper -->
+  <div class="main-wrapper w-100">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar-two">
+      <div class="container">
+        <div class="row align-items-center inner-banner">
+          <div class="col-md-12 col-12 text-center">
+            <h2 class="breadcrumb-title">Customer Dashboard</h2>
+            <nav aria-label="breadcrumb" class="page-breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dash_customer/">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page">Customer Dashboard</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Breadcrumb --> {% endcomment %}
+
+    <!-- Page Content -->
+    <div class="content w-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 col-lg-8 col-xl-12">
+            <div class="card">
+              <div class="card-body pt-0">
+
+                <!-- Tab Menu -->
+                <nav class="user-tabs mb-4">
+                  <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#pat_appointments" data-bs-toggle="tab">My Payment</a>
+                    </li>
+                    
+                  </ul>
+                </nav>
+                <!-- /Tab Menu -->
+
+                <!-- Tab Content -->
+                <div class="tab-content pt-0">
+
+                  <!-- Appointment Tab -->
+                  <div id="pat_appointments" class="tab-pane fade show active">
+                    <div class="card card-table mb-0">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>Invoice No.</th>
+                                <th>Package</th>
+                                <th>Plan Amount</th>
+                                <th>Date</th>
+                                <th></th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in data1 %}
+                                    <tr>
+                                    <td>{{i.invoice_number}}</td>
+                                    <td>
+                                        {{i.plan_name}}
+                                    </td>
+                                    <td>
+                                        {{i.plan_amount}}
+                                    </td>
+                                    <td>
+                                      {{i.plan_purchase_date}}
+                                    </td>
+                                    <td>
+                                        {% if i.plan_name == 'Stellar Insights' %}
+                                        <td class="">
+                                          <div class="table-action">
+                                            <a href="/bill/{{i.id}}/" class="btn btn-sm bg-primary-light">
+                                              <i class="far fa-eye"></i> 
+                                            </a><br>
+                                            {% comment %} <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                              <i class="fas fa-print"></i> Views Invoice
+                                            </a><br>
+                                            <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i> View Answers
+                                            </a><br> {% endcomment %}
+                                          </div>
+                                        </td>
+																				{% comment %} <a class="btn btn-primary" href="/ask_question_silver/">Add a question</a> {% endcomment %}
+                                        {% elif i.plan_name == 'Celestial Guidance' %}
+                                        <td class="">
+                                          <div class="table-action">
+                                            <a href="/bill/{{i.id}}/" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i> 
+                                            </a><br>
+                                            {% comment %} <a href="/ask_question_gold/" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i> Views Invoice
+                                            </a><br>
+                                            <a href="/ask_question_gold/" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i> View Answers
+                                            </a><br> {% endcomment %}
+                                          </div>
+                                        </td>
+                                        {% elif i.plan_name == 'Divine Revelations' %}
+                                        <td class="">
+                                          <div class="table-action">
+                                            <a href="/bill/{{i.id}}/" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i>
+                                            </a><br>
+                                            {% comment %} <a href="/ask_question_platinum/" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i> Views Invoice
+                                            </a><br>
+                                            <a href="/ask_question_platinum/" class="btn btn-sm bg-info-light">
+                                              <i class="far fa-eye"></i> View Answers
+                                            </a><br> {% endcomment %}
+                                          </div>
+                                        </td>
+																				{% comment %} <a class="btn btn-primary" href="/ask_question_platinum/">Add a question</a> {% endcomment %}
+																			{% endif %}
+																		</td>
+																	</tr>
+                                {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Appointment Tab -->
+
+                  <!-- Prescription Tab -->
+                  <div class="tab-pane fade" id="pat_prescriptions">
+                    <div class="card card-table mb-0">
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-center mb-0">
+                            <thead>
+                              <tr>
+                                <th>Date </th>
+                                <th>Name</th>
+                                <th>Created by </th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>14 Nov 2019</td>
+                                <td>Prescription 1</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Ruby Perrin <span>Dental</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>13 Nov 2019</td>
+                                <td>Prescription 2</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Darren Elder <span>Dental</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>12 Nov 2019</td>
+                                <td>Prescription 3</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Deborah Angel <span>Cardiology</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>11 Nov 2019</td>
+                                <td>Prescription 4</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Sofia Brient <span>Urology</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>10 Nov 2019</td>
+                                <td>Prescription 5</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Marvin Campbell <span>Dental</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>9 Nov 2019</td>
+                                <td>Prescription 6</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Katharine Berthold <span>Orthopaedics</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>8 Nov 2019</td>
+                                <td>Prescription 7</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Linda Tobin <span>Neurology</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>7 Nov 2019</td>
+                                <td>Prescription 8</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Paul Richard <span>Dermatology</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>6 Nov 2019</td>
+                                <td>Prescription 9</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-09.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. John Gibbs <span>Dental</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>5 Nov 2019</td>
+                                <td>Prescription 10</td>
+                                <td>
+                                  <h2 class="table-avatar">
+                                    <a href="#" class="avatar avatar-sm me-2">
+                                      <img class="avatar-img rounded-circle"
+                                        src="assets/img/doctors/doctor-thumb-10.jpg" alt="User Image">
+                                    </a>
+                                    <a href="#">Dr. Olga Barlow <span>Dental</span></a>
+                                  </h2>
+                                </td>
+                                <td class="">
+                                  <div class="table-action">
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-primary-light">
+                                      <i class="fas fa-print"></i> Print
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn btn-sm bg-info-light">
+                                      <i class="far fa-eye"></i> View
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /Prescription Tab -->
+
+                
+
+                </div>
+                <!-- Tab Content -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- /Page Content -->
+
+
+
+  </div>
+  <!-- /Main Wrapper -->
+
+  <!-- Graph One-->
+  <div class="modal fade custom-modal show" id="graph1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">BMI Status</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="bmi-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Graph One-->
+
+  <!-- Graph Two-->
+  <div class="modal fade custom-modal show" id="graph2">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Heart Rate Status</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="heartrate-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Graph Two-->
+
+  <!-- Graph Two-->
+  <div class="modal fade custom-modal show" id="graph3">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">FBC Status</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="fbc-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Graph Two-->
+
+  <!-- Graph Two-->
+  <div class="modal fade custom-modal show" id="graph4">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Weight Status</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="weight-status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Graph Two-->
+
+  <!-- jQuery -->
+  <script src="assets/js/jquery-3.6.4.min.js"></script>
+
+  <!-- Bootstrap Core JS -->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Sticky Sidebar JS -->
+  <script src="assets/plugins/theia-sticky-sidebar/ResizeSensor.js"></script>
+  <script src="assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js"></script>
+
+  <!-- Apex JS -->
+  <script src="assets/plugins/apex/apexcharts.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
+
+{% endblock %}

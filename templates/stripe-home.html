@@ -1,0 +1,134 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        #card-element {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        #card-errors {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        input[type="submit"] {
+            background-color: #428bca;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Details</h1>
+    
+    <form id="payment-form">
+        <label for="customer-email">Amount:</label>
+        <input type="text" id="customer-email" value="{{amount}}" readonly><br><br>
+        <label for="customer-nickname">Customer Nickname:</label>
+        <input type="text" id="customer-nickname" value="{{user}}" required><br>
+        <label for="customer-email">Customer Email:</label>
+        <input type="email" id="customer-email" value="{{email_id}}" required><br><br>
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+         
+        <!-- Used to display Element errors. -->
+        <div id="card-errors" role="alert"></div>
+        
+        <input type="submit" value="Submit Payment">
+    </form>    
+    
+    <script>
+            var stripe = Stripe('{{ key }}');
+            var elements = stripe.elements();
+            var card = elements.create('card');
+            card.mount('#card-element');
+            
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                stripe.createPaymentMethod({
+                    type: 'card',
+                    card: card,
+                }).then(function(result) {
+                    if (result.error) {
+                        var errorElement = document.getElementById('card-errors');
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        // Payment method created, proceed with submitting form
+                        var paymentMethodId = result.paymentMethod.id;
+                        var csrfToken = '{{ csrf_token }}';
+                        
+                        fetch('{% url "charge" %}', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'X-CSRFToken': csrfToken,
+                            },
+                            body: 'payment_method_id=' + encodeURIComponent(paymentMethodId),
+                        }).then(function(response) {
+                            return response.json(); // Parse the response as JSON
+                        }).then(function(data) {
+                            if (data.status === 'success') {
+                                // Payment successfully confirmed, you can redirect to a success page
+                                window.location.href = '/success/';  // Replace with your success page URL
+                            } else {
+                                // Handle error cases
+                                console.error('Error:', data.message);
+                            }
+                        }).catch(function(error) {
+                            console.error('Error:', error);
+                        });
+                    }
+                });
+            });
+        
+    </script>
+
+    
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,192 @@
+{% extends 'base_admin.html' %}{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Doccure - Dashboard</title>
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+		<!-- Feathericon CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+        <style>
+			.content {
+				min-height: 200px;
+				padding: 0;
+			}
+
+			.breadcrumb-bar-two {
+                background: #F2F6F6;
+                background-repeat: repeat;
+                background-repeat: no-repeat;
+                padding-top: 10px;
+                min-height: 50px;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+
+			.breadcrumb-bar-two .inner-banner {
+			margin: 0;
+			padding: 30px 0;
+			}
+
+			.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+			font-weight: 600;
+			font-size: 35px;
+			margin-bottom: 6px;
+			}
+		</style>
+    </head>
+    <body>
+
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+				<!-- Breadcrumb -->
+				<div class="breadcrumb-bar-two">
+					<div class="container">
+						<div class="row align-items-center inner-banner">
+							<div class="col-md-12 col-12 text-center">
+								<h2 class="breadcrumb-title"> Astrologer's Earning detail</h2>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<p>Total Astrologer Earnings: {{ total_earnings }} Rs</p>
+				</div>
+				<!-- /Breadcrumb -->
+                <div class="content">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- <div class="card-header bg-light p-5">
+								<h2 class="card-title text-center"> Astrologer's Earning detail</h2>
+							</div> -->
+							<!-- Recent Orders -->
+							<div class="card card-table mt-5">
+								<div class="card-body">
+									<div class="table-responsive">
+										<form id="send-form" method="POST" action="">
+											{% csrf_token %}
+											<div>
+												<table class="table" border="1">
+													<thead>
+														<tr">
+															<!-- <th align="center">Customer name</th> -->
+															<!-- <th align="center">Comment</th> -->
+															<th >Sr.No</th>
+															<th >Transiction ID</th>
+															<th >Plan Name</th>
+															<th >Plan Amount</th>
+															<th >Plan Purchase Date</th>
+															<th >Astrologer Earning</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														{% for i in same_combine %}
+														
+														<tr>
+															
+															<td >{{ forloop.counter }}</td> 
+															<td>
+															   {{i.0}} 
+															</td>
+															<td>
+																{{i.1}}
+																<!-- <a href="#" onclick="submitForm('{{ i.id }}', this)">Send</a> -->
+															</td>
+															<td>
+																{{i.2}} 
+															 </td>
+															 <td>
+																{{i.3}} 
+															 </td>
+															 <td>
+																{{i.4}}
+															 </td>
+															 
+															 
+															{% comment %} <td>{{i.is_approved}}</td> {% endcomment %}
+															 {% comment %} <td><div>
+																<a href="/astro_profile/" class="btn-view">
+																  <i class="fas fa-eye"></i> View
+																</a>
+															  </div>
+															</td>  {% endcomment %}
+															{% comment %} <td>
+																<div>
+																	{% if not i.is_approved %}
+																	<a href="{% url 'approve_astrologer' i.id %}" type="button" data-toggle="tooltip" data-original-title="Enable" class="btn btn-link btn-primary">
+																		<button type="button" class="btn btn-red button" id="colorButton">Approve</button>
+																	</a>
+																	{% endif %}
+																</div>
+															</td> {% endcomment %}
+															{% comment %} <td>
+																<div>
+																	{% if i.is_astrologer != True %}
+																	<a type="button" data-toggle="tooltip" data-original-title="Enable" class="btn btn-link btn-primary">
+																		<button type="button" class="btn btn-red button" id="colorButton" onclick="showConfirmation('{{ i.id }}')">Enable</button>
+																	</a>
+																	{% endif %}
+										
+										
+																	{% if i.is_astrologer != True %}
+																	<a type="button" data-toggle="tooltip" data-original-title="Disable" class="btn btn-link btn-primary">
+																		<button type="button" class="btn btn-red button" id="colorButton" onclick="showConfirmation1('{{ i.id }}')">Disable</button>
+																	</a>
+																	{% endif %}
+																</div>
+															</td> {% endcomment %}
+										
+														   
+															
+															
+														</tr>
+														{% endfor %}
+														
+													</tbody>
+												</table>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- /Recent Orders -->
+
+						</div>
+					</div>
+				</div>
+
+        </div>
+		<!-- /Main Wrapper -->
+
+		<!-- jQuery -->
+        <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+		<!-- Bootstrap Core JS -->
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+		<!-- Slimscroll JS -->
+        <script src="{% static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/raphael/raphael.min.js' %}"></script>
+		<script src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+		<script src="{% static 'assets/js/chart.morris.js' %}"></script>
+		<!-- Custom JS -->
+		<script  src="{% static 'assets/js/script.js' %}"></script>
+    </body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,233 @@
+{% extends "customer_base.html" %}{% block content %} 
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>  
+		
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+		<link rel="stylesheet" href="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/select2/css/select2.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+        <style type="text/css">
+            .header {
+                /* background: #ffffff;
+                border-bottom: 1px solid #f0f0f0;
+                z-index: 1001; */
+                height: 95px;
+                /* position: fixed;
+                top: 0;
+                right: 0;
+                left: 0; */
+            }
+
+            .content {
+                /* min-height: 200px; */
+                /* padding: 20px 0 60px !important; */
+            }
+
+            .breadcrumb-bar-two {
+                background: #F2F6F6;
+                background-repeat: no-repeat;
+                padding-top: 25px !important;
+                min-height: 0px !important;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+            }
+
+            .breadcrumb-bar-two .inner-banner {
+                margin: 0;
+                padding: 30px 0;
+            }
+
+            .footer-one .footer-top {
+                margin: 0;
+                padding: 40px 0;
+            }
+        </style>
+	
+	</head>
+    <body>
+        
+        <div class="main-wrapper">
+
+            <!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">View Answer</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/dash_customer/">Home</a></li>
+									<li class="breadcrumb-item" aria-current="page">View Answer</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+                <!-- <a href = "/dash_customer/" style = "color:blue;"><------Back</a> -->
+				<div class="container">
+					
+                    <form method="post" >
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-7 col-lg-8 col-xl-12"> 
+                                {% for i in data %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label>Question</label><br>
+                                            {{forloop.counter}}.
+                                            <label>{{i.comment1}}</label><br><br>
+                                            {% if i.comment2 %}
+                                            <label>View Answer</label>
+                                            <p class="form-control" readonly style="height:300%">Dear  <b>{{user.first_name}} {{user.last_name}}</b>, <br>
+                                                Thank you for asking a question regarding your <b>{{i.ques_type}}</b>. According to your horoscope.<br>
+                                                <br>
+                                                {{i.comment2 }}
+                                                <br>
+                                                <br>
+                                                
+                                                We extend our best wishes to you, hoping that the insights provided have brought you clarity. At Guruji Speaks, we are committed to being your constant source of guidance, available to assist you whenever you need it.<br>
+                                                Sincerely,<br>
+                                                The Team at <b>Guruji Speaks</b>
+                                            </p>
+                                            {% endif %}   
+                                        </div>            
+                                    </div>
+                                </div>
+                                {% endfor %}
+                               
+                            </div>
+                        </div>
+                        
+
+                    </form>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+		   
+		</div>
+
+        <script>
+            var answerField = document.getElementById('answerField');
+            var answerInput = answerField.getElementsByTagName('textarea')[0];
+    
+            if (answerInput.value.trim() === '') {
+                answerField.style.display = 'none';
+            }
+        </script>
+
+
+        <script>
+            function submitForm(commentId, sendButton) {
+                var form = document.getElementById('send-form');
+                var selectElement = form.querySelector('select[name="astro_email_id_' + commentId + '"]');
+                var selectedAstrologerId = selectElement.value;
+                form.action = "/admin_view_que/" + commentId + "/";
+                var hiddenField = document.createElement('input');
+                hiddenField.setAttribute('type', 'hidden');
+                hiddenField.setAttribute('name', 'astro_email_id');
+                hiddenField.setAttribute('value', selectedAstrologerId);
+                form.appendChild(hiddenField);
+            
+                // Get the selected name before submitting the form
+                var selectedName = selectElement.options[selectElement.selectedIndex].text.trim();
+            
+                // Update the display of selected name before form submission
+                var selectedNameElement = sendButton.parentNode.nextElementSibling.querySelector('#selected-name');
+                selectedNameElement.textContent = selectedName;
+            
+                // Prevent the default form submission
+                event.preventDefault();
+            
+                // Perform an asynchronous form submission
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form)
+                }).then(function(response) {
+                    // Handle the form submission response if needed
+                }).catch(function(error) {
+                    // Handle any error during form submission if needed
+                });
+            }
+            
+        </script>
+
+        <!-- jQuery -->
+        <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+        
+        <!-- Bootstrap Bundle JS -->
+        <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Bootstrap Core JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Datetimepicker JS -->
+		<script src="{% static 'assets/js/moment.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+		
+		<!-- Sticky Sidebar JS -->
+        <script src="{% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+        <script src="{% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
+		<!-- for country -->
+		<script src="//cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
+		<script src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+		<script src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+
+        <!-- Profile Settings JS (dropdown)-->
+          <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+          <!-- Select2 JS (dropdown)-->
+          <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+          
+          <!-- Dropzone JS (dropdown)-->
+          <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+          <!-- Animation JS -->
+        <!-- <script src="{% static 'assets/js/aos.js' %}"></script> -->
+
+         <!-- Owl Carousel JS -->
+        <!-- <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script> -->
+
+        <!-- Slick JS -->
+        <!-- <script src="{% static 'assets/js/slick.js' %}"></script> -->
+    </body>
+</html>
+ {% endblock %}

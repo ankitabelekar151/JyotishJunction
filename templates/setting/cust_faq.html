@@ -1,0 +1,321 @@
+
+{% extends 'customer_base.html' %} {% block content %}
+
+{% load static %}
+
+<!DOCTYPE html> 
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Guruji Speaks</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Daterangepikcer CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/daterangepicker/daterangepicker.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+		<!-- <style>
+			
+			.header.header-fourteen.header-twelve .header-nav .header-navbar-rht{
+				visibility: hidden;
+			}
+		</style> -->
+	
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">FAQ</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item">Home</li>
+									<li class="breadcrumb-item" aria-current="page">FAQ</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+			<!-- FAQ Section -->
+			<section class="faq-inner-page">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-inner-header text-center">
+								<h2>Frequently Asked Questions</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+							<div class="faq-info faq-inner-info">
+								<div class="accordion" id="faq-details">
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingOne">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+												Is it possible to log in to the site, ask a question, and <br> receive an instant answer? 
+											</a>
+										</h2>
+										<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faq-details">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>No, for all consultation features available on our platform, you are required to submit your question. Our expert will carefully study it and provide an answer within 24 hours. In the case of chat or voice features, you need to schedule a session in advance, allowing our experts sufficient time to review your details, horoscope, and query, ensuring accurate predictions. Instant predictions are not our approach. We believe in the genuine power of astrology, and our platform recognizes that profound insights require time. Our experienced astrologers thoroughly analyze your horoscope to deliver precise predictions and effective solutions. With us experience the astrology’s transformative power. Get ready for a future filled with purpose and fulfillment. True insight takes time, but the rewards are lifelong.</p>
+												</div> 
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingTwo">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+												Which types of questions am I allowed to ask? 
+											</a>
+										</h2>
+										<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faq-details">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>You have the liberty to ask us about any aspect of your life. We suggest referring to our "Customize Your Experience" section and selecting a question from the sample questions provided for personalized insights.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingThree">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+												Is it possible to ask multiple questions simultaneously?  
+											</a>
+										</h2>
+										<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faq-details">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>Depending on the package you choose, you can ask questions accordingly. We offer three packages with different benefits:<br>
+														1.	"Stellar Insights" - This package provides a comprehensive astrology consultation where you can ask a single question. <br>
+														2.	"Celestial Guidance" - With this package, you'll receive an in-depth astrology consultation allowing you to ask up to 5 questions (for a single user only). All 5 questions must be asked within a 30-day period. <br>
+														3.	"Divine Revelations" - Our premium package offers an extensive astrology consultation for a family (up to 4 users), including 10 questions and an optional 30-minute video call. The primary user can share the questions from their login, providing the details of the remaining 3 users (including date/time/place/country of birth). All 10 questions and the video call must be utilized within 30 days.
+														</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingFour">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+												In case I have a follow-up question, how can I proceed <br> with asking it?
+											</a>
+										</h2>
+										<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faq-details">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>If you have a follow-up question, please feel free to ask a new question based on the package that suits your requirements. The new question will be assigned to the same expert who handled your previous question.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingFive">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+												Can I be assured that the astrologers/experts are <br> verified? 
+											</a>
+										</h2>
+										<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faq-details">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>Absolutely! All the astrologers on the Guruji Speaks platform undergo a meticulous verification process. We verify their documents and conduct a screening test to ensure their authenticity. Rest assured, all our experts are verified and possess significant experience in their respective fields.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+												
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="faq-info faq-inner-info">
+								<div class="accordion" id="faq-details-info">
+
+									<!-- FAQ Item -->
+									<!-- <div class="accordion-item">
+										<h2 class="accordion-header" id="headingSix">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+												Can I be assured that the astrologers/experts are verified?  
+											</a>
+										</h2>
+										<div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faq-details-info">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>Absolutely! All the astrologers on the Guruji Speaks platform undergo a meticulous verification process. We verify their documents and conduct a screening test to ensure their authenticity. Rest assured, all our experts are verified and possess significant experience in their respective fields.</p>
+												</div>
+											</div>
+										</div>
+									</div> -->
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingSeven">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+												Should i share my contact details to the astrologer <br> during the session? 
+											</a>
+										</h2>
+										<div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faq-details-info">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>No, if you value your privacy, you should not share your contact details such as email address, phone number, or address with the astrologer.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingEight">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+												Are the astrologers aware of the identity of the person <br> they are interacting with? 
+											</a>
+										</h2>
+										<div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faq-details-info">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>No, the astrologers do not have any access to your email, phone number, or address at any given time.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingNine">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+												What is the procedure for accessing my past questions <br> and chat conversations? 
+											</a>
+										</h2>
+										<div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#faq-details-info">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>To view your consultation details, go to the "My Profile" section and click on "My History." You will find all the pertinent information, including the transcript of your chat, emails, and more. If you wish to retain them, you can choose to keep them, or if desired, select the delete option to remove them from your history.
+
+ </p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+
+									<!-- FAQ Item -->
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingTen">
+											<a class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+											Is privacy maintained by Guruji Speaks? 
+											</a>
+										</h2>
+										<div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#faq-details-info">
+											<div class="accordion-body">
+												<div class="accordion-content">
+													<p>Certainly! At Guruji Speaks, we prioritize and uphold your privacy. Rest assured that your personal information remains confidential with us. We implement stringent security measures to maintain the highest level of privacy and data protection.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- /FAQ Item -->
+												
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /FAQ Section -->
+   
+			<!-- Footer -->
+		
+			<!-- /Footer -->
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		  <!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	<!-- Bootstrap Core JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	 <!-- Profile Settings JS (dropdown)-->
+	 <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+	 <!-- Select2 JS (dropdown)-->
+	 <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+	 
+	 <!-- Dropzone JS (dropdown)-->
+	 <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Datepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+	<!-- Owl Carousel JS -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<!-- Animation JS -->
+	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+	<!-- Counter JS -->
+	<script src="assets/js/counter.js"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+		
+	</body>
+</html>
+
+{% endblock %}

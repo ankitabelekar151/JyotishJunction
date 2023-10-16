@@ -1,0 +1,414 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1,">
+	<title>Guruji Speaks</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Datepicker CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+	<!-- Owl Carousel CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+	<!-- Animation CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<!-- font-family -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+	<style>
+
+		.pricing-card {
+			background: #F2F6F6;
+			border: 1px solid #E5E7EB;
+			border-radius: 24px;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+			height: 100%;
+		} 
+
+		.pricing-card:hover {
+			background: #1c3264;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+	
+		.pricing-section {
+			background-color: #ffffff;
+			margin: 0;
+			padding: 0;
+		}
+
+		.pricing-icon span {
+			/* min-width: 70px; */
+			width: 100px;
+    		height: 100px;
+			background: #fff; 
+			border-radius: 16px;
+			 -webkit-transition: 0.7s; 
+			-ms-transition: 0.7s;
+			 transition: 0.7s; 
+			transform: rotate(0);
+			-webkit-transform: rotate(0);
+			-ms-transform: rotate(0);
+		}
+
+		.pricing-btn .btn {
+			font-weight: 600;
+			font-size: 14px;
+			margin: 0;
+			padding: 11px 15px;
+			min-width: 100%;
+			display: inline-block;
+			color: #ffffff;
+			border: 1px solid #1c3264;
+			background: #1c3264;
+		}
+
+		.pricing-btn .btn:hover {
+			font-weight: 600;
+			font-size: 14px;
+			margin: 0;
+			padding: 11px 15px;
+			min-width: 100%;
+			display: inline-block;
+			color: #ffffff;
+			border: 1px solid #fff;
+			background: #1c3264;
+		}
+
+		.pricing-card:hover .pricing-icon span {
+			background: #fff;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+			transform: rotate(90deg);
+			-webkit-transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+		}
+	
+		/* Custom dropdown arrow */
+		.dropdown:after {
+			content: '\25BC';
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			transform: translateY(-50%);
+			color: #ffffff;
+			pointer-events: none;
+		}
+	
+		.dropdown select {
+			background-color: #1c3264;
+			color: #ffffff;
+			padding: 10px;
+			border: none;
+			border-radius: 4px;
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			text-align: center;
+			width: 200px;
+		}
+	
+		img {
+			max-width: 45%;
+			height: auto;
+		}
+	</style>	
+
+</head>
+
+
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+		
+		<!-- Header -->
+
+		<!-- /Header -->
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<span>
+			<!-- <img src="{% static 'assets/img/icons/stellar.png' %}" alt="icon"> -->
+			<!-- <img src="{% static 'assets/img/backg_img1.jpeg' %}"> -->
+		</span>
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title">Consult Now</h2>
+						<nav aria-label="breadcrumb" class="page-breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item" aria-current="page">Consult Now</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+		<!-- Pricing -->
+		<section class="pricing-section">
+			<div class="container">
+				<!-- <div class="row">
+					<div class="col-md-12 text-center">
+
+						<div class="dropdown">
+
+							<select>
+								<option value="option1" selected><a href="ask-a-question-1.html">INR (₹)</a></option>
+								<option value="option2"><a href="ask-a-question.html">Dollar ($)</a></option>
+							</select>
+						</div>
+					</div>
+				</div> -->
+
+				<div class="row justify-content-center p-5">
+					<div class="col-lg-4 col-md-6">
+						<div class="card pricing-card">
+							<div class="card-body">
+								<div class="pricing-header">
+									<div class="pricing-header-info">
+										<div class="pricing-icon">
+											<span>
+												<!-- <img src="{% static 'assets/img/icons/stellar.png' %}" alt="icon"> -->
+												<img src="{% static 'assets/img/stellar.png' %}" alt="icon">
+											</span>
+										</div>
+										<div class="pricing-title">
+											<!-- <p>Ask a Question Now</p> -->
+											<h4>Stellar Insights</h4>
+										</div>
+									</div>
+									<div class="pricing-header-text">
+										<p><b>Ask a Question Now</b></p>
+									</div>
+								</div>
+								<div class="pricing-info">
+									<div class="pricing-amount">
+										<h2>₹500 <span></span></h2>
+										<h6>What’s included</h6>
+									</div>
+									<div class="pricing-list">
+										<ul>
+											<li>Get Detailed answer for a Single question </li>
+											<li>Enjoy the Benefits of Career Guidance, Relationships Advice </li>
+											<li>Future endeavors Detailed Explanations </li>
+											<li>Deep  insights  into  the  life </li>
+											<!-- <br> -->
+											<li>₹500+GST(18%) = ₹590/-</li>
+											<p><b>Ask your First Question ₹99/- only</b></p>
+										</ul>
+									</div>
+									<div class="pricing-btn" style="margin-top: -30px;">
+										<a href="/ask_ques_otp/" class="btn btn-primary">Get Started</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="card pricing-card">
+							<div class="card-body">
+								<div class="pricing-header">
+									<div class="pricing-header-info">
+										<div class="pricing-icon">
+											<span>
+												<img src="{% static 'assets/img/celestial.png' %}" alt="icon">
+											</span>
+										</div>
+										<div class="pricing-title">
+											<!-- <p>Book Premium Consultation</p> -->
+											<h4>Celestial Guidance</h4>
+										</div>
+									</div>
+									<div class="pricing-header-text">
+										<p><b>Book Premium Consultation</b></p>
+									</div>
+								</div>
+								<div class="pricing-info">
+									<div class="pricing-amount">
+										<h2>₹2001 <span></span></h2>
+										<h6>What’s included</h6>
+									</div>
+									<div class="pricing-list">
+										<ul>
+											<li> Provided with 5 in depth Questions wil be Answered </li>
+											<li>30 Days limit extension to ask Questions </li>
+											<li>Get detailed analysis for the Query </li>
+											<li>Prompt navigation for important Decision </li>
+											<li>₹2001+GST(18%) =₹2361/-</li>
+											<p></p>
+										</ul>
+									</div>
+									<div class="pricing-btn"> 
+										<a href="/ask_ques_otp/" class="btn btn-primary">Get Started</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="card pricing-card">
+							<div class="card-body">
+								<div class="pricing-header">
+									<div class="pricing-header-info">
+										<div class="pricing-icon">
+											<span>
+												<img src="{% static 'assets/img/divine.png' %}" alt="icon">
+											</span>
+										</div>
+										<div class="pricing-title">
+											<!-- <p>Schedule Family Consultation</p> -->
+											<h4>Divine Revelations</h4>
+										</div>
+									</div>
+									<div class="pricing-header-text">
+										<p><b>Schedule Family Consultation</b></p>
+									</div>
+								</div>
+								<div class="pricing-info">
+									<div class="pricing-amount">
+										<h2>₹6000<span></span></h2>
+										<h6>What’s included</h6>
+									</div>
+									<div class="pricing-list">
+										<ul> 
+											<li>Premium consultation of 10&nbsp;&nbsp;&nbsp;&nbsp; Questions </li>
+											<li>Get consultation for Family (up to 4 members) </li>
+											<li>Includes a 30 minutes video call </li>
+											<li>Profound Insights and Divine &nbsp;&nbsp; Guidance </li>
+											<li>₹6000+GST(18%) =₹7080/-</li>
+											<p></p>
+										</ul>
+									</div>
+									<div class="pricing-btn">
+										<a href="/ask_ques_otp/" class="btn btn-primary">Get Started</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Pricing -->
+
+
+
+		<!-- Footer -->
+
+		<!-- /Footer -->
+
+		<!-- Cursor -->
+		<!-- <div class="mouse-cursor cursor-outer"></div>
+			<div class="mouse-cursor cursor-inner"></div> -->
+		<!-- /Cursor -->
+
+	</div>
+
+	<!-- ScrollToTop -->
+	<div class="progress-wrap active-progress">
+		<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+			<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+				style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919px, 307.919px; stroke-dashoffset: 228.265px;">
+			</path>
+		</svg>
+	</div>
+	<!-- /ScrollToTop -->
+
+	<!-- <script>
+			document.getElementById('currency').onclick = function() {
+ 
+ var values = ["Dollar", "INR"];
+
+ var select = document.createElement("select");
+ select.name = "currency";
+ select.id = "currency"
+
+ for (const val of values)
+ {
+	 var option = document.createElement("option");
+	 option.value = val;
+	 option.text = val.charAt(0).toUpperCase() + val.slice(1);
+	 select.appendChild(option);
+ }
+
+ var label = document.createElement("label");
+ label.innerHTML = "Choose your currency: "
+ label.htmlFor = "currency";
+
+ document.getElementById("container").appendChild(label).appendChild(select);
+}
+		</script>	 -->
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Datepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+	<!-- Owl Carousel JS -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<!-- Animation JS -->
+	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+	<!-- Counter JS -->
+	<script src="assets/js/counter.js"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
+
+{% endblock %}

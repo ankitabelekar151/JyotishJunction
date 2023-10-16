@@ -1,0 +1,249 @@
+{% comment %} <html>
+    <!-- login/comment.html -->
+    <form action="" method="post">
+        {% csrf_token %}
+        <!-- Assuming the plan name is rendered as a dropdown/select field -->
+        <div class="form-group">
+            <label for="plan_name">Plan Name</label>
+            <select class="form-control" name="plan_name_1" id="plan_name">
+                <option value="silver">Silver</option>
+                <!-- Add other plan options if applicable -->
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea class="form-control" name="comment1" rows="4" cols="50"></textarea>
+        </div>
+        <button type="submit" name="click_me" class="btn btn-primary">Click Me</button>
+    </form>
+
+    {% if click_me %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="comment">Comment</label>
+                <textarea class="form-control" name="comment1" rows="4" cols="50"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Comment</button>
+        </form>
+    {% endif %}
+
+    <table class="table" border="1">
+        <thead>
+            <tr style="text-align: center;">
+                <th align="center">Customer name</th>
+                <th align="center">Question</th>
+                <th align="center">Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in comment_data %}
+            <tr>
+                <td>
+                    {{ i.user }}
+                </td>
+                <td>
+                    {{ i.comment1 }}
+                </td>
+                <td>
+                    {{ i.comment2 }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</html> {% endcomment %}
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Guruji Speaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+    
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fancybox/jquery.fancybox.min.css' %}">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+    
+    <style>
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .375rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .btn-primary {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6e4e4;
+            border: 1px solid #ffffff;
+            color: #000;
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- Main Wrapper -->
+<div class="main-wrapper">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar-two">
+        <div class="container">
+            <div class="row align-items-center inner-banner">
+                <div class="col-md-12 col-12 text-center">
+                    <h2 class="breadcrumb-title">Ask a Question</h2>
+                    <nav aria-label="breadcrumb" class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item" aria-current="page">Customer Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Breadcrumb -->
+
+    <!-- Page Content -->
+    <div class="content">
+        <div class="container">
+
+            <!-- Doctor Widget -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="doctor-widget">
+
+                        <div>
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <!-- Assuming the plan name is rendered as a dropdown/select field -->
+                                <div class="form-group">
+                                    <label for="plan_name">Plan Name</label>
+                                    <select class="form-control" name="plan_name_1" id="plan_name">
+                                        <option value="silver">Silver</option>
+                                        <!-- Add other plan options if applicable -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comment">Comment</label>
+                                    <textarea class="form-control" name="comment1" rows="4" cols="50"></textarea>
+                                </div>
+                                <button type="submit"  class="btn btn-primary">Click Me</button>
+                            </form>
+                        
+                            {% if click_me %}
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="comment">Comment</label>
+                                        <textarea class="form-control" name="comment1" rows="4" cols="50"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Comment</button>
+                                </form>
+                            {% endif %}
+                        
+                            <table class="table" border="1">
+                                <thead>
+                                    <tr style="text-align: center;">
+                                        <th align="center">Customer name</th>
+                                        <th align="center">Question</th>
+                                        <th align="center">Answer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in data %}
+                                    <tr>
+                                        <td>
+                                            {% for j in data2 %}
+                                            {% if i.user == j.email_id %}
+                                            {{ j.first_name }} {{j.last_name}}
+                                            {% endif %}
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {{ i.comment1 }}
+                                        </td>
+                                        <td>
+                                            {{ i.comment2 }}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                </div>
+            </div>
+            <!-- /Doctor Details Tab -->
+
+        </div>
+    </div>
+    <!-- /Page Content -->
+
+    <!-- Footer -->
+    <!-- /Footer -->
+
+</div>
+<!-- /Main Wrapper -->
+
+
+<!-- jQuery -->
+<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+<!-- Bootstrap Core JS -->
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Fancybox JS -->
+<script src="{% static 'assets/plugins/fancybox/jquery.fancybox.min.js' %}"></script>
+
+<!-- Custom JS -->
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+
+
+</body>
+</html>
+
+
+
+{% comment %} <script>
+    function submitFn() {
+        let x = document.forms["myForm"]["fname"].value;
+        if (x === "") {
+            alert("Question must be filled out");
+            return false;
+        }
+    }
+</script> {% endcomment %}

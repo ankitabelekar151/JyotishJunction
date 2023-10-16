@@ -1,0 +1,214 @@
+<!-- 
+<form id="send-form" method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <table class="table" border="1">
+            <thead>
+                <tr style="text-align: center;">
+                   
+                    <th align="center">Sr.No</th>
+                    <th align="center">Astrologer Name</th>
+                    <th align="center">Email Id</th>
+                    <th align="center">Status</th>
+                    <th align="center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in astro %}
+                {% if i.expertise %}
+                <tr>
+                    
+                    <td >{{ i.id }}</td> 
+                    <td>
+                       {{i.first_name}}{{i.last_name}} 
+                    </td>
+                    <td>
+                        {{i.email_id}}
+                    </td>
+                    <td>{{i.is_astrologer}}</td>
+                    <td>
+                        <div>
+                            {% if i.is_astrologer != True %}
+                            <a type="button" data-toggle="tooltip" data-original-title="Enable" class="btn btn-link btn-primary">
+                                <button type="button" class="btn btn-red button" id="colorButton" onclick="showConfirmation('{{ i.id }}')">Enable</button>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </td>
+
+                   
+                    
+                    
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</form>
+<script>
+    function showConfirmation(id) {
+        if (confirm("Are you sure you want to enable this Astrologer ?")) {
+            window.location.href = "/enable_astrologer/" + id + "/";
+        }
+    }
+  </script>
+
+
+
+ -->
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>Doccure - Dashboard</title>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <!-- Feathericon CSS -->
+        <link rel="stylesheet" href="assets/css/feathericon.min.css">
+        <link rel="stylesheet" href="assets/plugins/morris/morris.css">
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="assets/css/custom.css">
+        <style>
+            .content {
+                min-height: 200px;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-header bg-light p-5">
+                                <h2 class="card-title text-center">Unapproved Astrologer's</h2>
+                            </div>
+                            <!-- Recent Orders -->
+                            <div class="card card-table mt-5">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <form id="send-form" method="POST" action="">
+                                            {% csrf_token %}
+                                            <div>
+                                                <table class="table" border="1">
+                                                    <thead>
+                                                        <tr style="text-align: center;">
+                                                            <!-- <th align="center">Customer name</th> -->
+                                                            <!-- <th align="center">Comment</th> -->
+                                                            <th align="center">Sr.No</th>
+                                                            <th align="center">Astrologer Name</th>
+                                                            <th align="center">Email Id</th>
+                                                            <th align="center">Country</th>
+                                                            <th align="center">Mobile No.</th>
+                                                            <th align="center">Experties</th>
+                                                            <th align="center">Language Knowns</th>
+                                                            <th align="center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for i in astro %}
+                                                        {% if i.expertise %}
+                                                        <tr>
+                                                            
+                                                            <td >{{ forloop.counter }}</td> 
+                                                            <td>
+                                                               {{i.name}} 
+                                                            </td>
+                                                            <td>
+                                                                {{i.email_id}}
+                                                                <!-- <a href="#" onclick="submitForm('{{ i.id }}', this)">Send</a> -->
+                                                            </td>
+                                                            <td>
+                                                                {{i.country}} 
+                                                             </td>
+                                                             <td>
+                                                                {{i.whatsapp_no}} 
+                                                             </td>
+                                                             <td>
+                                                                {{i.expertise}} 
+                                                             </td>
+                                                             <td>
+                                                                {{i.languages_known}} 
+                                                             </td>
+                                                            {% comment %} <td>{{i.is_approved}}</td> {% endcomment %}
+                                                            {% comment %} <td><div>
+                                                                <a href="/astro_profile/{{i.id}}/" class="btn-view">
+                                                                  <i class="fas fa-eye"></i> View
+                                                                </a>
+                                                              </div>
+                                                            </td> {% endcomment %}
+                                                            <td>
+                                                                <div>
+                                                                    {% if not i.is_approved %}
+                                                                    <a href="{% url 'approve_astrologer' i.id %}" type="button" data-toggle="tooltip" data-original-title="Enable" class="btn btn-link btn-primary">
+                                                                        <button type="button" class="btn btn-red button" id="colorButton">Approve</button>
+                                                                    </a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </td>
+                                                            {% comment %} <td>
+                                                                <div>
+                                                                    {% if i.is_astrologer != True %}
+                                                                    <a type="button" data-toggle="tooltip" data-original-title="Enable" class="btn btn-link btn-primary">
+                                                                        <button type="button" class="btn btn-red button" id="colorButton" onclick="showConfirmation('{{ i.id }}')">Enable</button>
+                                                                    </a>
+                                                                    {% endif %}
+                                        
+                                        
+                                                                    {% if i.is_astrologer != True %}
+                                                                    <a type="button" data-toggle="tooltip" data-original-title="Disable" class="btn btn-link btn-primary">
+                                                                        <button type="button" class="btn btn-red button" id="colorButton" onclick="showConfirmation1('{{ i.id }}')">Disable</button>
+                                                                    </a>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </td> {% endcomment %}
+                                        
+                                                           
+                                                            
+                                                            
+                                                        </tr>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Recent Orders -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Page Wrapper -->
+        </div>
+        <!-- /Main Wrapper -->
+        <!-- jQuery -->
+        <script src="assets/js/jquery-3.6.4.min.js"></script>
+
+        <!-- Bootstrap Core JS -->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Slimscroll JS -->
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/plugins/raphael/raphael.min.js"></script>
+        <script src="assets/plugins/morris/morris.min.js"></script>
+        <script src="assets/js/chart.morris.js"></script>
+        <!-- Custom JS -->
+        <script  src="assets/js/script.js"></script>
+    </body>
+</html>

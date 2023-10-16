@@ -1,0 +1,566 @@
+{% extends 'base_admin.html' %}{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Guruji Speaks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+
+  <!-- Fontawesome CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/fontawesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/all.min.css' %}">
+
+  <!-- Feathericon CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/css/feather.css' %}">
+
+  <!-- Feathericon CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/feathericon.min.css' %}">
+
+  <link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+
+  <!-- Datepicker CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/css/bootstrap-datetimepicker.min.css' %}">
+
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/css/owl.carousel.min.css' %}">
+
+  <!-- Animation CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/css/aos.css' %}">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'assets2/css/custom.css' %}">
+
+  <style>
+    /* side bar */
+    .profile-sidebar .dashboard-menu>ul>li.active>a {
+      color: #f7931e;
+    }
+
+    .profile-sidebar .dashboard-menu>ul>li:hover>a {
+      color: #f7931e;
+    }
+   
+
+    .card-body{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .anim:hover{
+      /* transform: scale(1.1);  */
+    }
+
+    .anim:hover{
+      transform: scale(1.1); 
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <!-- Page Wrapper -->
+      <div class="page-wrapper">
+
+        <div class="content container-fluid">
+
+          <!-- Page Header -->
+          <!-- <div class="page-header">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3 class="page-title">Welcome Admin!</h3>
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active">Dashboard</li>
+                </ul>
+              </div>
+            </div>
+          </div> -->
+          <!-- /Page Header -->
+
+
+          <div class="row">
+            
+            <div class="col-xl-4 col-sm-6 col-12">
+              <a href="/cust_to_admin/">
+                <div class="card anim">
+                  <div class="card-body ">
+                    <div class="dash-widget-header">
+                      <span class="dash-widget-icon text-info">
+                        <i class="fa-regular fa-question"></i>
+                      </span>
+                      <div class="dash-count">
+                        <h3>{{a}}</h3>
+                      </div>
+                    </div>
+                    <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Questions asked by Customers</h6>
+                      
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-xl-4 col-sm-6 col-12">
+              <a href="/cust_to_admin/">
+              <div class="card anim">
+                <div class="card-body ">
+                  <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-danger">
+                      <i class="fa-solid fa-person-circle-question"></i>
+                    </span>
+                    <div class="dash-count">
+                      <h3>{{b}}</h3>
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Questions assigned to Astrologers</h6>
+                    {% comment %} <div class="progress progress-sm">
+                      <div class="progress-bar bg-success w-50"></div>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+
+            <div class="col-xl-4 col-sm-6 col-12">
+              <a href="/cust_to_admin/">
+              <div class="card anim">
+                <div class="card-body">
+                  <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-success">
+                      <i class="fa-solid fa-reply"></i>
+                    </span>
+                    <div class="dash-count">
+                      <h3>{{c}}</h3>
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Questions answered by Astrologers</h6>
+                    {% comment %} <div class="progress progress-sm">
+                      <div class="progress-bar bg-success w-50"></div>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+
+          <div class="row">
+
+            <div class="col-xl-4 col-sm-6 col-12">
+              <a href='/admin_approval_astro/'>
+              <div class="card anim">
+                <div class="card-body">
+                  <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-danger-emphasis ">
+                      <i class="fa fa-user"></i>
+                    </span>
+                    <div class="dash-count">
+                      <h3>{{unapprove}}</h3>
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+                    <h6 class="text-muted">New Astrologers</h6>
+                    {% comment %} <div class="progress progress-sm">
+                      <div class="progress-bar bg-primary w-50"></div>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+              </a>
+            </div>
+
+            <div class="col-xl-4 col-sm-6 col-12">
+              <a href='/astro_admin_approved/'>
+              <div class="card anim">
+                <div class="card-body">
+                  <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-success">
+                      <i class="fa fa-users"></i>
+                      <!-- <i class="fa-thin fa-eclipse"></i> -->
+                    </span>
+                    <div class="dash-count">
+                      <h3>{{approve}}</h3>
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+                    <h6 class="text-muted">Verified Astrologers</h6>
+                    {% comment %} <div class="progress progress-sm">
+                      <div class="progress-bar bg-primary w-50"></div>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+
+            <div class="col-xl-4 col-sm-6 col-12">
+              <a href='/customer_admin/'>
+              <div class="card anim">
+                <div class="card-body">
+                  <div class="dash-widget-header">
+                    <span class="dash-widget-icon text-warning">
+                      <!-- <i class="fa fa-credit-card"></i> -->
+                      <i class="fa fa-users"></i>
+                    </span>
+                    <div class="dash-count">
+                      <h3>{{data1}}</h3>
+                    </div>
+                  </div>
+                  <div class="dash-widget-info">
+
+                    <h6 class="text-muted">Customers</h6>
+                    {% comment %} <div class="progress progress-sm">
+                      <div class="progress-bar bg-success w-50"></div>
+                    </div> {% endcomment %}
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </a>      
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6 d-flex">
+
+              <!-- astrologer list Orders -->
+              <div class="card card-table flex-fill">
+                  <div class="card-header">
+                    <h4 class="card-title">Astrologer List</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-hover table-center mb-0">
+                        <thead>
+                          <tr>
+                            <th>Astrologer Name</th>
+                            <th>Expertise</th>
+                            <th>Mobile number</th>
+                            {% comment %} <th>Reviews</th> {% endcomment %}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for astrologer in data_astro %}
+                          <tr>
+                            <td>
+                              <h2 class="table-avatar">
+                                {% comment %} <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                    class="avatar-img rounded-circle" src="{% static 'assets2/img/doctors/doctor-thumb-01.jpg' %}"
+                                    alt="User Image"></a> {% endcomment %}
+                                <a>{{ astrologer.name }}</a>
+                              </h2>
+                            </td>
+                            <td>{{ astrologer.expertise }}</td>
+                            <td>{{ astrologer.whatsapp_no }}</td>
+                            <td>
+                              <i class="fe fe-star text-warning"></i>
+                              <i class="fe fe-star text-warning"></i>
+                              <i class="fe fe-star text-warning"></i>
+                              <i class="fe fe-star text-warning"></i>
+                              <i class="fe fe-star-o text-secondary"></i>
+                            </td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              <!-- /astrologer list  Orders -->
+
+            </div>
+            <div class="col-md-6 d-flex">
+
+              <!-- customer Activity -->
+              <div class="card card-table flex-fill">
+                <div class="card-header">
+                  <h4 class="card-title">Customer List</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>Customer Name</th>
+                          <th>Phone</th>
+                          {% comment %} <th>Last Visit</th> {% endcomment %}
+                          <th>Email Id</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for customer in customer_list %}
+                        <tr>
+                          <td>
+                            <h2 class="table-avatar">
+                              {% comment %} <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/patients/patient1.jpg' %}"
+                                  alt="User Image"></a> {% endcomment %}
+                              <a>{{ customer.first_name }} {{ customer.last_name }}</a>
+                            </h2>
+                          </td>
+                          <td>{{ customer.whatsapp_no }}</td>
+                          {% comment %} <td>20 Oct 2019</td> {% endcomment %}
+                          <td>{{ customer.email_id }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- /customer Activity -->
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+              <!-- appoinment list Orders -->
+              {% comment %} <div class="card card-table">
+                <div class="card-header">
+                  <h4 class="card-title">Appointment List</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-center mb-0">
+                      <thead>
+                        <tr>
+                          <th>Doctor Name</th>
+                          <th>Speciality</th>
+                          <th>Patient Name</th>
+                          <th>Apointment Time</th>
+                          <th>Status</th>
+                          <th class="text-end">Amount</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/doctors/doctor-thumb-01.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Dr. Ruby Perrin</a>
+                            </h2>
+                          </td>
+                          <td>Dental</td>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/patients/patient1.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Charlene Reed </a>
+                            </h2>
+                          </td>
+                          <td>9 Nov 2019 <span class="text-primary d-block">11.00 AM - 11.15 AM</span></td>
+                          <td>
+                            <div class="status-toggle">
+                              <input type="checkbox" id="status_1" class="check" checked>
+                              <label for="status_1" class="checktoggle">checkbox</label>
+                            </div>
+                          </td>
+                          <td class="text-end">
+                            $200.00
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/doctors/doctor-thumb-02.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Dr. Darren Elder</a>
+                            </h2>
+                          </td>
+                          <td>Dental</td>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/patients/patient2.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Travis Trimble </a>
+                            </h2>
+                          </td>
+
+                          <td>5 Nov 2019 <span class="text-primary d-block">11.00 AM - 11.35 AM</span></td>
+                          <td>
+                            <div class="status-toggle">
+                              <input type="checkbox" id="status_2" class="check" checked>
+                              <label for="status_2" class="checktoggle">checkbox</label>
+                            </div>
+                          </td>
+                          <td class="text-end">
+                            $300.00
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/doctors/doctor-thumb-03.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Dr. Deborah Angel</a>
+                            </h2>
+                          </td>
+                          <td>Cardiology</td>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/patients/patient3.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Carl Kelly</a>
+                            </h2>
+                          </td>
+                          <td>11 Nov 2019 <span class="text-primary d-block">12.00 PM - 12.15 PM</span></td>
+                          <td>
+                            <div class="status-toggle">
+                              <input type="checkbox" id="status_3" class="check" checked>
+                              <label for="status_3" class="checktoggle">checkbox</label>
+                            </div>
+                          </td>
+                          <td class="text-end">
+                            $150.00
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/doctors/doctor-thumb-04.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Dr. Sofia Brient</a>
+                            </h2>
+                          </td>
+                          <td>Urology</td>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/patients/patient4.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html"> Michelle Fairfax</a>
+                            </h2>
+                          </td>
+                          <td>7 Nov 2019<span class="text-primary d-block">1.00 PM - 1.20 PM</span></td>
+                          <td>
+                            <div class="status-toggle">
+                              <input type="checkbox" id="status_4" class="check" checked>
+                              <label for="status_4" class="checktoggle">checkbox</label>
+                            </div>
+                          </td>
+                          <td class="text-end">
+                            $150.00
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/doctors/doctor-thumb-05.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Dr. Marvin Campbell</a>
+                            </h2>
+                          </td>
+                          <td>Orthopaedics</td>
+                          <td>
+                            <h2 class="table-avatar">
+                              <a href="profile.html" class="avatar avatar-sm me-2"><img
+                                  class="avatar-img rounded-circle" src="{% static 'assets2/img/patients/patient5.jpg' %}"
+                                  alt="User Image"></a>
+                              <a href="profile.html">Gina Moore</a>
+                            </h2>
+                          </td>
+
+                          <td>15 Nov 2019 <span class="text-primary d-block">1.00 PM - 1.15 PM</span></td>
+                          <td>
+                            <div class="status-toggle">
+                              <input type="checkbox" id="status_5" class="check" checked>
+                              <label for="status_5" class="checktoggle">checkbox</label>
+                            </div>
+                          </td>
+                          <td class="text-end">
+                            $200.00
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div> {% endcomment %}
+              <!-- /appoinment list Orders -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- /Page Wrapper -->
+
+
+    <!-- jQuery -->
+    <script src="{% static 'assets2/js/jquery-3.6.4.min.js' %}"></script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'assets2/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Slimscroll JS -->
+    <script src="{% static 'assets2/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
+
+    <script src="{% static 'assets2/plugins/raphael/raphael.min.js' %}"></script>
+    <script src="{% static 'assets2/plugins/morris/morris.min.js' %}"></script>
+    <script src="{% static 'assets2/js/chart.morris.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets2/js/script.js' %}"></script>
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Feather Icon JS -->
+    <script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+    <!-- Datepicker JS -->
+    <script src="{% static 'assets/js/moment.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    <!-- Slick JS -->
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+
+    <!-- Animation JS -->
+    <script src="{% static 'assets/js/aos.js' %}"></script>
+
+    <!-- Counter JS -->
+    <script src="{% static 'assets/js/counter.js' %}"></script>
+
+    <!-- BacktoTop JS -->
+    <script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+    <script src="{% static 'assets2/js/script.js' %}"></script>
+
+  </body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,406 @@
+{% extends "base_admin.html" %}{% block content %}
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Guruji Speaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet"
+        href="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/feather.css' %}">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/plugins/select2/css/select2.min.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/custom.css' %}">
+
+    <style>
+        .btn-primary {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+
+        @media (max-width: 991.98px) {
+
+            .card1 {
+                display: inline-block !important;
+            }
+
+            .card-width {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- Page Content -->
+        <div class="content">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- <h3 style ="text-align:center;">Questions Assigned to Astrologer</h3> -->
+                            <form action="" method="POST" class="d-flex justify-content-evenly card1">
+                                {% csrf_token %}
+                                <div class="col-4 card-width">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- <label for="">Select Month</label> -->
+
+                                            <div class="dropdown">
+                                                <select id="target" name="month" class="drop-down w-100" required>
+                                                    <option value="" class=""> Select Month </option>
+                                                    <option class="dropdown-item" active>January</option>
+                                                    <option class="dropdown-item"> February </option>
+                                                    <option class="dropdown-item"> March </option>
+                                                    <option class="dropdown-item"> April </option>
+                                                    <option class="dropdown-item"> May </option>
+                                                    <option class="dropdown-item"> June</option>
+                                                    <option class="dropdown-item"> July </option>
+                                                    <option class="dropdown-item">August</option>
+                                                    <option class="dropdown-item"> September </option>
+                                                    <option class="dropdown-item"> October </option>
+                                                    <option class="dropdown-item"> November </option>
+                                                    <option class="dropdown-item"> December </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="col-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- <label for="">Select Month</label> -->
+                                            <div class="dropdown">
+                                                <select id="target" name="revenue" class="drop-down w-100">
+                                                    <option value="" class=""> Select Revenue </option>
+                                                    <option class="dropdown-item" active>INR(₹)</option>
+                                                    <option class="dropdown-item"> USD($)</option>
+                                                    <option class="dropdown-item"> Both </option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> {% endcomment %}
+                                <div class="col-4 card-width">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <!-- <label for="">Select Month</label> -->
+                                            <div class="dropdown">
+                                                <select id="target" name="astro_name" class="drop-down w-100" required>
+                                                    <option value="" class=""> Select Astrologer </option>
+                                                    {% for i in data1 %}
+                                                    <option class="dropdown-item" active value="{{i.id}}">{{i.name}}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-2 card-width">
+                                    <input class="btn btn-primary mt-3" type="submit" value="Search">
+                                    <!-- <button type="submit" class="btn btn-primary mt-3">Search</button> -->
+                                </div>
+                            </form>
+                            {% if astro_name %}
+                            <div class="row mx-4">
+                                <div class="col-4">
+                                    <div class="card" style="border: 1px solid #fff;">
+                                        <div class="card-body">
+                                            <p class="fw-bold">Selected Month: <span>{{plan_month}}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 ms-5">
+                                    <div class="card" style="border: 1px solid #fff;">
+                                        <div class="card-body">
+                                            <p class="fw-bold">Selected Astrologer: <span>{{selected_astrologer}}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 d-flex">
+
+                                <!-- astrologer list Orders -->
+                                <div class="card card-table flex-fill"
+                                    style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                                    <div class="card-header">
+                                        <h4 class="card-title text-center">Monthly</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive text-center">
+                                            <table class="table table-hover text-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Total Income</th>
+                                                        <th>Astrologer Earning</th>
+                                                        <!-- <th>Mobile number</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <!-- {% if plan_total %} -->
+                                                <tbody>
+
+                                                    <tr>
+                                                        <td>{{plan_total}}</td>
+                                                        <td>{{total_comission}}</td>
+                                                        <!-- <td></td> -->
+                                                    </tr>
+                                                </tbody>
+                                                <!-- {% endif %} -->
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- /astrologer list  Orders -->
+
+                            </div>
+                            <div class="col-md-4 d-flex">
+
+                                <!-- customer Activity -->
+                                <div class="card card-table flex-fill"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+                                    <div class="card-header">
+                                        <h4 class="card-title text-center">Total Revenue</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover text-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Total Income </th>
+                                                        <th>Astrologer Earning</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{admin_yearly}}</td>
+                                                        <td>{{astro_yearly}}</td>
+                                                        <!-- <td></td> -->
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /customer Activity -->
+
+                            </div>
+
+                            <div class="col-md-4 d-flex">
+                                
+                                <div class="card card-table flex-fill"
+                                    style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); ">
+                                    <div class="card-header">
+                                        <h4 class="card-title text-center">Wallet</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover text-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Wallet Amount </th>
+                                                        <!-- <th>Astrologer Earning</th> -->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{wallet_amount}}</td>
+                                                        <!-- <td>{{astro_yearly}}</td> -->
+                                                        
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <!--  -->
+                                <div class="card card-table flex-fill">
+                                    <!-- <div class="card-header">
+                                        <h4 class="card-title">Monthly</h4>
+                                    </div> -->
+                                    <div class="card-body">
+                                        <div class="table-responsive table-center">
+                                            <table class="table table-hover table-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Customer Name</th>
+                                                        <th>Purchase Date</th>
+                                                        <th>Package Name</th>
+                                                        <th>Gain Amount</th>
+                                                        <th>Astrologer Name</th>
+                                                        <th>Astrologer Earning</th>
+                                                    </tr>
+                                                </thead>
+                                                {% if admin_fare %}
+                                                <tbody>
+                                                    {% for i in data %}
+                                                    <tr>
+                                                        <td>{{i.0}}</td>
+                                                        <td>{{i.1}}</td>
+                                                        <td>{{i.2}}</td>
+                                                        <td>{{i.3}}</td>
+                                                        <td>{{i.7}}</td>
+                                                        <td>{{i.5}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                                {% else %}
+                                                <tbody>
+                                                    {% for i in data5 %}
+
+                                                    <tr>
+                                                        <td>{{ forloop.counter }}</td>
+                                                        <td>{{i.0}}</td>
+                                                        <td>{{i.1}}</td>
+                                                        <td>{{i.2}}</td>
+                                                        <td>{{i.3}}</td>
+                                                        <td>{{i.7}}</td>
+                                                        <td>{{i.5}}</td>
+                                                    </tr>
+                                                    {% endfor %}
+
+                                                </tbody>
+                                                {% endif %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /astrologer list  Orders -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /Page Content -->
+
+    </div>
+
+    <script>
+        var answerField = document.getElementById('answerField');
+        var answerInput = answerField.getElementsByTagName('textarea')[0];
+
+        if (answerInput.value.trim() === '') {
+            answerField.style.display = 'none';
+        }
+    </script>
+
+
+    <script>
+        function submitForm(commentId, sendButton) {
+            var form = document.getElementById('send-form');
+            var selectElement = form.querySelector('select[name="astro_email_id_' + commentId + '"]');
+            var selectedAstrologerId = selectElement.value;
+            form.action = "/admin_view_que/" + commentId + "/";
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', 'astro_email_id');
+            hiddenField.setAttribute('value', selectedAstrologerId);
+            form.appendChild(hiddenField);
+
+            // Get the selected name before submitting the form
+            var selectedName = selectElement.options[selectElement.selectedIndex].text.trim();
+
+            // Update the display of selected name before form submission
+            var selectedNameElement = sendButton.parentNode.nextElementSibling.querySelector('#selected-name');
+            selectedNameElement.textContent = selectedName;
+
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Perform an asynchronous form submission
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form)
+            }).then(function (response) {
+                // Handle the form submission response if needed
+            }).catch(function (error) {
+                // Handle any error during form submission if needed
+            });
+        }
+
+    </script>
+
+    <!-- Bootstrap Core JS -->
+    <script src="{% static 'assets2/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Select2 JS -->
+    <script src="{% static 'assets2/plugins/select2/js/select2.min.js' %}"></script>
+
+    <!-- Datetimepicker JS -->
+    <script src="{% static 'assets2/js/moment.min.js' %}"></script>
+    <script src="{% static 'assets2/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <!-- Sticky Sidebar JS -->
+    <script src="{% static 'assets2/plugins/theia-sticky-sidebar/ResizeSensor.js' %}"></script>
+    <script src="{% static 'assets2/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets2/js/script.js' %}"></script>
+
+    <!-- for country -->
+    <script src="//cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
+    <script src="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <script
+        src="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

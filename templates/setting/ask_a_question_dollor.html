@@ -1,0 +1,351 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+		<!-- Datepicker CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+		<!-- Owl Carousel CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+		<!-- Animation CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	</head>	
+	
+	<style>
+		.pricing-card:hover {
+			background: #1c3264;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .dropdown select {
+    background-color: #1c3264;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .pricing-section {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 50px 0 50px;
+}
+
+  .dropdown select:hover {
+    background-color: #304e8d;
+  }
+
+  .dropdown select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #304e8d;
+  }
+
+  /* Hide the default dropdown arrow */
+  .dropdown select::-ms-expand {
+    display: none;
+  }
+
+  /* Custom dropdown arrow */
+  .dropdown:after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    pointer-events: none;
+  }
+  .dropdown select {
+    background-color: #1c3264;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 200px;
+}
+</style>
+
+
+
+
+	    
+	</style>
+	
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+					
+			<!-- Header -->
+			
+			<!-- /Header -->
+
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar-two">
+				<div class="container">
+					<div class="row align-items-center inner-banner">
+						<div class="col-md-12 col-12 text-center">
+							<h2 class="breadcrumb-title">Consult Now</h2>
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index-7.html">Home</a></li>
+									<li class="breadcrumb-item" aria-current="page">Consult Now</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+
+			<!-- Pricing -->
+			 <section class="pricing-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<!-- <div class="section-inner-header pricing-inner-header">
+								<h2>Features</h2>
+							</div> -->
+							<div class="dropdown">
+								<label for="currency">Currency</label>
+								<select id="currency">
+								  <option value="dollar"><a href="ask-a-question-dollar.html">Dollar</a></option>
+								  <!-- <option value="inr"><a href="ask-a-question-inr.html">INR</a></option> -->
+								</select>
+							  </div>
+							  
+					<div class="row justify-content-center p-5">
+						<div class="col-lg-4 col-md-6 d-flex">
+							<div class="card pricing-card w-100">
+								<div class="card-body">
+									<div class="pricing-header">
+										<div class="pricing-header-info">
+											<div class="pricing-icon">
+												<span>
+													<img src="{% static 'assets/img/icons/price-icon1.svg' %}" alt="icon">
+												</span>
+											</div>
+											<div class="pricing-title">
+												<!-- <p>Ask a Question Now</p> -->
+												<h4>Stellar Insights</h4>
+											</div>
+										</div>
+										<div class="pricing-header-text">
+											<p><b>Ask a Question Now</b></p>
+										</div>
+									</div>
+									<div class="pricing-info">
+										<div class="pricing-amount">
+											<h2>$15 <span></span></h2>
+											<h6>What’s included</h6>
+										</div>
+										<div class="pricing-list">
+											<ul>
+												<li>Get Detailed answer for a Single question </li>
+												<li>Enjoy the Benefits of Career Guidance, Relationship Advice  </li>
+												<li>Future endeavors Detailed Explanations   </li>
+												<li>Deep insights into the life </li>
+											</ul>
+										</div>
+										<div class="pricing-btn">
+											<a href="login-email.html" class="btn btn-primary">Get Started</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 d-flex">
+							<div class="card pricing-card w-100">
+								<div class="card-body">
+									<div class="pricing-header">
+										<div class="pricing-header-info">
+											<div class="pricing-icon">
+												<span>
+													<img src="{% static 'assets/img/icons/price-icon2.svg' %}" alt="icon">
+												</span>
+											</div>
+											<div class="pricing-title">
+												<!-- <p>Book Premium Consultation</p> -->
+												<h4>Celestial Guidance</h4>
+											</div>
+										</div>
+										<div class="pricing-header-text">
+											<p><b>Book Premium Consultation</b></p>
+										</div>
+									</div>
+									<div class="pricing-info">
+										<div class="pricing-amount">
+											<h2>$50 <span></span></h2>
+											<h6>What’s included</h6>
+										</div>
+										<div class="pricing-list">
+											<ul>
+												<li> Provided with 5 in depth Questions wil be Answered </li>
+												<li>30 Days limit extension to ask Questions  </li>
+												<li>Get detailed analysis for the Query </li>
+												<li>Prompt navigation for important Decision </li>
+											</ul>
+										</div>
+										<div class="pricing-btn">
+											<a href="login-email.html" class="btn btn-primary">Get Started</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 d-flex">
+							<div class="card pricing-card w-100">
+								<div class="card-body">
+									<div class="pricing-header">
+										<div class="pricing-header-info">
+											<div class="pricing-icon">
+												<span>
+													<img src="{% static 'assets/img/icons/price-icon3.svg' %}" alt="icon">
+												</span>
+											</div>
+											<div class="pricing-title">
+												<!-- <p>Schedule Family Consultation</p> -->
+												<h4>Divine Revelations</h4>
+											</div>
+										</div>
+										<div class="pricing-header-text">
+											<p><b>Schedule Family Consultation</b></p>
+										</div>
+									</div>
+									<div class="pricing-info">
+										<div class="pricing-amount">
+											<h2>$95 <span></span></h2>
+											<h6>What’s included</h6>
+										</div>
+										<div class="pricing-list">
+											<ul>
+												<li>Premium consultation of 10 Questions </li>
+												<li>Get consultation for Family (up to 4 members)  </li>
+												<li>Includes a 30 minutes video call </li>
+												<li>Profound Insights and Divine Guidance </li>
+											</ul>
+										</div>
+										<div class="pricing-btn">
+											<a href="login-email.html" class="btn btn-primary">Get Started</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- /Pricing -->			
+
+			
+
+			<!-- Footer -->
+		
+			<!-- /Footer -->
+
+			<!-- Cursor -->
+			<!-- <div class="mouse-cursor cursor-outer"></div>
+			<div class="mouse-cursor cursor-inner"></div> -->
+			<!-- /Cursor -->
+		
+		</div>	
+		<!-- <script>
+			document.getElementById('currency').onclick = function() {
+ 
+ var values = ["Dollar", "INR"];
+
+ var select = document.createElement("select");
+ select.name = "currency";
+ select.id = "currency"
+
+ for (const val of values)
+ {
+	 var option = document.createElement("option");
+	 option.value = val;
+	 option.text = val.charAt(0).toUpperCase() + val.slice(1);
+	 select.appendChild(option);
+ }
+
+ var label = document.createElement("label");
+ label.innerHTML = "Choose your currency: "
+ label.htmlFor = "currency";
+
+ document.getElementById("container").appendChild(label).appendChild(select);
+}
+		</script>	 -->
+		<!-- /Main Wrapper -->
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Datepicker JS -->
+		<script src="{% static 'assets/js/moment.min.js' %}"></script>
+		<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+		<!-- Owl Carousel JS -->
+		<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+		<!-- Slick JS -->
+		<script src="{% static 'assets/js/slick.js' %}"></script>
+
+		<!-- Animation JS -->
+		<script src="{% static 'assets/js/aos.js' %}"></script>
+
+		<!-- BacktoTop JS -->
+		<script src="{% static 'assets/js/backToTop.js' %}"></script>
+				
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+	
+	</body>
+</html>

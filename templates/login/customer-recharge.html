@@ -1,0 +1,512 @@
+{% extends 'customer_base.html' %}   {% block content %}
+{% comment %} 
+<head>
+    <style>
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<div class="center">
+    <form class="text-center border border-light p-5" action="/comment_view/" method="POST">
+        {% csrf_token %}
+        <p class="h3 mb-3"><i class="fas fa-coffee"></i> BUY A PLAN</p>
+        <p class="mb-3">{{ razorpay_amount }}  INR</p>
+        <input type="name" name="recharge" id="name" required class="form-control mb-4" placeholder="Name">
+       
+
+        <script src="https://checkout.razorpay.com/v1/checkout.js" 
+        data-key="rzp_test_Ey7h721E1o2LY1"
+        data-amount="{{ razorpay_amount }}"
+        data-currency="INR" 
+        data-order_id= "{{ razorpay_order_id }}" 
+        data-buttontext="Pay with Razorpay"
+        data-name="Professional Cipher" 
+        data-description="Django and Data Science"
+        data-image="https://example.com/your_logo.jpg" 
+        data-prefill.name="PC" 
+        data-prefill.email="pbambulkar9924@gmail.com"
+        data-theme.color="#F37254";></script>
+    </form>
+ 
+</div>
+</div> {% endcomment %}
+
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+		<title>Guruji Speaks</title>
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+				
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+		<!-- Feathericon CSS -->
+    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+		<link href="{% static 'https://fonts.googleapis.com/css?family=Fjalla+One|Inter&display=swap' %}" rel="stylesheet">
+
+	</head>		
+
+	<style type="text/css">
+
+		body{
+			background-color: #F8F8F8;
+		}
+
+		h3, h5{
+			font-family: 'Fjalla One', sans-serif;
+			font-weight: 100;
+		}
+
+		h3{
+			font-size: 36px;
+		}
+
+		h5{
+			font-size: 24px;
+		}
+
+		p, label{
+			font-family: 'Inter', sans-serif;
+		}
+
+		hr{
+			color:#fff;
+			background-color: #fff;
+			border-top:1px solid #fff;
+			margin-top:20px;
+			margin-bottom: 20px;
+		}
+
+		#container{
+			width:1200px;
+			margin:0 auto;
+			padding-top: 3%;
+		}
+
+		.column-6{
+			width: 50%;
+			float:left;
+		}
+
+		#left-wrapper{
+			background-color: #10a988;
+			box-shadow: 0 1px 3px 0 #dce0e6;
+		    border-radius: 4px;
+		    border: 1px solid transparent;
+		    padding: 30px;	
+		}
+
+		#right-wrapper{
+			padding: 30px;
+		}
+
+		#profile-pic{
+			width:200px;
+			display:block;
+			margin: 0 auto;
+			border-radius: 50%;
+			float:left;
+
+		}
+
+		#left-wrapper-header{
+			min-width:50%;
+			float:left;
+			padding-left:20px;
+
+		}
+
+		#left-wrapper-header h3,h5{
+			color: #fff ;
+
+		}
+
+		#right-wrapper h3{
+			color: #10a195;
+		}
+
+		.coffee-cup{
+			margin-left: 20px;
+			width: 100px;
+		}
+
+		.coffee-cup2{
+			margin-left: 20px;
+			width: 150px;
+		}
+
+		.coffee-cup3{
+			margin-left: 20px;
+			width: 200px;
+		}
+
+		/* ------------------------ FORM FIELDS ------------------------ */
+
+		.form-field-12{
+			width: 100%;
+			margin-bottom: 10px;
+			padding-top: 5px;
+		}
+
+		.form-field-6{
+			width: 50%;
+			float:left;
+			margin-bottom: 10px;
+		}
+
+		select{
+			width: 100%;
+			height: 60px!important;
+			box-shadow: 0 1px 3px 0 #dce0e6;
+		    padding: 10px 12px;
+		    border-radius: 4px;
+		    background-color: #fff;
+		    border: 1px solid transparent;
+		    font-size: 20px;
+		    color:	#44464a;
+		}
+
+		input{
+		  
+
+		}
+
+		input::placeholder {
+		  color: #9fa1a6;
+		}
+
+		/* ------------------------ BUTTON STYLING ------------------------ */
+		.myButton {
+			background-color:#fff;
+			display:inline-block;
+			cursor:pointer;
+			color:#1c3264;
+			font-family:Verdana;
+			font-size:17px;
+			padding:10px;
+			{% comment %} width:40%; {% endcomment %}
+			border-radius: 0;
+			text-decoration:none;
+			text-align: center;
+			transition: .3s;
+		}
+		.myButton:hover {
+			opacity: .6;
+		}
+
+		@media screen and (max-width:1200px){
+			#container{
+				width:80%;
+			}
+
+			.column-6{
+				width: 100%;
+			}
+		}
+
+		@media screen and (max-width:800px){
+			#container{
+				width:100%;
+			}
+
+			.coffee-cup{
+				margin-left: 20px;
+				width: 50px;
+			}
+
+			.coffee-cup2{
+				margin-left: 20px;
+				width: 75px;
+			}
+
+			.coffee-cup3{
+				margin-left: 20px;
+				width: 100px;
+			}
+
+		}
+	</style>
+
+	<!-- Success page styling -->
+	<style type="text/css">
+		h4{
+			font-family: 'Fjalla One', sans-serif;
+			font-weight: 100;
+			font-size: 24px;
+		}
+
+		#box{
+			max-width: 500px;
+			margin:0 auto;
+			margin-top: 100px;
+			padding:30px;
+			background-color: #fff;
+			text-align: center;
+			box-shadow: 0 1px 3px 0 #dce0e6;
+		    border-radius: 4px;
+		    border: 1px solid transparent;
+		}
+
+		.myButton {
+			background-color:#fff;
+			display:inline-block;
+			cursor:pointer;
+			color:#1c3264;
+			font-family:Verdana;
+			font-size:17px;
+			padding:10px;
+			{% comment %} width:1%; {% endcomment %}
+			border-radius: 0;
+			text-decoration:none;
+			text-align: center;
+			transition: .3s;
+		}
+		.myButton:hover {
+			opacity: .6;
+		}
+
+		#succes-icon{
+			width: 100px;
+
+		}
+		
+		.StripeElement {
+		  box-sizing: border-box;
+
+		  height: 40px;
+
+		  padding: 10px 12px;
+
+		  border: 1px solid transparent;
+		  border-radius: 4px;
+		  background-color: white;
+
+		  box-shadow: 0 1px 3px 0 #e6ebf1;
+		  -webkit-transition: box-shadow 150ms ease;
+		  transition: box-shadow 150ms ease;
+		}
+
+		.StripeElement--focus {
+		  box-shadow: 0 1px 3px 0 #cfd7df;
+		}
+
+		.StripeElement--invalid {
+		  border-color: #fa755a;
+		}
+
+		.StripeElement--webkit-autofill {
+		  background-color: #fefde5 !important;
+		}
+
+
+		.form-group label{
+			color: #ddd;
+		}
+	</style>
+
+	<script src="https://js.stripe.com/v3/"></script>
+
+	
+		<!-- Main Wrapper -->
+		<div class="main-wrapper w-100">
+			
+			<!-- Page Content -->
+			<div class="doctor-content">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-7 col-lg-8 col-xl-6 m-auto">
+							<div id="left-wrapper">
+					
+								<div id="">
+									<h3 class="text-center">Payment</h3>
+									
+									<h5>{{request.user.first_name}} {{request.user.last_name}}</h5>
+								</div>
+								
+								<div style="clear:left"></div>
+								
+								<!-- Add form here -->
+								<form class="" action="/customer-recharge/{{amount}}/" method="POST" id="payment-form">
+									{% csrf_token %}
+									<hr>
+									<div class="form-group">
+										
+										<label>Recharge Amount <span class="text-danger">*</span></label>
+										<input type="number" name="amount" id="amount" class="form-control" value="{{ amount }}">
+									</div>
+				
+									<div class="form-group">
+										<input required type="text" name="email" class="form-control" placeholder="email..." required>
+									</div>
+				
+									<div class="form-group">
+										<input required type="text" name="nickname" class="form-control" placeholder="Nickname..." required>
+									</div>
+				
+								  <div class="form-group">
+									<label for="card-element">
+									  Credit or debit card
+									</label>
+									<div id="card-element">
+									  <!-- A Stripe Element will be inserted here. -->
+									</div>
+				
+									<!-- Used to display form errors. -->
+									<div id="card-errors" role="alert"></div>
+								  </div>
+								  
+								  <div style="clear:left"></div>
+								  <hr>
+				
+									 <input  class="myButton" type="submit" value="Submit Payment" name="">
+				
+								</form>
+				
+							
+							</div>
+						</div>
+					</div>
+
+					
+				
+				</div>
+			</div>		
+			<!-- /Page Content -->
+
+		</div>		
+		<!-- /Main Wrapper -->
+
+		<script>
+			// Create a Stripe client.
+			var stripe = Stripe('pk_test_51NYjoESIMsjPxpEAGDBdrnGGE1tlu616HbUTp10XzrNeF3EZXhp6haicwc53rG3PMKF9FLgtwPSicBaWmsHja0ti00jCMl1Hmz');
+	
+			// Create an instance of Elements.
+			var elements = stripe.elements(); 
+	
+			// Custom styling can be passed to options when creating an Element.
+			// (Note that this demo uses a wider set of styles than the guide below.)
+			var style = {
+			  base: {
+				color: '#32325d',
+				fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+				fontSmoothing: 'antialiased',
+				fontSize: '16px',
+				'::placeholder': {
+				  color: '#aab7c4'
+				}
+			  },
+			  invalid: {
+				color: '#fa755a',
+				iconColor: '#fa755a'
+			  }
+			};
+	
+			// Create an instance of the card Element.
+			var card = elements.create('card', {style: style});
+	
+			// Add an instance of the card Element into the `card-element` <div>.
+			card.mount('#card-element');
+	
+			// Handle real-time validation errors from the card Element.
+			card.addEventListener('change', function(event) {
+			  var displayError = document.getElementById('card-errors');
+			  if (event.error) {
+				displayError.textContent = event.error.message;
+			  } else {
+				displayError.textContent = '';
+			  }
+			});
+	
+			// Handle form submission.
+			var form = document.getElementById('payment-form');
+			form.addEventListener('submit', function(event) {
+			  event.preventDefault();
+	
+			  stripe.createToken(card).then(function(result) {
+				if (result.error) {
+				  // Inform the user if there was an error.
+				  var errorElement = document.getElementById('card-errors');
+				  errorElement.textContent = result.error.message;
+				} else {
+				  // Send the token to your server.
+				  stripeTokenHandler(result.token);
+				}
+			  });
+			});
+	
+			// Submit the form with the token ID.
+			function stripeTokenHandler(token) {
+			  // Insert the token ID into the form so it gets submitted to the server
+			  var form = document.getElementById('payment-form');
+			  var hiddenInput = document.createElement('input');
+			  hiddenInput.setAttribute('type', 'hidden');
+			  hiddenInput.setAttribute('name', 'stripeToken');
+			  hiddenInput.setAttribute('value', token.id);
+			  form.appendChild(hiddenInput);
+	
+			  // Submit the form
+			  form.submit();
+			}
+		</script>
+	
+		<!-- jQuery -->
+		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+		
+		<!-- Bootstrap Bundle JS -->
+		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+		 <!-- Bootstrap Core JS -->
+ 		 <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+		
+		<!-- Feather Icon JS -->
+		<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+		<!-- Custom JS -->
+		<script src="{% static 'assets/js/script.js' %}"></script>
+
+		<!-- Profile Settings JS (dropdown)-->
+		  <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+
+		  <!-- Select2 JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+		  
+		  <!-- Dropzone JS (dropdown)-->
+		  <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+
+		  <!-- Animation JS -->
+    	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+    	 <!-- Owl Carousel JS -->
+    	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    	<!-- Slick JS -->
+    	<script src="{% static 'assets/js/slick.js' %}"></script>
+	
+	</body>
+</html>
+
+
+</script>
+{% endblock %}
