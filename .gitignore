@@ -162,6 +162,7 @@ cython_debug/
 # Ignore API keys
 secret_key.txt
 .env
+settings.py
 
 # Ignore directories containing sensitive information
 sensitive_directory/
