@@ -1,2 +1,2 @@
-# GURUSPEAKS
-GS
+# JyotishJunction
+JJ
