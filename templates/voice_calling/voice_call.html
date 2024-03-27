@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Call</title>
+</head>
+<body>
+    <!-- Add Agora SDK integration here -->
+    <script src="https://cdn.agora.io/sdk/release/AgoraRTCSDK-3.6.2.js"></script>
+    <script>
+        // Get the Agora user ID from your Django model
+        var agoraUserId = "{{ request.user.agora_user_id }}";
+
+        // Initialize Agora SDK
+        var client = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });
+        client.init('3fa01637b98c4d15a411e3baa9f219e6');
+
+        // Join a channel with the Agora user ID
+        client.join('agora_token', 'JyotishJunction', agoraUserId, (uid) => {
+            // User has joined the channel
+        });
+
+        // Leave the channel when needed
+        client.leave(() => {
+            // User has left the channel
+        });
+    </script>
+</body>
+</html>

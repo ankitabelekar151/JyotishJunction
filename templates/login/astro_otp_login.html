@@ -5,10 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Guruji Speaks</title>
+    <title>Jyotish Junction</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
@@ -34,7 +34,8 @@
         .login-body {
             margin: 0;
             /* padding: 227px 0 60px; */
-            background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+            /*background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");*/
+            background-color: #000;
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -42,6 +43,11 @@
 
         .login-content-info .account-content .login-title {
             padding-bottom: 25px;
+        }
+
+        .main-wrapper.home-fourteen {
+            font-size: 15px;
+            font-family: "Inter", sans-serif;
         }
 
         .form-check {
@@ -53,9 +59,9 @@
 
         .login-content-info .account-content .account-info .btn {
             width: 100%;
-            color: #ffffff;
-            background: #1c3264;
-            border: 1px solid #1c3264;
+            color: #ffe073;
+            background: #000;
+            border: 1px solid #000;
             box-shadow: inset 0 0 0 0 #ffffff;
             -webkit-transition: 0.7s;
             -ms-transition: 0.7s;
@@ -64,9 +70,50 @@
             padding: 10px 15px;
         }
 
+        .login-content-info .account-content .account-info .btn:hover {
+            color: #000;
+            background: #ffffff;
+            border: 1px solid #000;
+            box-shadow: inset 0 0 0 50px #ffffff;
+            -webkit-transition: 0.7s;
+            -ms-transition: 0.7s;
+            transition: 0.7s;
+        }
+
         .iti{
 				width: 100% !important;
 			}
+
+        .bg-light
+		{
+			background: -webkit-linear-gradient(#F1D06B, #E0E0E0);;
+		}
+
+        .sign-in-pass{
+            background-color: #000;
+            color: #F1D06B;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        .sign-in-pass:hover{
+            background-color: #fff !important;
+            color: #000 !important;
+            border: 1px solid #000 !important;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        .login-content-info .account-content .span-or {
+            background-color: #000;
+            display: block;
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            margin-left: -20px;
+            text-align: center;
+            width: 42px;
+        }
     </style>
 </head>
 <body class="login-body">
@@ -83,24 +130,24 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 bg-light p-4 rounded">
                     <div class="account-content">
-                        <div class="login-shapes">
+                        <!-- <div class="login-shapes">
                             <div class="shape-img-left">
                                 <img src="{% static 'assets/img/shape-01.png' %}" alt="">
                             </div>
                             <div class="shape-img-right">
                                 <img src="{% static 'assets/img/shape-02.png' %}" alt="">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="widget-set">
                             <div class="account-info">
                                 <div class="widget-content multistep-form">
                                     <fieldset id="first">
                                         <div class="login-back">
-                                            <a href="/astrologer-login/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+                                            <a href="/astrologer-login/" style="color: #000;"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
                                         </div>
                                         <div class="login-title">
                                             <h3>Sign In With OTP</h3>
-                                            <p class="mb-0">Please enter your registered Mobile Number on GurujiSpeaks</p>
+                                            <p class="mb-0">Please enter your registered Mobile Number</p>
                                         </div>
                                         
                                         <form action="{% url 'astro-login-otp' %}" method="post" class="signup-verfication-form">
@@ -125,7 +172,7 @@
                                             </div><br>
                                             <div class="form-group">
                                                 <div class="form-group-flex">        
-                                                    <label class="custom_check m-auto"><a href="/astrologer-login/" class="border p-2 rounded">Sign In with Password</a></label> 
+                                                    <label class="custom_check m-auto"><a href="/astrologer-login/" class="sign-in-pass">Sign In with Password</a></label> 
                                                 </div>
                                             </div>
                                             <div class="login-or">

@@ -5,20 +5,29 @@
 <head>
 
   <meta charset="utf-8">
-  <title>Guruji Speaks</title>
+  <title>Jyotish Junction</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
   <!-- Favicons -->
-  <link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+  <link href="{% static 'assets2/img/GrujiSpeaks-img/4.png' %}" rel="icon">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1K79WZ1L2Q"></script>
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-1K79WZ1L2Q"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-1K79WZ1L2Q');
+  </script> -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZBL41SXB3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HZBL41SXB3');
   </script>
 
   <!-- Bootstrap CSS -->
@@ -78,7 +87,7 @@
     }
 
     .header {
-        background: #1b5a90 !important;
+        background: #000 !important;
         border-bottom: none !important;
         z-index: 1001;
         height: 60px;
@@ -90,6 +99,20 @@
 
     .sidebar{
       /* margin-top: -1px; */
+    }
+
+    .sidebar {
+        background-color: #000 !important;
+        margin-top: 0;
+        -webkit-transition: all 0.2s ease-in-out 0s;
+        -ms-transition: all 0.2s ease-in-out 0s;
+        transition: all 0.2s ease-in-out 0s;
+        width: 240px;
+        z-index: 1001;
+        position: fixed;
+        top: 60px;
+        bottom: 0;
+        left: 0;
     }
 
     .sidebar ul li a i {
@@ -149,10 +172,10 @@
         <!-- Logo -->
         <div class="header-left">
           <a href="" class="logo">
-            <img src="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" alt="Logo1" >
+            <img src="{% static 'assets/img/JJ-img/JJ-logo(1).png' %}" alt="Logo1" >
           </a>
           <a href="" class="logo logo-small">
-            <img src="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" alt="Logo" >
+            <img src="{% static 'assets/img/JJ-img/JJ-logo(1).png' %}" alt="Logo" >
           </a>
         </div>
         <!-- /Logo -->
@@ -350,6 +373,9 @@
               </li>
               <li>
                 <a href="/admin_revenue/"><i class="fa fa-credit-card"></i> <span> Payments</span></a>
+              </li>
+               <li>
+                <a href="/cust_enquiry_display/"><i class="fa fa-credit-card"></i> <span> Customer Enquiry</span></a>
               </li>
               <li>
                 <a href="/admin-logout/"><i class="fas fa-sign-out-alt"></i> <span> Logout</span></a>

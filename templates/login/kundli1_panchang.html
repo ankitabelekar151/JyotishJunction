@@ -1,0 +1,140 @@
+{% extends 'customer_base.html' %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,">
+    <title>Jyotish Junction</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper home-ten">
+        <h1>Panchang Data</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% else %}
+            <table border="1">
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+                {% for key, value in data.items %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>
+                            {% if value.items %}  {# Check if value is a dictionary #}
+                                <table border="1">
+                                    <tr>
+                                        <th>Key</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    {% for inner_key, inner_value in value.items %}
+                                        <tr>
+                                            <td>{{ inner_key }}</td>
+                                            <td>
+                                                {% if inner_value.items %}  {# Check if inner_value is a dictionary #}
+                                                    <table border="1">
+                                                        <tr>
+                                                            <th>Key</th>
+                                                            <th>Value</th>
+                                                        </tr>
+                                                        {% for deep_key, deep_value in inner_value.items %}
+                                                            <tr>
+                                                                <td>{{ deep_key }}</td>
+                                                                <td>{{ deep_value }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </table>
+                                                {% else %}
+                                                    {{ inner_value }}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+
+        <!-- jQuery -->
+        <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+        <!-- Bootstrap Bundle JS -->
+        <!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+    
+        <!-- Feather Icon JS -->
+        <script src="{% static 'assets/js/feather.min.js' %}"></script>
+    
+        <!-- Datepicker JS -->
+        <script src="{% static 'assets/js/moment.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+    
+        <!-- Owl Carousel JS -->
+        <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+    
+        <!-- Slick JS -->
+        <script src="{% static 'assets/js/slick.js' %}"></script>
+    
+        <!-- Animation JS -->
+        <script src="{% static 'assets/js/aos.js' %}"></script>
+    
+        <!-- Counter JS -->
+        <script src="assets/js/counter.js"></script>
+    
+        <!-- BacktoTop JS -->
+        <script src="{% static 'assets/js/backToTop.js' %}"></script>
+    
+        <!-- Custom JS -->
+        <script src="{% static 'assets/js/script.js' %}"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,380 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,">
+    <title>Jyotish Junction</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+     <style>
+        .breadcrumb-bar-two 
+        {
+            padding-top: 60px;
+            min-height: 100px;
+            position: relative;
+            z-index: 1;
+           /* background: no-repeat rgb(242, 246, 246);*/
+           background: -webkit-linear-gradient( #E0E0E0, #f1c12e) !important;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        .breadcrumb-bar-two .inner-banner 
+        {
+            margin: 0;
+            padding: 50px 0;
+        }
+
+
+        .btn-primary {
+            background-color: #F1D06B;
+            border: 1px solid #F1D06B;
+            color: black;
+        }
+
+        .btn-primary:hover {
+            /*background: #000;*/
+            border: 1px solid #000;
+            color: #000;
+        }
+
+
+        .btn-info {
+            background-color: #F1D06B;
+            border: 1px solid #F1D06B;
+            color: black;
+        }
+
+
+        .btn-info:hover {
+            background-color: #FFF;
+            border: 1px solid #000;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper home-ten">
+        <div class="breadcrumb-bar-two">
+            <div class="container">
+                <div class="row align-items-center inner-banner">
+                    <div class="col-md-12 col-12 text-center">
+                        <h2 class="breadcrumb-title">Horoscope</h2>
+                        <nav aria-label="breadcrumb" class="page-breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Horoscope</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-lg-4 col-xl-12 theiaStickySidebar">
+                        <div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+                            <div class="card-body">
+                                <!-- <h1>Horoscope API Request</h1> -->
+                                
+                                <form method="GET" action="{% url 'papasamaya' %}"> 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="subcategory" class="mb-2">Category <span class="text-danger">*</span> </label>
+                                                <select id="subcategory" name="subcategory" class="form-select form-control" required>
+                                                    <option value="planet-details">Planet details</option>
+                                                    {% comment %} <option value="ascendant-report">ascendant-report</option>  {% endcomment %}
+                                                    {% comment %} <option value="western-planets">Western Planets</option> {% endcomment %}
+                                                    {% comment %} <option value="planet-report">planet-report</option>  {% endcomment %}
+                                                    {% comment %} <option value="personal-characteristics">personal-characteristics</option> {% endcomment %}
+                                                    {% comment %} <option value="divisional-charts">divisional-charts</option> {% endcomment %}
+                                                    {% comment %} <option value="chart-image">chart-image</option> {% endcomment %}
+                                                    {% comment %} <option value="ashtakvarga">ashtakvarga</option>
+                                                    <option value="binnashtakvarga">binnashtakvarga</option> {% endcomment %}
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="dob" class="mb-2">Date of Birth (dd/mm/yyyy) <span class="text-danger">*</span> </label>
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <input type="text" class="form-control" id="dob" name="date" required pattern="\d{1,2}/\d{1,2}/\d{4}" placeholder="dd/mm/yyyy" title="Please use the dd/mm/yyyy format" oninput="formatDate(this)" style="width: 160% !important">
+                                                        <input type="date" id="datePicker" style="display: none;" class="form-control mt-2">
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" class="btn btn-info p-2" onclick="openDatePicker()">Open Calendar</button> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="tob" class="mb-2">Time of Birth <span class="text-danger">*</span> </label>
+                                                <input type="time" id="tob" name="tob" class="form-control"  required>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="lat" class="mb-2">Latitude</label>
+                                                <input type="text" id="lat" name="lat" class="form-control" value="1" readonly>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="lon" class="mb-2">Longitude</label>
+                                                <input type="text" id="lon" name="lon" class="form-control" value="1" readonly>
+                                            </div>
+                                        </div> -->
+
+                                        <div class="col-md-6">
+                                            <div class="mb-3" > 
+                                                <label for="tz" class="mb-2">Time Zone<span class="text-danger">*</span> </label>
+                                                <select id="tz" name="tz" class="form-select form-control" required>
+                                                    <option value="-12">GMT-12:00-Etc/GMT-12</option>
+                                                    <option value="-11">GMT-11:00-Etc/GMT-11</option>
+                                                    <option value="-11">GMT-11:00-Pacific/Midway</option>
+                                                    <option value="-10">GMT-10:00-America/Adak</option>
+                                                
+                                                    <option value="-9">GMT-09:00-America/Anchorage</option>
+                                                    <option value="-9">GMT-09-00-Pacific/Gambier</option>
+                                                    <option value="-8">GMT-08:00-America/Dawson Creek</option>
+                                                    <option value="-8">GMT-08:00-America/Ensenada</option>
+                                                    <option value="-8">GMT-08:00-America/Los_Angeles</option>
+                                                    <option value="-7">GMT-07:00-America/Chihuahua</option>
+                                                    <option value="-7">GMT-07:00-America/Denver</option>
+                                                    <option value="-6">GMT-06:00-America/Belize</option>
+                                                    <option value="-6">GMT-06:00-America/Cancun</option>
+                                                    <option value="-6">GMT-06:00 America/Chicago</option>
+                                                    <option value="-6">GMT-06:00-Chile/Easter Island</option>
+                                                    <option value="-5">GMT-05:00 America/Bogota</option>
+                                                    <option value="-5">GMT-05:00-America/Havana</option>
+                                                    <option value="-5">GMT-05:00 America/New York</option>
+                                                    <option value="-4.5">GMT-04:30-America/Caracas</option>
+                                                    <option value="-4">GMT-04:00-America/Campo Grande</option>
+                                                    <option value="-4">GMT-04:00-America/Glace Bay</option>
+                                                    <option value="-4">GMT-04:00-Amenca/Santiago</option>
+                                                    <option value="-4">GMT-04:00 America/La Paz</option>
+                                                    <option value="-3">GMT-03:00-America Argentina/Buenos Aires</option>
+                                                    <option value="-3">GMT-03:00 America/Montevideo</option>
+                                                    <option value="-3">GMT-03:00-America/Araguaina</option>
+                                                    <option value="-3">GMT-03:00-America/Godthab</option>
+                                                    <option value="-3">GMT-03:00-America/Miquelon</option>
+                                                    <option value="-3">GMT-03:00-America/Sao_Paulo</option>
+                                                    <option value="-3.5">GMT-03:30-America/St_Johns</option>
+                                                    <option value="-2"> GMT-02:00-America/Noronha</option> 
+                                                    <option value="-1">GMT-01:00-Atlantic/Cape Verde</option>
+                                                    <option value="0"> GMT+00:00-Europe/Belfast</option>
+                                                    <option value="0"> GMT+00:00-Africa/Abidjan</option>
+                                                    <option value="0"> GMT+00:00-Europe/Dublin</option>
+                                                    <option value="0">GMT+00:00-Europe/Lisbon</option>
+                                                    <option value="0">GMT+00:00-Europe/London</option>
+                                                    <option value="0">GMT+00:00-UTC</option>
+                                                    <option value="1">GMT+01:00-Africa/Algiers</option>
+                                                    <option value="1">GMT+01:00-Africa/Windhoek</option>
+                                                    <option value="1">GMT+01:00-Atlantic/Azores</option>
+                                                    <option value="1">GMT+01:00-Atlantic/Stanley</option>
+                                                    <option value="1">GMT+01:00-Europe/Amsterdam</option>
+                                                    <option value="1">GMT+01:00 Europe/Belgrade</option>
+                                                    <option value="1">GMT+01:00-Europe/Brussels</option>
+                                                    <option value="2">GMT+02:00-Africa/Cairo</option>
+                                                    <option value="2">GMT+02:00-Africa/Blantyre</option>
+                                                    <option value="2">GMT+02:00-Asia/Beirut</option>
+                                                    <option value="2">GMT+02:00-Asia/Damascus</option>
+                                                    <option value="2">GMT+02:00-Asia/Gaza</option>
+                                                    <option value="2">GMT+02:00-Asia/Jerusalem</option>
+                                                    <option value="3">GMT+03:00 Africa/Addis_Ababa</option>
+                                                    <option value="3">GMT+03:00-Asia/Riyadh89</option>
+                                                    <option value="3">GMT+03:00-Europe/Minsk</option>
+                                                    <option value="3.5">GMT+03:30-Asia/Tehran</option>
+                                                    <option value="4">GMT+04:00-Asia/Dubai</option>
+                                                    <option value="4">GMT+04:00-Asia/Yerevan</option>
+                                                    <option value="4">GMT+04:00-Europe/Moscow</option>
+                                                    <option value="4.5">GMT+04:30-Asia/Kabul</option>
+                                                    <option value="5">GMT+05:00-Asia/Tashkent</option>
+                                                    <option value="5.5">GMT+05:30-Asia/Kolkata</option>
+                                                    <option value="5.7">GMT+05:45-Asia/Katmandu</option>
+                                                    <option value="6">GMT+06:00-Asia/Dhaka.</option>
+                                                    <option value="6">GMT+06:00-Asia/Yekaterinburg</option>
+                                                    <option value="6.5">GMT+06:30-Asia/Rangoon</option>
+                                                    <option value="7">GMT+07:00-Asia/Bangkok</option>
+                                                    <option value="7">GMT+07:00-Asia/Novosibirsk</option>
+                                                    <option value="8">GMT+08:00-Etc/GMT+8</option>
+                                                    <option value="8">GMT+08:00-Asia/Hong Kong</option>
+                                                    <option value="8">GMT+08:00-Asia/Krasnoyarsk</option>
+                                                    <option value="8">GMT+08:00-Australia/Perth</option>
+                                                    <option value="8.7">GMT+08:45-Australia/Eucla</option>
+                                                    <option value="9">GMT+09:00-Asia/Irkutsk</option>
+                                                    <option value="9">GMT+09:00-Asia/Seoul</option>
+                                                    <option value="9">GMT+09:00-Asia/Tokyo</option>
+                                                    <option value="9.5">GMT+09:30-Australia/Adelaide</option>
+                                                    <option value="9.5">GMT+09:30-Australia/Darwin</option>
+                                                    <option value="9.5">GMT+09:30-Pacific/Marquesas</option>
+                                                    <option value="10">GMT+10:00-Etc/GMT+10</option>
+                                                    <option value="10">GMT+10:00-Australia/Brisbane</option>
+                                                    <option value="10">GMT+10:00-Australia/Hobart</option>
+                                                    <option value="10">GMT+10:00-Asia/Yakutsk</option>
+                                                    <option value="10.5">GMT+10:30-Australia/Lord Howe</option>
+                                                    <option value="11">GMT+11:00-Asia/Vladivostok</option>
+                                                    <option value="11.5">GMT+11:30-Pacific/Norfolk</option>
+                                                    <option value="12">GMT+12:00-Etc/GMT+12</option>
+                                                    <option value="12">GMT+12:00-Asia/Anadyr</option>
+                                                    <option value="12">GMT+12:00-Asia/Magadan</option>
+                                                    <option value="12">GMT+12:00-Pacific/Auckland</option>
+                                                    <option value="12.7">GMT+12:45-Pacific/Chatham</option>
+                                                    <option value="13">GMT+13:00-Pacific/Tongatapu</option>
+                                                    <option value="14">GMT+14:00-Pacific/Kintimati</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- {% comment %} <label for="style">Style:</label>
+                                        <input type="text" id="style" name="style" value="" ><br>
+
+                                        <label for="div">Div:</label>
+                                        <input type="text" id="div" name="div" value="" ><br>
+
+                                        <label for="color">Color:</label>
+                                        <input type="text" id="color" name="color" value=""><br> {% endcomment %} -->
+                                        <!-- <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="planet" class="mb-2">Planet <span class="text-danger">*</span> </label>
+                                                <input type="text" id="planet" name="planet" class="form-control" value="" >
+                                            </div>
+                                        </div>
+ -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3"> 
+                                                <label for="lang" class="mb-2">Language</label>
+                                                <input type="text" id="lang" name="lang" class="form-control" value="en" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="submit-section submit-btn-bottom text-center">
+                                            <input type="submit" value="Submit" class="btn btn-primary prime-btn">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- jQuery -->
+     <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+     <!-- Bootstrap Bundle JS -->
+     <!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+ 
+     <!-- Feather Icon JS -->
+     <script src="{% static 'assets/js/feather.min.js' %}"></script>
+ 
+     <!-- Datepicker JS -->
+     <script src="{% static 'assets/js/moment.min.js' %}"></script>
+     <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+ 
+     <!-- Owl Carousel JS -->
+     <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+ 
+     <!-- Slick JS -->
+     <script src="{% static 'assets/js/slick.js' %}"></script>
+ 
+     <!-- Animation JS -->
+     <script src="{% static 'assets/js/aos.js' %}"></script>
+ 
+     <!-- Counter JS -->
+     <script src="assets/js/counter.js"></script>
+ 
+     <!-- BacktoTop JS -->
+     <script src="{% static 'assets/js/backToTop.js' %}"></script>
+ 
+     <!-- Custom JS -->
+     <script src="{% static 'assets/js/script.js' %}"></script>
+
+     <script>
+    function formatDate(input) {
+        // Remove any non-numeric characters
+        input.value = input.value.replace(/\D/g, '');
+
+        // Add slashes to the appropriate positions
+        if (input.value.length > 2) {
+            input.value = input.value.slice(0, 2) + '/' + input.value.slice(2);
+        }
+        if (input.value.length > 5) {
+            input.value = input.value.slice(0, 5) + '/' + input.value.slice(5);
+        }
+    }
+
+    function openDatePicker() {
+        const datePicker = document.getElementById('datePicker');
+        const dobInput = document.getElementById('dob');
+        
+        // Convert the value in the 'dob' input to a date if possible
+        const dateParts = dobInput.value.split('/');
+        if (dateParts.length === 3) {
+            const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+            datePicker.value = formattedDate;
+        } else {
+            datePicker.value = ''; // Clear the date picker if the input is not valid
+        }
+        
+        datePicker.style.display = 'block';
+        datePicker.focus();
+        
+        datePicker.addEventListener('blur', () => {
+            datePicker.style.display = 'none';
+            dobInput.value = datePicker.value.split('-').reverse().join('/');
+        });
+    }
+</script> 
+
+
+
+
+</body>
+</html>
+{% endblock %}

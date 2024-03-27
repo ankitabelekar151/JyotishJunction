@@ -68,6 +68,29 @@
                 margin: 0;
                 padding: 40px 0;
             }
+            /* Add CSS styles for the star rating */
+            .star-rating {
+               display: inline-block;
+             }
+             
+             .star-rating input {
+               display: none;
+             }
+             
+             .star-rating label {
+               float: right;
+               cursor: pointer;
+               color: #ccc;
+               font-size: 30px;
+             }
+             
+             .star-rating label:before {
+               content: '\2605'; /* Unicode character for a star */
+             }
+             
+             .star-rating input:checked ~ label {
+               color: #ffdd00; /* Yellow color for selected stars */
+             }
         </style>
 	
 	</head>
@@ -120,7 +143,7 @@
                                                 
                                                 We extend our best wishes to you, hoping that the insights provided have brought you clarity. At Guruji Speaks, we are committed to being your constant source of guidance, available to assist you whenever you need it.<br>
                                                 Sincerely,<br>
-                                                The Team at <b>Guruji Speaks</b>
+                                                The Team at <b>Jyotish Junction</b>
                                             </p>
                                             {% endif %}   
                                         </div>            
@@ -137,6 +160,55 @@
 
 			</div>		
 			<!-- /Page Content -->
+                        <div class="container">
+                <h2>Review and Rating</h2>
+                <form method="post" id="reviewForm">
+                    {% csrf_token %}
+                    <div class="row form-row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label>First Name<span style="color: red;">*</span></label>
+                                <input type="text" value="{{user.first_name}}" id="first_name" class="form-control" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label>Email ID<span style="color: red;">*</span></label>
+                                <input type="email" name="email_id" value="{{user.email_id}}" id="email_id" class="form-control" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label>Comment<span style="color: red;">*</span></label>
+                                <input type="text"  name="review_comments1" value={{ guruji_user.review_comments1 }}>
+                            </div>
+                        </div>
+                        <fieldset class="star-rating">
+                            <legend>Rating</legend>
+                            <input type="radio" id="star5" name="review_star1" value="5" {% if guruji_user.review_star1 == '5' %}checked{% endif %}>
+                            <label for="star5"></label>
+                            <input type="radio" id="star4" name="review_star1" value="4" {% if guruji_user.review_star1 == '4' %}checked{% endif %}>
+                            <label for="star4"></label>
+                            <input type="radio" id="star3" name="review_star1" value="3" {% if guruji_user.review_star1 == '3' %}checked{% endif %}>
+                            <label for="star3"></label>
+                            <input type="radio" id="star2" name="review_star1" value="2" {% if guruji_user.review_star1 == '2' %}checked{% endif %}>
+                            <label for="star2"></label>
+                            <input type="radio" id="star1" name="review_star1" value="1" {% if guruji_user.review_star1 == '1' %}checked{% endif %}>
+                            <label for="star1"></label>
+                        </fieldset>
+                        <div class="submit-section">
+                            <input type="submit" style="background-color: #00569d; color: #fff; " class="btn btn-primary submit-btn" value="Save" id="saveButton">
+                        </div>
+                    </div>
+                </form>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
 		   
 		</div>
 

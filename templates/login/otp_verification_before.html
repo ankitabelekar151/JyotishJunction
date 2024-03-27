@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Guruji Speaks</title>
+    <title>Jyotish Junction</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
@@ -38,8 +38,9 @@
 
         .main-wrapper{
             margin: 0;
-            padding: 30px 0 150px;
-            background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+            padding: 10px 0 150px;
+            /*background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");*/
+            background: #000;
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -51,8 +52,15 @@
 
         
         .login-content-info .account-content .account-info .btn{
-            background-color: #1c3264;
-            border: 1px solid #1c3264;
+            background-color: #F1D06B;
+            border: 1px solid #F1D06B;
+            color: black;
+        }
+
+        .login-content-info .account-content .account-info .btn:hover{
+            background: none;
+            border: 1px solid #000;
+            color: black;
         }
     </style>
 
@@ -230,30 +238,5 @@
 
 </html>
 
-
-<!-- <script>
-    var timer;
-    var timeLeft = 30;
-    function startTimer() {
-        timer = setInterval(function() {
-            document.getElementById("timer").innerHTML = "Time left: " + timeLeft + " seconds";
-            timeLeft--;
-
-            if (timeLeft < 0) {
-                clearInterval(timer);
-                document.getElementById("timer").innerHTML = "";
-                document.getElementById("resendOTP").style.display = "block";
-            }
-        }, 1000);
-    }
-    function resendOTP() {
-        clearInterval(timer);
-        timeLeft = 30;
-        startTimer();
-        window.location.href = "?resend_otp=true";
-    }
-    document.getElementById("resendOTP").addEventListener("click", resendOTP);
-    startTimer(); 
-</script> -->
 
 

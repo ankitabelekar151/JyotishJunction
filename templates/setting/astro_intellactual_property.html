@@ -1,0 +1,140 @@
+{% extends 'astrologer_base.html' %}{% block content %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Jyotish Junction</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+	<!-- Favicons -->
+	<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+	<style>
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht {
+			visibility: hidden;
+		}
+
+		.breadcrumb-bar-two .inner-banner {
+			margin: 0;
+			padding: 40px 0;
+		}
+
+		.breadcrumb-bar-two {
+			/*background: #F2F6F6;*/
+			/* background-image: url("{% static 'assets/img/backg_img1.jpeg' %}"); */
+			background: -webkit-linear-gradient(#E0E0E0, #F1D06B);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			padding-top: 80px;
+			min-height: 100px;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+		}
+
+		.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+			font-weight: 600;
+			font-size: 25px;
+			margin-bottom: 6px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title">Intellectual Property</h2>
+						<nav aria-label="breadcrumb" class="page-breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item" aria-current="page">Intellectual Property</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+		<!-- Page Content -->
+		<div class="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="term">
+							<div class="terms-text">
+								<!-- <h3>Refund Policy</h3> -->
+								<div class="card">
+									<div class="card-body" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<p>With the exception of your contributions and the contributions made by other users of
+											the service, all the content available on Jyotish Junction or obtained through the
+											service (referred to as "Materials"), as well as the trademarks, service marks, and
+											logos present within the service, are either owned by us or licensed to us. These
+											Materials are protected by copyright and other intellectual property rights under
+											Indian and foreign laws, as well as international conventions. The service and the
+											Materials provided are intended solely for your personal information and use, and
+											not for any commercial exploitation. We reserve all rights relating to the service
+											and the Materials. Even if you download or print a copy of the Materials for your
+											personal use, all trademark, copyright, and other proprietary notices contained
+											within the Materials must be retained.
+										</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /Page Content -->
+
+		<!-- Footer -->
+
+		<!-- /Footer -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Core JS -->
+	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+	<!-- Custom JS -->
+	<!-- <script src="{% static 'assets/js/script.js' %}"></script> -->
+
+</body>
+
+</html>
+
+{% endblock %}

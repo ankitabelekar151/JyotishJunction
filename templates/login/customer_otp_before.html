@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-    <title>Guruji Speaks</title>
+    <title>Jyotish Junction</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
@@ -35,7 +35,8 @@
         .login-body {
             margin: 0;
             /* padding: 75px 0 48px; */
-            background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+            /*background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");*/
+            background: #000;
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -54,9 +55,9 @@
 
         .login-content-info .account-content .account-info .btn {
             width: 100%;
-            color: #ffffff;
-            background: #1c3264;
-            border: 1px solid #1c3264;
+            color: #000;
+            background: #F1D06B;
+            border: 1px solid #F1D06B;
             box-shadow: inset 0 0 0 0 #ffffff;
             -webkit-transition: 0.7s;
             -ms-transition: 0.7s;
@@ -64,6 +65,22 @@
             font-weight: 600;
             padding: 10px 15px;
         }
+
+        .login-content-info .account-content .account-info .btn:hover {
+            color: #000;
+            background: #000;
+            border: 1px solid #000;
+            box-shadow: inset 0 0 0 50px #ffffff;
+            -webkit-transition: 0.7s;
+            -ms-transition: 0.7s;
+            transition: 0.7s;
+        }
+
+        .login-content-info {
+            margin: 0;
+            padding: 70px 0 60px;
+        }
+
 
         .custom_check {
             color: #666;
@@ -103,14 +120,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 bg-light p-4 rounded">
                     <div class="account-content">
-                        <div class="login-shapes">
+                        <!-- <div class="login-shapes">
                             <div class="shape-img-left">
                                 <img src="{% static 'assets/img/shape-01.png' %}" alt="">
                             </div>
                             <div class="shape-img-right">
                                 <img src="{% static 'assets/img/shape-02.png' %}" alt="">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="widget-set">
                             <div class="account-info">
                                 <div class="widget-content multistep-form">
@@ -120,7 +137,7 @@
                                         </div>
                                         <div class="login-title">
                                             <h3>Sign In With OTP</h3>
-                                            <p class="mb-0">Please enter your registered Mobile Number on GurujiSpeaks</p>
+                                            <!-- <p class="mb-0">Please enter your registered Mobile Number on Jyotish Junction</p> -->
                                         </div>
                                         
                                         <form action="{% url 'ask_ques_otp' %}" method="post" class="signup-verfication-form">
@@ -135,10 +152,10 @@
                                             </div> -->
 
                                             <div class="form-group">
-                                                <label>Phone Number<span style="color: red;">*</span></label>
+                                                <label>Email Id<span style="color: red;">*</span></label>
                                                  <!-- <input class="form-control form-control-lg group_formcontrol form-control-phone" type="number" id="phone" name="user_id" maxlength="10" 
                                                  placeholder="Enter Mobile Number" oninput="validatePhoneNumber(this)" required> -->
-                                                 <input class="form-control form-control-lg group_formcontrol form-control-phone" type="number" id="phone" name="user_id" maxlength="10" data-country="in" oninput="validatePhoneNumber(this)" required>
+                                                 <input class="form-control form-control-lg group_formcontrol form-control-phone" type="email" id="email" name="user_id" maxlength="50" oninput="validatePhoneNumber(this)" required>
 
                                             </div>
                                             {% if error_message %}
@@ -154,7 +171,7 @@
                                                 <button class="btn btn-primary btn-block" type="submit">Submit</button>
                                             </div>
 
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <div class="form-group-flex">        
                                                     <label class="custom_check m-auto"><a href="/ask_ques_login/" class="border p-2 rounded">Sign In With Password</a></label> 
                                                 </div>
@@ -162,10 +179,13 @@
                                             <div class="login-or">
                                                 <span class="or-line"></span>
                                                 <span class="span-or">or</span>
-                                            </div>
-                                            <div class="account-signup">
+                                            </div>-->
+                                            <!-- <div class="account-signup">
                                                 <p>Don't have an account ? <a href="/ask_ques_signup/">Sign up</a></p>
-                                            </div>
+                                            </div>  -->
+                                            <div class="account-signup mt-3">
+                                                <p>Don't have an account ? <a href="/customer-registration/">Sign up</a></p>
+                                            </div> 
                                         </form>
                                     </fieldset>
                                 </div>

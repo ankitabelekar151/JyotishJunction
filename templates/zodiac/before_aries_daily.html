@@ -1,0 +1,533 @@
+{% extends 'base.html' %} {% block content %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,">
+	<title>Jyotish Junction</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Datepicker CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+	<!-- Owl Carousel CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+	<!-- Animation CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<!-- font-family -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1K79WZ1L2Q"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-1K79WZ1L2Q');
+	</script>
+
+	<style>
+		.main-wrapper.home-ten .pricing-section.pricing-section-ten::after {
+			content: "";
+			/*background: url("{% static 'assets/img/JJ-img/img.png' %}"); */
+			background: #fff;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: top;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+		}
+
+		.main-wrapper.home-ten .pricing-section.pricing-section-ten .section-header-one .form-check {
+			width: 200px;
+			margin-bottom: 0;
+		}
+
+		.pricing-section {
+			background-color: #ffffff;
+			margin: 0;
+			padding: 130px 0 10px;
+		}
+
+		.main-wrapper.home-twelve .blog-section-fourteen.our-doctor-twelve {
+			background: #fff;
+			position: relative;
+			z-index: 1;
+		}
+
+		.main-wrapper.home-twelve .services-section-fourteen {
+			background: #fff;
+			position: relative;
+		}
+
+		.main-wrapper.home-ten .book-appointment-section {
+			padding: 0px 0;
+			position: relative;
+		}
+
+		.main-wrapper.home-ten .book-appointment-section .book-appointment-ten .book-section-bg img:nth-child(1) {
+			left: 10px;
+			bottom: 75px;
+		}
+
+		.main-wrapper.home-ten .book-appointment-section .book-appointment-ten {
+			padding: 50px;
+			/* background: #0E82FD; */
+			background: -webkit-linear-gradient(#F1D06B, #fff, #F1D06B);
+			border-radius: 35px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.main-wrapper.home-ten .book-appointment-section .book-appointment-ten p {
+			max-width: 725px;
+			color: rgb(0, 0, 0);
+			margin: auto auto 50px;
+		}
+
+
+		.specialities-section-one .specialities-img span {
+			background: none;
+			border: none;
+			width: 90px;
+			height: 60px;
+			border-radius: 50%;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+
+
+
+		/*********************** Our Pricing Plan **************************************/
+
+
+		/*********************** Customize section **************************************/
+		.specialities-section-one {
+			/*background-image: url("{% static 'assets/img/GrujiSpeaks-img/2.png' %}");*/
+			/*background-color: #000;*/
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			margin: 0;
+			padding: 15px 0;
+		}
+
+		/* side bar scrolling box */
+		.specialities-section-one .specialities-item {
+			/*background: #f2f2f2;*/
+			background: -webkit-linear-gradient(#F1D06B, #E0E0E0);
+			border: 1px solid #f2f2f2;
+			border-radius: 100px;
+			height: 150px;
+			margin: 15px 0 0 10px;
+			padding: 30px;
+			cursor: pointer;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+
+		.specialities-section-one .specialities-item:hover {
+			/*background-color: rgb(240, 217, 89);*/
+			background: -webkit-linear-gradient(#E0E0E0, #F1D06B);
+			border: 1px solid#f2f2f2;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}
+
+		.specialities-section-one .specialities-item:hover .specialities-img span img {
+			/* filter: invert(1); */
+			-webkit-transform: rotateY(360deg);
+			-ms-transform: rotateY(360deg);
+			transform: rotateY(360deg);
+			-webkit-transition: 0.4s;
+			-ms-transition: 0.4s;
+			transition: 0.4s;
+		}
+	
+		.specialities-section-one .specialities-item:hover .specialities-img span {
+			background: none;
+			border: none;
+			-webkit-transition: 0.7s;
+			-ms-transition: 0.7s;
+			transition: 0.7s;
+		}	
+
+		/* text */
+		.specialities-section-one .specialities-item p {
+			font-weight: 600;
+			font-size: 16px;
+			color: #000;
+			margin-bottom: 0;
+		}
+
+		.slide-nav-1 button.owl-next:hover,
+		.slide-nav-1 button.owl-prev:hover,
+		.slide-nav-2 button.owl-next:hover,
+		.slide-nav-2 button.owl-prev:hover {
+			background: #BFE0FE;
+			color: #1D7ED8;
+		}
+
+		.owl-prev:first-child{
+			/*background-color: #F1D06B !important;*/
+		}
+
+		.owl-prev:nth-child(2) {
+			display: none !important;
+			/*background-color: #1D7ED8 !important;*/
+		}
+
+		.owl-next:last-child {
+			/*background-color: #080e13 !important;*/
+			/*display: none !important;*/
+		}
+
+		.owl-next:nth-last-child(2){
+			/*background-color: yellow !important;*/
+			display: none !important;
+		}
+	
+
+		.main-wrapper.home-ten .section-header-one {
+			margin-bottom: 15px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main-wrapper home-ten">
+
+		<section class="pricing-section pricing-section-ten">
+			<div class="container w-75">
+				<div class="row">
+					<div class="col-md-12 text-center aos aos-init aos-animate" data-aos="fade-up">
+						<div class="section-header-one section-header-slider">
+							<h2 class="section-title">Aries Daily Horoscope</h2>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+		<!-- zodiac section -->
+		<section class="specialities-section-one">
+			<div class="container">
+				<div class="row">
+					<!-- <div class="col-md-12 aos" data-aos="fade-up">
+						<div class="section-header-fourteen service-inner-fourteen customize-section">
+							<h2 class="">Check Daily Horoscope <h2>
+									<p class=" ">Choose Your Horoscope</p>
+						</div>
+					</div> -->
+					<!-- <div class="col-md-2 aos" data-aos="fade-up">
+							<div class="owl-nav slide-nav-1 text-end nav-control"></div>
+						</div> -->
+				</div>
+
+				<div class="owl-carousel specialities-slider-one owl-theme aos" data-aos="fade-up">
+					<div class="item">
+						<a href="/before_aries_daily/">
+							<!-- <a href="/self-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/external-Aries-zodiac-those-icons-lineal-color-those-icons-2.png"
+											alt="external-Aries-zodiac-those-icons-lineal-color-those-icons-2" /></span>
+								</div>
+								<p>Aries(मेष)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_taurus_daily/">
+							<!-- <a href="/wealth-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/external-Taurus-zodiac-those-icons-lineal-color-those-icons-2.png"
+											alt="external-Taurus-zodiac-those-icons-lineal-color-those-icons-2" /></span>
+								</div>
+								<p>Taurus(वृषभ)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_gemini_daily/">
+							<!-- <a href="/health-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/external-Gemini-zodiac-those-icons-lineal-color-those-icons-2.png"
+											alt="external-Gemini-zodiac-those-icons-lineal-color-those-icons-2" /></span>
+								</div>
+								<p>Gemini(मिथुन)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_cancer_daily/">
+							<!-- <a href="/family-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/external-Cancer-zodiac-those-icons-lineal-color-those-icons-2.png"
+											alt="external-Cancer-zodiac-those-icons-lineal-color-those-icons-2" /></span>
+								</div>
+								<p>Cancer(कर्क)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_leo_daily/">
+							<!-- <a href="/marriage-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-flat-icons-inmotus-design/48/external-leo-zodiac-flat-icons-inmotus-design.png"
+											alt="external-leo-zodiac-flat-icons-inmotus-design" /></span>
+								</div>
+								<p>Leo(सिंह)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_virgo_daily/">
+							<!-- <a href="/love-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/emoji/48/girl-light-skin-tone.png"
+											alt="girl-light-skin-tone" /></span>
+								</div>
+								<p>Virgo(कन्या)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_libra_daily/">
+							<!-- <a href="/education-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/48/external-libra-astrology-flaticons-lineal-color-flat-icons.png"
+											alt="external-libra-astrology-flaticons-lineal-color-flat-icons" /></span>
+								</div>
+								<p>Libra(तुला)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_scorpio_daily/">
+							<!-- <a href="/carrier-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-others-maxicons/48/external-scorpio-celestial-and-witchcraft-others-maxicons.png"
+											alt="external-scorpio-celestial-and-witchcraft-others-maxicons" /></span>
+								</div>
+								<p>Scorpio(वृश्चिक)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_sagittarius_daily/">
+							<!-- <a href="/business-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-filled-outline-design-circle/48/external-Sagittarius-astrology-and-zodiac-signs-filled-outline-design-circle.png"
+											alt="external-Sagittarius-astrology-and-zodiac-signs-filled-outline-design-circle" /></span>
+								</div>
+								<p>Sagittarius(धनु)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_capricorn_daily/">
+							<!-- <a href="/hardtime-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-others-maxicons/48/external-capricorn-celestial-and-witchcraft-others-maxicons.png"
+											alt="external-capricorn-celestial-and-witchcraft-others-maxicons" /></span>
+								</div>
+								<p>Capricorn(मकर)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_aquarius_daily/">
+							<!-- <a href="/puja-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/external-Aquarius-zodiac-those-icons-lineal-color-those-icons-3.png"
+											alt="external-Aquarius-zodiac-those-icons-lineal-color-those-icons-3" /></span>
+								</div>
+								<p>Aquarius(कुंभ)</p>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="/before_pisces_daily/">
+							<!-- <a href="/spirituality-question/"></a> -->
+							<div class="specialities-item">
+								<div class="specialities-img">
+									<span><img width="48" height="48"
+											src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/48/external-Pisces-zodiac-those-icons-lineal-color-those-icons-2.png"
+											alt="external-Pisces-zodiac-those-icons-lineal-color-those-icons-2" /></span>
+								</div>
+								<p>Pisces(मीन)</p>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 aos" data-aos="fade-up">
+						<div class="owl-nav slide-nav-1 text-center nav-control"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- zodiac section -->
+
+
+		<section class="book-appointment-section aos aos-init aos-animate" data-aos="fade-up">
+			<div class="container mb-5">
+				<div class="row text-center">
+					<div class="col-md-4 m-auto">
+						<div class="options-group p-5">
+							<span style="color: #000;">Select Day</span>
+							<div class="form-check form-switch">
+								<select id="day-selector" class="form-select form-control">
+									<option value="today">Today</option>
+									<option value="yesterday">Yesterday</option>
+									<option value="tomorrow">Tomorrow</option>
+								</select>
+							</div>
+		
+						</div>
+					</div>
+				</div>
+		
+				<div class="book-appointment-ten text-center">
+					<div class="pricing-options">
+								
+					<div class="book-section-bg">
+						<!-- <img src="{% static 'assets/img/bg/hexagen-group-3.png' %}" alt="design-image"> -->
+						<img width="150" height="150"
+							src="https://img.icons8.com/external-those-icons-lineal-color-those-icons/150/external-Aries-zodiac-those-icons-lineal-color-those-icons-2.png"
+							alt="external-Aries-zodiac-those-icons-lineal-color-those-icons-2" />
+						<!-- <img src="{% static 'assets/img/bg/hand.png' %}" alt="hand-image">
+						<img src="{% static 'assets/img/bg/heart-plus.png' %}" alt="heart-plus"> -->
+					</div>
+					<h2></h2>
+					<p id="horoscope-today">{{ horoscope.today }}</p>
+
+					<p id="horoscope-yesterday" style="display: none;"> {{ horoscope.yesterday }}</p>
+
+					<p id="horoscope-tomorrow" style="display: none;"> {{ horoscope.tomorrow }}</p>
+
+					<!-- <div class="appointment-btn-group">
+						<a href="/request/" class="btn btn-primary me-2">Horoscope</a>
+						<a href="/one/" class="btn btn-primary ">Panchang</a>
+						<a href="booking.html" class="appointment-blue-btn">Start a Consult</a>
+					<a href="pricing.html">Click Our Plan</a>
+					</div> -->
+				</div>
+			</div>
+		</section>
+
+
+
+
+	</div>
+	<script>
+		document.getElementById('day-selector').addEventListener('change', function () {
+			var selectedDay = this.value;
+			var horoscopeToday = document.getElementById('horoscope-today');
+			var horoscopeYesterday = document.getElementById('horoscope-yesterday');
+			var horoscopeTomorrow = document.getElementById('horoscope-tomorrow');
+			if (selectedDay === 'today') {
+				horoscopeToday.style.display = 'block';
+				horoscopeYesterday.style.display = 'none';
+				horoscopeTomorrow.style.display = 'none';
+			} else if (selectedDay === 'yesterday') {
+				horoscopeToday.style.display = 'none';
+				horoscopeYesterday.style.display = 'block';
+				horoscopeTomorrow.style.display = 'none';
+			} else if (selectedDay === 'tomorrow') {
+				horoscopeToday.style.display = 'none';
+				horoscopeYesterday.style.display = 'none';
+				horoscopeTomorrow.style.display = 'block';
+			}
+		});
+	</script>
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Datepicker JS -->
+	<script src="{% static 'assets/js/moment.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+	<!-- Owl Carousel JS -->
+	<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+	<!-- Slick JS -->
+	<script src="{% static 'assets/js/slick.js' %}"></script>
+
+	<!-- Animation JS -->
+	<script src="{% static 'assets/js/aos.js' %}"></script>
+
+	<!-- Counter JS -->
+	<script src="assets/js/counter.js"></script>
+
+	<!-- BacktoTop JS -->
+	<script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+	
+</body>
+
+</html>
+{% endblock %}

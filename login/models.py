@@ -62,6 +62,10 @@ class GurujiUsers(AbstractUser,PermissionsMixin):
     aadhar_no =models.CharField(max_length=240,blank=True,null=True)
     pan_no = models.CharField(max_length=240,blank=True,null=True)
     age=models.CharField(max_length=240,blank=True,null=True)
+    review_comments1= models.CharField(max_length=500,default='', null = True, blank= True)
+    review_star1 = models.CharField(max_length=50,null = True, blank= True,default='')
+    agora_user_id = models.CharField(max_length=50, blank=True, null=True, unique=True)
+
 
 
 
@@ -70,6 +74,7 @@ class GurujiUsers(AbstractUser,PermissionsMixin):
     image1 = models.ImageField(upload_to='user_images/', blank=True, null=True)
     image2 = models.ImageField(upload_to='user_images/', blank=True, null=True)
     image3 = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    cust_img = models.ImageField(upload_to='user_images/', blank=True, null=True)
 
     is_gurujiuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -368,3 +373,38 @@ class Customer_profile(models.Model):
 
     def __str__(self):
         return self.fname
+
+
+class Contact(models.Model):
+    contact_person = models.CharField(max_length=100)
+    contact_phone = models.CharField(max_length=10)
+    contact_email = models.EmailField()
+
+
+class Rating(models.Model):
+    rating1= models.CharField(max_length=240,blank=True,null=True)
+    comments = models.CharField(max_length=240,blank=True,null=True)
+
+
+#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
+
+from django.conf import settings
+
+class Chat(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    message = models.TextField()
+    response = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user.username}: {self.message}' 
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+class ChatGptBot(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    messageInput = models.TextField()
+    bot_response = models.TextField()
+    def __str__(self):
+        return self.user.username

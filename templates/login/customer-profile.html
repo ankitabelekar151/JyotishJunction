@@ -5,7 +5,7 @@
 	<head>  
 		
 		<meta charset="utf-8">
-		<title>Guruji Speaks</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
 
@@ -23,8 +23,6 @@
 
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
-
-
 		
 		
 		<!-- Bootstrap CSS -->
@@ -75,8 +73,9 @@
       	}
 
       	.breadcrumb-bar-two {
-		    background: #F2F6F6;
+		    /*background: #F2F6F6;*/
 			/* background-image: url("{% static 'assets/img/backg_img1.jpeg' %}"); */
+			background: -webkit-linear-gradient( #E0E0E0, #F1D06B);
 		    background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
@@ -85,6 +84,12 @@
 		    position: relative;
 		    overflow: hidden;
 		    z-index: 1;
+		}
+
+		.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+			font-weight: 600;
+			font-size: 25px;
+			margin-bottom: 6px;
 		}
 
 		@media (max-width: 991.98px)
@@ -128,28 +133,33 @@
 										
 						<div class="col-md-7 col-lg-8 col-xl-12">
 							<div class="card">
-								<div class="card-body">
+								<div class="card-body" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 									
 									<!-- Profile Settings Form -->
 									<form enctype="multipart/form-data" method="post" id="myForm">
 										{% csrf_token %}
 										<div class="row form-row">
-											<!-- <div class="col-12 col-md-12">
+											<div class="col-12 col-md-12">
 												<div class="form-group">
 													<div class="change-avatar">
 														<div class="profile-img">
-															<img src="{%static 'assets/img/patients/patient.jpg' %}" alt="User Image">
+															{% if data.image %}
+																<img src="{{ data.image.url }}" alt="User Image">
+															{% else %}
+																<img src="{% static 'media/user_images/' %}" alt="User Image">
+															{% endif %}
 														</div>
 														<div class="upload-img">
 															<div class="change-photo-btn">
-																<span><i class="fa fa-upload"></i> Upload Photo</span>
-																<input type="file" class="upload">
+																{% comment %} <span><i class="fa fa-upload"></i> Upload Photo</span> {% endcomment %}
+																<input type="file" name='cust_img' accept="image/*">
+    															
 															</div>
 															<small class="form-text text-muted"></small>
 														</div>
 													</div>
 												</div>
-											</div> -->
+											</div> 
 											<div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>User Id<span style="color: red;">*</span></label>
@@ -177,15 +187,15 @@
 												</div>
 											</div>
 
-											<div class="col-12 col-md-6">
+											<!-- <div class="col-12 col-md-6">
 											  <div class="form-group">
 												<label>Age<span style="color: red;">*</span></label>
-												<!-- <input type="number" class="form-control" id="age" name="age" min="0" value="{{data.age}}" readonly> -->
+												
 												<input type="number" class="form-control" id="age" name="age" min="0" value="{{data.age}}" readonly style="display: none;">
 
 												<div id="ageError" style="color: red;"></div>
 											  </div>
-											</div>
+											</div> -->
 
 
 											<div class="col-12 col-md-6">
@@ -223,12 +233,12 @@
 													<input type="email" name="email_id" value="{{data.email_id}}" id="email_id" class="form-control" required readonly>
 												</div>
 											</div>
-											<div class="col-12 col-md-6">
+											<!-- <div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Mobile<span style="color: red;">*</span></label>
 													<input type="text" name="whatsapp_no" value="{{data.whatsapp_no}}" id="whatsapp_no" required class="form-control" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" readonly>
 												</div>
-											</div>
+											</div> -->
 
 
 											<!-- <div class="col-12 col-md-6">
@@ -237,7 +247,7 @@
 													<input type="text" id="gender" value="{{data.gender}}" name="gender" class="form-control" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')" required>
 												</div>
 											</div> -->
-											<div class="col-md-6">
+											<!-- <div class="col-md-6">
 											<div class="form-group">
 			  								  <label>Gender<span class="text-danger">*</span></label>
 											  <select class="form-select form-control" name="gender" id="gender" required>
@@ -247,11 +257,11 @@
 												<option {% if data.gender == 'Prefer not to disclose' %}selected{% endif %}>Prefer not to disclose</option>
 											  </select>
 											</div>
-										  </div>
+										  </div> -->
 
 											
 											
-											<div class="col-12 col-md-6">
+											<!-- <div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>City<span style="color: red;">*</span></label>
 													<input type="text" name="city" id="city" value="{{data.city}}" class="form-control" oninput="this.value = this.value.replace(/[^a-z A-Z]/g, '')" required>
@@ -268,7 +278,7 @@
 													<label>Pin Code<span style="color: red;">*</span></label>
 													<input type="number" name="pincode" value="{{data.pincode}}" id="pincode" class="form-control" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
 												</div>
-											</div>
+											</div> -->
 											<!-- <div class="col-12 col-md-6">
 												<div class="form-group">
 													<label>Country</label>
@@ -279,7 +289,7 @@
 												</div>
 											</div>
 										</div> -->
-										<div class="col-12 col-md-6">
+										<!-- <div class="col-12 col-md-6">
 											<div class="form-group">
 												<label>Country<span style="color: red;">*</span></label>
 												<select class="countrypicker form-control" name="country" value="{{data.country}}" id="country" required>
@@ -290,10 +300,10 @@
 												</select>
 
 											</div>
-										</div>
+										</div> -->
 										<div class="submit-section">
 											<!-- <input type="submit" class="btn btn-primary submit-btn">Save Changes</button> -->
-											<input type="submit" style="background-color: #00569d; color: #fff; " class="btn btn-primary submit-btn" value="Save" id="saveButton" onclick="submitForm()">
+											<input type="submit" style="background-color: #F1D06B; color: #000; " class="btn btn-primary submit-btn" value="Save" id="saveButton" onclick="submitForm()">
 										</div>
 									</form>
 									<!-- /Profile Settings Form -->

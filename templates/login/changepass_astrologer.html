@@ -37,18 +37,19 @@
 		<style>
 			.btn-primary
 			{
-				background-color: #1c3264;
-				border: 1px solid #1c3264;
+				background-color: #000;
+				border: 1px solid #000;
+				color: #F1D06B;
 			}
 
 			.btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary.active {
-				color: #1c3264 !important;
-				background-color: #e9e7e7 !important;
-				border-color: #e9e7e7 !important;
+				color: #000 !important;
+				background-color: #fff !important;
+				border-color: #000 !important;
 			}
 
 			.breadcrumb-bar-two {
-				background: #F2F6F6;
+				background:  -webkit-linear-gradient( #E0E0E0, #F1D06B);
 				background-repeat: no-repeat;
 				padding-top: 0px !important;
 				min-height: 0px !important;
@@ -76,6 +77,12 @@
 				height: 32px;
 				border-radius: 50%;
 			}
+
+			.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+				font-weight: 600;
+				font-size: 25px;
+				margin-bottom: 6px;
+			  }
 		</style>
 	
 	</head>
@@ -133,7 +140,7 @@
 													<span>Dashboard</span>
 												</a>
 											</li>
-											<!-- <li>
+											 <li>
 												<a href="favourites.html">
 													<i class="fas fa-bookmark"></i>
 													<span>Favourites</span>
@@ -205,7 +212,7 @@
 						</div> {% endcomment %}
 						
 						<div class="col-md-7 col-lg-8 col-xl-5 m-auto mt-5">
-							<div class="card">
+							<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-12 col-lg-12 text-center">

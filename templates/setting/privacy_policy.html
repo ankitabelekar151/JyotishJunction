@@ -1,79 +1,169 @@
-
 {% extends 'base.html' %} {% block content %}
 {% load static %}
 
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
 
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-		<title>Guruji Speaks</title>
-		
-		<!-- Favicon -->
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Jyotish Junction</title>
+
+	<!-- Favicon -->
 	<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-				
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
-		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
 
-		<!-- Feathericon CSS -->
-    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
 
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
 
-		<style>
-			.header.header-fourteen.header-twelve .header-nav .header-navbar-rht{
-				visibility: hidden;
-			}
-		</style>
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
 
-	</head>		
-	<body>
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
 
-		<!-- Main Wrapper -->
-		<div class="main-wrapper">
-					
-			<!-- Header -->
-			
-			<!-- /Header -->
+	<style>
+		.header.header-fourteen.header-twelve .header-nav .header-navbar-rht {
+			visibility: hidden;
+		}
 
-			<!-- Breadcrumb -->
-			<div class="breadcrumb-bar-two">
-				<div class="container">
-					<div class="row align-items-center inner-banner">
-						<div class="col-md-12 col-12 text-center">
-							<h2 class="breadcrumb-title">Privacy Policy</h2>
-							<nav aria-label="breadcrumb" class="page-breadcrumb">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="/">Home</a></li>
-									<li class="breadcrumb-item" aria-current="page">Privacy Policy</li>
-								</ol>
-							</nav>
-						</div>
+		.breadcrumb-bar-two .inner-banner {
+			margin: 0;
+			padding: 40px 0;
+		}
+
+		.breadcrumb-bar-two {
+			/*background: #F2F6F6;*/
+			/* background-image: url("{% static 'assets/img/backg_img1.jpeg' %}"); */
+			background: -webkit-linear-gradient(#E0E0E0, #F1D06B);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			padding-top: 80px;
+			min-height: 100px;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+		}
+
+		.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+			font-weight: 600;
+			font-size: 25px;
+			margin-bottom: 6px;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper"  style="background: rgb(0, 0, 0);">
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title">Privacy Policy</h2>
+						<nav aria-label="breadcrumb" class="page-breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item" aria-current="page">Privacy Policy</li>
+							</ol>
+						</nav>
 					</div>
 				</div>
 			</div>
-			<!-- /Breadcrumb -->
+		</div>
+		<!-- /Breadcrumb -->
 
-			<!-- Privacy Policy -->
-			<section class="terms-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="terms-content pb-0">
-								<div class="terms-text">
-									<h3>INTRODUCTION</h3>
-									<p>This website, its associated mobile applications, and the services provided through them (referred to as the "Platform") are owned by NKB Divine Vedic Sciences and/or its affiliates ("Guruji Speaks"). Guruji Speaks ("we," "us," and "our") is fully committed to respecting your privacy and protecting it in accordance with this privacy policy ("Privacy Policy"). This Privacy Policy covers: (a) the practices and policies of Guruji Speaks; (b) the types of information we may collect from you when you access or use the Platform; (c) the purposes and methods by which we collect, use, and disclose information obtained from your use of the Platform; and (d) the security practices and procedures we employ to protect your information.</p>
-							        <p>By accessing and using the Platform, you agree to be bound by the terms and conditions of this Privacy Policy, establishing a contractual relationship between you and Guruji Speaks. This Privacy Policy should be read together with and interpreted in accordance with the applicable laws of the country where you access and use the Platform, including the EU General Data Protection Regulation, the (Indian) Information Technology Act, 2000 ("IT Act"), and the rules made under it, as amended from time to time. This Privacy Policy does not require a physical, electronic, or digital signature and shall be a legally binding document between you and Guruji Speaks. It constitutes an electronic contract within the provisions of applicable laws regarding electronic documents/records in various jurisdictions and statutes, as applicable.</p>
-							        <p>By using or accessing the Platform, you agree to the practices described in this Privacy Policy and expressly consent to our use and disclosure of your information (as defined below) as described herein. If you do not agree with this Privacy Policy or its terms, you should immediately stop using the Platform. As the Platform and its content may evolve and mature, this Privacy Policy may be updated from time to time. We encourage you to regularly review this Privacy Policy.</p>
-							        <p>DEFINITIONS "Account" refers to the password-protected/OTP-protected member registration account created by users to access and use the Platform. "Non-personal Identification Information" refers to any non-personal information collected from you when you access or use the Platform. This may include browser names, computer types, technical information about your connection to the Platform (such as operating systems and internet service providers), and similar information. "Personal Identification Information" means information or an opinion (including information or an opinion forming part of a database), whether true or not, and whether recorded in a material form or not, about a person whose identity is apparent, or can be reasonably ascertained, from the information or opinion. This includes, but is not limited to, information you provide when visiting the Platform, registering, applying for a position, responding to a survey, filling out a form, or engaging in other activities, services, features, or resources available on the Platform. You may be asked to provide personal information such as name, email address, phone number, and residential address when using the services on the Platform. However, you may also visit our Platform anonymously. Guruji Speaks will only collect Personal Identification Information from you if you voluntarily submit such information. You can always refuse to provide Personal Identification Information, except that it may prevent you from engaging in certain activities or accessing certain services available on the Platform. "Sensitive personal data or information" ("SPDI") consists of information relating to the following: (i) passwords; (ii) financial information such as bank account, credit card, debit card, or other payment instrument details; (iii) physical, physiological, and mental health conditions; (iv) sexual orientation; (v) medical records and history; (vi) biometric information; (vii) any detail relating to the above clauses as provided to a body corporate for providing a service; and (viii) any information received under the above clauses by a body corporate for processing, storage, or processing under a lawful contract or otherwise. For the purposes of this Privacy Policy, Non-personal Identification Information, Personal Identification Information, and SPDI will collectively be referred to as "Information." "Third Party" refers to any person or entity other than you or us.</p>
-							    	</div>
+		<!-- Privacy Policy -->
+		<section class="terms-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="terms-content pb-0">
+							<div class="terms-text">
+								<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+									<div class="card-title">
+										<!-- <h3>INTRODUCTION</h3> -->
+									</div>
+									<div class="card-body">
+										<p>This website, its associated mobile applications, and the services provided
+											through them (referred to as the "Platform") are owned by NKB Divine Vedic
+											Sciences and/or its affiliates ("Jyotish Junction"). Jyotish Junction ("we,"
+											"us,"
+											and "our") is fully committed to respecting your privacy and protecting it
+											in accordance with this privacy policy ("Privacy Policy"). This Privacy
+											Policy covers: (a) the practices and policies of Jyotish Junction; (b) the
+											types of information we may collect from you when you access or use the
+											Platform; (c) the purposes and methods by which we collect, use, and
+											disclose information obtained from your use of the Platform; and (d) the
+											security practices and procedures we employ to protect your information.
+										</p>
+										<p>By accessing and using the Platform, you agree to be bound by the terms and
+											conditions of this Privacy Policy, establishing a contractual relationship
+											between you and Jyotish Junction. This Privacy Policy should be read
+											together
+											with and interpreted in accordance with the applicable laws of the country
+											where you access and use the Platform, including the EU General Data
+											Protection Regulation, the (Indian) Information Technology Act, 2000 ("IT
+											Act"), and the rules made under it, as amended from time to time. This
+											Privacy Policy does not require a physical, electronic, or digital signature
+											and shall be a legally binding document between you and Jyotish Junction. It
+											constitutes an electronic contract within the provisions of applicable laws
+											regarding electronic documents/records in various jurisdictions and
+											statutes, as applicable.</p>
+										<p>By using or accessing the Platform, you agree to the practices described in
+											this Privacy Policy and expressly consent to our use and disclosure of your
+											information (as defined below) as described herein. If you do not agree with
+											this Privacy Policy or its terms, you should immediately stop using the
+											Platform. As the Platform and its content may evolve and mature, this
+											Privacy Policy may be updated from time to time. We encourage you to
+											regularly review this Privacy Policy.</p>
+										<p>DEFINITIONS "Account" refers to the password-protected/OTP-protected member
+											registration account created by users to access and use the Platform.
+											"Non-personal Identification Information" refers to any non-personal
+											information collected from you when you access or use the Platform. This may
+											include browser names, computer types, technical information about your
+											connection to the Platform (such as operating systems and internet service
+											providers), and similar information. "Personal Identification Information"
+											means information or an opinion (including information or an opinion forming
+											part of a database), whether true or not, and whether recorded in a material
+											form or not, about a person whose identity is apparent, or can be reasonably
+											ascertained, from the information or opinion. This includes, but is not
+											limited to, information you provide when visiting the Platform, registering,
+											applying for a position, responding to a survey, filling out a form, or
+											engaging in other activities, services, features, or resources available on
+											the Platform. You may be asked to provide personal information such as name,
+											email address, phone number, and residential address when using the services
+											on the Platform. However, you may also visit our Platform anonymously.
+											Jyotish Junction will only collect Personal Identification Information from
+											you
+											if you voluntarily submit such information. You can always refuse to provide
+											Personal Identification Information, except that it may prevent you from
+											engaging in certain activities or accessing certain services available on
+											the Platform. "Sensitive personal data or information" ("SPDI") consists of
+											information relating to the following: (i) passwords; (ii) financial
+											information such as bank account, credit card, debit card, or other payment
+											instrument details; (iii) physical, physiological, and mental health
+											conditions; (iv) sexual orientation; (v) medical records and history; (vi)
+											biometric information; (vii) any detail relating to the above clauses as
+											provided to a body corporate for providing a service; and (viii) any
+											information received under the above clauses by a body corporate for
+											processing, storage, or processing under a lawful contract or otherwise. For
+											the purposes of this Privacy Policy, Non-personal Identification
+											Information, Personal Identification Information, and SPDI will collectively
+											be referred to as "Information." "Third Party" refers to any person or
+											entity other than you or us.</p>
+									</div>
+								</div>
 								<!--<div class="terms-text terms-list">-->
 								<!--	<p><i class="fas fa-circle-check"></i> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et</p>-->
 								<!--	<p><i class="fas fa-circle-check"></i> Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</p>-->
@@ -83,82 +173,340 @@
 								<!--	<p><i class="fas fa-circle-check"></i> Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>-->
 								<!--</div>-->
 								<div class="terms-text">
-								    <h3>PRIVACY AND INFORMATION COLLECTION</h3>
-								    <p>At Guruji Speaks, we are dedicated to safeguarding the privacy of individuals' information. We firmly support the right to privacy, which includes individuals' control over the use and dissemination of personal data that describes them, their choices, and life experiences. We are bound by privacy principles as outlined in applicable laws, such as the IT Act and its relevant rules, as well as the EU General Data Protection Regulation (collectively referred to as "Privacy Laws"). These Privacy Laws govern the management of information belonging to individuals who access our Platform. We collect information solely through this Platform and handle, disclose, and store it in accordance with the Privacy Laws and this Privacy Policy.</p>
-								    <p>The type of information we collect from you depends on your usage of the Platform. Generally, the information we collect can be categorized as follows:</p>
-								   <p>1. Personal Identification Information You Provide: We receive and store information that you enter into the Platform. This may include a wide range of details. For instance, when creating an Account on the Platform, we collect information such as your name, email address, phone number, residential address, qualifications, and marital status. In certain situations, we may also require demographic information such as gender, age, education, family history, and other relevant data.<br>
-								    2.	Information from Third-Party Sites: You have the option to register for an Account using your existing Third-Party Site Accounts, such as Facebook, Gmail, or similar accounts, along with your corresponding login credentials. As part of the Platform's functionality, you may link your Account with Third-Party Site Accounts either by providing your login information through the Platform or by allowing us to access your Third-Party Site Account as permitted by the applicable terms and conditions. If you choose to register through a Third-Party Site Account, we will obtain the information provided to us by the respective Third-Party site service provider. This may include your "real" name, email address, profile picture, names of friends or groups, publicly available information on the Third-Party site, and any other authorized information.<br>
-                                    3.	Non-personal Identification Information: We may receive and store certain automatic information related to your use and behaviour on the Platform. This can include the areas of the Platform accessed by you and your IP address. These details help us identify popular areas of our Platform and tailor it accordingly.<br>
-                                    4.	Non-personal Identification Information obtained from "Cookies": Our Platform utilizes cookies, which are small pieces of information stored by your browser on your computer's hard drive. Cookies allow your browser to remember specific information about your preferences and make your use of the Platform more convenient. When you visit our Platform, we check if our cookies are present in your browser. These cookies contain information such as your visit history and preferences. You have the option to adjust your browser settings to refuse cookies or receive warnings when they are being used. However, please note that disabling cookies may limit the functionality of our Platform, and we strongly recommend keeping cookies enabled for a seamless experience. We do not retrieve any information from your computer that was not initially sent by us, nor do we provide Third Parties access to or share information obtained from our cookies, except as described above.<br>
-                                    5.	Sensitive Personal Data or Information (SPDI): In certain instances, you may be required to disclose or confirm specific SPDI, such as your health condition or medical history, to ensure the accuracy of the services provided on the Platform. The type of information collected may vary based on your interactions on the Platform. Guruji Speaks commits to protecting the data you provide by implementing reasonable security practices and procedures in compliance with applicable Privacy Laws. By using the Platform, you consent to the disclosure of your SPDI to Third Parties, such as employees of Guruji Speaks, as necessary for them to perform their functions related to the Platform.
-                                    </p> 
-                                    <p>By agreeing to this Privacy Policy and using our Platform, you acknowledge and consent to the collection, usage, and storage of your information as outlined above. If you do not agree with this Privacy Policy or its terms, please discontinue your use of the Platform. We encourage you to review this Privacy Policy periodically, as it may be updated to align with the development and maturation of the Platform and its content.</p>
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">PRIVACY AND INFORMATION COLLECTION</h3>
+										</div>
+										<div class="card-body">
+											<p>At Jyotish Junction, we are dedicated to safeguarding the privacy of
+												individuals'
+												information. We firmly support the right to privacy, which includes
+												individuals'
+												control over the use and dissemination of personal data that describes
+												them,
+												their choices, and life experiences. We are bound by privacy principles
+												as
+												outlined in applicable laws, such as the IT Act and its relevant rules,
+												as well
+												as the EU General Data Protection Regulation (collectively referred to
+												as
+												"Privacy Laws"). These Privacy Laws govern the management of information
+												belonging to individuals who access our Platform. We collect information
+												solely
+												through this Platform and handle, disclose, and store it in accordance
+												with the
+												Privacy Laws and this Privacy Policy.</p>
+											<p>The type of information we collect from you depends on your usage of the
+												Platform. Generally, the information we collect can be categorized as
+												follows:
+											</p>
+											<p>1. Personal Identification Information You Provide: We receive and store
+												information that you enter into the Platform. This may include a wide
+												range of
+												details. For instance, when creating an Account on the Platform, we
+												collect
+												information such as your name, email address, phone number, residential
+												address,
+												qualifications, and marital status. In certain situations, we may also
+												require
+												demographic information such as gender, age, education, family history,
+												and
+												other relevant data.<br>
+												2. Information from Third-Party Sites: You have the option to register
+												for an
+												Account using your existing Third-Party Site Accounts, such as Facebook,
+												Gmail,
+												or similar accounts, along with your corresponding login credentials. As
+												part of
+												the Platform's functionality, you may link your Account with Third-Party
+												Site
+												Accounts either by providing your login information through the Platform
+												or by
+												allowing us to access your Third-Party Site Account as permitted by the
+												applicable terms and conditions. If you choose to register through a
+												Third-Party
+												Site Account, we will obtain the information provided to us by the
+												respective
+												Third-Party site service provider. This may include your "real" name,
+												email
+												address, profile picture, names of friends or groups, publicly available
+												information on the Third-Party site, and any other authorized
+												information.<br>
+												3. Non-personal Identification Information: We may receive and store
+												certain
+												automatic information related to your use and behaviour on the Platform.
+												This
+												can include the areas of the Platform accessed by you and your IP
+												address. These
+												details help us identify popular areas of our Platform and tailor it
+												accordingly.<br>
+												4. Non-personal Identification Information obtained from "Cookies": Our
+												Platform
+												utilizes cookies, which are small pieces of information stored by your
+												browser
+												on your computer's hard drive. Cookies allow your browser to remember
+												specific
+												information about your preferences and make your use of the Platform
+												more
+												convenient. When you visit our Platform, we check if our cookies are
+												present in
+												your browser. These cookies contain information such as your visit
+												history and
+												preferences. You have the option to adjust your browser settings to
+												refuse
+												cookies or receive warnings when they are being used. However, please
+												note that
+												disabling cookies may limit the functionality of our Platform, and we
+												strongly
+												recommend keeping cookies enabled for a seamless experience. We do not
+												retrieve
+												any information from your computer that was not initially sent by us,
+												nor do we
+												provide Third Parties access to or share information obtained from our
+												cookies,
+												except as described above.<br>
+												5. Sensitive Personal Data or Information (SPDI): In certain instances,
+												you may
+												be required to disclose or confirm specific SPDI, such as your health
+												condition
+												or medical history, to ensure the accuracy of the services provided on
+												the
+												Platform. The type of information collected may vary based on your
+												interactions
+												on the Platform. Jyotish Junction commits to protecting the data you
+												provide by
+												implementing reasonable security practices and procedures in compliance
+												with
+												applicable Privacy Laws. By using the Platform, you consent to the
+												disclosure of
+												your SPDI to Third Parties, such as employees of Jyotish Junction, as
+												necessary for
+												them to perform their functions related to the Platform.
+											</p>
+											<p>By agreeing to this Privacy Policy and using our Platform, you
+												acknowledge and
+												consent to the collection, usage, and storage of your information as
+												outlined
+												above. If you do not agree with this Privacy Policy or its terms, please
+												discontinue your use of the Platform. We encourage you to review this
+												Privacy
+												Policy periodically, as it may be updated to align with the development
+												and
+												maturation of the Platform and its content.</p>
+										</div>
+									</div>
 								</div>
 								<div class="terms-text">
-								    <h3>OUR USE AND DISCLOSURE OF YOUR INFORMATION</h3>
-									<p>The information collected from the Platform is utilized by Guruji Speaks for the operation of the Platform, providing you with relevant information, activities, services, features, and resources available on the Platform, as well as enhancing the Platform and the services we offer.</p>
-						            <p>We make every effort to collect only the necessary information that is relevant to record and support your access to the Platform and to provide you with the services offered.</p>
-						            <p>We will not disclose any information about you collected through the Platform to Third Parties, except in the following cases:</p>
-							        <p> 1.	To Our Employees, Contractors, and Agents: Occasionally, we may engage other companies and individuals to perform functions on our behalf. These Third Parties will have access to only the necessary information required to perform their functions and are prohibited from using such information for any other purposes. These Third Parties are obligated to uphold the same level of data protection as agreed upon in this Privacy Policy.<br>
-                                        2.	Where Required by Law: In certain circumstances, we may be compelled by law to disclose your information, such as to law enforcement agencies.<br>
-                                        3.	With Your Consent: Except as described above, we will make an effort to notify you (via your nominated email address) before providing your information to Third Parties and give you the opportunity to opt out of sharing that information.
-                                    </p>
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">OUR USE AND DISCLOSURE OF YOUR INFORMATION</h3>
+										</div>
+										<div class="card-body">
+											<p>The information collected from the Platform is utilized by Jyotish
+												Junction for the
+												operation of the Platform, providing you with relevant information,
+												activities,
+												services, features, and resources available on the Platform, as well as
+												enhancing the Platform and the services we offer.</p>
+											<p>We make every effort to collect only the necessary information that is
+												relevant
+												to record and support your access to the Platform and to provide you
+												with the
+												services offered.</p>
+											<p>We will not disclose any information about you collected through the
+												Platform to
+												Third Parties, except in the following cases:</p>
+											<p> 1. To Our Employees, Contractors, and Agents: Occasionally, we may
+												engage other
+												companies and individuals to perform functions on our behalf. These
+												Third
+												Parties will have access to only the necessary information required to
+												perform
+												their functions and are prohibited from using such information for any
+												other
+												purposes. These Third Parties are obligated to uphold the same level of
+												data
+												protection as agreed upon in this Privacy Policy.<br>
+												2. Where Required by Law: In certain circumstances, we may be compelled
+												by law
+												to disclose your information, such as to law enforcement agencies.<br>
+												3. With Your Consent: Except as described above, we will make an effort
+												to
+												notify you (via your nominated email address) before providing your
+												information
+												to Third Parties and give you the opportunity to opt out of sharing that
+												information.
+											</p>
+										</div>
+									</div>
+								</div>
+								<div class="term-text">
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">SECURITY</h3>
+										</div>
+										<div class="card-body">
+											<p>We prioritize the security, integrity, and privacy of your information,
+												taking
+												precautions to protect it from unauthorized access, alteration,
+												disclosure, or
+												destruction. We implement suitable physical, electronic, and managerial
+												procedures to safeguard your data and maintain data security.</p>
+											<p>However, it is important to note that no method of data protection and
+												transmission is completely secure, and we cannot guarantee absolute
+												security. We
+												are not liable for any breach of security or actions by any Third
+												Parties that
+												receive your information. Despite our efforts, we shall not be held
+												responsible
+												for any loss, damage, or misuse of your information if it is beyond our
+												reasonable control.</p>
+											<p>The security of your information also relies on the password protection
+												system.
+												It is essential that you keep your Account login credentials, including
+												your
+												password, secure and refrain from disclosing them to any Third Parties.
+												While we
+												take utmost care to ensure maximum security, you are solely responsible
+												for
+												maintaining the confidentiality of your Account login credentials. If
+												you
+												suspect that your password has been disclosed or unauthorized use of
+												your
+												Account has occurred, or if you notice any other breach of security,
+												please
+												notify us immediately.</p>
+										</div>
+									</div>
+								</div>
+								<div class="terms-text">
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">ACCESSING, UPDATING, DELETING, AND AMENDING YOUR INFORMATION</h3>
+										</div>
+										<div class="card-body">
+											<p>You have the right to request access to the information we hold about
+												you. We
+												will provide access to that information in accordance with applicable
+												laws,
+												although certain exemptions may apply. An administration fee may be
+												charged for
+												granting access to information.</p>
+											<p>We will make reasonable efforts to accurately record the information you
+												provide
+												to us, including any subsequent updates. You have the ability to review,
+												update,
+												and amend the information we maintain about you. Furthermore, you may
+												request
+												the deletion of inaccurate, incomplete, or irrelevant information, or
+												information processed in violation of applicable legal requirements.
+												Your rights
+												regarding the review, update, amendment, and deletion of your
+												information are
+												subject to applicable laws, including any statutory retention
+												requirements.</p>
+										</div>
+									</div>
+								</div>
+								<div class="terms-text">
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">OTHER IMPORTANT INFORMATION</h3>
+										</div>
+										<div class="card-body">
+											<p>The Platform may contain links to other applications or websites. Except
+												for
+												other platforms owned by Jyotish Junction, you acknowledge and agree
+												that these
+												applications and websites are operated by Third Parties and are not
+												controlled,
+												affiliated, or associated with us unless expressly specified. Therefore,
+												we do
+												not govern the privacy practices or policies of these Third-Party
+												applications
+												and websites accessed through links from our Platform. If you have any
+												concerns
+												regarding the privacy practices and policies of these Third-Party
+												platforms,
+												please contact the respective companies directly.</p>
+											<p>This Privacy Policy does not guarantee that we will collect or store any
+												information about you or your use of the Platform. You are responsible
+												for
+												maintaining your own records relating to your use of the Platform and
+												any
+												transactions conducted through it, and for complying with any applicable
+												record-keeping legislation.</p>
+
+										</div>
+									</div>
+								</div>
+								<div class="terms-text">
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">AMENDMENT TO THE POLICY</h3>
+										</div>
+										<div class="card-body">
+											<p>Jyotish Junction reserves the right to update this Privacy Policy at any
+												time. We
+												encourage you to regularly check this page to stay informed about any
+												changes.
+												By continuing to use our Platform after any changes to the Privacy
+												Policy have
+												been made, you signify your acceptance of those changes.</p>
+										</div>
+									</div>
+								</div>
+								<div class="terms-text">
+									<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+										<div class="card-title">
+											<h3 class="text-center mt-4">CONTACT</h3>
+										</div>
+										<div class="card-body">
+											<!-- <p>If you have any queries regarding the processing or usage of the
+												information you
+												provided or this Privacy Policy, you may contact our Grievance Officer,
+												Mr.
+												Saurabh Tyagi, Head of Product & Technology, at <a
+													href="jyotishjunction11@gmail.com">jyotishjunction11@gmail.com </a>
+												or write to us at
+												the following address:</p>
+											<p>NKB Divine Vedic Sciences E 939, Gaur Cascades Rajnagar Extension
+												Ghaziabad
+												201017, Uttar Pradesh, India Attention: Saurabh Tyagi.</p> -->
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="term-text">
-							    <h3>SECURITY</h3>
-							    <p>We prioritize the security, integrity, and privacy of your information, taking precautions to protect it from unauthorized access, alteration, disclosure, or destruction. We implement suitable physical, electronic, and managerial procedures to safeguard your data and maintain data security.</p>
-							    <p>However, it is important to note that no method of data protection and transmission is completely secure, and we cannot guarantee absolute security. We are not liable for any breach of security or actions by any Third Parties that receive your information. Despite our efforts, we shall not be held responsible for any loss, damage, or misuse of your information if it is beyond our reasonable control.</p>
-							    <p>The security of your information also relies on the password protection system. It is essential that you keep your Account login credentials, including your password, secure and refrain from disclosing them to any Third Parties. While we take utmost care to ensure maximum security, you are solely responsible for maintaining the confidentiality of your Account login credentials. If you suspect that your password has been disclosed or unauthorized use of your Account has occurred, or if you notice any other breach of security, please notify us immediately.</p>
-							</div>
-							<div class="terms-text">
-							    <h3>ACCESSING, UPDATING, DELETING, AND AMENDING YOUR INFORMATION</h3>
-							    <p>You have the right to request access to the information we hold about you. We will provide access to that information in accordance with applicable laws, although certain exemptions may apply. An administration fee may be charged for granting access to information.</p>
-							    <p>We will make reasonable efforts to accurately record the information you provide to us, including any subsequent updates. You have the ability to review, update, and amend the information we maintain about you. Furthermore, you may request the deletion of inaccurate, incomplete, or irrelevant information, or information processed in violation of applicable legal requirements. Your rights regarding the review, update, amendment, and deletion of your information are subject to applicable laws, including any statutory retention requirements.</p>
-							</div>
-							<div class="terms-text">
-							    <h3>OTHER IMPORTANT INFORMATION</h3>
-							    <p>The Platform may contain links to other applications or websites. Except for other platforms owned by Guruji Speaks, you acknowledge and agree that these applications and websites are operated by Third Parties and are not controlled, affiliated, or associated with us unless expressly specified. Therefore, we do not govern the privacy practices or policies of these Third-Party applications and websites accessed through links from our Platform. If you have any concerns regarding the privacy practices and policies of these Third-Party platforms, please contact the respective companies directly.</p>
-				                <p>This Privacy Policy does not guarantee that we will collect or store any information about you or your use of the Platform. You are responsible for maintaining your own records relating to your use of the Platform and any transactions conducted through it, and for complying with any applicable record-keeping legislation.</p>			
-							</div>
-							<div class="terms-text">
-							    <h3>AMENDMENT TO THE POLICY</h3>
-							    <p>Guruji Speaks reserves the right to update this Privacy Policy at any time. We encourage you to regularly check this page to stay informed about any changes. By continuing to use our Platform after any changes to the Privacy Policy have been made, you signify your acceptance of those changes.</p>
-							</div>
-							<div class="terms-text">
-							    <h3>CONTACT</h3>
-							    <p>If you have any queries regarding the processing or usage of the information you provided or this Privacy Policy, you may contact our Grievance Officer, Mr. Saurabh Tyagi, Head of Product & Technology, at <a href="care@gurujispeaks.com">care@gurujispeaks.com </a> or write to us at the following address:</p>
-						        <p>NKB Divine Vedic Sciences E 939, Gaur Cascades Rajnagar Extension Ghaziabad 201017, Uttar Pradesh, India Attention: Saurabh Tyagi.</p>
 						</div>
-					</div>
-				</div>
-			</section>
-			<!-- /Privacy Policy -->			
+		</section>
+		<!-- /Privacy Policy -->
 
-			<!-- Footer -->
-			
-			<!-- /Footer -->
+		<!-- Footer -->
 
-			<!-- Cursor -->
-			<!--<div class="mouse-cursor cursor-outer"></div>-->
-			<!--<div class="mouse-cursor cursor-inner"></div>-->
-			<!-- /Cursor -->
-		
-		</div>		
-		<!-- /Main Wrapper -->
-	
-		<!-- jQuery -->
-		<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
-		
-		<!-- Bootstrap Bundle JS -->
-		<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-		
-		<!-- Feather Icon JS -->
-		<script src="{% static 'assets/js/feather.min.js' %}"></script>
-				
-		<!-- Custom JS -->
-		<script src="{% static 'assets/js/script.js' %}"></script>
-	
-	</body>
+		<!-- /Footer -->
+
+		<!-- Cursor -->
+		<!--<div class="mouse-cursor cursor-outer"></div>-->
+		<!--<div class="mouse-cursor cursor-inner"></div>-->
+		<!-- /Cursor -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
+	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+	<!-- Bootstrap Bundle JS -->
+	<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+	<!-- Custom JS -->
+	<script src="{% static 'assets/js/script.js' %}"></script>
+
+</body>
+
 </html>
 
 {% endblock %}

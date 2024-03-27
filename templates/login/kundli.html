@@ -1,0 +1,151 @@
+{% extends 'customer_base.html' %} {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,">
+    <title>Jyotish Junction</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icons" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+    <!-- Datepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!-- font-family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        .main-wrapper.home-ten .book-appointment-section .book-appointment-ten {
+            padding: 50px;
+            /* background: #0E82FD; */
+            background: -webkit-linear-gradient(#F1D06B, #F1D06B);
+            border-radius: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-wrapper.home-ten .book-appointment-section .book-appointment-ten h2 {
+            color: #000;
+            margin-bottom: 24px;
+        }
+
+        .main-wrapper.home-ten .book-appointment-section .book-appointment-ten p {
+            max-width: 640px !important;
+            margin: auto;
+            margin-bottom: 50px;
+            color: #000;
+        }
+
+
+        .main-wrapper.home-ten .book-appointment-section .book-appointment-ten .appointment-btn-group a {
+            padding: 14px 40px;
+            border-radius: 35px;
+            border: 2px solid #000;
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            box-shadow: inset 0 0 0 0 #ffffff;
+            transition: all 0.7s;
+        }
+
+        .btn-primary {
+            background-color: #000;
+            border: 1px solid #000;
+            color: #F1D06B;
+        }
+
+        .main-wrapper.home-ten .book-appointment-section .book-appointment-ten .appointment-btn-group a:hover {
+            box-shadow: inset 0 0 0 50px #ffffff;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper home-ten">
+        <section class="book-appointment-section aos aos-init aos-animate" data-aos="fade-up">
+            <div class="container">
+                <div class="book-appointment-ten text-center">
+                    <div class="book-section-bg">
+                        <img src="{% static 'assets/img/bg/hexagen-group-3.png' %}" alt="design-image">
+                        <img src="{% static 'assets/img/bg/hand.png' %}" alt="hand-image">
+                        <img src="{% static 'assets/img/bg/heart-plus.png' %}" alt="heart-plus">
+                    </div>
+                    <h2>Book An Appointment Today</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it to make a type specimen book.</p>
+                    <div class="appointment-btn-group">
+                        <a href="/request/" class="btn btn-primary me-2">Horoscope</a>
+                        <a href="/one/" class="btn btn-primary ">Panchang</a>
+                        <!-- <a href="booking.html" class="appointment-blue-btn">Start a Consult</a>
+                <a href="pricing.html">Click Our Plan</a> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
+
+    <!-- Bootstrap Bundle JS -->
+    <!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
+
+    <!-- Feather Icon JS -->
+    <script src="{% static 'assets/js/feather.min.js' %}"></script>
+
+    <!-- Datepicker JS -->
+    <script src="{% static 'assets/js/moment.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+
+    <!-- Slick JS -->
+    <script src="{% static 'assets/js/slick.js' %}"></script>
+
+    <!-- Animation JS -->
+    <script src="{% static 'assets/js/aos.js' %}"></script>
+
+    <!-- Counter JS -->
+    <script src="assets/js/counter.js"></script>
+
+    <!-- BacktoTop JS -->
+    <script src="{% static 'assets/js/backToTop.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'assets/js/script.js' %}"></script>
+</body>
+
+</html>
+
+
+{% endblock %}

@@ -6,10 +6,10 @@
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-		<title>Guruji Speaks</title>
+		<title>Jyotish Junction</title>
 		
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" type="image/x-icon">
+		<link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
 		
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css' %}">
@@ -39,7 +39,8 @@
 			.login-content-info {
 				margin: 0;
 				padding: 30px 0 60px;
-				background-image: url("{%static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
+				/*background-image: url("{%static 'assets/img/GrujiSpeaks-img/background_new.png' %}");*/
+				background-color: #000;
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
@@ -58,9 +59,9 @@
 
 			.login-content-info .account-content .account-info .btn {
 				width: 100%;
-				color: #ffffff;
-				background: #1c3264;
-				border: 1px solid #1c3264;
+				color: #ffe073;
+				background: #000;
+				border: 1px solid #000;
 				box-shadow: inset 0 0 0 0 #ffffff;
 				-webkit-transition: 0.7s;
 				-ms-transition: 0.7s;
@@ -69,8 +70,23 @@
 				padding: 10px 15px;
 			}
 
+			.login-content-info .account-content .account-info .btn:hover {
+				color: #000;
+				background: #ffffff;
+				border: 1px solid #000;
+				box-shadow: inset 0 0 0 50px #ffffff;
+				-webkit-transition: 0.7s;
+				-ms-transition: 0.7s;
+				transition: 0.7s;
+			}
+
 			.iti{
 				width: 100% !important;
+			}
+
+			.bg-light
+			{
+				background: -webkit-linear-gradient(#F1D06B, #E0E0E0);;
 			}
 		</style>
 	</head>		
@@ -87,24 +103,25 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-4 col-md-6 bg-light p-4 rounded">
 							<div class="account-content">
-								<div class="login-shapes">
+								<!-- <div class="login-shapes">
 									<div class="shape-img-left">
 										<img src="{%static 'assets/img/shape-01.png' %}" alt="">
 									</div>
 									<div class="shape-img-right">
 										<img src="{%static 'assets/img/shape-02.png' %}" alt="">
 									</div>
-								</div>
+								</div> -->
 								<div class="widget-set">
 									<div class="account-info">
 										<div class="widget-content multistep-form">
 											<fieldset id="first">
 												<div class="login-back">
-													<a href="/astrologer-login/"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+													<a href="/astrologer-login/"  style="color: #000;"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
 												</div>
 												<div class="login-title">
 													<h3>Astrologer Signup</h3>
-													<p class="mb-0">Welcome! Please.</p>
+													<!-- <h3>Astrologer Signup</h3> -->
+													<!-- <p class="mb-0">Welcome! Please.</p> -->
 												</div>
 												
 												<form action="" method = 'post' id="form" onsubmit="return validateForm()">

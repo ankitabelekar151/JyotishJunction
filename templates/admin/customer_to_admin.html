@@ -155,7 +155,7 @@
 																	</tr>
 																</thead>
 																<tbody>
-																	{% for i in customer_plan %}
+																	{% for i in customer_plan reversed %}
 																	{% for k in cust_set %}
 																	{% if i.cust_email_id == k.user and i.invoice_number == k.order_id and k.comment2 == "" and k.astro_email_id == "" %}
 																	
@@ -167,7 +167,7 @@
 																			{{ i.invoice_number }}
 																		</td>
 																		<td>
-																			{{ i.purchase_date }} <br>{{i.plan_purchase_time}}
+																			{{ i.plan_purchase_date }} <br>{{i.plan_purchase_time}}
 																		</td>
 																		
 																		<td>
@@ -216,7 +216,7 @@
 																</tr>
 															</thead>
 															<tbody>
-																{% for i in customer_plan %}
+																{% for i in customer_plan reversed %}
 																{% for k in cust_set %}
 																{% if i.cust_email_id == k.user and i.invoice_number == k.order_id and k.comment2 == "" and k.astro_email_id %}
 																
@@ -277,7 +277,7 @@
 																	</tr>
 																</thead>
 																<tbody>
-																	{% for i in customer_plan %}
+																	{% for i in customer_plan reversed %}
 																	{% for k in cust_set %}
 																	{% if i.cust_email_id == k.user and i.invoice_number == k.order_id and k.comment2 and k.astro_email_id %}
 																	<tr>

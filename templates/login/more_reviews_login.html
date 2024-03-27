@@ -1,0 +1,88 @@
+{% extends 'customer_base.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Reviews</title>
+
+    <style>
+        /* Add CSS styles for the star rating */
+        .star-rating {
+           display: inline-block;
+         }
+         
+         .star-rating input {
+           display: none;
+         }
+         
+         .star-rating label {
+           float: right;
+           cursor: pointer;
+           color: #ccc;
+           font-size: 30px;
+         }
+         
+         .star-rating label:before {
+           content: '\2605'; /* Unicode character for a star */
+         }
+         
+         .star-rating input:checked ~ label {
+           color: #ffdd00; /* Yellow color for selected stars */
+         }
+    </style>
+    
+</head>
+<body>
+    <div class="blog-section-fourteen">
+        <div class="container">
+            <div class="row">
+                {% for user in users %}
+                    <div class="col-xl-4 col-lg-4 col-md-6 aos aos-init aos-animate" data-aos="fade-up">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="specialist-card d-flex">
+                                    <div class="specialist-img">
+                                        {% comment %} <img src="{% if user.images %}{{ user.image }}{% else %}https://via.placeholder.com/80?text=No+Image{% endif %}"  class="rounded-circle" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;"> {% endcomment %}
+                                        {% if user.image %}
+                                            <img src="{{ user.image.url }}" alt="Profile Picture" class="rounded-circle" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
+                                        {% else %}
+                                            {% comment %} <img src="https://plchldr.co/i/500x250" alt="plchldr.co" class="rounded-circle" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;"> {% endcomment %}
+                                            <img src="https://eu.ui-avatars.com/api/?name={{ user.first_name }}+{{ user.last_name }}&size=250" alt="Example Image" class="rounded-circle" style="vertical-align: middle; width: 50px; height: 50px; border-radius: 50%;">
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="specialist-info">
+                                        <h3 style="color: #000; font-weight:bold">{{ user.first_name }} </h3><br>
+                                        <p style="color: #000; height:60px">{{ user.review_comments1 }}</p><br>
+                                        {% comment %} <p style="color: #000;"> {{ user.review_star1 }}</p> {% endcomment %}
+                                        <fieldset class="star-rating">
+                                            <input type="radio" id="star5_{{ user.id }}" name="review_star1{{ user.id }}" value="5"            {% if user.review_star1 == '5' %} checked {% endif %} disabled>
+                                            <label for="star5_{{ user.id }}"></label>
+                                            <input type="radio" id="star4_{{ user.id }}" name="review_star1{{ user.id }}" value="4"
+                                            {% if user.review_star1 == '4' %} checked {% endif %} disabled>
+                                            <label for="star4_{{ user.id }}"></label>
+                                            <input type="radio" id="star3_{{ user.id }}" name="review_star1{{ user.id }}" value="3" 
+                                            {% if user.review_star1 == '3' %}checked {% endif %} disabled>
+                                            <label for="star3_{{ user.id }}"></label>
+                                            <input type="radio" id="star2_{{ user.id }}" name="review_star1{{ user.id }}" value="2" 
+                                            {% if user.review_star1 == '2' %}checked {% endif %} disabled>
+                                            <label for="star2_{{ user.id }}"></label>
+                                            <input type="radio" id="star1_{{ user.id }}" name="review_star1{{ user.id }}" value="1" 
+                                            {% if user.review_star1 == '1' %}checked {% endif %} disabled>
+                                            <label for="star1_{{ user.id }}"></label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

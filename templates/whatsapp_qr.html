@@ -1,5 +1,5 @@
 <!doctype html>
- {% load static %}
+{% load static %}
 <html lang="en">
 
 <head>
@@ -85,9 +85,11 @@
                         <div class="d-flex justify-content-around">
                             <p>Scan QR code to connect </p>
                             <div>
-                                <a href="https://api.whatsapp.com/send?phone={{ user_phone }}&text={{ message }}">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?data=whatsapp://send?phone={{ user_phone }}&text={{ message }}" alt="WhatsApp QR Code">
-                                </a>
+                                {% comment %} <a href="https://api.whatsapp.com/send?phone={{ user_phone }}&text={{ message }}">
+                                     <img src="{% url 'generate_qr_code' %}" alt="WhatsApp QR Code" style="width: 200px; height: 200px;">
+                                </a> {% endcomment %}
+
+                                <img src="{% url 'generate_qr_code' %}" alt="WhatsApp QR Code" style="width: 200px; height: 200px;">
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,7 @@
 	<head>
 		
 		<meta charset="utf-8">
-		<title>Guruji Speaks</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
         <link rel="stylesheet" href="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
@@ -45,7 +45,7 @@
 		}
 
 		.breadcrumb-bar-two {
-			background: #F2F6F6;
+			background:  -webkit-linear-gradient( #E0E0E0, #F1D06B);
 			background-repeat: no-repeat;
 			padding-top: 0px !important;
 			min-height: 0px !important;
@@ -67,6 +67,12 @@
 		{
 			color: Red;
 			visibility: hidden;
+		}
+
+		.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+			font-weight: 600;
+			font-size: 25px;
+			margin-bottom: 6px;
 		}
 	</style>
 
@@ -102,7 +108,7 @@
 						<div class="col-md-7 col-lg-8 col-xl-12">
 						
 							<!-- Basic Information -->
-							<div class="card">
+							<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 								<div class="card-body">
 									<form enctype="multipart/form-data"  action="{% url 'astro_profile' %}" method="post" onsubmit="return validateForm()">
 
@@ -126,10 +132,9 @@
 														</div>
 														<small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
 													</div>
-													</div>
+												</div>
 											</div>
 										</div>
-
 
 
                                         <div class="col-md-6">
@@ -278,7 +283,7 @@
 							<!-- /Basic Information -->
 							
 							<!-- About Me -->
-							<div class="card">
+							<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 								<div class="card-body">
 									<h4 class="card-title">About Me<span class="text-danger">*</span></h4>
 									<div class="form-group mb-0">
@@ -289,7 +294,7 @@
 							<!-- /About Me -->
 
 							<!-- Contact Details -->
-							<div class="card ">
+							<div class="card " style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 								<div class="card-body">
 									<h4 class="card-title">Contact Details<span class="text-danger">*</span></h4>
 									<div class="row form-row">
@@ -344,7 +349,7 @@
 							<!-- /Pricing -->
 						
 							<!-- Experience -->
-							<div class="card">
+							<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 								<div class="card-body">
 									<h4 class="card-title">Experience<span class="text-danger">*</span></h4>
 									<div class="experience-info">
@@ -385,7 +390,7 @@
 							<div class="submit-section">
 								<!-- <input type="submit" class="btn  prime-btn">Save Changes</button> -->
                                 <!-- <input type="submit" style="background-color: #00569d; color: #fff; " class="btn btn-primary " >Submit -->
-                                <button type="submit" class="btn btn-primary" style="background-color: #00569d; color: #fff; border: 1px solid #00569d;" >Save</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #000; color: #F1D06B; border: 1px solid #000;" >Save</button>
 							</div>
                         </form>
 							

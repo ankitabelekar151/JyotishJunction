@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  
+    path('', include('agora_app.urls')),
+    path('admin/', admin.site.urls), 
     path('ask_ques_login/',views.ask_ques_login,name="ask_ques_login"),
     path('ask_ques_signup/',views.ask_ques_signup,name="ask_ques_signup"), 
     path('customer-recharge/<int:paisa>/',views.customer_recharge,name="customer-recharge"),
@@ -165,6 +166,7 @@ urlpatterns = [
     path('after_login_cus/',views.after_login_cus,name='after_login_cus'),
 
     path('whatsapp_qr/',views.whatsapp_qr,name='whatsapp_qr'),
+    path('generate-qr-code/', views.generate_qr_code, name='generate_qr_code'),
     
 
 
@@ -186,6 +188,7 @@ urlpatterns = [
     path("", include("Supports_faq.urls")),
     path("", include("admin_app.urls")),
     path('ckeditor', include('ckeditor_uploader.urls')), 
+    path('', include('voice_calling.urls')),
 
     path('dash_customer/',views.dash_customer,name='dash_customer'),
     # path('dash_admin/',views.dash_admin,name='dash_admin'),
@@ -206,13 +209,91 @@ urlpatterns = [
 
     # path('astro_admin_approved/',views.astro_admin_approved, name="astro_admin_approved"),
     # path('approve_astrologer/<int:user_id>/', views.approve_astrologer, name='approve_astrologer'),
-    # path('admin_approval_astro/',views.admin_approval_astro, name="admin_approval_astro"),
+    path('admin_approval_astro/',views.admin_approval_astro, name="admin_approval_astro"),
     path('execute_payment/', views.execute_payment, name='execute_payment'),
     path('payment_success/', views.payment_success, name='payment_success'),
     path('payment_cancel/', views.payment_cancel, name='payment_cancel'),
+    path('kundli/', views.kundli, name='kundli'),
+    # path('horoscope/', views.horoscope, name='horoscope'),
+    path('panchang/', views.panchang, name='panchang'),
+    path('papasamaya/', views.papasamaya_view, name='papasamaya'),
+    path('request/', views.api_request_form, name='api_request_form'),
+    path('before_api_request_form/', views.before_api_request_form, name='before_api_request_form'),
+    path('panchang_one/', views.panchang_one, name='panchang_one'),
+    path('save_enquiry/',views.save_enquiry,name='save_enquiry'),
+    path('more_reviews/',views.more_reviews,name='more_reviews'),
+    path('more_reviews_login/',views.more_reviews_login,name='more_reviews_login'),
     
     # path('fail_payment/', views.fail_payment, name='fail_payment'),
     # path('rrr/', views.rrr, name='rrr'),
+    
 
+    path('aries_daily/',views.aries_daily,name='aries_daily'),
+    path('taurus_daily/',views.taurus_daily,name='taurus_daily'),
+    path('gemini_daily/',views.gemini_daily,name='gemini_daily'),
+    path('cancer_daily/',views.cancer_daily,name='cancer_daily'),
+    path('leo_daily/',views.leo_daily,name='leo_daily'),
+    path('virgo_daily/',views.virgo_daily,name='virgo_daily'),
+    path('libra_daily/',views.libra_daily,name='libra_daily'),
+    path('scorpio_daily/',views.scorpio_daily,name='scorpio_daily'),
+    path('sagittarius_daily/',views.sagittarius_daily,name='sagittarius_daily'),
+    path('capricorn_daily/',views.capricorn_daily,name='capricorn_daily'),
+    path('aquarius_daily/',views.aquarius_daily,name='aquarius_daily'),
+    path('pisces_daily/',views.pisces_daily,name='pisces_daily'),
 
+    path('before_aries_daily/',views.before_aries_daily,name='before_aries_daily'),
+    path('before_taurus_daily/',views.before_taurus_daily,name='before_taurus_daily'),
+    path('before_gemini_daily/',views.before_gemini_daily,name='before_gemini_daily'),
+    path('before_cancer_daily/',views.before_cancer_daily,name='before_cancer_daily'),
+    path('before_leo_daily/',views.before_leo_daily,name='before_leo_daily'),
+    path('before_virgo_daily/',views.before_virgo_daily,name='before_virgo_daily'),
+    path('before_libra_daily/',views.before_libra_daily,name='before_libra_daily'),
+    path('before_scorpio_daily/',views.before_scorpio_daily,name='before_scorpio_daily'),
+    path('before_sagittarius_daily/',views.before_sagittarius_daily,name='before_sagittarius_daily'),
+    path('before_capricorn_daily/',views.before_capricorn_daily,name='before_capricorn_daily'),
+    path('before_aquarius_daily/',views.before_aquarius_daily,name='before_aquarius_daily'),
+    path('before_pisces_daily/',views.before_pisces_daily,name='before_pisces_daily'),
+    
+    path('aries_monthly/',views.aries_monthly,name='aries_monthly'),
+    path('taurus_monthly/',views.taurus_monthly,name='taurus_monthly'),
+    path('gemini_monthly/',views.gemini_monthly,name='gemini_monthly'),
+    path('cancer_monthly/',views.cancer_monthly,name='cancer_monthly'),
+    path('leo_monthly/',views.leo_monthly,name='leo_monthly'),
+    path('virgo_monthly/',views.virgo_monthly,name='virgo_monthly'),
+    path('libra_monthly/',views.libra_monthly,name='libra_monthly'),
+    path('scorpio_monthly/',views.scorpio_monthly,name='scorpio_monthly'),
+    path('sagittarius_monthly/',views.sagittarius_monthly,name='sagittarius_monthly'),
+    path('capricorn_monthly/',views.capricorn_monthly,name='capricorn_monthly'),
+    path('aquarius_monthly/',views.aquarius_monthly,name='aquarius_monthly'),
+    path('pisces_monthly/',views.pisces_monthly,name='pisces_monthly'),
+
+    path('aries_weekly/',views.aries_weekly,name='aries_weekly'),
+    path('taurus_weekly/',views.taurus_weekly,name='taurus_weekly'),
+    path('gemini_weekly/',views.gemini_weekly,name='gemini_weekly'),
+    path('cancer_weekly/',views.cancer_weekly,name='cancer_weekly'),
+    path('leo_weekly/',views.leo_weekly,name='leo_weekly'),
+    path('virgo_weekly/',views.virgo_weekly,name='virgo_weekly'),
+    path('libra_weekly/',views.libra_weekly,name='libra_weekly'),
+    path('scorpio_weekly/',views.scorpio_weekly,name='scorpio_weekly'),
+    path('sagittarius_weekly/',views.sagittarius_weekly,name='sagittarius_weekly'),
+    path('capricorn_weekly/',views.capricorn_weekly,name='capricorn_weekly'),
+    path('aquarius_weekly/',views.aquarius_weekly,name='aquarius_weekly'),
+    path('pisces_weeekly/',views.pisces_weeekly,name='pisces_weeekly'),
+    
+    path('love/',views.love,name='love'),
+    path('career/',views.career,name='career'),
+    path('luck/',views.luck,name='luck'),
+
+    path('love_login/',views.love_login,name='love_login'),
+    path('career_login/',views.career_login,name='career_login'),
+    path('luck_login/',views.luck_login,name='luck_login'),
+
+    path('generate_otp/', views.send_email_otp, name='generate_otp'),
+    path('chatbot/', views.chatbot, name='chatbot'),
+    # path("delete/", views.DeleteHistory, name='deleteChat'),
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)

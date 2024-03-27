@@ -6,6 +6,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            
         }
         h1 {
             color: #333;
@@ -14,7 +15,7 @@
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
-            background: #fff;
+            background: #000;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -39,7 +40,7 @@
             cursor: pointer;
         }
         button[type="submit"]:hover {
-            background: #555;
+           border-color: #000 !important;
         }
     </style>
 </head>
@@ -92,10 +93,10 @@
 		<style>
 
 			.login-body{
-				background-image: url("{% static 'assets/img/GrujiSpeaks-img/background_new.png' %}");
 				background-repeat: no-repeat;
 				background-position: center;
 				background-size: cover;
+				background-color: black;
 			}
 
 			.login-content-info {
@@ -132,13 +133,24 @@
 				color: #000000;
 				outline: none;
 			}
+			/* reset button  */
+		.btn-primary {
+			background-color: #000 !important;
+			border: 1px solid #000 !important;
+		}
+		.btn-primary:hover, .btn-primary:active, .btn-primary.active {
+			color: #000 !important;
+			background-color: #fff !important;
+			border-color: #000 !important;
+		}
+
 		</style>
 
 	</head>		
 	<body class="login-body">
 
 		<!-- Main Wrapper -->
-		<div class="main-wrapper">
+		<div class="main-wrapper" style="background-color: black !important ;">
 
 			<!-- Page Content -->
 			<div class="login-content-info">
@@ -193,7 +205,7 @@
 											</div>
 										</div>
 										<div class="reset-btn">
-											<button class="btn btn-block" type="submit">Submit</button>
+											<button class="btn btn-primary w-100 btn-lg login-btn" type="submit">Submit</button>
 										</div>
 									</form>
 								</div>

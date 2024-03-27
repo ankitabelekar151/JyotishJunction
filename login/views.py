@@ -33,7 +33,7 @@ import base64
 import random
 from django.contrib.auth.decorators import login_required
 import string
-
+from django.contrib import messages
 
 
 # def send_sms(recipient_numbers):
@@ -274,20 +274,20 @@ def astrologer_signup(request):
 
         # sms
         recipient_number = [whatsapp_no]  
-        send_sms(recipient_number,name)
+        # send_sms(recipient_number,name)
         # Save the job_id in the user's model instance
         
         # end sms
 
         subject = 'Welcome to Our Astrologer Platform'
         message = f"Dear {name},\n\n" \
-          f"Welcome to Guruji Speaks. We are thrilled to have you on-board. Kindly note, we will be having verification call soon for the process forward. \n\nYou cannot Login Until Admin Approve \n\n" \
+          f"Welcome to Jyotish Junction. We are thrilled to have you on-board. Kindly note, we will be having verification call soon for the process forward. \n\nYou cannot Login Until Admin Approve \n\n" \
           f"Looking forward to speaking to you soon.\n\n" \
           f"Best Regards,\n" \
-          f"Team Guruji Speaks"
-        from_email = settings.CAREERS_FROM_EMAIL
+          f"Team Jyotish Junction"
+        from_email = settings.CAR_FROM_EMAIL
         recipient_list = [email_id]
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=settings.EMAIL_HOST_USER_CAREERS, auth_password=settings.EMAIL_HOST_PASSWORD_CAREERS, connection=None)
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=settings.EMAIL_HOST_USER, auth_password=settings.EMAIL_HOST_PASSWORD, connection=None)
 
         return redirect('/astrologer-login/')
         
@@ -309,39 +309,6 @@ def generate_random_transaction_id():
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.hashers import check_password
 import re
-
-# def astrologer_changepass(request):
-#     print(request.user.email_id)
-#     error_message = ''
-#     message = ''
-#     print(request.user.email_id)
-#     data = GurujiUsers.objects.get(email_id=request.user.email_id)
-#     print('data', data)
-#     if request.method == 'POST':
-#         user_id = request.POST.get('user_id')
-#         password = request.POST.get('password')
-#         new_pass1 = request.POST.get('new_pass1')
-#         new_pass2 = request.POST.get('new_pass2')
-
-#         if new_pass1 and new_pass2:
-#             if new_pass1 != new_pass2:
-#                 error_message = 'Passwords do not match.'
-#             elif len(new_pass1) < 8:
-#                 error_message = 'Password must be at least 8 characters long.'
-#             elif len(new_pass1) > 100:
-#                 error_message = 'Password cannot exceed 100 characters.'    
-#             # elif not re.match(r'^(?=.*[a-z])(?=.*[@!#$])(?=.*[0-9])[a-z0-9@!#$]{8,}$', new_pass1):
-#             #     error_message = 'Password must contain lowercase letters (a to z),numbers (0 to 9) and at least one of the symbols @, !, #, or $.'
-#             else:
-#                 user = GurujiUsers.objects.get(user_id=request.user.user_id)
-#                 check_password(password, user.password)
-#                 user.password = make_password(new_pass1)
-#                 user.save()
-#                 message = 'Password updated successfully.'
-                
-#                 if request.user.is_astrologer:
-#                     return redirect('/astrologer-login/')
-#     return render(request, 'login/changepass_astrologer.html', {'error_message': error_message, 'message': message})
 
 
 
@@ -390,49 +357,6 @@ def astrologer_changepass(request):
 
 
 
-
-# def astrologer_changepass(request):
-#     print(request.user.email_id)
-#     error_message = ''
-#     message = ''
-#     print(request.user.email_id)
-    
-#     if request.method == 'POST':
-#         user = GurujiUsers.objects.get(email_id=request.user.email_id)
-        
-#         # Get the submitted passwords
-#         old_password = request.POST.get('password')
-#         new_password1 = request.POST.get('new_pass1')
-#         new_password2 = request.POST.get('new_pass2')
-        
-#         # Verify that the old password is correct
-#         if check_password(old_password, user.password):
-#             if new_password1 and new_password2:
-#                 if new_password1 != new_password2:
-#                     error_message = 'Passwords do not match.'
-#                 elif len(new_password1) < 8:
-#                     error_message = 'Password must be at least 8 characters long.'
-#                 elif len(new_password1) > 100:
-#                     error_message = 'Password cannot exceed 100 characters.'
-#                 elif not re.match(r'^(?=.*[a-zA-Z])(?=.*[@!#$])(?=.*[0-9])[a-zA-Z0-9@!#$]{8,}$', new_password1):
-#                     error_message = 'Password must contain lowercase and uppercase letters (a to z or A to Z), numbers (0 to 9), and at least one of the symbols @, !, #, or $.'
-#                 else:
-#                     user.password = make_password(new_password1)
-#                     user.save()
-#                     message = 'Password updated successfully.'
-#                     if request.user.is_customer:
-#                         return redirect('/changepass/')
-#                     if request.user.is_admin:
-#                         return redirect('/admin-login/')
-#                     if request.user.is_astrologer:
-#                         return redirect('/astrologer-login/')
-#         else:
-#             error_message = 'Incorrect old password.'
-    
-#     return render(request, 'login/changepass_astrologer.html', {'error_message': error_message, 'message': message})
-  
-
-
 from admin_app.models import BlogPost  
 from Business_setting import *
 
@@ -442,8 +366,11 @@ from Business_setting import *
 def after_login_cus(request):
     banner = BannerPost.objects.all()
     blog = BlogPost.objects.all()
-    return render (request,'login/customer_home.html',{'blog':blog,'banner':banner})
-	   
+    user = GurujiUsers.objects.get(email_id=request.user)
+    users_with_ratings = GurujiUsers.objects.exclude(Q(review_comments1='') | Q(review_star1='')).order_by('-id')[:3]
+    return render (request,'login/customer_home.html',{'blog':blog,'banner':banner,
+        'users':users_with_ratings})
+
 
 # original
 
@@ -484,95 +411,95 @@ def generate_random_otp():
 
 
 
-def forgot_sms_otp(recipient_numbers,name,otp):
-    # EnableX credentials
-    app_id = "64b4bd31112b540fbd054d49"
-    app_key = "Wa4eAuUy5yhyEe5yyeRaueteguXa8y5ayeey"  
+# def forgot_sms_otp(recipient_numbers,name,otp):
+#     # EnableX credentials
+#     app_id = "64b4bd31112b540fbd054d49"
+#     app_key = "Wa4eAuUy5yhyEe5yyeRaueteguXa8y5ayeey"  
 
-    # SMS details
-    sender_id = "NKBDVN"
-    var1 = name
-    var2 = otp # Replace this with the actual value you want to pass
-    # Template message with {$ var1} placeholder
-    # message_template = "Hello {$var1}, Welcome your registration is successful. Start your astrological journey now. Regards NKB Divine Divine Vedic Sciences"
+#     # SMS details
+#     sender_id = "NKBDVN"
+#     var1 = name
+#     var2 = otp # Replace this with the actual value you want to pass
+#     # Template message with {$ var1} placeholder
+#     # message_template = "Hello {$var1}, Welcome your registration is successful. Start your astrological journey now. Regards NKB Divine Divine Vedic Sciences"
 
-    # Replace {$ var1} with the actual value
-    message_template = "Hi {$var1}, Your OTP for Guruji Speaks password reset is {$var2}. Please use it to reset your password securely. Regards NKB Divine"
+#     # Replace {$ var1} with the actual value
+#     message_template = "Hi {$var1}, Your OTP for Jyotish Junction password reset is {$var2}. Please use it to reset your password securely. Regards NKB Divine"
 
-    # Replace {$ var1} with the actual value
-    message = message_template.replace("{$var1}", name).replace("{$var1}", otp)
+#     # Replace {$ var1} with the actual value
+#     message = message_template.replace("{$var1}", name).replace("{$var1}", otp)
 
-    # message = "Thank you for registering as an astrologer."
-    # API endpoint
-    url = "https://api.enablex.io/sms/v1/messages/"
+#     # message = "Thank you for registering as an astrologer."
+#     # API endpoint
+#     url = "https://api.enablex.io/sms/v1/messages/"
 
    
    
-    print("message:", message)
+#     print("message:", message)
 
-    # Prepare the payload
-    print(recipient_numbers[0])
-    user = GurujiUsers.objects.get(whatsapp_no=recipient_numbers[0])
-    if user.is_customer:
-        payload = {
-            "from": sender_id,
-            "to": recipient_numbers,
-            "data": {
-                "var1": name,
-                "var2": otp
-            },
-            "type": "sms",
-            "reference": "XOXO",
-            "validity": "30",
-            "type_details": "",
-            "data_coding": "plain",
-            "flash_message": False,
-            "scheduled_dt": "2019-12-17T14:26:57+00:00",
-            "created_dt": "2019-12-15T14:26:57+00:00",
-            "campaign_id": "25083275",
-            "template_id": "460506928"
-        }
-    else:
-        payload = {
-            "from": sender_id,
-            "to": recipient_numbers,
-            "data": {
-                "var1": name,
-                "var2": otp
-            },
-            "type": "sms",
-            "reference": "XOXO",
-            "validity": "30",
-            "type_details": "",
-            "data_coding": "plain",
-            "flash_message": False,
-            "scheduled_dt": "2019-12-17T14:26:57+00:00",
-            "created_dt": "2019-12-15T14:26:57+00:00",
-            "campaign_id": "25083275",
-            "template_id": "982575581"
-        }
+#     # Prepare the payload
+#     print(recipient_numbers[0])
+#     user = GurujiUsers.objects.get(whatsapp_no=recipient_numbers[0])
+#     if user.is_customer:
+#         payload = {
+#             "from": sender_id,
+#             "to": recipient_numbers,
+#             "data": {
+#                 "var1": name,
+#                 "var2": otp
+#             },
+#             "type": "sms",
+#             "reference": "XOXO",
+#             "validity": "30",
+#             "type_details": "",
+#             "data_coding": "plain",
+#             "flash_message": False,
+#             "scheduled_dt": "2019-12-17T14:26:57+00:00",
+#             "created_dt": "2019-12-15T14:26:57+00:00",
+#             "campaign_id": "25083275",
+#             "template_id": "460506928"
+#         }
+#     else:
+#         payload = {
+#             "from": sender_id,
+#             "to": recipient_numbers,
+#             "data": {
+#                 "var1": name,
+#                 "var2": otp
+#             },
+#             "type": "sms",
+#             "reference": "XOXO",
+#             "validity": "30",
+#             "type_details": "",
+#             "data_coding": "plain",
+#             "flash_message": False,
+#             "scheduled_dt": "2019-12-17T14:26:57+00:00",
+#             "created_dt": "2019-12-15T14:26:57+00:00",
+#             "campaign_id": "25083275",
+#             "template_id": "982575581",
+#         }
 
 
-    # Prepare headers with authentication
-    credentials = f"{app_id}:{app_key}"
-    encoded_credentials = base64.b64encode(credentials.encode("utf-8")).decode("utf-8")
-    headers = {
-        "Authorization": f"Basic {encoded_credentials}",
-        "Content-Type": "application/json"
-    }
+#     # Prepare headers with authentication
+#     credentials = f"{app_id}:{app_key}"
+#     encoded_credentials = base64.b64encode(credentials.encode("utf-8")).decode("utf-8")
+#     headers = {
+#         "Authorization": f"Basic {encoded_credentials}",
+#         "Content-Type": "application/json"
+#     }
 
-    # Send the POST request
-    response = requests.post(url, headers=headers, data=json.dumps(payload))
+#     # Send the POST request
+#     response = requests.post(url, headers=headers, data=json.dumps(payload))
 
-    # Check the response
-    if response.status_code == 200 and response.json().get("result") == 0:
-        print("SMS sent successfully")
-        print(response.json())
-        return response.json().get("job_id")
-    else:
-        print("Failed to send SMS")
-        print(response.json())
-        return None
+#     # Check the response
+#     if response.status_code == 200 and response.json().get("result") == 0:
+#         print("SMS sent successfully")
+#         print(response.json())
+#         return response.json().get("job_id")
+#     else:
+#         print("Failed to send SMS")
+#         print(response.json())
+#         return None
 
 
 
@@ -602,7 +529,7 @@ def forgot_sms_otp(recipient_numbers,name,otp):
 #             send_mail(
 #                 'GurujiSpeaks Password Reset OTP',
 #                 f'Your OTP is: {otp}',
-#                 'info@gurujispeaks.com',
+#                 'jyotishjunction11@gmail.com',
 #                 [user.email_id],
 #                 fail_silently=False,
 #             )
@@ -644,19 +571,19 @@ def forgot_pass_view(request):
             request.session['user_id'] = user.email_id 
 
             send_mail(
-                'GurujiSpeaks Password Reset OTP',
+                'jyotishjunction Password Reset OTP',
                 f'Your OTP is: {otp}',
-                'info@gurujispeaks.com',
+                'jyotishjunction11@gmail.com',
                 [user.email_id],
                 fail_silently=False,
             )
             recipient_numbers = user.whatsapp_no
             name = f"{user.first_name} {user.last_name}"
-            forgot_sms_otp([recipient_numbers], name, otp)
+            # forgot_sms_otp([recipient_numbers], name, otp)
 
             return render(request, 'login/enter_otp.html', {'user_id': user_id})
         else:
-            error_message = 'The Mobile Number does not exist. Please try again.'
+            error_message = 'The Email Id does not exist. Please try again.'
 
     return render(request, 'login/enteremail.html', {'error_message': error_message})
 
@@ -740,7 +667,7 @@ def astrologer_login_view(request):
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
         password = request.POST.get('password')
-        print('22222222222222222222222',user_id,password)
+        # print('22222222222222222222222',user_id,password)
  
         if '@' in user_id: 
             try:
@@ -753,17 +680,19 @@ def astrologer_login_view(request):
             except GurujiUsers.DoesNotExist:
                 user = None
 
-        # Authenticate user
+        # Authenticate user   
         if user is not None:
-            user = authenticate(username=user.user_id, password=password)
-
-
-
+            user = authenticate(request, username=user.user_id, password=password)
+        
         if user is not None and user.is_astrologer and user.is_approved:
             login(request, user)
             return redirect('/dash_astro/')
         else:
-            error_message = 'Invalid user ID, email, or password'
+            if user is not None and user.is_astrologer and not user.is_approved:
+                error_message = 'Astrologer not approved yet. Please wait for approval.'
+            else:
+                error_message = 'Invalid Email Id or password'
+            
     return render(request, 'login/astro-login.html', {'error_message': error_message})
          
 
@@ -799,9 +728,9 @@ def generate_random_otp(length=6):
 #             request.session['temporary_otp'] = otp
 #             request.session['user_id'] = user.email_id 
 #             send_mail(
-#                 'GURUJI SPEAKS New Password',
-#                 f'Dear Sir/Madam,\n Warm Greetings from GURUJI SPEAKS Team!!! \n We are glad to see you GURUJI SPEAKS team and below are your login credentials for the same \n Username: {user_id},\n otp: {otp}, \n You are advised to login.',
-#                 'info@gurujispeaks.com',
+#                 'Jyotish Junction New Password',
+#                 f'Dear Sir/Madam,\n Warm Greetings from Jyotish Junction Team!!! \n We are glad to see you Jyotish Junction team and below are your login credentials for the same \n Username: {user_id},\n otp: {otp}, \n You are advised to login.',
+#                 'jyotishjunction11@gmail.com',
 #                 [user.email_id],
 #                 fail_silently=False,
 #             )
@@ -844,15 +773,15 @@ def astrologer_forgot_pass_view(request):
             request.session['temporary_otp'] = otp
             request.session['user_id'] = user.email_id 
             send_mail(
-                'GURUJI SPEAKS New Password',
-                f'Dear Sir/Madam,\n Warm Greetings from GURUJI SPEAKS Team!!! \n We are glad to see you GURUJI SPEAKS team and below are your login credentials for the same \n Username: {user_id},\n otp: {otp}, \n You are advised to login.',
-                'info@gurujispeaks.com',
+                'Jyotish Junction New Password',
+                f'Dear Sir/Madam,\n Warm Greetings from Jyotish Junction Team!!! \n We are glad to see you Jyotish Junction team and below are your login credentials for the same \n Username: {user_id},\n otp: {otp}, \n You are advised to login.',
+                'jyotishjunction11@gmail.com',
                 [user.email_id],
                 fail_silently=False,
             )
             recipient_numbers = user.whatsapp_no
             name = f"{user.name}"
-            forgot_sms_otp([recipient_numbers],name,otp)
+            # forgot_sms_otp([recipient_numbers],name,otp)
             return render(request, 'login/enter_otp.html', {'user_id': user_id})
         else:
             error_message = 'The Mobile Number you entered does not exist. Please try again.'
@@ -1008,7 +937,7 @@ def send_sms_otp(user_id,name1,otp):
     # message_template = "Hello {$var1}, Welcome your registration is successful. Start your astrological journey now. Regards NKB Divine Divine Vedic Sciences"
 
     # Replace {$ var1} with the actual value
-    message_template = "Hi {$var1}, Your OTP for sign up is {$var2}. Happy Exploring. Regards NKB Divine Vedic Sciences"
+    message_template = "Hi {var1}, Your OTP for sign up is {var2}. Happy Exploring. Regards NKB Divine Vedic Sciences"
 
     # Replace {$ var1} with the actual value
     message = message_template.replace("{$var1}", name1).replace("{$var2}", otp)
@@ -1110,13 +1039,13 @@ def astro_login_otp(request):
             # Send the OTP to the user's email
             subject = 'Login OTP'
             message = f"Dear user,\n\nYour OTP for login is: {otp}\n\nPlease enter this OTP to log in to your account.\n\nThank you!"
-            # send_mail(subject, message, 'care@gurujispeaks.com', [user.email_id], fail_silently=False)
+            send_mail(subject, message, 'jyotishjunction11@gmail.com', [user.email_id], fail_silently=False)
 
             # Send the SMS to the user's mobile number
             name = "User"  
             ase=recipient_numbers
             print('vdvvvvv',ase)
-            send_sms_otp([user_id],name1,otp) # You can replace "User" with the actual name if you have it
+            # send_sms_otp([user_id],name1,otp) # You can replace "User" with the actual name if you have it
 
             # Redirect to OTP verification page
             return redirect('/otp-verification-astro/')
@@ -1249,7 +1178,7 @@ def otp_verification_view_astro(request):
         request.session['login_otp'] = new_otp  # Store the new OTP in the session
         otp = new_otp
         name = f"{user.first_name} {user.last_name}"
-        send_sms_otp([user_id],name,otp)
+        # send_sms_otp([user_id],name,otp)
         
     
     return render(request, 'login/otp_verification_astro.html', {'error_message': error_message})
@@ -1263,10 +1192,11 @@ from Business_setting.models import BannerPost
 def home_view(request):
     blog = BlogPost.objects.all()
     banner = BannerPost.objects.all()
+    users_with_ratings = GurujiUsers.objects.exclude(Q(review_comments1='') | Q(review_star1='')).order_by('-id')[:3]
     for i in blog:
         print('kkkk',i.title)
 
-    return render(request, 'login/home.html',{'blog':blog,'banner':banner})
+    return render(request, 'login/home.html',{'blog':blog,'banner':banner, 'users':users_with_ratings })
 
 
 
@@ -1602,7 +1532,7 @@ import time
 
 
 #     data = admin_setting_plan.objects.all()
-#     plan_name = "Stellar Insights"
+#     plan_name = ""
 #     plan= admin_setting_plan.objects.get(plan_name_1=plan_name)
 #     user = request.user.email_id
     
@@ -1625,7 +1555,7 @@ import time
 #         selected_question = request.POST.get('selectedQuestion')    
 #         valu = request.POST.get('radioGroup')
 #         user = request.user.email_id
-#         user_comments = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = "").count()
+#         user_comments = Comment.objects.filter(user=user,plan_name = "Personalized Guidance",plan_amount = "500",order_id = "").count()
 #         piyush = generate_random_plan()
 #         plan_id = piyush
 #         # print("User:", user) 
@@ -1641,7 +1571,7 @@ import time
 #         else:
 
 #             return redirect('/plan_error_message/')  
-#     comment_data = Comment.objects.filter(user = request.user.email_id,plan_name = "Stellar Insights",order_id = "")
+#     comment_data = Comment.objects.filter(user = request.user.email_id,plan_name = "Personalized Guidance",order_id = "")
 #     data2 = GurujiUsers.objects.filter(is_customer = True)
 #     balance = Wallet.objects.filter(email_id = request.user.email_id)
 
@@ -1663,7 +1593,7 @@ import time
 
 #     grand_debit = cust_wallet - total_debit
 #     user = request.user.email_id
-#     count = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = "").count()
+#     count = Comment.objects.filter(user=user,plan_name = "Personalized Guidance",plan_amount = "500",order_id = "").count()
 #     question_left = 1 - count
 #     # print('lllllllll',question_left,count)
 
@@ -1680,7 +1610,7 @@ import time
 
 
 #     data = admin_setting_plan.objects.all()
-#     plan_name = "Stellar Insights"
+#     plan_name = ""
 #     plan= admin_setting_plan.objects.get(plan_name_1=plan_name)
     
 #     user = request.user.email_id
@@ -1705,7 +1635,7 @@ import time
 #         selected_question = request.POST.get('selectedQuestion')    
 #         valu = request.POST.get('radioGroup')
 #         user = request.user.email_id
-#         user_comments = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = "").count()
+#         user_comments = Comment.objects.filter(user=user,plan_name = "Personalized Guidance",plan_amount = "500",order_id = "").count()
 #         piyush = generate_random_plan()
 #         plan_id = piyush
         
@@ -1722,7 +1652,7 @@ import time
 #         else:
 
 #             return redirect('/plan_error_message/')  
-#     comment_data = Comment.objects.filter(user = request.user.email_id,plan_name = "Stellar Insights",order_id = "")  
+#     comment_data = Comment.objects.filter(user = request.user.email_id,plan_name = "",order_id = "")  
 #     data2 = GurujiUsers.objects.filter(is_customer = True)
 #     balance = Wallet.objects.filter(email_id = request.user.email_id)
 
@@ -1744,7 +1674,7 @@ import time
 # @never_cache
 #     grand_debit = cust_wallet - total_debit
 #     user = request.user.email_id
-#     count = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = "").count()
+#     count = Comment.objects.filter(user=user,plan_name = "",plan_amount = "500",order_id = "").count()
 #     question_left = 1 - count
 #     # print('lllllllll',question_left,count)
 
@@ -1752,65 +1682,69 @@ import time
 #         'missing_keys_string': ", ".join(missing_keys),'data': data,'data1': data1, 'data2':data2,'comment_data':comment_data,'cust_wallet':cust_wallet,'grand_debit':grand_debit,'question_left':question_left,'count':count})
 
 def ask_question_silver(request):
+    que_type = "Life"
     plan_count = Plan_Purchase.objects.filter(cust_email_id = request.user.email_id).count()
-    print('ask_question_silver',plan_count)
+
     data1 = GurujiUsers.objects.get(email_id = request.user.email_id)
     piyush = generate_random_plan()
     plan_id = piyush
 
 
     data = admin_setting_plan.objects.all()
-    plan_name = "Stellar Insights"
+    plan_name = "Personalized Guidance"
     plan= admin_setting_plan.objects.get(plan_name_1=plan_name)
+
     
     user = request.user.email_id
     
     profile = GurujiUsers.objects.get( email_id=request.user.email_id)
     data = {
         'dob':profile.dob,
-        'age':profile.age,
+        # 'age':profile.age,
         'birth_place':profile.birth_place,
         
-        'city':profile.city,
-        'state':profile.state,
-        'pincode':profile.pincode,
-        'country':profile.country,
+        # 'city':profile.city,
+        # 'state':profile.state,
+        # 'pincode':profile.pincode,
+        # 'country':profile.country,
 
     }
     missing_keys = [key for key, value in data.items() if value is None]
-    all_values_present = not missing_keys
-        
+    all_values_present = not missing_keys        
 
     if request.method == 'POST':  
         selected_question = request.POST.get('selectedQuestion')    
         valu = request.POST.get('radioGroup')
-        print('kjjjkjkj',valu)
-        user = request.user.email_id
-        user_comments = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = "").count()
         
-              
+        user = request.user.email_id
+        user_comments = Comment.objects.filter(user=user, plan_name="Personalized Guidance", plan_amount=0).count()
+
         if user_comments < 1:
-            comment1 = request.POST.get('comment1', '') 
-            # valu = request.POST.get('valu')
+            comment1 = request.POST.get('comment1', '')
+            
             if selected_question:
                 if plan_count == 0:
-                    new_comment = Comment(plan_id = plan_id,object_id = request.user.user_id,ques_type = valu,comment1=selected_question, user=user,  cust_name = f'{request.user.first_name} {request.user.last_name}', plan_name = plan_name, plan_amount=99)
+                    new_comment = Comment(plan_id=plan_id, object_id=request.user.user_id, ques_type=valu,
+                                          comment1=selected_question, user=user, cust_name=f'{request.user.first_name} {request.user.last_name}',
+                                          plan_name=plan_name, plan_amount=0)
                 else:
-                    new_comment = Comment(plan_id = plan_id,object_id = request.user.user_id,ques_type = valu,comment1=selected_question, user=user,  cust_name = f'{request.user.first_name} {request.user.last_name}', plan_name = plan_name, plan_amount=plan.amount_plan)
-                
-                new_comment.save()
-            elif comment1: 
+                    new_comment = Comment(plan_id=plan_id, object_id=request.user.user_id, ques_type=valu,
+                                          comment1=selected_question, user=user, cust_name=f'{request.user.first_name} {request.user.last_name}',
+                                          plan_name=plan_name, plan_amount=plan.amount_plan)
+            elif comment1:
                 if plan_count == 0:
-                    new_comment = Comment(plan_id = plan_id,object_id = request.user.user_id,ques_type = 'Life',comment1=comment1, user=user,  cust_name = f'{request.user.first_name} {request.user.last_name}', plan_name = plan_name, plan_amount=99)
+                    new_comment = Comment(plan_id=plan_id, object_id=request.user.user_id, ques_type=que_type,
+                                          comment1=comment1, user=user, cust_name=f'{request.user.first_name} {request.user.last_name}',
+                                          plan_name=plan_name, plan_amount=0)
                 else:
-                    new_comment = Comment(plan_id = plan_id,object_id = request.user.user_id,ques_type = 'Life',comment1=comment1, user=user,  cust_name = f'{request.user.first_name} {request.user.last_name}', plan_name = plan_name, plan_amount=plan.amount_plan)
+                    new_comment = Comment(plan_id=plan_id, object_id=request.user.user_id, ques_type=que_type,
+                                          comment1=comment1, user=user, cust_name=f'{request.user.first_name} {request.user.last_name}',
+                                          plan_name=plan_name, plan_amount=plan.amount_plan)
+            new_comment.save()
 
-                    
-                new_comment.save()
         else:
-
             return redirect('/plan_error_message/')  
-    comment_data = Comment.objects.filter(user = request.user.email_id,plan_name = "Stellar Insights",order_id = "")
+    comment_data = Comment.objects.filter(user = request.user.email_id,plan_name = "Personalized Guidance",order_id = "")
     data2 = GurujiUsers.objects.filter(is_customer = True)
     balance = Wallet.objects.filter(email_id = request.user.email_id)
 
@@ -1823,21 +1757,21 @@ def ask_question_silver(request):
     total_debit = 0
     for o in e_list1:
         if o:
-            total_debit = float(o) + float(total_debit)
+            total_debit = int(o) + int(total_debit)
     
     cust_wallet = 0
     for j in e_list:
         if j:
-            cust_wallet = float(j)+ float(cust_wallet)
+            cust_wallet = int(j)+ int(cust_wallet)
 
     grand_debit = cust_wallet - total_debit
     user = request.user.email_id
-    count = Comment.objects.filter(user=user,plan_name = "Stellar Insights",order_id = "").count()
+    count = Comment.objects.filter(user=user,plan_name = "Personalized Guidance").count()
     question_left = 1 - count
-    # print('lllllllll',question_left,count)
+    print('lllllllll',question_left,count)
     
-    if Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = ""):
-        data23 = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = "")
+    if Comment.objects.filter(user=user,plan_name = "Personalized Guidance",plan_amount = "0",order_id = ""):
+        data23 = Comment.objects.filter(user=user,plan_name = "Personalized Guidance",plan_amount = "0",order_id = "")
         for i in data23:
             plan_id = i.plan_id 
             request.session["plan_id"] = plan_id
@@ -1845,11 +1779,9 @@ def ask_question_silver(request):
         plan_id = piyush   
         request.session["plan_id"] = plan_id
 
+    
     return render(request, 'login/comment1.html', {'all_values_present': all_values_present,
-        'missing_keys_string': ", ".join(missing_keys),'plan_count':plan_count,'data': data,'data1': data1,'data2':data2,'comment_data':comment_data,'cust_wallet':cust_wallet,'grand_debit':grand_debit,'question_left':question_left,'count':count})
-
-
-
+        'missing_keys_string': ", ".join(missing_keys),'plan_count':plan_count,'data': data,'data1': data1, 'data2':data2,'comment_data':comment_data,'cust_wallet':cust_wallet,'grand_debit':grand_debit,'question_left':question_left,'count':count})
 
 
 def customer_support(request):
@@ -1861,7 +1793,7 @@ def ask_q_silver(request,id):
     request.session['id']=id
     purchase_plan = Plan_Purchase.objects.get(id=id)
     data = admin_setting_plan.objects.all()
-    plan_name = "Stellar Insights"  
+    plan_name = "Personalized Guidance"  
     user = request.user.email_id
 
     if request.method == 'POST':
@@ -1889,7 +1821,7 @@ def ask_q_silver(request,id):
     print('11111111111111111111',comment_data)
     data2 = GurujiUsers.objects.filter(is_customer = True)
     user = request.user.email_id
-    count = Comment.objects.filter(user=user,plan_name = "Stellar Insights",plan_amount = "500",order_id = purchase_plan.invoice_number).count()
+    count = Comment.objects.filter(user=user,plan_name = "Personalized Guidance",plan_amount = "0",order_id = purchase_plan.invoice_number).count()
     question_left = 1 - count
     print('lllllllll',question_left,count)
 
@@ -1898,7 +1830,7 @@ def ask_q_silver(request,id):
 
 def ques_app_silver(request,id):
     purchase_plan = Plan_Purchase.objects.get(id=id)
-    plan_name = "Stellar Insights"
+    plan_name = "Personalized Guidance"
     customer=request.user.email_id 
     comment=Comment.objects.filter(plan_name=plan_name,user=customer)
     print('comment',comment)
@@ -1911,22 +1843,22 @@ def ques_app_silver(request,id):
     admin_name = "Admin"  # Replace with the admin's name
     message = f"Dear {admin_name},\n\n"
     message += f"You have received a new Ask a Question from {purchase_plan.name} . Login to see details.\n\n"
-    message += "Best Regards,\nTeam Guruji Speaks"
+    message += "Best Regards,\nTeam Jyotish Junction"
     send_mail(
-        'New Question Asked by Guruji Speaks Customer',
+        'New Question Asked by Jyotish Junction Customer',
         message,
-        'info@gurujispeaks.com',  # Replace with your email address
-        ['saurabh@gurujispeaks.com'],  # Admin email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
+        ['jyotishjunction11@gmail.com'],  # Admin email address
         fail_silently=False,
     )
     user_message = f"Dear{request.user.first_name} {request.user.last_name},\n\n"
-    user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+    user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
     user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-    user_message += "Warm Regards,\nTeam Guruji Speaks"
+    user_message += "Warm Regards,\nTeam Jyotish Junction"
     send_mail(
         'Question has been received by us',
         user_message,
-        'info@gurujispeaks.com',  # Replace with your email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
         [request.user.email_id],  # User email address
         fail_silently=False,
     )
@@ -1950,22 +1882,22 @@ def ques_app_gold(request,id):
     admin_name = "Admin"  # Replace with the admin's name
     message = f"Dear {admin_name},\n\n"
     message += f"You have received a new Ask a Question from {purchase_plan.name} . Login to see details.\n\n"
-    message += "Best Regards,\nTeam Guruji Speaks"
+    message += "Best Regards,\nTeam Jyotish Junction"
     send_mail(
-        'New Question Asked by Guruji Speaks Customer',
+        'New Question Asked by Jyotish Junction Customer',
         message,
-        'info@gurujispeaks.com',  # Replace with your email address
-        ['saurabh@gurujispeaks.com'],  # Admin email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
+        ['jyotishjunction11@gmail.com'],  # Admin email address
         fail_silently=False,
     )
     user_message = f"Dear{request.user.first_name} {request.user.last_name},\n\n"
-    user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+    user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
     user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-    user_message += "Warm Regards,\nTeam Guruji Speaks"
+    user_message += "Warm Regards,\nTeam Jyotish Junction"
     send_mail(
         'Question has been received by us',
         user_message,
-        'info@gurujispeaks.com',  # Replace with your email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
         [request.user.email_id],  # User email address
         fail_silently=False,
     )
@@ -1988,22 +1920,22 @@ def ques_app_platinum(request,id):
     admin_name = "Admin"  # Replace with the admin's name
     message = f"Dear {admin_name},\n\n"
     message += f"You have received a new Ask a Question from {purchase_plan.name} . Login to see details.\n\n"
-    message += "Best Regards,\nTeam Guruji Speaks"
+    message += "Best Regards,\nTeam Jyotish Junction"
     send_mail(
-        'New Question Asked by Guruji Speaks Customer',
+        'New Question Asked by Jyotish Junction Customer',
         message,
-        'info@gurujispeaks.com',  # Replace with your email address
-        ['saurabh@gurujispeaks.com'],  # Admin email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
+        ['jyotishjunction11@gmail.com'],  # Admin email address
         fail_silently=False,
     )
     user_message = f"Dear{request.user.first_name} {request.user.last_name},\n\n"
-    user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+    user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
     user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-    user_message += "Warm Regards,\nTeam Guruji Speaks"
+    user_message += "Warm Regards,\nTeam Jyotish Junction"
     send_mail(
         'Question has been received by us',
         user_message,
-        'info@gurujispeaks.com',  # Replace with your email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
         [request.user.email_id],  # User email address
         fail_silently=False,
     )
@@ -2353,7 +2285,7 @@ def ask_q_platinum(request,id):
 #                     elif i.plan_name == "Divine Revelations" and op == 6000:
 #                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
 #                         cust_set.add(value)
-#                     elif i.plan_name == "Stellar Insights" and op == 500:
+#                     elif i.plan_name == "Personalized Guidance" and op == 500:
 #                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
 #                         cust_set.add(value)
 #     cust_data = list(cust_set)
@@ -2421,7 +2353,7 @@ def order_histroy(request):
                     elif i.plan_name == "Divine Revelations" and op == 10:
                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
                         cust_set.add(value)
-                    elif i.plan_name == "Stellar Insights" and op == 1:
+                    elif i.plan_name == "Personalized Guidance" and op == 1:
                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
                         cust_set.add(value)
     cust_data = list(cust_set)
@@ -2694,7 +2626,7 @@ def customer_login_otp(request):
     error_message = ""
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
-        user_name = GurujiUsers.objects.filter(whatsapp_no=user_id).first()
+        user_name = GurujiUsers.objects.filter(email_id=user_id).first()
         name = user_name.first_name + " " + user_name.last_name if user_name else ""
 
         # Check if user_id is an email
@@ -2709,26 +2641,29 @@ def customer_login_otp(request):
             except GurujiUsers.DoesNotExist:
                 user = None
 
-        if user is not None and user.is_customer:
+        if user_name is None:
+            # User is not registered, set an error message
+            error_message = "User is not registered. Please sign up first."
+
+
+        elif user is not None and user.is_customer:
             # Generate OTP and store it in the session
             otp = get_random_string(length=6, allowed_chars='0123456789')
             request.session['login_otp'] = otp
             request.session['login_user_id'] = user_id
 
-            # Send the OTP to the user's email as plain text
+            # Send the OTP to the user's email
             subject = 'Login OTP'
             message = f"Dear {name},\n\nYour OTP for login is: {otp}\n\nPlease enter this OTP to log in to your account.\n\nThank you!"
-            send_mail(subject, message, 'your-email@example.com', [user.email_id], fail_silently=False)
 
-            otp_login_sms([user_id], name, otp)
+            send_mail(subject,message, 'your-email@example.com', [user.email_id], fail_silently=False)
 
-            # Redirect to OTP verification page
-            return redirect('/otp-verification/')
+            return redirect('/otp_verification_before/')
+
         else:
-            error_message = 'Invalid Phone Number'
+            error_message = 'Invalid Email Id'
 
     return render(request, 'login/customer_otp_login.html', {'error_message': error_message})
-
 
 
 
@@ -2826,47 +2761,20 @@ import re
 #                     return redirect('/astrologer-login/')
 #     return render(request, 'login/changepass.html', {'error_message': error_message, 'message': message})
 
+from django.contrib.auth.forms import PasswordChangeForm
 @login_required
 @never_cache
 def changepass(request):
-    print(request.user.email_id)
     error_message = ''
     message = ''
-    print(request.user.email_id)
-    
     if request.method == 'POST':
-        user = GurujiUsers.objects.get(email_id=request.user.email_id)
-        
-        # Get the submitted passwords
-        old_password = request.POST.get('password')
-        new_password1 = request.POST.get('new_pass1')
-        new_password2 = request.POST.get('new_pass2')
-        
-        # Verify that the old password is correct
-        if check_password(old_password, user.password):
-            if new_password1 and new_password2:
-                if new_password1 != new_password2:
-                    error_message = 'Passwords do not match.'
-                elif len(new_password1) < 8:
-                    error_message = 'Password must be at least 8 characters long.'
-                elif len(new_password1) > 100:
-                    error_message = 'Password cannot exceed 100 characters.'
-                elif not re.match(r'^(?=.*[a-zA-Z])(?=.*[@!#$])(?=.*[0-9])[a-zA-Z0-9@!#$]{8,}$', new_password1):
-                    error_message = 'Password must contain lowercase and uppercase letters (a to z or A to Z), numbers (0 to 9), and at least one of the symbols @, !, #, or $.'
-                else:
-                    user.password = make_password(new_password1)
-                    user.save()
-                    message = 'Password updated successfully.'
-                    if request.user.is_customer:
-                        return redirect('/customer-login/')
-                    if request.user.is_admin:
-                        return redirect('/admin-login/')
-                    if request.user.is_astrologer:
-                        return redirect('/astrologer-login/')
-        else:
-            error_message = 'Incorrect old password.'
-    
-    return render(request, 'login/changepass.html', {'error_message': error_message, 'message': message})
+        fm = PasswordChangeForm(user=request.user, data=request.POST)
+        if fm.is_valid():
+            fm.save()
+            return redirect('/customer-login/')
+    else:
+        fm = PasswordChangeForm(user=request.user)    
+    return render(request, 'login/changepass.html', {'form':fm,'error_message': error_message, 'message': message})
 
 
 
@@ -3195,7 +3103,7 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
 #     # print(month_alphabetic)
 #     invoice_number = random.randint(10000, 99999)
 #     # print("Random Invoice Number:", invoice_number)
-#     plan = admin_setting_plan.objects.get(plan_name_1='Stellar Insights')
+#     plan = admin_setting_plan.objects.get(plan_name_1='Personalized Guidance')
 #     amount = int(plan.amount_plan)
 #     gst = (amount * 9)/100
 #     total_amount =int(amount + (gst*2))
@@ -3253,7 +3161,7 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
         
         	
 
-#         plan_name = "Stellar Insights"
+#         plan_name = "Personalized Guidance"
 #         customer=request.user.email_id 
 #         comment=Comment.objects.filter(plan_name=plan_name,user=customer,order_id = '')
 #         # print('comment',comment)
@@ -3272,28 +3180,28 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
 #     # customer_id = "{{request.user.first_name}} {{request.user.last_name}}"
 #     # message = f"Dear {admin_name},\n\n"
 #     # message += f"You have received a new Ask a Question from {request.user.first_name} {request.user.last_name}  . Login to see details.\n\n"
-#     # message += "Best Regards,\nTeam Guruji Speaks"
+#     # message += "Best Regards,\nTeam Jyotish Junction"
 #     # send_mail(
-#     #     'New Question Asked by Guruji Speaks Customer',
+#     #     'New Question Asked by Jyotish Junction Customer',
 #     #     message,
-#     #     'info@gurujispeaks.com',  
-#     #     ['saurabh@gurujispeaks.com'],  
+#     #     'jyotishjunction11@gmail.com',  
+#     #     ['jyotishjunction11@gmail.com'],  
 #     #     fail_silently=False,
 #     # )
 
 #     # user_message = f"Dear  {request.user.first_name} {request.user.last_name},\n\n"
-#     # user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+#     # user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
 #     # user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-#     # user_message += "Warm Regards,\nTeam Guruji Speaks"
+#     # user_message += "Warm Regards,\nTeam Jyotish Junction"
 #     # send_mail( 
 #     #     'Question has been received by us',
 #     #     user_message,
-#     #     'info@gurujispeaks.com',   
+#     #     'jyotishjunction11@gmail.com',   
 #     #     [request.user.email_id],  
 #     #     fail_silently=False,
 #     # )
 
-#     # send_sms_package_silver([recipient_numbers],name,'Stellar Insights')
+#     # send_sms_package_silver([recipient_numbers],name,'Personalized Guidance')
 
 
     
@@ -3344,7 +3252,7 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
 #     # print(month_alphabetic)
 #     invoice_number = random.randint(10000, 99999)
 #     # print("Random Invoice Number:", invoice_number)
-#     plan = admin_setting_plan.objects.get(plan_name_1='Stellar Insights')
+#     plan = admin_setting_plan.objects.get(plan_name_1='Personalized Guidance')
 #     amount = int(plan.amount_plan)
 #     gst = (amount * 9)/100
 #     total_amount =int(amount + (gst*2))
@@ -3402,7 +3310,7 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
         
         	
 
-#         plan_name = "Stellar Insights"
+#         plan_name = "Personalized Guidance"
 #         customer=request.user.email_id 
 #         comment=Comment.objects.filter(plan_name=plan_name,user=customer,order_id = '')
 #         # print('comment',comment)
@@ -3421,28 +3329,28 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
 #     # customer_id = "{{request.user.first_name}} {{request.user.last_name}}"
 #     # message = f"Dear {admin_name},\n\n"
 #     # message += f"You have received a new Ask a Question from {request.user.first_name} {request.user.last_name}  . Login to see details.\n\n"
-#     # message += "Best Regards,\nTeam Guruji Speaks"
+#     # message += "Best Regards,\nTeam Jyotish Junction"
 #     # send_mail(
-#     #     'New Question Asked by Guruji Speaks Customer',
+#     #     'New Question Asked by Jyotish Junction Customer',
 #     #     message,
-#     #     'info@gurujispeaks.com',  
+#     #     'jyotishjunction11@gmail.com',  
 #     #     ['pbambulkar9924@gmail.com'],  
 #     #     fail_silently=False,
 #     # )
 
 #     # user_message = f"Dear  {request.user.first_name} {request.user.last_name},\n\n"
-#     # user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+#     # user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
 #     # user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-#     # user_message += "Warm Regards,\nTeam Guruji Speaks"
+#     # user_message += "Warm Regards,\nTeam Jyotish Junction"
 #     # send_mail( 
 #     #     'Question has been received by us',
 #     #     user_message,
-#     #     'info@gurujispeaks.com',   
+#     #     'jyotishjunction11@gmail.com',   
 #     #     [request.user.email_id],  
 #     #     fail_silently=False,
 #     # )
 
-#     # send_sms_package_silver([recipient_numbers],name,'Stellar Insights')
+#     # send_sms_package_silver([recipient_numbers],name,'Personalized Guidance')
 
 
     
@@ -3467,166 +3375,137 @@ def send_sms_package_platinum(recipient_numbers,name,var2):
 
 
 @csrf_exempt
+
+
+
 def comment_view(request):
-    plan_count = Plan_Purchase.objects.filter(cust_email_id = request.user.email_id).count()
+    plan_count = Plan_Purchase.objects.filter(cust_email_id=request.user.email_id).count()
 
-    
-    recipient_numbers=request.user.whatsapp_no
-    name= request.user.first_name
-    
-    # print('data',recipient_numbers)
-    # print('name',name)
-    # print('ddddddddddddddd',request.user.first_name)
-
-
+    recipient_numbers = request.user.whatsapp_no
+    name = request.user.first_name
 
     current_datetime_utc = datetime.now(pytz.utc)
-    # Convert the datetime to the Indian time zone
     timezone = pytz.timezone('Asia/Kolkata')
     current_datetime = current_datetime_utc.astimezone(timezone)
     current_date = current_datetime.date()
-    # current_time = current_datetime.time()
     current_time = current_datetime.time().strftime('%H:%M:%S')
-    formatted_date = current_date.strftime('%Y-%m-%d')
-    # date_obj = datetime.datetime.strptime(formatted_date, '%d-%m-%Y')
-    date_obj = datetime.strptime(formatted_date, '%Y-%m-%d')
-    # Get the month in alphabetic format
-    month_alphabetic = date_obj.strftime('%B')
-    # print(month_alphabetic)
+    formatted_date = current_date.strftime('%d-%m-%Y')
+    month_alphabetic = current_date.strftime('%B')
     invoice_number = random.randint(10000, 99999)
-    # print("Random Invoice Number:", invoice_number)
-    plan = admin_setting_plan.objects.get(plan_name_1='Stellar Insights')
-    
+
+    try:
+        plan = admin_setting_plan.objects.get(plan_name_1='Personalized Guidance')
+    except admin_setting_plan.DoesNotExist:
+        plan = None
+
     currency = 'INR'
-    # client = razorpay.Client(auth=("rzp_test_Ey7h721E1o2LY1", "AwU7kngK8eCZK9Ztqd02brOy"))
-    # payment = client.order.create({'amount': total_amount * 100, 'currency': 'INR', 'payment_capture': '1'})
-    # razorpay_order_id = payment['id']
-    # razorpay_payment_id = payment['receipt']
-    balance = Wallet.objects.filter(email_id = request.user.email_id)
+    balance = Wallet.objects.filter(email_id=request.user.email_id)
     transaction_id = generate_random_transaction_id()
-    
 
-
-    if plan_count != 0:
-        amount = float(plan.amount_plan)
-        gst = (amount * 9)/100
-        total_amount =float(amount + (gst*2))
-            
-        # total_amount = int(total_amount)
+    if plan_count == 0 and plan:
+        if hasattr(plan, 'amount_plan') and hasattr(plan, 'admin_plan_1_d'):
+            amount = int(plan.amount_plan)
+            gst = (amount * 9) / 100
+            total_amount = int(amount + (gst * 2))
+            questions_count = plan.admin_plan_1_d
+        else:
+            amount = 0
+            gst = 0
+            total_amount = 0
+            questions_count = 0
     else:
-        amount = 99
-        print('llll',amount)
-        gst = (amount * 9)/100
-        total_amount =float(amount + (gst*2))
-        print('lllll',total_amount)
-        # total_amount = 0
-        # amount = 0
-        # gst = 0
-        
-    e_list = []  
-    for i in balance:
-        e_list.append(i.recharge_amount)
-    cust_wallet = 0
-    for j in e_list:
-        if j: 
-            cust_wallet = float(j)+ float(cust_wallet)
-    remaining = cust_wallet - float(total_amount)
+        total_amount = 0
+        amount = 0
+        gst = 0
+        questions_count = 0
+
+    e_list = [i.recharge_amount for i in balance if i.recharge_amount]
+    cust_wallet = sum(map(int, e_list))
+    remaining = cust_wallet - int(total_amount)
 
     if request.method == 'POST':
-        if cust_wallet > total_amount and plan_count != 0:
+        if cust_wallet > total_amount and plan_count != 0 and plan:
             done = Plan_Purchase(
-            invoice_number = invoice_number,
-            
-            
-            name = f'{request.user.first_name} {request.user.last_name}',
-            cust_id=request.user.user_id,
-            cust_email_id=request.user.email_id,
-            cust_whatsapp_no=request.user.whatsapp_no,
-            cgst = gst,
-            sgst = gst,
-            total_amount = total_amount,
-            questions_count = plan.admin_plan_1_d,
-            plan_purchase_time = current_time,
-            plan_name=plan.plan_name_1,
-            plan_amount=plan.amount_plan,
-            purchase_date = formatted_date,
-            purchase_time = current_datetime,
-            plan_month=month_alphabetic,
-            )   
-            done.save()
-
-        else:
-            done = Plan_Purchase(
-            invoice_number=invoice_number,
-            name=f'{request.user.first_name} {request.user.last_name}',
-            cust_id=request.user.user_id,
-            cust_email_id=request.user.email_id,
-            cust_whatsapp_no=request.user.whatsapp_no,
-            cgst=gst,
-            sgst=gst,
-            total_amount=total_amount,
-            questions_count=plan.admin_plan_1_d,
-            plan_purchase_time=current_time,
-            plan_name=plan.plan_name_1,
-            plan_amount=99,  # Set plan_amount to 0
-            purchase_date=formatted_date,
-            purchase_time=current_datetime,
-            plan_month=month_alphabetic,
+                invoice_number=invoice_number,
+                name=f'{request.user.first_name} {request.user.last_name}',
+                cust_id=request.user.user_id,
+                cust_email_id=request.user.email_id,
+                cust_whatsapp_no=request.user.whatsapp_no,
+                cgst=gst,
+                sgst=gst,
+                total_amount=total_amount,
+                questions_count=questions_count,
+                plan_purchase_time=current_time,
+                plan_name=plan.plan_name_1 if hasattr(plan, 'plan_name_1') else 'Personalized Guidance',
+                plan_amount=plan.amount_plan,
+                plan_purchase_date=formatted_date,
+                purchase_time=current_datetime,
+                plan_month=month_alphabetic,
             )
             done.save()
+        else:
+            done = Plan_Purchase(
+                invoice_number=invoice_number,
+                name=f'{request.user.first_name} {request.user.last_name}',
+                cust_id=request.user.user_id,
+                cust_email_id=request.user.email_id,
+                cust_whatsapp_no=request.user.whatsapp_no,
+                cgst=gst,
+                sgst=gst,
+                total_amount=total_amount,
+                questions_count=questions_count,
+                plan_purchase_time=current_time,
+                plan_name='Personalized Guidance',
+                plan_amount=0,  # Set plan_amount to 0
+                plan_purchase_date=formatted_date,
+                purchase_time=current_datetime,
+                plan_month=month_alphabetic,
+            )
+            done.save()
+
         wallet = Wallet(
-            cust_id = request.user.user_id,
-            name = f'{request.user.first_name} {request.user.last_name}',
+            cust_id=request.user.user_id,
+            name=f'{request.user.first_name} {request.user.last_name}',
             email_id=request.user.email_id,
             whatsapp_no=request.user.whatsapp_no,
-            recharge_time = current_time,
-            plan_recharge_date= formatted_date,
-            debit_amount = total_amount,
-            wallet_month = month_alphabetic, 
-            transaction_id = transaction_id,
+            recharge_time=current_time,
+            recharge_date=formatted_date,
+            debit_amount=total_amount,
+            wallet_month=month_alphabetic,
+            transaction_id=transaction_id,
         )
         wallet.save()
-        
-            
 
-        plan_name = "Stellar Insights"
-        customer=request.user.email_id 
-        comment=Comment.objects.filter(plan_name=plan_name,user=customer,order_id = '')
-        # print('comment',comment)
+        plan_name = "Personalized Guidance"
+        customer = request.user.email_id
+        comment = Comment.objects.filter(plan_name=plan_name, user=customer, order_id='')
         for i in comment:
             if i.comment1:
-                print('ddddddddddddddd',i)
                 i.order_id = invoice_number
-                i.customer_to_admin_time=current_time
-                i.purchase_date=formatted_date
+                i.customer_to_admin_time = current_time
+                i.plan_purchase_date = formatted_date
                 i.plan_month = month_alphabetic
                 i.send_admin = True
                 i.save()
         return redirect('/dash_customer1/')
-    
+
     context = {
-        # 'razorpay_order_id': razorpay_order_id,
-        # 'razorpay_merchant_key': 'rzp_test_Ey7h721E1o2LY1',
-        # 'razorpay_amount': amount,
-        'gst':gst, 
+        'gst': gst,
         'currency': currency,
-        'plan':plan, 
-
-        'total_amount':float(total_amount), 
-        'current_date':current_date,
-        'current_time':current_time,
-        'cust_wallet':cust_wallet,
-        'remaining':remaining,
-        'plan_count':plan_count,
-        'plan_count':plan_count
+        'plan': plan,
+        'total_amount': int(total_amount),
+        'current_date': current_date,
+        'current_time': current_time,
+        'cust_wallet': cust_wallet,
+        'remaining': remaining,
     }
-    if plan_count != 0:
-        
-        context['total_amount'] = float(total_amount)
-    else:
-        context['total_amount'] = 116
-    return render(request, 'login/index.html', context=context) 
 
+    if plan_count != 0:
+        context['total_amount'] = int(total_amount)
+    else:
+        context['total_amount'] = 0
+
+    return render(request, 'login/index.html', context=context)
 
 
     # else:
@@ -3654,7 +3533,7 @@ def comment_view(request):
     #     # print(month_alphabetic)
     #     invoice_number = random.randint(10000, 99999)
     #     # print("Random Invoice Number:", invoice_number)
-    #     plan = admin_setting_plan_dollar.objects.get(plan_name_1='Stellar Insights')
+    #     plan = admin_setting_plan_dollar.objects.get(plan_name_1='Personalized Guidance')
     #     amount = int(plan.amount_plan)
     #     gst = (amount * 9)/100
     #     total_amount =int(amount + (gst*2))
@@ -3712,7 +3591,7 @@ def comment_view(request):
             
                 
 
-    #         plan_name = "Stellar Insights"
+    #         plan_name = "Personalized Guidance"
     #         customer=request.user.email_id 
     #         comment=Comment.objects.filter(plan_name=plan_name,user=customer,order_id = '')
     #         # print('comment',comment)
@@ -3742,6 +3621,7 @@ def comment_view(request):
     #     }
     #     return render(request, 'login/index4.html', context=context) 
     
+  
 
 import pytz   
 import random
@@ -3868,22 +3748,21 @@ def comment_view_gold(request):
         # admin_name = "Admin"   
         # message = f"Dear {admin_name},\n\n"
         # message += f"You have received a new Ask a Question from  . Login to see details.\n\n"
-        # message += "Best Regards,\nTeam Guruji Speaks"
+        # message += "Best Regards,\nTeam Jyotish Junction"
         # send_mail(
-        #     'New Question Asked by Guruji Speaks Customer',
+        #     'New Question Asked by Jyotish Junction Customer',
         #     message,
-        #     'info@gurujispeaks.com',  
-        #     ['saurabh@gurujispeaks.com'], 
+        #     'jyotishjunction11@gmail.com',  
+        #     ['jyotishjunction11@gmail.com'], 
         #     fail_silently=False,
         # )
         # user_message = f"Dear  {request.user.first_name} {request.user.last_name},\n\n"
-        # user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
-        # user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-        # user_message += "Warm Regards,\nTeam Guruji Speaks"
+        # user_message += f"We sincerely appreciate your confidence in Jyotish Junction will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
+        # user_message += "Warm Regards,\nTeam Jyotish Junction"
         # send_mail( 
         #     'Question has been received by us',
         #     user_message,
-        #     'info@gurujispeaks.com',  # Replace with your email address
+        #     'jyotishjunction11@gmail.com',  # Replace with your email address
         #     [request.user.email_id],  # User email address
         #     fail_silently=False,
         # )
@@ -4020,26 +3899,26 @@ def comment_view_platinum(request):
 
         # message = f"Dear {admin_name},\n\n"
         # message += f"You have received a new Ask a Question from  . Login to see details.\n\n"
-        # message += "Best Regards,\nTeam Guruji Speaks"
+        # message += "Best Regards,\nTeam Jyotish Junction"
 
         # send_mail(
-        #     'New Question Asked by Guruji Speaks Customer',
+        #     'New Question Asked by Jyotish Junction Customer',
         #     message,
-        #     'info@gurujispeaks.com',  # Replace with your email address
-        #     ['saurabh@gurujispeaks.com'],  # Admin email address
+        #     'jyotishjunction11@gmail.com',  # Replace with your email address
+        #     ['jyotishjunction11@gmail.com'],  # Admin email address
         #     fail_silently=False,
         # )
 
         # user_message = f"Dear  {request.user.first_name} {request.user.last_name},\n\n"
-        # user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+        # user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
         # user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-        # user_message += "Warm Regards,\nTeam Guruji Speaks"
+        # user_message += "Warm Regards,\nTeam Jyotish Junction"
 
 
         # send_mail( 
         #     'Question has been received by us',
         #     user_message,
-        #     'info@gurujispeaks.com',  # Replace with your email address
+        #     'jyotishjunction11@gmail.com',  # Replace with your email address
         #     [request.user.email_id],  # User email address
         #     fail_silently=False,
         # )
@@ -4099,7 +3978,7 @@ def dash_customer1(request):
                         value = (j.object_id,j.order_id,j.plan_name,j.plan_amount,j.plan_purchase_date,j.user,op)
                     elif j.plan_name == "Divine Revelations" and op <= 6000:
                         value = (j.object_id,j.order_id,j.plan_name,j.plan_amount,j.plan_purchase_date,j.user,op)
-                    elif j.plan_name == "Stellar Insights" and op <= 500:
+                    elif j.plan_name == "Personalized Guidance" and op <= 0:
                         value = (j.object_id,j.order_id,j.plan_name,j.plan_amount,j.plan_purchase_date,j.user,op)
                     cust_set2.add(value)
     cust_data2 = list(cust_set2)
@@ -4151,32 +4030,32 @@ def dash_customer1(request):
     print('recipient_numbers',recipient_numbers)
     print('name',name)
 
-    if plan1.plan_name == "Celestial Guidance":
-        send_sms_package_gold([recipient_numbers],name,"Celestial Guidance")
-    elif plan1.plan_name == "Stellar Insights":
-        send_sms_package_silver([recipient_numbers],name,"Stellar Insights")
-    elif plan1.plan_name == "Divine Revelations":
-        send_sms_package_platinum([recipient_numbers],name,"Divine Revelations")
+    # if plan1.plan_name == "Celestial Guidance":
+    #     send_sms_package_gold([recipient_numbers],name,"Celestial Guidance")
+    # elif plan1.plan_name == "Personalized Guidance":
+    #     send_sms_package_silver([recipient_numbers],name,"Personalized Guidance")
+    # elif plan1.plan_name == "Divine Revelations":
+    #     send_sms_package_platinum([recipient_numbers],name,"Divine Revelations")
 
     admin_name = "Admin"   
     message = f"Dear {admin_name},\n\n"
     message += f"You have received a new Ask a Question from {name} . Login to see details.\n\n"
-    message += "Best Regards,\nTeam Guruji Speaks"
+    message += "Best Regards,\nTeam Jyotish Junction"
     send_mail(
-        'New Question Asked by Guruji Speaks Customer',
+        'New Question Asked by Jyotish Junction Customer',
         message,
-        'info@gurujispeaks.com',  
-        ['saurabh@gurujispeaks.com'], 
+        'jyotishjunction11@gmail.com',  
+        ['jyotishjunction11@gmail.com'], 
         fail_silently=False,
     )
     user_message = f"Dear  {request.user.first_name} {request.user.last_name},\n\n"
-    user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+    user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
     user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-    user_message += "Warm Regards,\nTeam Guruji Speaks"
+    user_message += "Warm Regards,\nTeam Jyotish Junction"
     send_mail( 
         'Question has been received by us',
         user_message,
-        'info@gurujispeaks.com',  # Replace with your email address
+        'jyotishjunction11@gmail.com',  # Replace with your email address
         [request.user.email_id],  # User email address
         fail_silently=False,
     )
@@ -4195,7 +4074,7 @@ def dash_customer1(request):
         'cust_data2':cust_data2,
         'ddd':ddd,
     }
-    return redirect('/popup/')
+    return redirect('/dash_customer/')
 
 
 
@@ -4273,30 +4152,30 @@ def popup(request):
 #     print('name',name)
 #     if plan1.plan_name == "Celestial Guidance":
 #         send_sms_package_gold([recipient_numbers],name,"Celestial Guidance")
-#     elif plan1.plan_name == "Stellar Insights":
-#         send_sms_package_silver([recipient_numbers],name,"Stellar Insights")
+#     elif plan1.plan_name == "Personalized Guidance":
+#         send_sms_package_silver([recipient_numbers],name,"Personalized Guidance")
 #     elif plan1.plan_name == "Divine Revelations":
 #         send_sms_package_platinum([recipient_numbers],name,"Divine Revelations")
 
 #     admin_name = "Admin"   
 #     message = f"Dear {admin_name},\n\n"
 #     message += f"You have received a new Ask a Question from  . Login to see details.\n\n"
-#     message += "Best Regards,\nTeam Guruji Speaks"
+#     message += "Best Regards,\nTeam Jyotish Junction"
 #     send_mail(
-#         'New Question Asked by Guruji Speaks Customer',
+#         'New Question Asked by Jyotish Junction Customer',
 #         message,
-#         'info@gurujispeaks.com',  
-#         ['saurabh@gurujispeaks.com'], 
+#         'jyotishjunction11@gmail.com',  
+#         ['jyotishjunction11@gmail.com'], 
 #         fail_silently=False,
 #     )
 #     user_message = f"Dear  {request.user.first_name} {request.user.last_name},\n\n"
-#     user_message += f"We sincerely appreciate your confidence in Guruji Speaks as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
+#     user_message += f"We sincerely appreciate your confidence in Jyotish Junction as your chosen platform for seeking guidance. We acknowledge the significance of your inquiry and want to assure you that our proficient team of Astro Gurus will thoroughly analyze your birth charts and provide you with a meticulously considered response within 24 hours.\n\n"
 #     user_message += "We kindly request you to rate the provided answer, as it will enable us to consistently deliver high-quality responses to all our valued seekers.\n\n"
-#     user_message += "Warm Regards,\nTeam Guruji Speaks"
+#     user_message += "Warm Regards,\nTeam Jyotish Junction"
 #     send_mail( 
 #         'Question has been received by us',
 #         user_message,
-#         'info@gurujispeaks.com',  # Replace with your email address
+#         'jyotishjunction11@gmail.com',  # Replace with your email address
 #         [request.user.email_id],  # User email address
 #         fail_silently=False,
 #     )
@@ -4775,11 +4654,11 @@ def check_status(request):
         recipient_numbers=whatsapp_no
         print('ddddddddd',name,whatsapp_no)
 
-        send_sms_wallet([recipient_numbers],name,amount)
+        # send_sms_wallet([recipient_numbers],name,amount)
         plan_id = request.session.get('plan_id')
         plan_data = Comment.objects.filter(plan_id=plan_id, object_id = muser_id, order_id = "")
         for j in plan_data:
-            if j.plan_name == "Stellar Insights": 
+            if j.plan_name == "Personalized Guidance": 
                 plan_name = j.plan_name
                 del request.session["plan_id"]
                 context={'plan_name':plan_name}
@@ -4818,7 +4697,7 @@ def check_status(request):
     
 
 
-@csrf_exempt
+# @csrf_exempt
 def customer_recharge(request,paisa):
     data = admin_setting_plan.objects.all()
     plan = Plan_Purchase.objects.all()
@@ -5060,9 +4939,9 @@ def adcustomer_to_admin(request, id):
         print('kkkkkkkkkkk',astrologer)
         subject = 'New customer comment'
         message = 'You have a new question try to reply that question .'
-        sender_email = 'saurabh@gurujispeaks.com'
+        sender_email = 'jyotishjunction11@gmail.com'
         recipient_list = [astrologer.email_id]
-        # send_mail(subject, message, sender_email, recipient_list)
+        send_mail(subject, message, sender_email, recipient_list)
 
     return redirect('/customer_to_admin/')
 
@@ -5131,13 +5010,13 @@ def editastro_reply(request, id):
         subject = 'Customer Question has been answered by our Astrologer'
         message = f"Dear {admin_name.first_name} {admin_name.last_name},\n\n"
         message += f"Our Astro Guru has submitted their answer for {plan.name}. Login to see details.\n\n"
-        message += "Best Regards,\nTeam Guruji Speaks"
+        message += "Best Regards,\nTeam Jyotish Junction"
         
         send_mail(
             subject,
             message,
-            'info@gurujispeaks.com',  # Replace with your email address
-            ['saurabh@gurujispeaks.com'],  # Admin email address
+            'jyotishjunction11@gmail.com',  # Replace with your email address
+            ['jyotishjunction11@gmail.com'],  # Admin email address
             fail_silently=False,
         )
         return redirect('/dash_astro/')
@@ -5170,19 +5049,41 @@ def astro_reply_admin(request):
     return render(request, 'login/astro_reply_admin.html', {'comment': comment, 'data1': data1, 'data2': data2, 'data3': data3})
 
 
-def customer_view_answer(request,id): 
+from .models import Rating,Plan_Purchase,Comment
+
+def customer_view_answer(request, id): 
     plan = Plan_Purchase.objects.get(id=id)
-    user = GurujiUsers.objects.get(email_id = request.user.email_id)
-    data = Comment.objects.filter(user = plan.cust_email_id, plan_name = plan.plan_name,order_id = plan.invoice_number)
+    guruji_user = GurujiUsers.objects.get(email_id=request.user.email_id)
+    data = Comment.objects.filter(user=plan.cust_email_id, plan_name=plan.plan_name, order_id=plan.invoice_number)
+    user = request.user
+    
+    if guruji_user.review_comments1 and guruji_user.review_star1:
+    
+        error_message = 'Data already saved!'
+        messages.error(request, error_message)
+        return render(request, 'login/customer-view-answer.html', {'user': user, 'data': data, 'guruji_user': guruji_user})
+
+    if request.method == 'POST':
+        review_comments1 = request.POST.get('review_comments1')
+        review_star1 = request.POST.get('review_star1')
+        
+
+        guruji_user.review_comments1 = review_comments1
+        guruji_user.review_star1 = review_star1
+
+        guruji_user.save()
+        messages.success(request, 'Data saved successfully!')
     
     context = {
-        'user':user,
-        'data':data,
+        'user': user,
+        'data': data,
+        'guruji_user':guruji_user
     }
-    return render(request,'login/customer-view-answer.html',context) 
+    
+    return render(request, 'login/customer-view-answer.html', context)
 
 
-
+ 
 
 
 def dash_admin(request):
@@ -5205,7 +5106,7 @@ def dash_astro(request):
     cust_set = set()
     cust_set2 = set()
     for i in comment:
-        cust_data = (i.cust_name,i.plan_name,i.purchase_date,i.order_id,i.astro_email_id,i.user,i.plan_amount)  
+        cust_data = (i.cust_name,i.plan_name,i.plan_purchase_date,i.order_id,i.astro_email_id,i.user,i.plan_amount)  
         d=list(cust_data)
         print('llllllllllllll',len(d))
         if cust_data not in cust_set:
@@ -5215,7 +5116,7 @@ def dash_astro(request):
     sorted_cust_set = sorted(filtered_cust_set, key=lambda x: x[2],reverse=True)
     data_list = []
     for k in cust_set:
-        ddd = Comment.objects.filter(cust_name = k[0],plan_name = k[1],purchase_date = k[2],order_id = k[3],astro_email_id = k[4],user = k[5],plan_amount=k[6]).last()
+        ddd = Comment.objects.filter(cust_name = k[0],plan_name = k[1],plan_purchase_date = k[2],order_id = k[3],astro_email_id = k[4],user = k[5],plan_amount=k[6]).last()
         data_list.append(ddd)
     print('22222222222222222',data_list,len(data_list))
     print('33333333333333333',cust_set,len(cust_set))
@@ -5268,26 +5169,17 @@ def astro_admin_approved(request):
     return render(request,'login/astro_admin_approved.html',context)
 
 
-
-
-
-
-
-
-
-
-
 from django.db import IntegrityError\
 
 
-# def admin_approval_astro(request):
-#     astro = GurujiUsers.objects.filter(is_astrologer=False)
-#     print('astro',astro)
+def admin_approval_astro(request):
+    astro = GurujiUsers.objects.filter(is_astrologer=False)
+    print('astro',astro)
 
-#     context={
-#         'astro':astro,
-#     }
-#     return render(request,'login/admin_approval_astro.html',context)
+    context={
+        'astro':astro,
+    }
+    return render(request,'login/admin_approval_astro.html',context)
 
 
 
@@ -5317,7 +5209,7 @@ def ask_ques_login(request):
             user = authenticate(request, username=user.user_id, password=password)
         if user is not None and user.is_customer:
             login(request, user)
-            return redirect('/view_plan/')
+            return redirect('/ask_question_silver/')
         else:
             error_message = 'Invalid user ID, email, or password'
 
@@ -5355,18 +5247,18 @@ def ask_ques_login(request):
 #         user.save()
         
 #         message = f"Dear  {first_name} {last_name},\n\n" \
-#             f"Welcome to Guruji Speaks, your trusted online astrology consultancy platform. We are delighted to have you join our community, where we believe in the true power of astrology to bring profound insights and transformative experiences.\n\n" \
-#             f"At Guruji Speaks, we prioritize accuracy and personalized guidance. Our seasoned astrologers take the time to meticulously analyze your horoscope, providing you with accurate predictions and effective solutions tailored to your unique life path\n\n" \
+#             f"Welcome to Jyotish Junction, your trusted online astrology consultancy platform. We are delighted to have you join our community, where we believe in the true power of astrology to bring profound insights and transformative experiences.\n\n" \
+#             f"At Jyotish Junction, we prioritize accuracy and personalized guidance. Our seasoned astrologers take the time to meticulously analyze your horoscope, providing you with accurate predictions and effective solutions tailored to your unique life path\n\n" \
 #             f"Say goodbye to generic readings! Our platform is dedicated to offering personalized predictions on love, career, finances, and more. With our reliable guidance, you can make informed decisions and unlock a future full of success\n\n" \
 #             f"Experience the real power of astrology with us. Our dedicated astrologers will help you navigate your life's journey, uncover hidden treasures, and guide you towards a future filled with purpose and fulfillment.\n\n" \
-#             f"Join us at Guruji Speaks and embrace the celestial whispers that hold the key to your destiny. We are committed to providing you with the in-depth insights you deserve.\n\n" \
+#             f"Join us at Jyotish Junction and embrace the celestial whispers that hold the key to your destiny. We are committed to providing you with the in-depth insights you deserve.\n\n" \
 #             f"Get ready to embark on a transformative journey with us. True wisdom takes time, but the rewards are lifelong. \n\n" \
-#             f"Welcome to Guruji Speaks, where the magic of astrology awaits! \n\n" \
+#             f"Welcome to Jyotish Junction, where the magic of astrology awaits! \n\n" \
 #             f"Best Regards,\n" \
-#             f"The Team at Guruji Speaks"
+#             f"The Team at Jyotish Junction"
 
 #         send_mail(
-#             'Welcome to Guruji Speaks - Embrace Celestial Whispers for a Fulfilling Future!',
+#             'Welcome to Jyotish Junction - Embrace Celestial Whispers for a Fulfilling Future!',
 #             message,
 #             'zappkodesolutions@gmail.com',
 #             [email_id],
@@ -5422,23 +5314,23 @@ def ask_ques_signup(request):
         
    
 
-        subject = 'Welcome to Guruji Speaks'
+        subject = 'Welcome to Jyotish Junction'
         
         message = f"Dear  {first_name} {last_name},\n\n" \
-            f"Welcome to Guruji Speaks, your trusted online astrology consultancy platform. We are delighted to have you join our community, where we believe in the true power of astrology to bring profound insights and transformative experiences.\n\n" \
-            f"At Guruji Speaks, we prioritize accuracy and personalized guidance. Our seasoned astrologers take the time to meticulously analyze your horoscope, providing you with accurate predictions and effective solutions tailored to your unique life path\n\n" \
+            f"Welcome to Jyotish Junction, your trusted online astrology consultancy platform. We are delighted to have you join our community, where we believe in the true power of astrology to bring profound insights and transformative experiences.\n\n" \
+            f"At Jyotish Junction, we prioritize accuracy and personalized guidance. Our seasoned astrologers take the time to meticulously analyze your horoscope, providing you with accurate predictions and effective solutions tailored to your unique life path\n\n" \
             f"Say goodbye to generic readings! Our platform is dedicated to offering personalized predictions on love, career, finances, and more. With our reliable guidance, you can make informed decisions and unlock a future full of success\n\n" \
             f"Experience the real power of astrology with us. Our dedicated astrologers will help you navigate your life's journey, uncover hidden treasures, and guide you towards a future filled with purpose and fulfillment.\n\n" \
-            f"Join us at Guruji Speaks and embrace the celestial whispers that hold the key to your destiny. We are committed to providing you with the in-depth insights you deserve.\n\n" \
+            f"Join us at Jyotish Junction and embrace the celestial whispers that hold the key to your destiny. We are committed to providing you with the in-depth insights you deserve.\n\n" \
             f"Get ready to embark on a transformative journey with us. True wisdom takes time, but the rewards are lifelong. \n\n" \
-            f"Welcome to Guruji Speaks, where the magic of astrology awaits! \n\n" \
+            f"Welcome to Jyotish Junction, where the magic of astrology awaits! \n\n" \
             f"Best Regards,\n" \
-            f"The Team at Guruji Speaks"
+            f"The Team at Jyotish Junction"
         
-        from_email = settings.CARE_FROM_EMAIL
+        from_email = settings.CAR_FROM_EMAIL
         recipient_list = [email_id]
 
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=settings.EMAIL_HOST_USER_CARE, auth_password=settings.EMAIL_HOST_PASSWORD_CARE, connection=None)
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=settings.EMAIL_HOST_USER, auth_password=settings.EMAIL_HOST_PASSWORD, connection=None)
 
         return redirect('/ask_ques_otp/')
     
@@ -5461,22 +5353,24 @@ def otp_verification_before(request):
             # OTP verification successful
             del request.session['login_otp']  # Remove the OTP from the session
             user_id = request.session.get('login_user_id') 
-            user = GurujiUsers.objects.get(whatsapp_no=user_id)
+            user = GurujiUsers.objects.get(email_id=user_id)
             # user.backend = 'django.contrib.auth.backends.ModelBackend'  
             login(request, user)
             # Perform additional logic or login the user as needed
-            return redirect('/view_plan/')  # Redirect to the dashboard or desired page after successful login
+            return redirect('/ask_question_silver/')  # Redirect to the dashboard or desired page after successful login
         error_message = 'Invalid OTP'
     elif request.method == 'GET' and 'resend_otp' in request.GET:
         new_otp = str(random.randint(100000, 999999))  # Generate a new OTP
         print('new_otp',new_otp)
         user_id = request.session.get('login_user_id')
-        user = GurujiUsers.objects.get(whatsapp_no=user_id)
+        user = GurujiUsers.objects.get(email_id=user_id)
         request.session['login_otp'] = new_otp  # Store the new OTP in the session
         otp = new_otp
         name = f"{user.first_name} {user.last_name}"
-        otp_login_sms([user_id],name,otp)
+        # otp_login_sms([user_id],name,otp)
     return render(request, 'login/otp_verification_before.html', {'error_message': error_message})
+
+
 
 
 
@@ -5552,6 +5446,33 @@ def send_sms_customer_signup(recipient_numbers,name):
         return None
 
 
+def customer_signup123(request):
+    email_ids = GurujiUsers.objects.values_list('email_id', flat=True)
+    email_ids_list = list(email_ids)
+    # phone_numbers = GurujiUsers.objects.values_list('whatsapp_no', flat=True)
+    # phone_numbers_list = list(phone_numbers)
+    # print(phone_numbers_list,email_ids_list)
+    for email_id in email_ids:
+        exist_email_id =email_id
+    
+    if request.method == "POST":
+        user_id = generate_random_password11()
+        # whatsapp_no = request.POST.get('whatsapp_no')      
+        email_id = request.POST.get('email_id')  
+        # first_name = request.POST.get('first_name')  
+        # last_name = request.POST.get('last_name')
+        # password_no = request.POST.get('password')
+        # password = make_password(request.POST['password'])
+        # conform_password = make_password(request.POST['confirm_password'])
+        if GurujiUsers.objects.filter(email_id=email_id).exists():
+            return redirect('/error_email/')
+
+        user = GurujiUsers(user_id = user_id, email_id = email_id,is_staff=True,is_active = True,is_customer=True )
+        user.save()
+        return redirect('/customer-login-otp/')
+    
+    return render(request, 'login/customer_signup.html',{'email_ids_list':email_ids_list})  
+
 
 
 def customer_signup(request):
@@ -5590,28 +5511,28 @@ def customer_signup(request):
 
         
         recipient_numbers = [whatsapp_no]  # Use the user's WhatsApp number
-        send_sms_customer_signup(recipient_numbers,name)
+        # send_sms_customer_signup(recipient_numbers,name)
         # Save the job_id in the user's model instance
         
    
 
-        subject = 'Welcome to Guruji Speaks'
+        subject = 'Welcome to Jyotish Junction'
         
         message = f"Dear  {first_name} {last_name},\n\n" \
-            f"Welcome to Guruji Speaks, your trusted online astrology consultancy platform. We are delighted to have you join our community, where we believe in the true power of astrology to bring profound insights and transformative experiences.\n\n" \
-            f"At Guruji Speaks, we prioritize accuracy and personalized guidance. Our seasoned astrologers take the time to meticulously analyze your horoscope, providing you with accurate predictions and effective solutions tailored to your unique life path\n\n" \
+            f"Welcome to Jyotish Junction, your trusted online astrology consultancy platform. We are delighted to have you join our community, where we believe in the true power of astrology to bring profound insights and transformative experiences.\n\n" \
+            f"At Jyotish Junction we prioritize accuracy and personalized guidance. Our seasoned astrologers take the time to meticulously analyze your horoscope, providing you with accurate predictions and effective solutions tailored to your unique life path\n\n" \
             f"Say goodbye to generic readings! Our platform is dedicated to offering personalized predictions on love, career, finances, and more. With our reliable guidance, you can make informed decisions and unlock a future full of success\n\n" \
             f"Experience the real power of astrology with us. Our dedicated astrologers will help you navigate your life's journey, uncover hidden treasures, and guide you towards a future filled with purpose and fulfillment.\n\n" \
-            f"Join us at Guruji Speaks and embrace the celestial whispers that hold the key to your destiny. We are committed to providing you with the in-depth insights you deserve.\n\n" \
+            f"Join us at Jyotish Junction and embrace the celestial whispers that hold the key to your destiny. We are committed to providing you with the in-depth insights you deserve.\n\n" \
             f"Get ready to embark on a transformative journey with us. True wisdom takes time, but the rewards are lifelong. \n\n" \
-            f"Welcome to Guruji Speaks, where the magic of astrology awaits! \n\n" \
+            f"Welcome to Jyotish Junction, where the magic of astrology awaits! \n\n" \
             f"Best Regards,\n" \
-            f"The Team at Guruji Speaks"
+            f"The Team at Jyotish Junction"
         
-        from_email = settings.CARE_FROM_EMAIL
+        from_email = settings.CAR_FROM_EMAIL
         recipient_list = [email_id]
 
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=settings.EMAIL_HOST_USER_CARE, auth_password=settings.EMAIL_HOST_PASSWORD_CARE, connection=None)
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False, auth_user=settings.EMAIL_HOST_USER, auth_password=settings.EMAIL_HOST_PASSWORD, connection=None)
 
         return redirect('/customer-login-otp/')
     
@@ -5664,15 +5585,40 @@ def customer_login_view(request):
 
 def whatsapp_qr(request):  
     
-    user_phone = '+919999993840'  # User's phone number
+    user_phone = '+917400293601'  # User's phone number
     message = 'Hello,'  # Pre-filled message
+
+    
 
     context = {
         'user_phone': user_phone,
         'message': message,
-    }
+            }
     return render(request, 'whatsapp_qr.html', context)
 
+import qrcode
+from django.http import HttpResponse
+from io import BytesIO
+
+def generate_qr_code(request):
+    # Generate QR code
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    # qr.add_data('https://api.whatsapp.com/send?phone=%2B917400293601&text=Hello%2C')
+    qr.add_data('https://api.whatsapp.com/send?phone=%2B917249103310&text=Hello%2C')
+    qr.make(fit=True)
+
+    # Create image
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Serve image
+    buffer = BytesIO()
+    img.save(buffer)
+    return HttpResponse(buffer.getvalue(), content_type="image/png")
 
 
 
@@ -5745,7 +5691,7 @@ def otp_verification_view(request):
             # OTP verification successful
             del request.session['login_otp']  # Remove the OTP from the session
             user_id = request.session.get('login_user_id') 
-            user = GurujiUsers.objects.get(whatsapp_no=user_id)
+            user = GurujiUsers.objects.get(email_id=user_id)
             # user.backend = 'django.contrib.auth.backends.ModelBackend'  
             login(request, user)
             # Perform additional logic or login the user as needed
@@ -5761,9 +5707,6 @@ def otp_verification_view(request):
         name = f"{user.first_name} {user.last_name}"
         otp_login_sms([user_id],name,otp)
     return render(request, 'login/otp_verification.html', {'error_message': error_message})
-
-
-
 
 
 
@@ -5812,7 +5755,7 @@ import pytz
 #                         value = (j.object_id,j.order_id,j.plan_name,j.plan_amount,j.plan_purchase_date,j.user,op)
 #                     elif j.plan_name == "Divine Revelations" and op <= 6000:
 #                         value = (j.object_id,j.order_id,j.plan_name,j.plan_amount,j.plan_purchase_date,j.user,op)
-#                     elif j.plan_name == "Stellar Insights" and op <= 500:
+#                     elif j.plan_name == "Personalized Guidance" and op <= 500:
 #                         value = (j.object_id,j.order_id,j.plan_name,j.plan_amount,j.plan_purchase_date,j.user,op)
 #                     cust_set2.add(value)
 #     cust_data2 = list(cust_set2)
@@ -5891,7 +5834,7 @@ import pytz
 #                     elif i.plan_name == "Divine Revelations" and op <= 10:
 #                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
 #                         cust_set.add(value)
-#                     elif i.plan_name == "Stellar Insights" and op <= 1:
+#                     elif i.plan_name == "Personalized Guidance" and op <= 1:
 #                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
 #                         cust_set.add(value)
 #     cust_data = list(cust_set) 
@@ -5919,6 +5862,8 @@ import pytz
 
 def dash_customer(request):
     plan = Plan_Purchase.objects.filter(cust_email_id = request.user.email_id ).order_by('-purchase_date')
+    for i in plan:
+     print("2222222",i.plan_name)
     customer = GurujiUsers.objects.filter(is_customer=True)   
     comment = Comment.objects.filter(user = request.user.email_id)
 
@@ -5942,8 +5887,9 @@ def dash_customer(request):
                             pass 
                         else:
                             cust_set.add(value)
-                    elif i.plan_name == "Stellar Insights" and op <= 1:
+                    elif i.plan_name == "Personalized Guidance" and op <= 1:
                         value = (i.object_id,i.order_id,i.plan_name,i.plan_amount,i.plan_purchase_date,i.user,op)
+                        print("33333333",value)
                         rrr = Comment.objects.filter(order_id=value[1]).last()
                         if value[6] == 1 and rrr.qapprove:
                             pass 
@@ -5984,24 +5930,36 @@ def UserEditView(request):
         # data.first_name =request.POST.get('first_name')
         # data.last_name =request.POST.get('last_name')
         data.dob = request.POST.get('dob')   
-        data.whatsapp_no = request.POST.get('whatsapp_no')
-        data.gender = request.POST.get('gender')
-        data.pincode = request.POST.get('pincode')
-        data.city = request.POST.get('city')
-        data.state = request.POST.get('state')
+        # data.whatsapp_no = request.POST.get('whatsapp_no')
+        # data.gender = request.POST.get('gender')
+        # data.pincode = request.POST.get('pincode')
+        # data.city = request.POST.get('city')
+        # data.state = request.POST.get('state')
         data.birth_time = request.POST.get('birth_time')
         data.email_id = request.POST.get('email_id')
         data.birth_place = request.POST.get('birth_place') 
-        data.age = request.POST.get('age')        
-        country_code = request.POST.get('country')
-        try:
-            country = pycountry.countries.get(alpha_2=country_code)
-            if country:
-                country_full_name = country.name
-        except:
-            pass
-        data.country = country_full_name
+        # data.age = request.POST.get('age')        
+        # country_code = request.POST.get('country')
+        # try:
+        #     country = pycountry.countries.get(alpha_2=country_code)
+        #     if country:
+        #         country_full_name = country.name
+        # except:
+        #     pass
+        # data.country = country_full_name
+        image = request.FILES.get('cust_img')
+        if image:
+            # Save the new profile picture to the user's profile
+            data.image = image
+            data.save()
+            sweetify.success(request, "Profile updated successfully.", timer=3000)
+        else:
+            return messages.info(request,"Image file is required.")
         data.save()
+
+    user = GurujiUsers.objects.get(email_id=request.user.email_id)
+    
+        
     context = {
     'data':data,
     'rrr':rrr,
@@ -6020,23 +5978,23 @@ def update_silver(request):
         # data.first_name =request.POST.get('first_name')
         # data.last_name =request.POST.get('last_name')
         data.dob = request.POST.get('dob')   
-        data.whatsapp_no = request.POST.get('whatsapp_no')
-        data.gender = request.POST.get('gender')
-        data.pincode = request.POST.get('pincode')
-        data.city = request.POST.get('city')
-        data.state = request.POST.get('state')
+        # data.whatsapp_no = request.POST.get('whatsapp_no')
+        # data.gender = request.POST.get('gender')
+        # data.pincode = request.POST.get('pincode')
+        # data.city = request.POST.get('city')
+        # data.state = request.POST.get('state')
         data.birth_time = request.POST.get('birth_time')
         data.email_id = request.POST.get('email_id')
         data.birth_place = request.POST.get('birth_place') 
-        data.age = request.POST.get('age')        
-        country_code = request.POST.get('country')
-        try:
-            country = pycountry.countries.get(alpha_2=country_code)
-            if country:
-                country_full_name = country.name
-        except:
-            pass  
-        data.country = country_full_name
+        # data.age = request.POST.get('age')        
+        # country_code = request.POST.get('country')
+        # try:
+        #     country = pycountry.countries.get(alpha_2=country_code)
+        #     if country:
+        #         country_full_name = country.name
+        # except:
+        #     pass  
+        # data.country = country_full_name
         data.save()
         return redirect ('/ask_question_silver/')
 
@@ -6418,53 +6376,119 @@ def get_geolocation_data(request):
 #     return render(request, 'login/astro_my_customer.html', {'customers': customers,'count':count})
 
 
+# def ask_ques_otp(request):
+#     error_message = ""
+#     if request.method == 'POST':
+#         user_id = request.POST.get('user_id')
+#         user_name = GurujiUsers.objects.filter(whatsapp_no = user_id)
+#         for i in user_name:
+#             i.first_name
+#             i.last_name
+#             name = i.first_name + " " + i.last_name
+#     	# print('llllll',name)
+
+#         # Check if user_id is an email
+#         if '@' in user_id:
+#             try:
+#                 user = GurujiUsers.objects.get(email_id=user_id)
+#                 print('llllll',user)
+#             except GurujiUsers.DoesNotExist:
+#                 user = None
+#         else:   
+#             try:
+#                 user = GurujiUsers.objects.get(whatsapp_no=user_id)
+#             except GurujiUsers.DoesNotExist:
+#                 user = None
+
+#         if user is not None and user.is_customer:
+#             # Generate OTP and store it in the session
+#             otp = get_random_string(length=6, allowed_chars='0123456789')
+#             request.session['login_otp'] = otp
+#             print('otp',otp)
+#             request.session['login_user_id'] = user_id
+
+#             # Send the OTP to the user's email
+#             subject = 'Login OTP'
+#             message = f"Dear user,\n\nYour OTP for login is: {otp}\n\nPlease enter this OTP to log in to your account.\n\nThank you!"
+#             message = render_to_string('login/otp_email.html', {'otp': otp})
+#             print('aparna',message)
+#             send_mail(subject, message, 'your-email@example.com', [user.email_id], fail_silently=False)
+
+#             # otp_login_sms([user_id],name,otp)
+
+
+#             # Redirect to OTP verification page
+#             return redirect('/otp_verification_before/')
+#         else:
+#             error_message = 'Invalid Phone Number'
+
+#     return render(request, 'login/customer_otp_before.html', {'error_message': error_message})      
+
+
+
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.utils.crypto import get_random_string
+
+
 def ask_ques_otp(request):
     error_message = ""
     if request.method == 'POST':
+        # user_id = request.POST.get('user_id')
+        # user_name = ""
+        # name = user_name.first_name + " " + user_name.last_name if user_name else ""
         user_id = request.POST.get('user_id')
-        user_name = GurujiUsers.objects.filter(whatsapp_no = user_id)
-        for i in user_name:
-            i.first_name
-            i.last_name
-            name = i.first_name + " " + i.last_name
-    	# print('llllll',name)
+        user_name = GurujiUsers.objects.filter(email_id=user_id).first()
+        name = user_name.first_name + " " + user_name.last_name if user_name else ""
 
-        # Check if user_id is an email
+
+        # Check if user_id is an email or phone number
         if '@' in user_id:
             try:
                 user = GurujiUsers.objects.get(email_id=user_id)
-                print('llllll',user)
+                user_name = f"{user.first_name} {user.last_name}"
             except GurujiUsers.DoesNotExist:
                 user = None
         else:
             try:
                 user = GurujiUsers.objects.get(whatsapp_no=user_id)
+                user_name = f"{user.first_name} {user.last_name}"
             except GurujiUsers.DoesNotExist:
                 user = None
 
-        if user is not None and user.is_customer:
+        if user_name is None:
+            # User is not registered, set an error message
+            error_message = "User is not registered. Please sign up first."
+
+
+        elif user is not None and user.is_customer:
             # Generate OTP and store it in the session
             otp = get_random_string(length=6, allowed_chars='0123456789')
             request.session['login_otp'] = otp
-            print('otp',otp)
             request.session['login_user_id'] = user_id
+
+            # Render the email content with user's name and OTP
+            # email_content = render_to_string('login/otp_email.html', {'user_name': user_name, 'otp': otp})
 
             # Send the OTP to the user's email
             subject = 'Login OTP'
-            message = f"Dear user,\n\nYour OTP for login is: {otp}\n\nPlease enter this OTP to log in to your account.\n\nThank you!"
-            message = render_to_string('login/otp_email.html', {'otp': otp})
-            print('aparna',message)
-            send_mail(subject, message, 'your-email@example.com', [user.email_id], fail_silently=False)
+            message = f"Dear {name},\n\nYour OTP for login is: {otp}\n\nPlease enter this OTP to log in to your account.\n\nThank you!"
 
-            otp_login_sms([user_id],name,otp)
-
+            send_mail(subject,message, 'your-email@example.com', [user.email_id], fail_silently=False)
 
             # Redirect to OTP verification page
             return redirect('/otp_verification_before/')
-        else:
-            error_message = 'Invalid Phone Number'
 
-    return render(request, 'login/customer_otp_before.html', {'error_message': error_message})   
+        else:
+            error_message = 'Invalid Email Id'
+
+    return render(request, 'login/customer_otp_before.html', {'error_message': error_message})
+
+
+
+
 
 
 @login_required(login_url=settings.ASTROLOGER_LOGIN_URL)
@@ -6522,10 +6546,12 @@ def bill(request,id):
 @never_cache
 def astrologer_payment(request):
     data3=Plan_Purchase.objects.all()
+    data4=GurujiUsers.objects.all()
     comment= Comment.objects.filter(astro_email_id=request.user.email_id)
     cust_set = set()
     for i in comment:
-        cust_data = (i.order_id,i.cust_name,i.plan_name,i.purchase_date,i.astro_email_id,i.user,i.plan_amount,i.astro_commision)
+        cust_data = (i.order_id,i.cust_name,i.plan_name,i.plan_purchase_date,i.astro_email_id,i.user,i.plan_amount,i.astro_commision)
+        
         if cust_data not in cust_set:
             print('cust_data',cust_data)
             cust_set.add(cust_data)
@@ -6537,7 +6563,7 @@ def astrologer_payment(request):
 
     total_commision1 = 0
     for j in cust_set:
-    	total_commision1 += j[7]
+        total_commision1 += j[7]
 
 
     data2 = len(list(cust_set)) 
@@ -6547,13 +6573,13 @@ def astrologer_payment(request):
         commision = GurujiUsers.objects.filter(email_id = k[4])
         for j in commision:
                 print('111111111111111',j.commision)  
-                total_commision += (float(k[6])*j.commision)/100
+                # total_commision += (float(k[6])*j.commision)/100
         print(total_commision)
         print(commision)
 
 
     print('total_customer',data2)
-    return render (request,'login/astrologer_payment.html',{'cust_set':cust_set,'data3':data3,'data2':data2,'total_commision1':total_commision1})   
+    return render (request,'login/astrologer_payment.html',{'cust_set':cust_set,'data3':data3,'data2':data2,'commision':commision})   
 
 
 from django.db.models import Count
@@ -6567,9 +6593,938 @@ def monthly(request):
 
 def monthly_commission(request, plan_month):
     data = Comment.objects.filter(plan_month=plan_month,astro_email_id=request.user.email_id)
-    total_commission = sum(i.astro_commision for i in data)
+    cust_set = set()
+    for i in data:
+        cust_data = (i.order_id,i.cust_name,i.plan_name,i.plan_purchase_date,i.astro_email_id,i.user,i.plan_amount,i.astro_commision)
+        
+        if cust_data not in cust_set:
+            print('cust_data',cust_data)
+            cust_set.add(cust_data)
+    # sorted_cust_set = sorted(cust_set, key=lambda x: x[3], reverse=True)
+
+    data2 = len(list(cust_set)) 
+    data_list = list(cust_set)
+    commision = 0
+    total_commision = 0
+    for k in data_list:
+        commision = GurujiUsers.objects.filter(email_id = k[4])
+        for j in commision:
+                print('111111111111111',j.commision)  
+                total_commision += j.commision
+                # total_commision += (float(k[6])*j.commision)/100
+        print(commision)
+
+
+    print('total_customer',data2)
+
+    # total_commission = sum(i.astro_commision for i in data)
     for i in data:
         print('aaaaa',i.plan_id,i.order_id)
-    context={'data':data,'total_commission':total_commission}
+    context={'data':data,'commision':commision,'total_commision':total_commision}
     return render(request, 'login/monthly_commission.html', context)
 
+
+def kundli(request):
+     return render(request,'login/kundli.html')
+
+# def horoscope(request):
+#     return render(request,'login/horoscope.html')
+
+
+# def papasamaya_view(request):
+#     # Replace 'YOUR_API_KEY' with your actual API key
+#     api_key = 'c293c846-c50f-5ec6-9f80-1eaa0576dff3'
+#     if request.method == 'POST':
+#         # data.first_name =request.POST.get('first_name')
+#         # data.last_name =request.POST.get('last_name')
+#         name = request.POST.get('name') 
+#         email = request.POST.get('email')
+#         mobile_no = request.POST.get('mobile_no')
+#         # category = request.POST.get('category')
+#         # name = request.POST.get('name')
+#         # name = request.POST.get('name')  
+#         # whatsapp_no = request.POST.get('whatsapp_no')
+
+#     # Get the parameters from the request 
+#     name=request
+#     dob = request.GET.get('dob')
+#     tob = request.GET.get('tob')
+#     lat = request.GET.get('lat')
+#     lon = request.GET.get('lon')
+#     tz = request.GET.get('tz')
+#     lang = request.GET.get('lang','en')
+#     subcategory= request.GET.get('subcategory')
+
+#     # Define the API URL
+#     api_url = f"https://api.vedicastroapi.com/v3-json/horoscope/{subcategory}?api_key={api_key}&dob={dob}&tob={tob}&lat={lat}&lon={lon}&tz={tz}&lang={lang}"
+
+#     try:
+#         # Make a GET request to the API
+#         response = requests.get(api_url)
+
+#         # Check if the request was successful (status code 200)
+#         if response.status_code == 200:
+#             # Parse the JSON response
+#             data = response.json()
+            
+#             # You can process the data as needed
+
+#             # Return the data as a JSON response
+#             return JsonResponse(data)
+#         else:
+#             # Handle the case where the API request failed
+#             return JsonResponse({'error': 'Failed to retrieve data from the API'}, status=500)
+#     except Exception as e:
+#         # Handle any exceptions that may occur during the request
+#         return JsonResponse({'error': str(e)}, status=500)
+    
+# def panchang(request):
+#     return render(request,'login/panchang.html')
+
+# def panchang_view1(request):
+#     try:
+#         # Extract parameters from the request
+#         date = request.GET.get('date')
+#         subcategory= request.GET.get('subcategory')
+        
+#         lat = request.GET.get('lat')
+#         lon = request.GET.get('lon')
+#         tz = request.GET.get('tz')
+#         print('lllll',tz)
+#         time = request.GET.get('time')
+        
+
+#         lang = request.GET.get('lang', 'en')
+#         api_key = 'c293c846-c50f-5ec6-9f80-1eaa0576dff3'  # Replace with your actual API key
+
+#         # Check if all required parameters are provided
+#         if date and time and lat and lon and tz and lang:
+#             # Construct the API URL with the extracted parameters
+#             url = f"https://api.vedicastroapi.com/v3-json/panchang/{subcategory}?api_key={api_key}&date={date}&tz={tz}&lat={lat}&lon={lon}&time={time}&lang={lang}"
+#             response = requests.get(url)
+
+#                         # Check if the request was successful (status code 200)
+#             if response.status_code == 200:
+#                 data = response.json()
+#                 return JsonResponse(data, safe=False)
+#             else:
+#                 return JsonResponse({'error': 'Failed to fetch data from the API.'}, status=500)
+#         else:
+#             return JsonResponse({'error': 'Missing one or more parameters.'}, status=400)
+
+#     except Exception as e:
+#         return JsonResponse({'error': str(e)}, status=500)
+
+
+# def api_panchang_form(request):
+#     # timezones = [tz for tz in pytz.all_timezones]
+#     return render(request, 'panchang_display.html')
+
+
+
+import requests
+from django.http import JsonResponse, HttpResponse
+
+def papasamaya_view(request):
+        dob = request.GET.get('dob', '25/10/2023')
+        tob = request.GET.get('tob')  # Use the default date if "dob" is not provided
+        lat = request.GET.get('lat','1')
+        lon = request.GET.get('lon','1')
+        tz = request.GET.get('tz',9)
+        lang = request.GET.get('lang', 'en')
+        subcategory = request.GET.get('subcategory')
+        api_key = 'c293c846-c50f-5ec6-9f80-1eaa0576dff3'  # Replace with your actual API key
+
+        # Check if all required parameters are provided
+        if subcategory == 'planet-details':
+           url = f'https://api.vedicastroapi.com/v3-json/horoscope/planet-details?dob={dob}&tob={tob}&lat={lat}&lon={lon}&tz={tz}&api_key={api_key}&lang={lang}'
+        elif subcategory == 'ashtakvarga':
+            url = f"https://api.vedicastroapi.com/v3-json/horoscope/ashtakvarga?api_key={api_key}&date={dob}&tob={tob}&tz={tz}&lat={lat}&lon={lon}&lang={lang}"
+        elif subcategory == 'binnashtakvarga':
+             url = f"https://api.vedicastroapi.com/v3-json/horoscope/binnashtakvarga?api_key={api_key}&date={dob}&tz={tz}&lat={lat}&lon={lon}&lang={lang}"
+        elif subcategory == 'planet-report':
+            url = f"https://api.vedicastroapi.com/v3-json/panchang/planet-report?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'moon-phase':
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moon-phase?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # # elif subcategory == 'choghadiya-muhurta':
+            
+        # #     url = f"https://api.vedicastroapi.com/v3-json/panchang/choghadiya-muhurta?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+        # elif subcategory == 'hora-muhurta':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/hora-muhurta?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'moonset':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moonset?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'solarnoon':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/solarnoon?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'sunrise':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/sunrise?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'sunset':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/sunrise?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'retrogrades':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/retrogrades?api_key={api_key}&date={dob}&tz={tz}&lang={lang}"
+        # elif subcategory == 'moon-rise':
+            
+        #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moonrise?api_key={api_key}&date={dob}&tz={tz}&lat={lat}&lon={lon}&lang={lang}"
+        else:
+            return JsonResponse({'error': 'Invalid subcategory'}, status=400)
+
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            data = response.json()["response"]
+            context = {
+                'data': data,
+                'error': None,
+            }
+            return render(request, 'login/kundli_horoscop.html', context)
+        
+            
+        
+        else:
+            return JsonResponse({'error': 'Failed to retrieve data'}, status=500)
+
+
+
+from django.shortcuts import render
+from django.utils import timezone
+import pytz
+
+def api_request_form(request):
+    timezones = [tz for tz in pytz.all_timezones]
+    return render(request, 'login/api_request_template.html',{'timezones': timezones})
+
+def before_api_request_form(request):
+    timezones = [tz for tz in pytz.all_timezones]
+    return render(request, 'login/before_api_request_template.html',{'timezones': timezones})
+
+
+from django.http import JsonResponse
+import requests
+
+def panchang(request):
+    # api_key = 'c293c846-c50f-5ec6-9f80-1eaa0576dff3'
+    # date = request.GET.get('date')
+    # print('date',type(date))
+    # tz = request.GET.get('tz')
+    # lat = request.GET.get('lat','1')
+    # lon = request.GET.get('lon','1')
+    # time = request.GET.get('time', '05:20')
+    # lang = request.GET.get('lang', 'en')
+    # planet = request.GET.get('planet','Moon')
+    # year = request.GET.get('year','2023')
+    # subcategory = request.GET.get('subcategory', '')
+
+    # if subcategory == 'panchang':
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/panchang?api_key={api_key}&date={date}&tz={tz}&lat={lat}&lon={lon}&time={time}&lang={lang}"
+    # elif subcategory == 'monthly-panchang':
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/monthly-panchang?api_key={api_key}&date={date}&tz={tz}&lat={lat}&lon={lon}&time={time}&lang={lang}"
+    # elif subcategory == 'sunset':
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/sunset?api_key={api_key}&date={date}&tz={tz}&lat={lat}&lon={lon}&time={time}&lang={lang}"
+    # elif subcategory == 'moon-calendar':
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moon-calendar?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'moon-phase':
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moon-phase?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # # elif subcategory == 'choghadiya-muhurta':
+        
+    # #     url = f"https://api.vedicastroapi.com/v3-json/panchang/choghadiya-muhurta?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'hora-muhurta':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/hora-muhurta?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'moonset':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moonset?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'solarnoon':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/solarnoon?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'sunrise':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/sunrise?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'sunset':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/sunrise?api_key={api_key}&date={date}&tz={tz}&lang={lang}"
+    # elif subcategory == 'retrogrades':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/retrogrades?api_key={api_key}&date={date}&tz={tz}&lang={lang}&year={year}&planet={planet}"
+    # elif subcategory == 'moonrise':
+        
+    #     url = f"https://api.vedicastroapi.com/v3-json/panchang/moonrise?api_key={api_key}&date={date}&tz={tz}&lat={lat}&lon={lon}&lang={lang}"
+    # else:
+    #     return JsonResponse({'error': 'Invalid subcategory'}, status=400)
+
+    # response = requests.get(url)
+
+    # if response.status_code == 200:
+    #     data = response.json()["response"]
+    #     context = {
+    #         'data': data,
+    #         'error': None,
+    #     }
+    #     return render(request, 'login/kundli1_panchang.html', context)
+        
+       
+    # else:
+    #     return JsonResponse({'error': 'Failed to retrieve data'}, status=500)
+
+    return render(request, 'login/panchange_login.html')
+
+
+def panchang_one(request):
+    return render (request,'login/kundli_panchang.html')
+
+
+
+def save_enquiry(request):
+    if request.method == 'POST':
+        contact_person = request.POST.get('contact_person')
+        contact_phone = request.POST.get('contact_phone')
+        contact_email = request.POST.get('contact_email')
+        en = Contact(contact_person=contact_person,contact_phone=contact_phone,contact_email=contact_email)
+        en.save()
+        print(contact_person,contact_phone,contact_phone)
+        messages.success(request, 'Data saved successfully.') 
+        
+    return render(request,'login/home.html')
+
+
+
+# horoscope/views.py
+import requests
+from bs4 import BeautifulSoup
+from django.shortcuts import render
+
+
+
+def aries_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=1"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request, 'zodiac/aries_daily.html', {'horoscope': horoscopes})
+
+def before_aries_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=1"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request, 'zodiac/before_aries_daily.html', {'horoscope': horoscopes})
+
+def taurus_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=2"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/taurus_daily.html",{'horoscope': horoscopes})
+
+def before_taurus_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=2"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_taurus_daily.html",{'horoscope': horoscopes})
+
+
+def gemini_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=3"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/gemini_daily.html",{'horoscope': horoscopes})
+
+def before_gemini_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=3"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_gemini_daily.html",{'horoscope': horoscopes})
+
+def cancer_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=4"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/cancer_daily.html",{'horoscope': horoscopes})
+
+def before_cancer_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=4"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_cancer_daily.html",{'horoscope': horoscopes})
+
+
+def leo_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=5"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/leo_daily.html",{'horoscope': horoscopes})
+
+def before_leo_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=5"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_leo_daily.html",{'horoscope': horoscopes})
+
+def virgo_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=6"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/virgo_daily.html",{'horoscope': horoscopes})
+
+def before_virgo_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=6"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_virgo_daily.html",{'horoscope': horoscopes})
+    
+def libra_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=7"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/libra_daily.html",{'horoscope': horoscopes})
+
+def before_libra_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=7"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_libra_daily.html",{'horoscope': horoscopes})
+
+
+def scorpio_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=8"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/scorpio_daily.html",{'horoscope': horoscopes})
+
+def before_scorpio_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=8"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_scorpio_daily.html",{'horoscope': horoscopes})
+
+
+def sagittarius_daily(request):
+
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=9"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/sagittarius_daily.html",{'horoscope': horoscopes})
+
+def before_sagittarius_daily(request):
+
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=9"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_sagittarius_daily.html",{'horoscope': horoscopes})
+
+def capricorn_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=10"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/capricorn_daily.html",{'horoscope': horoscopes})
+
+def before_capricorn_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=10"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_capricorn_daily.html",{'horoscope': horoscopes})
+
+def aquarius_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=11"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/aquarius_daily.html",{'horoscope': horoscopes})
+
+def before_aquarius_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=11"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_aquarius_daily.html",{'horoscope': horoscopes})
+
+def pisces_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=12"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/pisces_daily.html",{'horoscope': horoscopes})
+
+def before_pisces_daily(request):
+    horoscopes = {}
+    
+    days = ['yesterday', 'today', 'tomorrow']
+    for day in days:
+        url = (
+            f"https://www.horoscope.com/us/horoscopes/general/"
+            f"horoscope-general-daily-{day}.aspx?sign=12"
+        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, "html.parser")
+        horoscope_text = soup.find("div", class_="main-horoscope").p.text
+        horoscopes[day] = horoscope_text.split('-',1)[1].strip()
+
+    return render(request,"zodiac/before_pisces_daily.html",{'horoscope': horoscopes})
+
+
+
+
+
+def aries_monthly(request):
+    return render(request,"zodiac/aries_monthly.html")
+
+def taurus_monthly(request):
+    return render(request,"zodiac/taurus_monthly.html")
+
+def gemini_monthly(request):
+    return render(request,"zodiac/gemini_monthly.html")
+
+def cancer_monthly(request):
+    return render(request,"zodiac/cancer_monthly.html")
+
+def leo_monthly(request):
+    return render(request,"zodiac/leo_monthly.html")
+
+def virgo_monthly(request):
+    return render(request,"zodiac/virgo_monthly.html")
+
+def libra_monthly(request):
+    return render(request,"zodiac/libra_monthly.html")
+
+def scorpio_monthly(request):
+    return render(request,"zodiac/scorpio_monthly.html")
+
+def sagittarius_monthly(request):
+    return render(request,"zodiac/sagittarius_monthly.html")
+
+def capricorn_monthly(request):
+    return render(request,"zodiac/capricorn_monthly.html")
+
+def aquarius_monthly(request):
+    return render(request,"zodiac/aquarius_monthly.html")
+
+def pisces_monthly(request):
+    return render(request,"zodiac/pisces_monthly.html")
+
+
+
+
+def aries_weekly(request):
+    return render(request,"zodiac/aries_weekly.html")
+
+def taurus_weekly(request):
+    return render(request,"zodiac/taurus_weekly.html")
+
+def gemini_weekly(request):
+    return render(request,"zodiac/gemini_weekly.html")
+
+def cancer_weekly(request):
+    return render(request,"zodiac/cancer_weekly.html")
+
+def leo_weekly(request):
+    return render(request,"zodiac/leo_weekly.html")
+
+def virgo_weekly(request):
+    return render(request,"zodiac/virgo_weekly.html")
+
+def libra_weekly(request):
+    return render(request,"zodiac/libra_weekly.html")
+
+def scorpio_weekly(request):
+    return render(request,"zodiac/scorpio_weekly.html")
+
+def sagittarius_weekly(request):
+    return render(request,"zodiac/sagittarius_weekly.html")
+
+def capricorn_weekly(request):
+    return render(request,"zodiac/capricorn_weekly.html")
+
+def aquarius_weekly(request):
+    return render(request,"zodiac/aquarius_weekly.html")
+
+def pisces_weeekly(request):
+    return render(request,"zodiac/pisces_weekly.html")
+
+
+def love(request):
+    return render(request,"login/love.html")
+
+def career(request):
+    return render(request,"login/career.html")
+
+def luck(request):
+    return render(request,"login/luck.html")
+
+def love_login(request):
+    return render(request,"login/love_login.html")
+
+def career_login(request):
+    return render(request,"login/career_login.html")
+
+def luck_login(request):
+    return render(request,"login/luck_login.html")
+
+
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+import random
+
+def generate_random_otp():
+    return ''.join(random.choices('0123456789', k=6))
+
+# def send_email_otp(request):
+#     if request.method == 'POST':
+#             remail = request.POST.get('email')
+#             otp = generate_random_otp()  # Call the function to generate OTP
+#             print("Generated OTP:", otp)
+
+#             subject = 'Registration Confirmation'
+#             message = f'Hello,\n\nThank you for registering on our website.\nYour OTP is {otp}\nBest regards,\n Jyotish Juction'
+#             from_email = settings.EMAIL_HOST_USER
+#             print(from_email, remail, "From_email is:  and remail: ")  # Replace this with your desired 'from' email address
+#             recipient_list = [remail]
+#             send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+
+#         # Redirect to a success page (adjust the URL as needed)
+#             return redirect('/cus_validate_otp/')
+
+#     return render(request, 'register.html')
+
+
+
+def send_email_otp(request):
+    error_message = ""
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        user_name = GurujiUsers.objects.filter(email_id=user_id).first()
+        name = user_name.first_name + " " + user_name.last_name if user_name else ""
+
+        # Check if user_id is an email
+        if '@' in user_id:
+            try:
+                user = GurujiUsers.objects.get(email_id=user_id)
+            except GurujiUsers.DoesNotExist:
+                user = None
+        else:
+            try:
+                user = GurujiUsers.objects.get(whatsapp_no=user_id)
+            except GurujiUsers.DoesNotExist:
+                user = None
+
+        if user is not None and user.is_customer:
+            # Generate OTP and store it in the session
+            otp = get_random_string(length=6, allowed_chars='0123456789')
+            request.session['login_otp'] = otp
+            request.session['login_user_id'] = user_id
+
+            # Send the OTP to the user's email as plain text
+            subject = 'Login OTP'
+            message = f"Dear {name},\n\nYour OTP for login is: {otp}\n\nPlease enter this OTP to log in to your account.\n\nThank you!"
+            send_mail(subject, message, 'your-email@example.com', [user.email_id], fail_silently=False)
+
+            # otp_login_sms([user_id], name, otp)
+
+            # Redirect to OTP verification page
+            return redirect('/otp-verification/')
+        else:
+            error_message = 'Invalid Phone Number'
+
+    return render(request, 'login/customer_otp_login.html', {'error_message': error_message})
+
+def more_reviews(request):
+    
+    users_with_ratings = GurujiUsers.objects.exclude(Q(review_comments1='') | Q(review_star1=''))
+    
+    return render(request,'login/more_reviews.html',{'users':users_with_ratings})
+ 
+def more_reviews_login(request):
+
+    users_with_ratings = GurujiUsers.objects.exclude(Q(review_comments1='') | Q(review_star1=''))
+
+    return render(request,'login/more_reviews_login.html',{'users':users_with_ratings})
+
+
+
+
+from django.contrib import auth
+from django.contrib.auth.models import User
+from .models import Chat
+from openai import OpenAI
+
+from django.http import JsonResponse
+from django.shortcuts import render
+from django.utils import timezone
+import os
+# openai_api_key = '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'
+# openai.api_key = openai_api_key
+client = OpenAI()
+OpenAI.api_key = os.getenv('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')
+
+def ask_openai(message):
+    response = client.completions.create(
+    model="text-davinci-003",  
+    # model = "gpt-3.5-turbo",
+    prompt=f"You are an helpful assistant.\nUser: {message}",
+    temperature=0.9,
+    max_tokens=150,
+    stop=["\n"]
+)
+
+    answer = response.choices[0].text.strip()
+    if "AI" in answer:
+        answer = answer.replace("AI", "Jyotish Junction")
+    return answer
+
+def chatbot(request):
+    chats = GurujiUsers.objects.filter(email_id=request.user.email_id)
+
+    if request.method == 'POST':
+        message = request.POST.get('message')
+        response = ask_openai(message)
+
+        chat = Chat(user=request.user, message=message, response=response, created_at=timezone.now())
+        chat.save()
+        print('55555555555555555555555555',chat.response)
+        return JsonResponse({'message': message, 'response': response})
+        
+    return render(request, 'login/chatbot.html', {'chats': chats})
+
+
+# import openai 
+# APIKEY = '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'
+# openai.api_key = APIKEY
+# assistant_run = True
+# while assistant_run:
+#     human = input("\n\nHuman: ")
+#     chat_with_ai = human + "AI: "
+#     response =  openai.Completion.create(
+#         model = "text-davinci-003",
+#         prompt = f"You are an AI Assistant.{chat_with_ai}",
+#         temperature = 0.9,
+#         max_tokens = 150,
+#         stop = ["AI:","Human:"]
+#     )
+#     print(f"\n\nAI: {response.choices[0]['text']}")

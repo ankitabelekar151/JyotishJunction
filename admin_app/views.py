@@ -28,175 +28,6 @@ from django.views.decorators.cache import never_cache
 from django.db.models import Count
 
  
-# def admin_revenue(request):
-#     data1=GurujiUsers.objects.filter(is_astrologer=True , is_approved= True)
-#     print('llllllllllll',data1)
-#     month_com = Comment.objects.all()
-#     data5 = set()
-#     for o in month_com:
-#         fare = int(o.plan_amount) - int(o.astro_commision)
-#         data4 = (o.cust_name,o.plan_purchase_date,o.plan_name,fare,o.astro_email_id,o.astro_commision)
-#         if data4 not in data5:
-#             data5.add(data4)
-#     data = set()
-#     if request.method == "POST":
-#         plan_month=request.POST.get('month')
-#         revnue=request.POST.get('revenue')
-#         astro_name=request.POST.get('astro_name')
-#         print("dataaaaaaaaaaaaaaaaa",plan_month,revnue,astro_name)
-#         for i in data1:
-#             for j in month_com:
-#                 if i.name == astro_name and j.plan_month == plan_month:
-#                     admin_fare = int(j.plan_amount) - int(j.astro_commision)
-#                     #print('fareeeeeeeeeeeeeeeee',admin_fare)
-#                     list_value = (j.cust_name,j.plan_purchase_date,j.plan_name,admin_fare,j.astro_email_id,j.astro_commision)
-#                     if list_value not in data:
-#                         data.add(list_value)
-#     e_list = []
-#     e_list1 = []
-#     for i in data:
-#         a= i[3]
-#         b= i[5]
-#         e_list.append(a)
-#         e_list1.append(b)
-         
-#     admin_fare = 0
-#     for k in e_list:
-#         admin_fare = k + admin_fare
-    
-#     astro_commision = 0
-#     for l in e_list1:
-#         astro_commision = l + astro_commision
-    
-#     e_list2 = []
-#     e_list3 = []
-#     for m in data5:
-#         admin_amt = m[3]
-#         astro_com = m[5]
-#         e_list2.append(admin_amt)
-#         e_list3.append(astro_com)
-    
-    
-#     admin_yearly=0
-#     for n in e_list2:
-#         admin_yearly = n + admin_yearly
-    
-#     astro_yearly = 0 
-#     for c in e_list3:
-#         astro_yearly = c + astro_yearly
-
-    
-#     context={
-#         'data1':data1,
-#         'data':data,
-#         'admin_fare':admin_fare,
-#         'astro_commision':astro_commision,
-#         'data5':data5,
-#         'admin_yearly':admin_yearly,
-#         'astro_yearly':astro_yearly
-
-#     }
-
-#     return render(request,"admin/admin_revenue.html",context)
-
-   
-# def admin_revenue(request):
-
-#     data1=GurujiUsers.objects.filter(is_astrologer=True , is_approved= True)
-#     month_com = Comment.objects.all()
-#     data5 = set()
-#     for o in month_com:
-#         fare = int(o.plan_amount) - int(o.astro_commision)
-#         data4 = (o.cust_name,o.plan_purchase_date,o.plan_name,fare,o.astro_email_id,o.astro_commision,o.order_id)
-#         if data4 not in data5:
-#             data5.add(data4)
-#     data = set()
-#     astro_name= 0
-#     plan_month= 0
-
-#     if request.method == "POST":
-#         plan_month=request.POST.get('month')
-#         revnue=request.POST.get('revenue')
-#         astro_name=request.POST.get('astro_name')
-        
-
-
-      
-#         for i in data1:
-#             for j in month_com:
-#                 if i.name == astro_name and j.plan_month == plan_month:
-#                     admin_fare = int(j.plan_amount) - int(j.astro_commision)
-#                     print('admin_fare',admin_fare)
-#                     list_value = (j.cust_name,j.plan_purchase_date,j.plan_name,admin_fare,j.astro_email_id,j.astro_commision)
-#                     if list_value not in data:
-#                         data.add(list_value)
-#         data6 = list(data5)
-
-    
-
-#     e_list = []
-#     e_list1 = []
-#     for i in data:
-#         a= i[3]
-#         b= i[5]
-#         e_list.append(a)
-#         e_list1.append(b)
-         
-#     admin_fare = 0
-#     for k in e_list:
-#         admin_fare = k + admin_fare
-    
-#     astro_commision = 0
-#     for l in e_list1:
-#         astro_commision = l + astro_commision
-    
-#     e_list2 = []
-#     e_list3 = []
-#     for m in data5:
-#         admin_amt = m[3]
-#         astro_com = m[5]
-#         e_list2.append(admin_amt)
-#         e_list3.append(astro_com)
-#     print('e_list2',e_list2)
-    
-    
-#     admin_yearly=0
-#     for n in e_list2:
-#         admin_yearly = n + admin_yearly
-    
-#     astro_yearly = 0 
-#     for c in e_list3:
-#         astro_yearly = c + astro_yearly
-
-    
-#     total_comission = 0 
-#     plan_total = 0
-#     astro_name = GurujiUsers.objects.filter(id = astro_name)
-#     for r in astro_name:
-
-#         pk = Comment.objects.filter (astro_email_id = r.email_id,plan_month=plan_month)
-#         for p in pk:
-#             total_comission += int(p.astro_commision)
-#             plan_total += int(p.plan_amount)
-    
-#     print('Total', plan_total,total_comission)
-
-    
-#     context={
-#         'data1':data1,
-#         'data':data,
-#         'admin_fare':admin_fare,
-#         'astro_commision':astro_commision,
-#         'data5':data5,
-#         'admin_yearly':admin_yearly,
-#         'astro_yearly':astro_yearly,
-#         'total_comission':total_comission,
-#         'plan_total':plan_total,
-
-
-#     }
-   
-#     return render(request,"admin/admin_revenue.html",context)
 from django.db.models import Sum
 
 @login_required(login_url=settings.ADMIN_LOGIN_URL)
@@ -207,7 +38,7 @@ def admin_revenue(request):
         print('kkkkkkkkk',w.recharge_amount)
     total_recharge_amount = Wallet.objects.aggregate(total=Sum('recharge_amount'))['total']
     total_debit_amount = Wallet.objects.aggregate(total=Sum('debit_amount'))['total']
-    wallet_amount = total_recharge_amount - total_debit_amount
+    # wallet_amount = total_recharge_amount - total_debit_amount
 
     print('Total recharge amount:', total_recharge_amount)
     selected_astrologer = None
@@ -215,20 +46,33 @@ def admin_revenue(request):
     month_com = Comment.objects.all()
     data5 = set()
     data4 = None
+    plan_amount = 0 
     for o in month_com:
         # fare = int(o.plan_amount) - int(o.astro_commision)
-        plan_amount = float(o.plan_amount)/2
-        astro_commission = float(o.astro_commision)
+        # plan_amount = float(o.plan_amount)/2
+        # astro_commission = float(o.astro_commision)
         if plan_amount == 0:
             fare = 0
         else:
             fare = plan_amount - astro_commission
         print('fare',fare)
         if o.send_admin:
+            # Fetch GurujiUsers object based on common attribute (astro_email_id)
+            try:
+                guruji_user = GurujiUsers.objects.get(email_id=o.astro_email_id)
+            # rest of the code
+            except GurujiUsers.DoesNotExist:
+                print(f"No GurujiUsers found for email_id: {o.astro_email_id}")
+
+            # Save commission from GurujiUsers to astro_commision in Comment
+            o.astro_commision = guruji_user.commision
+            o.save()
             data4 = (o.cust_name,o.plan_purchase_date,o.plan_name,fare,o.astro_email_id,o.astro_commision,o.order_id,o.astro_name)
         # if data4 not in data5:
         if data4 is not None and data4 not in data5:
             data5.add(data4)
+
+            reversed_data5 = list(reversed(list(data5)))
     data = set()
     astro_name= 0
     plan_month= 0
@@ -306,15 +150,44 @@ def admin_revenue(request):
         print('dddddddddd',ddd,total_comission,plan_total)
     
     # print('Total', plan_total,total_comission)
-    
 
+
+    comment= Comment.objects.filter(astro_email_id=request.user.email_id)
+    cust_set = set()
+    for i in comment:
+        cust_data = (i.order_id,i.cust_name,i.plan_name,i.plan_purchase_date,i.astro_email_id,i.user,i.plan_amount,i.astro_commision)
+        
+        if cust_data not in cust_set:
+            print('cust_data',cust_data)
+            cust_set.add(cust_data)
+
+    data = list(cust_set)
+    data = Comment.objects.filter(plan_month=plan_month,astro_email_id=request.user.email_id)
+    cust_set = set()
+    for i in data:
+        cust_data = (i.order_id,i.cust_name,i.plan_name,i.plan_purchase_date,i.astro_email_id,i.user,i.plan_amount,i.astro_commision)
+        
+        if cust_data not in cust_set:
+            print('cust_data',cust_data)
+            cust_set.add(cust_data)
+    # sorted_cust_set = sorted(cust_set, key=lambda x: x[3], reverse=True)
+
+    data2 = len(list(cust_set)) 
+    data_list = list(cust_set)
+    commision = 0
+    
+    for k in cust_set:
+        commision = GurujiUsers.objects.filter(email_id = k[4])
+        for j in commision:
+                print('111111111111111',j.commision)  
+        print('vvvvvvvvvvvvvvvvvvvvvvvvv',commision)
     
     context={
         'data1':data1,
         'data':data,
         'admin_fare':admin_fare,
         'astro_commision':astro_commision,
-        'data5':data5,
+        'reversed_data5':reversed_data5,
         'admin_yearly':admin_yearly,   
         'astro_yearly':astro_yearly,
         'total_comission':total_comission,
@@ -322,10 +195,10 @@ def admin_revenue(request):
         'plan_month':plan_month,
         'selected_astrologer':selected_astrologer,
         'astro_name':astro_name,
-        'wallet_amount':wallet_amount,
-
-
+        # 'wallet_amount':wallet_amount,
+        # 'commision':commision
     }  
+
      
     return render(request,"admin/admin_revenue.html",context)
 
@@ -698,7 +571,7 @@ def commisionastro(request,id):
         user.commision = commision
         subject = 'Astrologer Onboarding Approved - Request for Acceptance and Additional Information '
         message = f"Dear {user.name},\n\n" \
-                f"Greetings from Guruji Speaks! We hope this email finds you in good health and high spirits. We are pleased to inform you that your application for onboarding as an Astro consultant on our platform has been approved.\n\n "\
+                f"Greetings from Jyotish Junction! We hope this email finds you in good health and high spirits. We are pleased to inform you that your application for onboarding as an Astro consultant on our platform has been approved.\n\n "\
                 f"We believe that your profound knowledge and expertise in astrology will greatly benefit our users, providing them with valuable insights and guidance. We are excited to have you join our team of esteemed astrologers and look forward to a fruitful and mutually beneficial association. \n\n"\
                 f"To proceed further, we kindly request you to confirm your acceptance of our offer and provide us with the necessary information and documents mentioned below: \n\n"\
                 f"Acceptance Confirmation: Kindly revert to this email, indicating your acceptance of the onboarding offer and your willingness to sign the Memorandum of Understanding (MOU) that outlines the terms and conditions of our engagement.\n\n"\
@@ -710,18 +583,18 @@ def commisionastro(request,id):
                 f"Once we receive your acceptance and the requested details, we will proceed with the preparation of the MOU for your review and signature. We kindly request you to send the required information and documents within Three days to avoid any delays in the onboarding process. \n\n"\
                 f"If you have any questions or need further clarification regarding the onboarding process, please feel free to reach out to us. We are here to assist you at every step.  \n\n"\
                 f"We once again congratulate you on being approved as an astrologer on our platform and eagerly await your response. We are certain that your presence will enrich our community and help countless individuals seeking guidance and enlightenment.\n\n"\
-                f"Thank you for choosing Guruji Speaks as your platform for sharing your astrological wisdom. We are honored to have you on board.\n\n"\
+                f"Thank you for choosing Jyotish Junction as your platform for sharing your astrological wisdom. We are honored to have you on board.\n\n"\
                 f"Best Regards,\n" \
-                f"The Team at Guruji Speaks"
-        from_email = settings.CAREERS_FROM_EMAIL
+                f"The Team at Jyotish Junction"
+        from_email = settings.CAR_FROM_EMAIL
         send_mail(
             subject,
             message,
             from_email,
             [user.email_id],
             fail_silently=False,
-            auth_user=settings.EMAIL_HOST_USER_CAREERS,
-            auth_password=settings.EMAIL_HOST_PASSWORD_CAREERS,
+            auth_user=settings.EMAIL_HOST_USER,
+            auth_password=settings.EMAIL_HOST_PASSWORD,
             connection=None
         )
 
@@ -731,7 +604,7 @@ def commisionastro(request,id):
         user.save()
 
         recipient_number = [whatsapp_no]  
-        send_sms_approved(recipient_number,name)
+        # send_sms_approved(recipient_number,name)
         return redirect("/admin_approval_astro/")
     # if request.method == 'POST':
     #     data.name =request.POST.get('name')
@@ -816,6 +689,7 @@ def view_profile(request,id):
         data.languages_known = request.POST.get('languages_known')
         data.about_me = request.POST.get('about_me')
         data.pan_no= request.POST.get('pan_no')
+        data.commision= request.POST.get('commision')
         data.save()
         sweetify.success(request, "Profile updated successfully.", timer=3000)
     data2 = GurujiUsers.objects.get(id=id)
@@ -871,7 +745,7 @@ from django.core.mail import send_mail
 #         print('selected_astrologer_id',selected_astrologer_id)
 #         name = GurujiUsers.objects.get(email_id=selected_astrologer_id)
 #         subject = f'Question Assignment'
-#         message = f"Dear {name.name},\n\nWe have assigned {user.name}'s questions to you. This Question\n\nBest Regards,\nTeam Guruji Speaks"
+#         message = f"Dear {name.name},\n\nWe have assigned {user.name}'s questions to you. This Question\n\nBest Regards,\nTeam Jyotish Junction"
 #         sender_email = 'sender@example.com'  # Replace with your email address
 #         recipient_email = selected_astrologer_id
 
@@ -929,9 +803,9 @@ from django.core.mail import send_mail
 #             selected_astrologer_id = request.POST.get('astro_email_id')
 #             print('selected_astrologer_id', selected_astrologer_id)
 #             name = GurujiUsers.objects.get(email_id=selected_astrologer_id)
-#             subject = f'Guruji Speaks - A Question has been assigned to you'
+#             subject = f'Jyotish Junction - A Question has been assigned to you'
 #             message = f" Dear {name.name}\n\n"\
-#             f" We have assigned {user.name} questions to you. Request you to go through the same and share your answers within 24 hours.\n\n 'Best Regards, \n Team Guruji Speaks"
+#             f" We have assigned {user.name} questions to you. Request you to go through the same and share your answers within 24 hours.\n\n 'Best Regards, \n Team Jyotish Junction"
 #             sender_email = 'sender@example.com'  # Replace with your email address
 #             recipient_email = selected_astrologer_id
 #             send_mail(
@@ -1072,9 +946,9 @@ def admin_view_que(request, id):
             selected_astrologer_id = request.POST.get('astro_email_id')
             name = GurujiUsers.objects.get(name=selected_astrologer_id)
             print('nameeeeeeeeeeee',name)
-            subject = f'Guruji Speaks - A Question has been assigned to you'
+            subject = f'Jyotish Junction - A Question has been assigned to you'
             message = f" Dear {name.name}\n\n"\
-            f" We have assigned {user.name} questions to you. Request you to go through the same and share your answers within 24 hours.\n\n 'Best Regards, \n Team Guruji Speaks"
+            f" We have assigned {user.name} questions to you. Request you to go through the same and share your answers within 24 hours.\n\n 'Best Regards, \n Team Jyotish Junction"
             sender_email = 'sender@example.com' 
             recipient_email = name.email_id
             send_mail(
@@ -1101,7 +975,7 @@ def admin_view_que(request, id):
                     i.astro_commision = (float(i.plan_amount)/2 * user2.commision) / 100
                 # i.astro_commision = (int(i.plan_amount) * user2.commision) / 100
                 i.save()
-            send_sms_astrologer([recipient_numbers],name)
+            # send_sms_astrologer([recipient_numbers],name)
             edited_answer = request.POST.get('edited_answer')
             if edited_answer:
                 data_que.comment2 = edited_answer
@@ -1231,16 +1105,16 @@ import textwrap
 #         y -= 20  # Adjust the y-coordinate for the next line
 
 #     # Wrap the entire answer block
-#     #wrapped_answer = "\n".join(textwrap.wrap(f"\nAnswer : Dear {customer_name},\nThank you for asking a question regarding your Health. According to your horoscope.\n  {answer} \n\nWe extend our best wishes to you, hoping that the insights provided have brought you clarity. At Guruji Speaks, we are committed to being your constant source of guidance, available to assist you whenever you need it.Sincerely,The Team at Guruji Speaks", width=110))
+#     #wrapped_answer = "\n".join(textwrap.wrap(f"\nAnswer : Dear {customer_name},\nThank you for asking a question regarding your Health. According to your horoscope.\n  {answer} \n\nWe extend our best wishes to you, hoping that the insights provided have brought you clarity. At Jyotish Junction, we are committed to being your constant source of guidance, available to assist you whenever you need it.Sincerely,The Team at Jyotish Junction", width=110))
 
 #     wrapped_answer = f"""Answer:
 #         Dear {customer_name},
 #         Thank you for asking a question regarding your {que_type}. According to your horoscope.
 #         {answer}
 
-#         We extend our best wishes to you, hoping that the insights provided have brought you clarity.At Guruji Speaks, we are committed to being your constant source of guidance, available to assist you whenever you need it.
+#         We extend our best wishes to you, hoping that the insights provided have brought you clarity.At Jyotish Junction, we are committed to being your constant source of guidance, available to assist you whenever you need it.
 #         Sincerely,
-#         The Team at Guruji Speaks"""
+#         The Team at Jyotish Junction"""
 
 #     # Draw the wrapped answer
 #     for line in wrapped_answer.split('\n'):
@@ -1282,7 +1156,7 @@ def generate_pdf_and_send_email(cust_id,question, answer,customer_name,que_type)
     response = HttpResponse(content_type='application/pdf')
 
     # Set the filename of the PDF
-    pdf_filename = "GSASTROANS.pdf"
+    pdf_filename = "JJ.pdf"
     response['Content-Disposition'] = f'attachment; filename="{pdf_filename}"'
 
     # Create a PDF document using ReportLab
@@ -1327,10 +1201,10 @@ Dear {customer_name},<br/>
 {answer}<br/>
 
 We extend our best wishes to you, hoping that the insights provided have brought you clarity.
-At Guruji Speaks, we are committed to being your constant source of guidance, available to assist you whenever you need it.<br/><br/>
+At Jyotish Junction, we are committed to being your constant source of guidance, available to assist you whenever you need it.<br/><br/>
 <br/>
 Sincerely,<br/>
-The Team at Guruji Speaks"""
+The Team at Jyotish Junction"""
 
     # Split the text using <br/> tags
     split_text = br_pattern.split(answer_text)
@@ -1360,7 +1234,7 @@ The Team at Guruji Speaks"""
     # Create the EmailMessage object
     subject = "PDF Report"
     message = "Please find the attached PDF report."
-    from_email = "info@gurujispeaks.com"  # Replace this with your email
+    from_email = "jyotishjunction11@gmail.com"  # Replace this with your email
     recipient_list = [cust_id]  # Replace this with recipient's email
 
     email = EmailMessage(subject, message, from_email, recipient_list)
@@ -1543,7 +1417,7 @@ def approved_question_admin(request, user):
     message = f"Dear {plan.name},\n\nWe would like to inform you that our esteemed astrologer has provided a response to your recent inquiry. Kindly visit our website or check your email to access the answer.\n\n"\
               f"We kindly request you to take a moment to rate the provided response, as it will greatly assist us in improving our services and meeting your expectations more effectively.\n\n"\
               f"Thank you for your continued support.\n\n"\
-              f"Best regards,\nThe Team at Guruji Speaks\n"
+              f"Best regards,\nThe Team at Jyotish Junction\n"
 
     for i in cust:
         question = i.comment1
@@ -1553,14 +1427,14 @@ def approved_question_admin(request, user):
         que_type = i.ques_type
         generate_pdf_and_send_email(cust_id,question, answer,customer_name,que_type)
 
-    from_email = "aparna.b@zappkode.com"  # Update with your actual email address
+    from_email = "jyotishjunction11@gmail.com"  # Update with your actual email address
     to_email = plan.cust_email_id
     send_mail(subject, message, from_email, [to_email])
     print('kkkkkkk', to_email)
     print('customer_name',plan.name)
 
-    admin_sms_astro([number],name1)
-    send_sms_customer([recipient_numbers],name)
+    # admin_sms_astro([number],name1)
+    # send_sms_customer([recipient_numbers],name)
 
     # url = reverse('admin_view_que', args=[plan.id])
     # return redirect(url)
@@ -1595,7 +1469,7 @@ def approved_question_admin(request, user):
 #     message = f"Dear  {plan.name},\n\nWe would like to inform you that our esteemed astrologer has provided a response to your recent inquiry. Kindly visit our website or check your email/WhatsApp to access the answer.\n\n"\
 #     f"We kindly request you to take a moment to rate the provided response, as it will greatly assist us in improving our services and meeting your expectations more effectively.\n\n"\
 #     f"Thank you for your continued support.\n\n"\
-#     f"Best regards,\nThe Team at Guruji Speaks\n"\
+#     f"Best regards,\nThe Team at Jyotish Junction\n"\
     
 #     paragraph = ""
 #     end='\n'
@@ -1712,3 +1586,10 @@ def monthly_commission_admin(request,astro_email_id,plan_month):
         'total_commission':total_commission
         }
     return render (request,'admin/monthly.html',context)  
+
+
+
+
+def cust_enquiry_display(request):
+    data= Contact.objects.all() 
+    return render(request, 'admin/customer_enquiry.html',{'data':data})

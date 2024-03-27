@@ -1,94 +1,154 @@
 {% extends 'base.html' %} {% block content %}
 {% load static %}
 
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		
-		<meta charset="utf-8">
-		<title>Guruji Speaks</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		
-		<!-- Favicons -->
-		<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
-		
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
-		
-		<!-- Fontawesome CSS -->
-		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
-		<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
 
-		<!-- Feathericon CSS -->
-    	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
-		
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+<head>
 
-		<style>
-			.reg-btn{
-				visibility: hidden;
-			}
-		</style>
+	<meta charset="utf-8">
+	<title>Guruji Speaks</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+	<!-- Favicons -->
+	<link href="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+	<!-- Feathericon CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/feather.css' %}">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<style>
+		.reg-btn {
+			visibility: hidden;
+		}
 	
-	</head>
-	<body>
+		.breadcrumb-bar-two .inner-banner {
+			margin: 0;
+			padding: 40px 0;
+		}
+	
+		.breadcrumb-bar-two {
+			/*background: #F2F6F6;*/
+			/* background-image: url("{% static 'assets/img/backg_img1.jpeg' %}"); */
+			background: -webkit-linear-gradient(#E0E0E0, #F1D06B);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			padding-top: 80px;
+			min-height: 100px;
+			position: relative;
+			overflow: hidden;
+			z-index: 1;
+		}
+	
+		.breadcrumb-bar-two .inner-banner .breadcrumb-title {
+			font-weight: 600;
+			font-size: 25px;
+			margin-bottom: 6px;
+		}
+	</style>
 
-		<!-- Main Wrapper -->
-		<div class="main-wrapper">
-		
-			<!-- Header -->
-			
-			<!-- /Header -->
+</head>
 
-			<!-- Breadcrumb -->
-			<div class="breadcrumb-bar-two">
-				<div class="container">
-					<div class="row align-items-center inner-banner">
-						<div class="col-md-12 col-12 text-center">
-							<h2 class="breadcrumb-title">Refund and Cancellation Policy</h2>
-							<nav aria-label="breadcrumb" class="page-breadcrumb">
-								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="/">Home</a></li>
-									<li class="breadcrumb-item" aria-current="page">Refund and Cancellation Policy</li>
-								</ol>
-							</nav>
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Header -->
+
+		<!-- /Header -->
+
+		<!-- Breadcrumb -->
+		<div class="breadcrumb-bar-two">
+			<div class="container">
+				<div class="row align-items-center inner-banner">
+					<div class="col-md-12 col-12 text-center">
+						<h2 class="breadcrumb-title">Refund and Cancellation Policy</h2>
+						<nav aria-label="breadcrumb" class="page-breadcrumb">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="/">Home</a></li>
+								<li class="breadcrumb-item" aria-current="page">Refund and Cancellation Policy</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Breadcrumb -->
+
+		<!-- Page Content -->
+		<div class="content" style="background: rgb(0, 0, 0);">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="term">
+							<div class="terms-text">
+								<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+									<div class="card-title">
+										<h3 class="text-center mt-4">Refund Policy</h3>
+									</div>	
+									<div class="card-body" >
+										<p>When a user chooses the "Ask a Question" service, our expert astrologers aim to
+											provide a response within 24 hours of receiving the latest information or
+											clarification from the user. If, for any reason, our experts fail to respond within
+											the specified timeframe, the user has the right to request a refund of the fees
+											paid. Upon approval of the user's refund request, a refund will be initiated to the
+											user's original method of payment or credit card. The user can expect to receive the
+											refund within 7 days, subject to the policies of their card issuer or original
+											payment provider. Additionally, we offer a money-back guarantee for the user's first
+											question. If the user is unsatisfied with the answer provided by our experts, they
+											can request a refund by contacting us via email at <a
+												href="jyotishjunction11@gmail.com">jyotishjunction11@gmail.com </a> within 3
+											hours of receiving the answer. Please note that refunds are not available for
+											"Jyotish JunctionPremium Counselling" sessions – Celestial Guidance and Divine
+											Revelations.
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="terms-text">
+								<div class="card" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+									<div class="card-title">
+										<h3 class="text-center mt-4">Cancellation Policy</h3>
+									</div>
+									<div class="card-body" >
+										<p>If a user decides to cancel the "Ask a Question" service after payment, they must
+											send a cancellation request to jyotishjunction11@gmail.com within the first hour of
+											their transaction being processed. It is important to note that a cancellation
+											request cannot be made if our expert has already provided a response to the user's
+											question, even if it falls within the first hour. The refund for cancellation will
+											follow the refund policy mentioned above. For cancellations of "Jyotish
+											JunctionPremium Counselling" sessions, users must inform us at
+											jyotishjunction11@gmail.com within 3 hours of booking the session.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- /Breadcrumb -->
-			
-			<!-- Page Content -->
-			<div class="content">
-				<div class="container">
-					<div class="row">
-						<div class="col-12">
-                            <div class="term">
-                                <div class="terms-text">
-							<h3>Refund Policy</h3>
-                            <p>When a user chooses the "Ask a Question" service, our expert astrologers aim to provide a response within 24 hours of receiving the latest information or clarification from the user. If, for any reason, our experts fail to respond within the specified timeframe, the user has the right to request a refund of the fees paid. Upon approval of the user's refund request, a refund will be initiated to the user's original method of payment or credit card. The user can expect to receive the refund within 7 days, subject to the policies of their card issuer or original payment provider. Additionally, we offer a money-back guarantee for the user's first question. If the user is unsatisfied with the answer provided by our experts, they can request a refund by contacting us via email at <a href="care@gurujispeaks.com">care@gurujispeaks.com </a> within 3 hours of receiving the answer. Please note that refunds are not available for "Guruji Speaks Premium Counselling" sessions – Celestial Guidance and Divine Revelations.</p>
-                                </div>
-                            <div class="terms-text">
-                                <h3>Cancellation Policy</h3>
-                                <p>If a user decides to cancel the "Ask a Question" service after payment, they must send a cancellation request to care@gurujispeaks.com within the first hour of their transaction being processed. It is important to note that a cancellation request cannot be made if our expert has already provided a response to the user's question, even if it falls within the first hour. The refund for cancellation will follow the refund policy mentioned above. For cancellations of "Guruji Speaks Premium Counselling" sessions, users must inform us at care@gurujispeaks.com within 3 hours of booking the session.</p>
-                            </div>
-                            </div>
-						</div>
-					</div>
-				</div>
 
-			</div>		
-			<!-- /Page Content -->
-   
-			<!-- Footer -->
-			
-			<!-- /Footer -->
-		   
 		</div>
-		<!-- /Main Wrapper -->
-	  
-		 <!-- jQuery -->
+		<!-- /Page Content -->
+
+		<!-- Footer -->
+
+		<!-- /Footer -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
 	<script src="{% static 'assets/js/jquery-3.6.4.min.js' %}"></script>
 
 	<!-- Bootstrap Bundle JS -->
@@ -97,14 +157,14 @@
 	<!-- Bootstrap Core JS -->
 	<!-- <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script> -->
 
-	 <!-- Profile Settings JS (dropdown)-->
-	 <script src="{% static 'assets/js/profile-settings.js' %}"></script>
+	<!-- Profile Settings JS (dropdown)-->
+	<script src="{% static 'assets/js/profile-settings.js' %}"></script>
 
-	 <!-- Select2 JS (dropdown)-->
-	 <script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
-	 
-	 <!-- Dropzone JS (dropdown)-->
-	 <script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
+	<!-- Select2 JS (dropdown)-->
+	<script src="{% static 'assets/plugins/select2/js/select2.min.js' %}"></script>
+
+	<!-- Dropzone JS (dropdown)-->
+	<script src="{% static 'assets/plugins/dropzone/dropzone.min.js' %}"></script>
 
 	<!-- Feather Icon JS -->
 	<script src="{% static 'assets/js/feather.min.js' %}"></script>
@@ -130,8 +190,9 @@
 
 	<!-- Custom JS -->
 	<script src="{% static 'assets/js/script.js' %}"></script>
-		
-	</body>
+
+</body>
+
 </html>
 
 {% endblock %}

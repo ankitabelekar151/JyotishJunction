@@ -5,7 +5,7 @@
 	<head>
 
 		<meta charset="utf-8">
-		<title>Guruji Speaks</title>
+		<title>Jyotish Junction</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<!-- Favicons -->
@@ -38,7 +38,7 @@
 		}*/
 
 		.breadcrumb-bar-two {
-			background: #F2F6F6;
+			background:  -webkit-linear-gradient( #E0E0E0, #F1D06B);
 			background-repeat: no-repeat;
 			padding-top: 10px;
 			min-height: 150px;
@@ -54,7 +54,7 @@
 
 		.breadcrumb-bar-two .inner-banner .breadcrumb-title {
 			font-weight: 600;
-			font-size: 35px;
+			font-size: 25px;
 			margin-bottom: 6px;
 		}
 
@@ -110,6 +110,33 @@
 			border: 1px solid white !important;
 			color: #000 !important;
 		}
+
+		.user-tabs .nav-tabs > li > a {
+			border: 0;
+			border-bottom: 3px solid transparent;
+			color: #e5b110;
+			font-weight: 700;
+			padding: 20px;
+		}
+
+		.user-tabs .nav-tabs > li > a:hover {
+			background-color: unset;
+			color: #000;
+		}
+
+		.nav-tabs {
+			border-bottom: 3px solid #e5b110;
+		}
+
+		.nav-tabs.nav-justified > li > a:hover, .nav-tabs.nav-justified > li > a:focus {
+			border-bottom-color: #e5b110;
+		}
+
+
+		.user-tabs .nav-tabs.nav-tabs-bottom > li > a.active, .user-tabs .nav-tabs.nav-tabs-bottom > li > a.active:hover, .user-tabs .nav-tabs.nav-tabs-bottom > li > a.active:focus {
+			border-bottom-width: 3px;
+			color: #e5b110;
+		}
 	</style>
 
 	
@@ -146,7 +173,7 @@
 							<div class="col-md-12">
 
 								<div class="card">
-									<div class="card-body pt-0">
+									<div class="card-body pt-0" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 
 										<!-- Appointment Tab -->
 								 {% comment %} <div class="nav-tabs">
@@ -179,7 +206,7 @@
 												<form method="post">
 													{% csrf_token %}
 													<div class="card card-table mb-0">
-														<div class="card-body">
+														<div class="card-body" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 															<div class="table-responsive">
 																<table class="table table-hover text-center table-center mb-0">
 																	<thead>
@@ -208,7 +235,7 @@
 																			  {{i.plan_purchase_date}}
 																			</td>
 																			<td class="d-flex justify-content-evenly">
-																			  {% if i.plan_name == 'Stellar Insights' %}
+																			  {% if i.plan_name == 'Personalized Guidance' %}
 																				
 																				  <div class="table-action">
 																					

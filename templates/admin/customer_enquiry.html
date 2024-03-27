@@ -1,0 +1,167 @@
+{% extends 'base_admin.html' %}{% block content %}
+
+{% load static %}
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Guruji Speaks</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+
+
+    <!-- <link rel="stylesheet" href="//cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="//cdn.tutorialjinni.com/bootstrap-select/1.12.4/css/bootstrap-select.min.css"> -->
+    <link rel="stylesheet"
+        href="//g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+
+    <!-- Favicons -->
+    <link href="{% static 'assets2/img/GrujiSpeaks-img/logo-2.png' %}" rel="icon">
+
+    <!-- dd-mm-yyyy -->
+    <!-- <link rel="stylesheet" href="{%static 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css' %}">
+    <script src="{%static 'https://cdn.jsdelivr.net/npm/flatpickr' %}"></script>
+     -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}">
+
+    <!-- Feathericon CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/feather.css' %}">
+
+    <!-- Datetimepicker CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap-datetimepicker.min.css' %}">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/plugins/select2/css/select2.min.css' %}">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets2/css/custom.css' %}">
+    <style>
+        .breadcrumb-bar-two {
+            background: #F2F6F6;
+            background-repeat: repeat;
+            background-repeat: no-repeat;
+            padding-top: 10px;
+            min-height: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+
+        .breadcrumb-bar-two .inner-banner {
+            margin: 0;
+            padding: 30px 0;
+        }
+
+        .breadcrumb-bar-two .inner-banner .breadcrumb-title {
+            font-weight: 600;
+            font-size: 35px;
+            margin-bottom: 6px;
+        }
+
+        .btn-primary {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+
+        .btn-primary:hover {
+            background-color: #1c3264;
+            border: 1px solid #1c3264;
+        }
+
+        .btn-primary a{
+           color: #fff;
+        }
+    </style>
+
+</head>
+
+
+
+
+<div class="page-wrapper">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar-two">
+        <div class="container">
+            <div class="row align-items-center inner-banner">
+                <div class="col-md-12 col-12 text-center">
+                    <h2 class="breadcrumb-title"> Customer Enquiry </h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Breadcrumb -->
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-7 col-lg-12 col-xl-12">
+                    <div class="card card-table">
+                        <div class="card-body">
+
+                            <form id="send-form" method="POST" action="">
+                                {% csrf_token %}
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr. No</th>
+                                                <th>Name</th>
+                                                <th>Phone Number</th>
+                                                <th>Email ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for d in data %}
+                                            <tr>
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{d.contact_person}}</td>
+                                                <td>{{d.contact_phone}}</td>
+                                                <td>{{d.contact_email}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // Function to handle the click event
+        function deactivateAstrologerPopup(astrologerId) {
+            // Display the SweetAlert popup
+            Swal.fire({
+                title: 'Deactivate Astrologer',
+                text: 'Are you sure you want to deactivate this astrologer?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, deactivate',
+                cancelButtonText: 'Cancel',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user confirms, redirect to the deactivate URL
+                    window.location.href = '/astro_disable/' + astrologerId + '/';
+                }
+            });
+        }
+    </script>
+    
+</div>
+
+    
+
+    {% endblock %}

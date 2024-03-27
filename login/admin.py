@@ -1,4 +1,6 @@
 from django.contrib import admin
+from .models import ChatGptBot
+
 
 # Register your models here.
 from login.models import AdminUser,AstrologerUser,CustomerUser,GurujiUsers,admin_setting_plan,admin_setting_plan_dollar,MerchantProfile,generalSetting,Comment,Plan_Purchase,Wallet,Customer_profile
@@ -14,3 +16,4 @@ admin.site.register(generalSetting)
 admin.site.register(Comment)
 admin.site.register(Wallet)
 admin.site.register(Customer_profile)
+admin.site.register(ChatGptBot)

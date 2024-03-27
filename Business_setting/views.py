@@ -84,20 +84,35 @@ def general_setting(request):
 def privacy_policy(request):
     return render(request, "setting/privacy_policy.html")
 
+def astro_privacy_policy(request):
+    return render(request, "setting/astro_privacy_policy.html")
+
 def terms_of_service(request):
     return render(request, "setting/terms_of_service.html")
+
+def astro_terms_of_service(request):
+    return render(request, "setting/astro_terms_of_services.html")
 
 def Refund_Cancellation_Policy(request):
     return render(request, "setting/Refund_Cancellation_Policy.html")
 
 def intellactual_property(request):
     return render(request, "setting/intellactual_property.html")
+
+def astro_intellactual_property(request):
+    return render(request, "setting/astro_intellactual_property.html")
     
 def faqs(request):
     return render(request, "setting/faqs.html")
 
+def astro_faqs(request):
+    return render(request, "setting/astro_faqs.html")
+
 def disclaimer(request):
     return render(request, "setting/disclaimer.html")
+
+def astro_disclaimer(request):
+    return render(request, "setting/astro_disclaimer.html")
 
 
 from admin_app.models import BlogPost

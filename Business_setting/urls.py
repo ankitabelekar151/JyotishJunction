@@ -9,11 +9,16 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("general-setting/", general_setting, name="general-setting"),
     path("privacy_policy/", privacy_policy, name="privacy_policy"),
+    path("astro_privacy_policy/", astro_privacy_policy, name="astro_privacy_policy"),
     path("terms_of_service/", terms_of_service, name="terms_of_service"),
-    path("Refund_Cancellation_Policy/", Refund_Cancellation_Policy, name="Refund_Cancellation_Policy"),
+    path("astro_terms_of_service/", astro_terms_of_service, name="astro_terms_of_service"),
+    # path("Refund_Cancellation_Policy/", Refund_Cancellation_Policy, name="Refund_Cancellation_Policy"),
     path("intellactual_property/", intellactual_property, name="intellactual_property"),
+    path("astro_intellactual_property/", astro_intellactual_property, name="astro_intellactual_property"),
     path("faqs/", faqs, name="faqs"),
+    path("astro_faqs/", astro_faqs, name="astro_faqs"),
     path("disclaimer/", disclaimer, name="disclaimer"), 
+    path("astro_disclaimer/", astro_disclaimer, name="astro_disclaimer"), 
     
     path("astro_blog/", astro_blog, name="astro_blog"),
     path("astro_blog1/<int:id>/", astro_blog1, name="astro_blog1"),

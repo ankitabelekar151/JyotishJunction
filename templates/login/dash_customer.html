@@ -43,7 +43,8 @@
 				min-height: 20px !important;
 				position: relative;
 				z-index: 1;
-				background: no-repeat rgb(242, 246, 246);
+				/*background: no-repeat rgb(242, 246, 246);*/
+        background: -webkit-linear-gradient( #E0E0E0, #F1D06B);
 				background-repeat: no-repeat;
 				overflow: hidden;
 			}
@@ -68,6 +69,30 @@
           margin: 0;
           padding: 40px 0;
       }
+
+
+      .user-tabs .nav-tabs.nav-tabs-bottom > li > a.active{
+          border-bottom-width: 3px;
+          color: #e5b110;
+      }
+
+      .user-tabs .nav-tabs.nav-tabs-bottom > li > a.active:hover{
+        border-bottom-width: 3px;
+        color: #000;
+    }
+
+
+    .nav-tabs.nav-tabs-bottom > li > a.active, .nav-tabs.nav-tabs-bottom > li > a.active:hover, .nav-tabs.nav-tabs-bottom > li > a.active:focus {
+      border-bottom-width: 2px;
+      border-color: transparent;
+      border-bottom-color: #e5b110;
+      background-color: transparent;
+      -webkit-transition: none 0s ease 0s;
+      -ms-transition: none 0s ease 0s;
+      transition: none 0s ease 0s;
+  }
+
+
 
           /* Style the custom button */
       .btn-link1 {
@@ -171,7 +196,7 @@
         <div class="row">
           <div class="col-md-7 col-lg-8 col-xl-12">
             <div class="card">
-              <div class="card-body pt-0">
+              <div class="card-body pt-0" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
 
                 <!-- Tab Menu -->
                 <nav class="user-tabs mb-4">
@@ -190,7 +215,7 @@
                   <!-- Appointment Tab -->
                   <div id="pat_appointments" class="tab-pane fade show active">
                     <div class="card card-table mb-0">
-                      <div class="card-body">
+                      <div class="card-body" style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
                         <div class="table-responsive">
                           <table class="table text-center table-center mb-0">
                             <thead>
@@ -211,7 +236,7 @@
                                     <td>{{i.invoice_number}}</td>
                                     
                                     <td>
-                                      {{i.purchase_date}}
+                                      {{i.plan_purchase_date}}
                                     </td>
                                     <td>
                                       {{i.plan_purchase_time}}
@@ -223,7 +248,7 @@
                                       {{i.plan_amount}}
                                     </td>
                                     <td class="d-flex justify-content-evenly">
-                                      {% if i.plan_name == 'Stellar Insights' %}
+                                      {% if i.plan_name == 'Personalized Guidance' %}
                                         
                                           <div class="table-action">
                                             <a  href="/ask_q_silver/{{i.id}}/" data-toggle="tooltip" data-original-title="Ask Question" class=" text-wrap btn-link1">

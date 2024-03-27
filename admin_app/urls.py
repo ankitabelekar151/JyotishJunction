@@ -28,16 +28,16 @@ urlpatterns = [
     path('astro_profile/<slug:id>/', commisionastro,name="astro_profile"), 
     path('cus_to_ad_question/', cus_to_ad_question,name="cus_to_ad_question"),  
 
-    path('astro_payment/<int:id>/', astro_payment,name="astro_payment"),
+    # path('astro_payment/<int:id>/', astro_payment,name="astro_payment"),
     path('cust_to_admin/',customer_to_admin,name='cust_to_admin'),
     path('admin_view_que/<int:id>/', admin_view_que,name="admin_view_que"),
     path('approved-question-admin/<int:user>/',approved_question_admin,name='approved-question-admin'),
     #path('astro_payment/', astro_payment,name="astro_payment"),
     path('monthly_admin/<str:astro_email_id>/', monthly_admin,name="monthly_admin"),
     path('monthly_commission_admin/<str:astro_email_id>/<str:plan_month>/', monthly_commission_admin,name="monthly_commission_admin"),
-
-
-
-
-
+    path('cust_enquiry_display/',cust_enquiry_display,name='cust_enquiry_display'),
 ]
+
+
+
+

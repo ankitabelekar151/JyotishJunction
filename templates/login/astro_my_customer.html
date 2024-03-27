@@ -7,7 +7,7 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>Guruji Speaks</title>
+	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
     <!-- Favicons -->
@@ -38,10 +38,10 @@
 
 <style>
 	.breadcrumb-bar-two {
-				background: #F2F6F6;
+				background:  -webkit-linear-gradient( #E0E0E0, #F1D06B);;
 				background-repeat: no-repeat;
-				padding-top: 0px !important;
-				min-height: 0px !important;
+				padding-top: 10px !important;
+				min-height: 100px !important;
 				position: relative;
 				overflow: hidden;
 				z-index: 1;
@@ -49,12 +49,18 @@
 
       .breadcrumb-bar-two .inner-banner {
           margin: 0;
-          padding: 30px 0;
+          padding: 40px 0;
       }
 
 	  .card-shadow
 	  {
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	  }
+
+	  .breadcrumb-bar-two .inner-banner .breadcrumb-title {
+		font-weight: 600;
+		font-size: 25px;
+		margin-bottom: 6px;
 	  }
 	 
 </style>
@@ -85,13 +91,13 @@
 
 		<!-- Page Content -->
 		<div class="content">
-			<div class="container">
-				<div class="dash-widget-info">
-					<h6>Total Customers : {{unique_customer_count}}</h6>
+			<div class="container"  style="box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);">
+				<div class="dash-widget-info ">
+					<h6 class="mt-5">Total Customers : {{unique_customer_count}}</h6>
 					
 					<p class="text-muted">{{ count }}</p>
 					{% comment %} <p class="text-muted">Till Today</p> {% endcomment %}
-				  </div>	
+				</div>	
 
 				<div class="row">
 		

@@ -6,11 +6,20 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title >Guruji Speaks {% block title %} {% endblock title %}</title>
+    <title>Jyotish Junction {% block title %} {% endblock title %}</title>
     
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/img/GrujiSpeaks-img/5.png' %}" type="image/x-icon">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZBL41SXB3"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HZBL41SXB3');
+    </script>
 
 
     <script>
@@ -61,7 +70,7 @@
 			.header-one .main-menu-wrapper .main-nav li a {
 				font-size: 15px;
 				font-weight: 500;
-				color: #ffffff !important;
+				color: #fff !important;
 				display: block;
 			}
 			
@@ -111,7 +120,7 @@
 
 			/* footer */
 			.footer-one {
-				background: #1c3264 !important;
+				background: #000 !important;
 			}
 
             .footer-one .footer-top {
@@ -131,6 +140,20 @@
 				color: #ffffff !important;
 				margin-bottom: 25px;
 			}
+
+
+            .footer-one .footer-top .footer-widget.footer-menu ul li a:hover {
+                color: #f1c12e;
+                background: url(../img/footer-arrow.png) no-repeat 4px;
+                padding-left: 20px;
+                -webkit-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+            }
+        
+            .footer-one .social-icon ul li a:hover {
+                color: #f1c12e;
+            }
 
 			.footer-one .footer-top .footer-widget.footer-menu ul li a {
 				color: #ffffff !important;
@@ -155,7 +178,9 @@
 
             .footer.footer-one .footer-bottom .copyright .copyright-text p {
                 color: #fff !important;
+                text-align: center;
             }
+
             .footer .footer-bottom .copyright .copyright-text p a {
                 color: #eae1e1 !important;
                 font-weight: 500;
@@ -260,7 +285,7 @@
 <div class="main-wrapper home-twelve">
 
      <!-- Header -->
-     <header class="header header-one" style="background: #1c3264; height: 90px;">
+     <header class="header header-one" style="background: #000; height: 90px;">
         <div class="container">
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
@@ -272,13 +297,13 @@
                         </span>
                     </a>
                     <a href="#" class="navbar-brand logo">
-                        <img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 70px;">
+                        <img src="{% static 'assets/img/JJ-img/JJ-logo(1).png' %}" class="img-fluid" alt="Logo" style="width: 95px; height: 75px;">
                     </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
                         <a href="#" class="menu-logo">
-                            <img src="{% static 'assets/img/GrujiSpeaks-img/logo-1.png' %}" class="img-fluid" alt="Logo" style="width: 80px; height: 70px;">
+                            <img src="{% static 'assets/img/JJ-img/JJ-logo(1).png' %}" class="img-fluid" alt="Logo" style="width: 95px; height: 75px;">
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);">
                             <i class="fas fa-times"></i>
@@ -544,140 +569,179 @@
 
     {% block content %}
     {% endblock %}
-   <!-- Footer -->
-   <footer class="footer footer-one">
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4">
-                    <div class="footer-widget footer-about">
-                        <div class="footer-logo">
-                            <img src="{% static 'assets/img/GrujiSpeaks-img/logo-2.png' %}"style="
-                                margin-top: -20px;
-                                max-width: 30%;
-                                height: auto;
-                            " alt="logo">
-                        </div>
-                        <div class="footer-about-content">
-                            <p>At Guruji Speaks, we believe that astrology is a powerful tool that can be used to gain insights into our lives and to make better decisions.</p>
-                        </div>
-                        <br>
-                        <div class="social-icon">
-                            <ul>
-                                <li>
-                                    <a  target="_blank"  style="cursor: auto;"><i class=""></i>
-                                        <img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}" class="image-fluid w-50" alt="Logo"> </a>
-                                </li>
-                                <li>
-                                    <a  target="_blank"  style="cursor: auto;"><i class=""></i>
-                                        <img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}" class="image-fluid w-50" alt="Logo"> </a>
-                                </li>
-                                <li>
-                                    <a  target="_blank"  style="cursor: auto;"><i class=""></i>
-                                        <img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}" class="image-fluid w-50" alt="Logo"> </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <div class="footer-widget footer-menu">
-                        <h2 class="footer-title">Useful Links</h2>
-                        <ul>
-                            <li><a href="/faqs/">FAQ</a></li>
-                            <li><a href="/intellactual_property/">Intellectual Property</a></li>
-                            <li><a href="/disclaimer/">Disclaimer</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4">
-                    <div class="footer-widget footer-menu">
-                        <h2 class="footer-title">For Astrologer</h2>
-                        <ul>
-                            <!-- <li><a href="#">Appointments</a></li> -->
-                            <li><a href="/astrologer-registration/">Register</a></li>
-                            <li><a href="/astrologer-login/">Login</a></li>
-                            <li><a href="/customer_support/">Customer Support</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-5">
-                    <div class="footer-widget footer-contact">
-                        <h2 class="footer-title">Contact Us</h2>
-                        <div class="footer-contact-info">
-                           
-                            <div class="footer-address">
-                                <a href="/whatsapp_qr/">
-                                <p><i class="feather-user"></i>Chat Support</p>
-                                </a>
+ 
+    		<!-- Footer -->
+		<footer class="footer footer-one">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<!-- <div class="col-lg-3 col-md-4">
+							<div class="footer-widget footer-about">
+								<div class="footer-logo">
+									<img src="{% static 'assets/img/GrujiSpeaks-img/4.png' %}" style="
+												margin-top: -25px;
+												max-width: 40%;
+												height: auto;
+											" alt="logo">
+								</div>
+								<div class="footer-about-content">
+									<p>Jyotish Junction (Unlock the Stars, Ask for Free)</p>
+								</div>
+								<br>
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a target="_blank" style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/lock.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+										<li>
+											<a target="_blank" style="cursor: auto;"><i class="" ></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/save.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+										<li>
+											<a target="_blank" style="cursor: auto;"><i class=""></i>
+												<img src="{% static 'assets/img/GrujiSpeaks-img/contact.png' %}"
+													class="img-fluid w-50 h-50" alt="Logo"> </a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
+						<!-- <div class="col-lg-3 col-md-4">
+							<div class="footer-widget footer-menu">
+								<ul>
+									
+								</ul>
+							</div>
+						</div> -->
+
+						<div class="col-lg-3 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">Useful Links</h2>
+								<ul>
+									<!-- <li><a href="/cust_refund/">Refund and Cancellation Policy</a></li> -->
+									<li><a href="/astro_terms_of_service/">Terms Of Service</a></li>
+									<li><a href="/astro_privacy_policy/">Privacy Policy</a></li>
+									<li><a href="/astro_faqs/">FAQ</a></li>
+									<li><a href="/astro_intellactual_property/">Intellectual Property</a></li>
+									<li><a href="/astro_disclaimer/">Disclaimer</a></li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="col-lg-3 col-md-5">
+							<div class="footer-widget footer-contact">
+								<h2 class="footer-title">Contact Us</h2>
+								<div class="footer-contact-info">
+									<!--<div class="footer-address">-->
+									<!--	<p><i class="feather-map-pin"></i> 3556 Beech Street, USA</p>-->
+									<!--</div>-->
+									<div class="footer-address">
+										<a href="/whatsapp_qr/">
+											<p><i class="feather-user"></i>Chat Support</p>
+										</a>
+									</div>
+									<div class="footer-address">
+
+										<!-- <p><i class="feather-mail"></i>care@gurujispeaks.com</p> -->
+										<p>
+										 
+										  <a href="" style="color: white;"> <i class="feather-mail"></i>jyotishjunction11@gmail.com</a>
+										</p>
+
+									</div>
+								</div>
+							</div>
+
+                            <div class="footer-widget footer-menu mt-5">
+                                <h2 class="footer-title">For Astrologer</h2>
+                                <ul>
+                                    <li><a href="/astrologer-registration/" >Register</a></li>
+                                    <li><a href="/astrologer-login/" >Login</a></li>
+                                    <li><a href="/customer_support/">Customer Support</a></li>
+                                </ul>
                             </div>
-                            <div class="footer-address mb-0">
-                                <p>
-                                         
-                                          <a href="mailto:care@gurujispeaks.com" style="color: white;"> <i class="feather-mail"></i>care@gurujispeaks.com</a>
-                                        </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-7">
-                    <div class="footer-widget ms-2">
-                        <h2 class="footer-title">Follow Us</h2>
-                        <!-- <div class="subscribe-form">
-                            <form action="#">
-                                <input type="email" class="form-control" placeholder="Enter Email">
-                                <button type="submit" class="btn">Submit</button>
-                            </form>
-                        </div> -->
-                        <div class="social-icon">
-                            <ul>
-                                <li>
-                                    <a href="https://www.facebook.com/GurujiSpeaksAstrology?mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook"></i> </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.instagram.com/gurujispeaks_astro/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="https://twitter.com/guruji_speaks?s=20" target="_blank"><i class="fab fa-twitter"></i> </a>
-                                </li>
-                                <li>
-                                    <a href="https://www.linkedin.com/company/guruji-speaks/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <!-- Copyright -->
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 col-lg-6">
-                        <div class="copyright-text">
-                            <p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">GurujiSpeaks.</a> All Rights Reserved. Powered by Zappkode.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                    
-                        <!-- Copyright Menu -->
-                        <div class="copyright-menu">
-                            <ul class="policy-menu">
-                                <li><a href="/privacy_policy/">Privacy Policy</a></li>
-                                <li><a href="/terms_of_service/">Terms Of Service</a></li>
-                                <li><a href="/Refund_Cancellation_Policy/">Refund and Cancellation Policy</a></li>
-                            </ul>
-                        </div>
-                        <!-- /Copyright Menu -->
-                        
-                    </div>
-                </div>
-            </div>
-            <!-- /Copyright -->					
-        </div>
-    </div>
+						</div>
+						<div class="col-lg-3 col-md-7 text-center">
+							<div class="footer-widget ms-2">
+								<h2 class="footer-title">Keep In Touch</h2>
+								<!-- <div class="subscribe-form">
+									<form action="#">
+										<input type="email" class="form-control" placeholder="Enter Email">
+										<button type="submit" class="btn">Submit</button>
+									</form>
+								</div> -->
+								<div class="social-icon">
+									<ul>
+										<li>
+											<a href=""
+												target="_blank"><i class="fab fa-facebook"></i> </a>
+										</li>
+										<li>
+											<a href="" target="_blank"><i
+													class="fab fa-instagram"></i></a>
+										</li>
+										<li>
+											<a href="" target="_blank"><i
+													class="fab fa-twitter"></i> </a>
+										</li>
+										<li>
+											<a href="" target="_blank"><i
+													class="fab fa-linkedin-in"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+                        <div class="col-lg-2 col-md-4">
+							<div class="footer-widget footer-menu">
+								<h2 class="footer-title">For Astrologer</h2>
+								<ul>
+									<li><a href="/astrologer-registration/">Register</a></li>
+									<li><a href="/astrologer-login/">Login</a></li>
+									<li><a href="/customer_support/">Customer Support</a></li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="container">
+					<!-- Copyright -->
+					<div class="copyright">
+						<div class="row">
+							<div class="col-md-6 col-lg-12">
+								<div class="copyright-text">
+									<p class="mb-0"> Copyright © 2023 <a href="#" target="_blank">Jyotish Junction </a>
+										 <!-- All
+										Rights Reserved. Powered by Zappkode.</p> -->
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6">
+
+								<!-- Copyright Menu -->
+								<!-- <div class="copyright-menu">
+									<ul class="policy-menu">
+										<li><a href="/cust_privacy_policy/">Privacy Policy</a></li>
+										<li><a href="/cust_tos/">Terms Of Service</a></li>
+										<li><a href="/cust_refund/">Refund and Cancellation Policy</a></li>
+									</ul>
+								</div> -->
+								<!-- /Copyright Menu -->
+
+							</div>
+						</div>
+					</div>
+					<!-- /Copyright -->
+				</div>
+			</div>
+		</footer>
+		<!-- /Footer -->
 
     <!-- whatsapp QR -->
     <style>
@@ -707,8 +771,7 @@
         </a>
     </div>
     <!-- end whatsapp QR -->
-</footer>
-<!-- /Footer -->
+
 
 
 </div>
